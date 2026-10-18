@@ -5,3 +5,6 @@ __pycache__/
 .falkorimg/
 data/history/snapshot_*.json
 reports/refresh_*.md
+
+# study screenshots of third-party sites: local only, never committed, never reused, never deployed
+out/design/teardowns/shots/
