@@ -31,6 +31,8 @@ https://github.com/LangerSword/rustbrain/actions/runs/39172342372
 | 16 | handles-only data policy, emails removed and purged | DONE | `out/blog_evidence/email_removal_receipt.md`, `history_rewrite.md` |
 | 17 | UI screenshots, three states, 1280 CSS px, DPR 2 | DONE | `out/blog_evidence/ui_rfc1892_successor_hop.png`, `ui_true_gap_dev_tools.png`, `ui_active_team_cargo.png` |
 | 18 | CI green screenshot | DONE | `out/blog_evidence/ci_green.png` |
+| 19 | project site, five pages, deployed | DONE | https://langersword.github.io/rustbrain/ (built from `site/` by `.github/workflows/pages.yml`) |
+| 20 | site review: screenshots at three widths, measurements, critique | DONE | `out/site_review/` |
 
 ## ENTRANT TO DO
 
