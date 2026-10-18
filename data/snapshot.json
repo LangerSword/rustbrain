@@ -1,5 +1,5 @@
 {
- "content_sha256": "36ad30968e768859b9806126c0e540c361a9fa469e1a25b53f4c9e39a47f542c",
+ "content_sha256": "6732467a070a0a8c7129ff334f5a95a2227cd014783ca8415ca01bb87a353c97",
  "counts": {
   "documents": 626,
   "people": 675,
@@ -7,8 +7,8 @@
   "rfcs": 761,
   "roster_edges_alumni": 870,
   "roster_edges_lead": 127,
-  "roster_edges_member": 1051,
-  "roster_edges_roster": 1178,
+  "roster_edges_member": 1050,
+  "roster_edges_roster": 1177,
   "successor_edges": 4,
   "teams_active": 172,
   "teams_archived": 52,
@@ -4444,7 +4444,6 @@
    "lead_of": [],
    "member_of": [
     "libs",
-    "libs-ping",
     "maintainers-in-residence"
    ],
    "on_active_team": true
@@ -7680,7 +7679,7 @@
  },
  "pins": {
   "rfcs": "d2705ad64ba47e812a2b6b19d6f613fb4c14c5e0",
-  "team": "cb0ccabd69bc63e3f84f26d764704d939224071f"
+  "team": "a5176049c11ca092994af7a07deb4f62dfe4b55c"
  },
  "rfcs": [
   {
@@ -21116,10 +21115,6 @@
     ],
     [
      "jhpratt",
-     []
-    ],
-    [
-     "joboet",
      []
     ],
     [

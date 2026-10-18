@@ -29,7 +29,7 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(HERE, "data")
 TEAM = os.path.join(DATA, "upstream", "team")
 
-PINS = {"team": "cb0ccabd69bc63e3f84f26d764704d939224071f",
+PINS = {"team": "a5176049c11ca092994af7a07deb4f62dfe4b55c",
         "rfcs": "d2705ad64ba47e812a2b6b19d6f613fb4c14c5e0"}
 
 # falkordb/falkordb:latest, AMD64 manifest-list digest, read 2026-10-16.
