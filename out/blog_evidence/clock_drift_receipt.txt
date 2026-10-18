@@ -1,0 +1,16 @@
+CLOCK DRIFT RECEIPT
+
+The submission window was stated as 2026-10-18 23:59 IST.
+
+Local clock reads:
+  Monday 2026-10-19 02:39:44 IST
+
+Network clocks, three independent servers:
+  date: Sun, 18 Oct 2026 21:09:32 GMT
+  date: Sun, 18 Oct 2026 21:09:44 GMT
+  date: Sun, 18 Oct 2026 21:09:45 GMT
+
+The third line of each response is UTC. 2026-10-18 21:09 UTC is 2026-10-19 02:39 IST,
+which is 2 hours 40 minutes AFTER the stated window closed. The local hours-remaining
+arithmetic was never re-checked against a network source, so a build kept running past
+the deadline. One curl would have caught it.

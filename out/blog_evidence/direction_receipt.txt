@@ -1,0 +1,16 @@
+DIRECTION RECEIPT, captured 2026-10-19 02:38:26 IST
+module ver 42201, graph rustbrain
+
+An edge (a)-[:R]->(b) created in a throwaway graph, then both forms run:
+  outbound (a:A)-[:R]->(b:B)    rows=1 [['a', 'b']]
+  inbound  (a:A)<-[:R]-(b:B)    rows=0 []
+  unlabeled (a)<-[:R]-(b)       rows=1 [['b', 'a']]
+
+Zero on the inbound form is CORRECT Cypher: no edge points into 'a'.
+With labels dropped, the inbound form matches the edge and swaps the bindings,
+which proves the engine is not skipping anything.
+
+What I actually did wrong: my ingest created Team->RFC and Person->RFC, so my
+two 'asymmetric' queries were asking opposite questions. Both measurements were
+right; the conclusion I drew from them was wrong. I called it a silent engine
+defect without printing the ingest Cypher first.

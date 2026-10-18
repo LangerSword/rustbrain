@@ -1,0 +1,35 @@
+Captured: 2026-10-19 02:33:00 IST
+
+Live state of rust-lang/rfcs PR 4016 (open at capture time):
+  title: RFC: Support registry withholding
+  state: open
+  labels: T-cargo, T-crates-io
+  created: 2026-10-08T00:02:51Z
+
+rustbrain routing for that PR's team labels:
+========================================================================
+T-cargo
+  merged RFCs carrying this label: 42
+  route: cargo (active), no successor hop needed   [tier ACTIVE]
+  8 current members, sorted by latest authored RFC:
+    handle                 role     authored   latest
+    epage                  member   13         2026-04-06
+    joshtriplett           member   16         2026-02-23
+    arlosi                 member   2          2022-07-05
+    Eh2406                 lead     1          2022-02-15
+    0xPoe                  member   0          -
+    Muscraft               member   0          -
+    ranger-ross            member   0          -
+    weihanglo              lead     0          -
+========================================================================
+T-crates-io
+  merged RFCs carrying this label: 14
+  route: crates-io (active), no successor hop needed   [tier ACTIVE]
+  6 current members, sorted by latest authored RFC:
+    handle                 role     authored   latest
+    carols10cents          member   10         2026-05-26
+    Turbo87                lead     3          2024-11-26
+    mdtro                  member   1          2024-09-10
+    LawnGnome              member   0          -
+    eth3lbert              member   0          -
+    jtgeibel               lead     0          -

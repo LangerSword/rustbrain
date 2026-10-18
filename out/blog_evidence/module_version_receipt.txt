@@ -1,0 +1,6 @@
+PING: PONG
+module=graph      ver=42201    path=/home/lakshaya/projects/rustbrain/.falkorimg/x14/var/lib/falkordb/bin/falkordb.so
+module=vectorset  ver=1        path=
+redis_version:8.10.2
+redis_mode:standalone
+expectation: graph module ver 42201 (v4.22.1), redis-server 8.10.2
