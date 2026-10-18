@@ -143,3 +143,36 @@ T-cargo
     ranger-ross            member   0          -
     weihanglo              lead     0          -
 ```
+
+## $ python3 cmd/route.py 1892 --naive
+
+RFC PR 1892 with the successor walk disabled: T-libs-api is a dead end
+
+```
+========================================================================
+T-lang  (RFC #1892: Deprecate uninitialized in favor of a new MaybeUninit type)
+  route: lang (active), no successor hop needed   [tier ACTIVE]
+  5 current members, sorted by latest authored RFC:
+    handle                 role     authored   latest
+    nikomatsakis           member   51         2026-03-25
+    joshtriplett           member   16         2026-02-23
+    scottmcm               member   3          2024-10-30
+    traviscross            member   3          2024-04-24
+    tmandry                lead     3          2023-04-27
+========================================================================
+T-libs-api  (RFC #1892: Deprecate uninitialized in favor of a new MaybeUninit type)
+  route: libs-api (archived), successor hop not taken   [--naive]
+  naive lookup: 0 current members on libs-api. This is the dead end the graph exists to fix.
+```
+
+## $ python3 cmd/route.py T-libs-api --naive
+
+label T-libs-api with the successor walk disabled
+
+```
+========================================================================
+T-libs-api
+  merged RFCs carrying this label: 138
+  route: libs-api (archived), successor hop not taken   [--naive]
+  naive lookup: 0 current members on libs-api. This is the dead end the graph exists to fix.
+```

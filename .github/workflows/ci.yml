@@ -90,7 +90,9 @@ jobs:
           grep -q "SUCCEEDED_BY--> libs" /tmp/r1892.txt
           grep -q "ROUTING GAP" /tmp/r2437.txt
           grep -q "no successor hop needed" /tmp/r2495.txt
-          echo "routing: all three tiers behave"
+          python3 cmd/route.py 1892 --naive | tee /tmp/r1892n.txt
+          grep -q "naive lookup: 0 current members on libs-api" /tmp/r1892n.txt
+          echo "routing: all three tiers behave, and the naive lookup is the documented dead end"
 
       - name: Job 6, gap report tiers
         run: |

@@ -43,6 +43,21 @@ RETURN owner.slug AS owner, p.handle AS handle,
 ORDER BY latest DESC, authored DESC, handle
 """
 
+NAIVE_CYPHER = """
+MATCH (labelled:Team {slug: $slug})
+MATCH (labelled)<-[r:LEAD|MEMBER]-(p:Person)
+OPTIONAL MATCH (p)-[:AUTHORED]->(authored:RFC)
+WITH labelled, p, collect(DISTINCT type(r)) AS kinds,
+     count(DISTINCT authored) AS authored_count, max(authored.created) AS latest
+RETURN labelled.slug AS owner, p.handle AS handle,
+       CASE WHEN 'LEAD' IN kinds THEN 'lead' ELSE 'member' END AS role,
+       authored_count AS authored, coalesce(latest, '') AS latest
+ORDER BY latest DESC, authored DESC, handle
+"""
+# The naive twin above is deliberately NOT a fallback: it exists so the demo can
+# show the dead end (an archived team with an empty roster) next to the real route.
+# Same directions as ROUTE_CYPHER, just with the successor walk removed.
+
 CHAIN_CYPHER = """
 MATCH (labelled:Team {slug: $slug})
 OPTIONAL MATCH path = (labelled)-[:SUCCEEDED_BY*1..3]->(owner:Team)
@@ -89,9 +104,10 @@ def slugs_from_pr(conn, pr):
     return labels, rows[0][1], rows[0][2]
 
 
-def route_label(conn, slug):
+def route_label(conn, slug, naive=False):
     chain = conn.q(GRAPH, CHAIN_CYPHER.replace("$slug", "'%s'" % slug)).rows
-    people = conn.q(GRAPH, ROUTE_CYPHER.replace("$slug", "'%s'" % slug)).rows
+    q = NAIVE_CYPHER if naive else ROUTE_CYPHER
+    people = conn.q(GRAPH, q.replace("$slug", "'%s'" % slug)).rows
     return chain, people
 
 
@@ -99,6 +115,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("targets", nargs="+", help="an RFC PR number, or one or more T-* labels")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--naive", action="store_true",
+                    help="skip the successor walk: look up only the team the label names "
+                         "(the demo contrast; the default route follows recorded successors)")
     args = ap.parse_args()
 
     conn = Resp()
@@ -113,7 +132,7 @@ def main():
                 continue
             labels, title, outcome = got
             for l in labels:
-                chain, people = route_label(conn, l)
+                chain, people = route_label(conn, l, naive=args.naive)
                 out["labels"].append({"label": "T-" + l, "from_pr": int(target),
                                       "pr_title": title, "pr_outcome": outcome,
                                       "rfcs": None,
@@ -124,7 +143,7 @@ def main():
                                       "people": []})
         else:
             slug = target[2:].lower() if target.lower().startswith("t-") else target.lower()
-            chain, people = route_label(conn, slug)
+            chain, people = route_label(conn, slug, naive=args.naive)
             tier_row = conn.q(GRAPH, LABEL_TIER_CYPHER).rows
             rfcs = next((r[1] for r in tier_row if r[0] == slug), 0)
             out["labels"].append({"label": "T-" + slug, "rfcs": rfcs,
@@ -146,6 +165,11 @@ def main():
         chain = blk.get("chain") or []
         if chain:
             c = chain[0]
+            if args.naive and c[2] != c[0]:
+                print("  route: %s (%s), successor hop not taken   [--naive]" % (c[0], c[1]))
+                print("  naive lookup: %d current members on %s. This is the dead end the graph exists to fix."
+                      % (len(blk.get("people") or []), c[0]))
+                continue
             if c[2] != c[0]:
                 print("  route: %s (%s) --SUCCEEDED_BY--> %s   [tier %s, %s hop(s)]"
                       % (c[0], c[1], c[2], c[3], c[4]))
