@@ -6,12 +6,13 @@ history, which keeps them reproducible after the fix.
 
 ## What the grep found, before the fix
 
-The committed state before 5411c60, shown via git:
+The committed state before the fix, shown via git (c4b1fa1 is the fix commit
+in the current history; see history_rewrite.md for the old-to-new map):
 
-    $ git show 5411c60^:PINS.md | grep -n 'cb0ccabd|a5176049'
+    $ git show c4b1fa1^:PINS.md | grep -n 'cb0ccabd|a5176049'
 8:| github.com/rust-lang/team | cb0ccabd69bc63e3f84f26d764704d939224071f | 2026-10-16 | committer date 2026-10-15T11:17:38Z |
 
-    $ git show 5411c60^:scripts/build_snapshot.py | grep -n 'cb0ccabd|a5176049'
+    $ git show c4b1fa1^:scripts/build_snapshot.py | grep -n 'cb0ccabd|a5176049'
 32:PINS = {"team": "a5176049c11ca092994af7a07deb4f62dfe4b55c",
 
 They disagree: PINS.md named the old pin (cb0ccabd, retrieved 2026-10-16) while
@@ -41,8 +42,9 @@ successors.yaml header cites it instead of carrying its own copy.
 - red run, a committed hand-edited PINS.md: Job 0 fails with exit code 1 and the
   diff shows `-cb0ccabd` / `+a5176049`:
   https://github.com/LangerSword/rustbrain/actions/runs/39168272809
-- green after the fix commit b79713e: https://github.com/LangerSword/rustbrain/actions/runs/39168340345
-- main green at the fix commit 5411c60: https://github.com/LangerSword/rustbrain/actions/runs/39168399472
+- green after the fix on the scratch branch (that commit was never on main;
+  the run URL is the record): https://github.com/LangerSword/rustbrain/actions/runs/39168340345
+- main green at the fix commit c4b1fa1: https://github.com/LangerSword/rustbrain/actions/runs/39168399472
 
 The CI step itself, .github/workflows/ci.yml Job 0:
 

@@ -4,11 +4,15 @@ Host: Arch Linux, kernel 7.2.9 (x86_64), no container runtime (`docker` not on P
 python3: 3.14.7; this session's python3 has no `pip` module, pyyaml 6.0.3 is importable.
 Clones live under /home/lakshaya/.hermes/cache/scratch/ (scratch, not part of the repo).
 
-Run 1 followed the committed README at 6db94e6 exactly and found two defects.
-Both were fixed in 17b3ec9 (README only). Run 2 is a fresh clone at 17b3ec9 and
+Run 1 followed the committed README at 2be978d exactly and found two defects.
+Both were fixed in 301af5f (README only). Run 2 is a fresh clone at 301af5f and
 follows the fixed README exactly, with no extra steps, and is green end to end.
 
-## Run 1, clone at 6db94e6
+Commit SHAs here are the current-history equivalents after the 2026-10-19
+history rewrite (old 6db94e6 -> 2be978d, 17b3ec9 -> 301af5f); the rewrite record is
+`history_rewrite.md`. Run 3, from the rewritten history, is appended at the end.
+
+## Run 1, clone at 2be978d
 
     $ git clone https://github.com/LangerSword/rustbrain
     EXIT=0
@@ -68,7 +72,7 @@ follows the fixed README exactly, with no extra steps, and is green end to end.
    ConnectionRefusedError. The README also never showed the routing command in the
    setup block even though routing is the product.
 
-## The fix, commit 17b3ec9
+## The fix, commit 301af5f
 
 - dependency step is now `python3 -c "import yaml" || pip install pyyaml`;
 - the no-container path names its port: `scripts/start_module.sh 6379`, matching
@@ -77,10 +81,10 @@ follows the fixed README exactly, with no extra steps, and is green end to end.
   network; the pipeline is offline once the graph is loaded;
 - `python3 cmd/route.py 1892` added to the setup block.
 
-## Run 2, fresh clone at 17b3ec9
+## Run 2, fresh clone at 301af5f
 
     $ git clone https://github.com/LangerSword/rustbrain && cd rustbrain
-    EXIT=0    (HEAD 17b3ec9)
+    EXIT=0    (HEAD 301af5f)
 
     $ python3 -c "import yaml" || pip install pyyaml
     EXIT=0  (yaml import ok, nothing installed)
@@ -139,7 +143,7 @@ follows the fixed README exactly, with no extra steps, and is green end to end.
 
 ## Result
 
-A cold clone at 17b3ec9 runs with the README commands only, no extra steps: ingest
+A cold clone at 301af5f runs with the README commands only, no extra steps: ingest
 (byte-identical), independent verifier, pinned module, graph load, 41 query
 assertions, routing on a real RFC PR, and the UI serving HTTP 200 with correct
 tiers. The only steps that touch the network are the clone itself and the image
