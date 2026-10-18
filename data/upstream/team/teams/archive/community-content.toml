@@ -1,0 +1,21 @@
+name = "community-content"
+subteam-of = "community"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "adityac8",
+    "nasa42",
+    "nellshamrell",
+    "skade",
+    "wezm",
+]
+
+[website]
+name = "Content team"
+description = "Collecting and developing community content"
+repo = "https://github.com/rust-community/content-team"
+
+[[github]]
+orgs = ["rust-lang"]

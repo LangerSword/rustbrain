@@ -1,0 +1,27 @@
+name = "icebreakers-llvm"
+kind = "marker-team"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "JOE1994",
+    "Noah-Kennedy",
+    "SiavoshZarrasvand",
+    "ayazhafiz",
+    "camelid",
+    "comex",
+    "cuviper",
+    "dianqk",
+    "hanna-kruppe",
+    "hdhoang",
+    "henryboisdequin",
+    "heyrutvik",
+    "higuoxing",
+    "jryans",
+    "luqmana",
+    "mmilenko",
+    "nagisa",
+    "nikic",
+    "vertexclique",
+]

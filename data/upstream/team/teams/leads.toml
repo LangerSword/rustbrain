@@ -1,0 +1,21 @@
+name = "leads"
+kind = "marker-team"
+
+[people]
+leads = []
+members = []
+include-team-leads = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-teams = ["wg-leads", "leadership-council"]
+
+[[zulip-streams]]
+name = "project leads (private)"
+extra-teams = [
+    "leadership-council",
+    "foundation-board-project-directors"
+]

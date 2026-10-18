@@ -1,0 +1,43 @@
+org = "rust-lang"
+name = "rustfmt"
+description = "Format Rust code"
+homepage = "https://rust-lang.github.io/rustfmt/"
+bots = ["rustbot"]
+
+[pages]
+build-type = "legacy"
+branch = "main"
+path = "/docs"
+
+[access.teams]
+rustfmt = "write"
+rustfmt-contributors = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+ci-checks = [
+    "test conclusion",
+    "rustdoc check",
+]
+merge-queue = { enabled = true }
+
+[[rulesets]]
+pattern = "libsyntax"
+required-approvals = 0
+
+[[rulesets]]
+pattern = "rust-1.*"
+required-approvals = 0
+
+[environments.github-pages]
+branches = ["main"]
+
+# Obsolete crates
+[[crates-io]]
+crates = [
+    "rustfmt",
+    "rustfmt-core",
+    "rustfmt-config",
+    "rustfmt-nightly"
+]

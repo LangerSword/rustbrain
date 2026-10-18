@@ -1,0 +1,21 @@
+name = "wg-grammar"
+subteam-of = "lang"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "eddyb",
+    "CAD97",
+    "Centril",
+    "qmx",
+]
+
+[website]
+name = "Grammar working group"
+description = "Working out the official, formal grammar for Rust and validating it against existing implementations"
+repo = "https://github.com/rust-lang/wg-grammar"
+
+[[github]]
+orgs = ["rust-lang"]

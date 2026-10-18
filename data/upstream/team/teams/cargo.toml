@@ -1,0 +1,55 @@
+name = "cargo"
+subteam-of = "devtools"
+
+[people]
+leads = ["Eh2406", "weihanglo"]
+members = [
+    "Eh2406",
+    "joshtriplett",
+    "weihanglo",
+    "epage",
+    "Muscraft",
+    "arlosi",
+    "0xPoe",
+    "ranger-ross",
+]
+alumni = [
+    "alexcrichton",
+    "aturon",
+    "nrc",
+    "dwijnand",
+    "wycats",
+    "withoutboats",
+    "matklad",
+    "carols10cents",
+    "ehuss",
+]
+
+[permissions]
+bors.rust.review = true
+crater = true
+dev-desktop = true
+perf = true
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[rfcbot]
+label = "T-cargo"
+name = "Cargo"
+ping = "rust-lang/cargo"
+
+[website]
+name = "Cargo team"
+description = "Designing and implementing the official Rust package manager, Cargo"
+repo = "https://github.com/rust-lang/cargo"
+zulip-stream = "t-cargo"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-cargo"
+
+[[zulip-streams]]
+name = "t-cargo/private"

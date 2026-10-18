@@ -1,0 +1,6 @@
+org = "rust-lang"
+name = "community-localization"
+description = ""
+bots = []
+
+[access.teams]

@@ -1,0 +1,33 @@
+name = "project-foundation"
+kind = "project-group"
+subteam-of = "core"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "Manishearth",
+    "ashleygwilliams",
+    "joshtriplett",
+    "nellshamrell",
+    "nikomatsakis",
+    "emilyalbini",
+    "rylev",
+    "skade",
+]
+
+[website]
+name = "Foundation Project Group"
+description = "Explore, plan and create a foundation for the Rust project"
+email = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+include-team-members = false
+
+[[lists]]
+address = "***REMOVED***"
+include-team-members = false
+
+[[github]]
+orgs = ["rust-lang"]

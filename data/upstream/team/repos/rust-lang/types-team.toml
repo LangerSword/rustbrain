@@ -1,0 +1,15 @@
+org = "rust-lang"
+name = "types-team"
+description = "Home of the \"types team\", affiliated with the compiler and lang teams."
+homepage = "https://rust-lang.github.io/types-team/"
+bots = ["rustbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+types = "write"
+
+[environments.github-pages]

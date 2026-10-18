@@ -1,0 +1,32 @@
+name = "wg-gamedev"
+subteam-of = "launching-pad"
+kind = "working-group"
+
+[people]
+leads = ["AngelOnFira", "erlend-sh", "kvark", "ozkriff"]
+
+members = [
+    "17cupsofcoffee",
+    "AngelOnFira",
+    "AlexEne",
+    "erlend-sh",
+    "kvark",
+    "Lokathor",
+    "logicsoup",
+    "ozkriff",
+    "patchfx",
+    "repi",
+    "Wodann",
+]
+alumni = [
+    "aclysma",
+]
+
+[website]
+page = "gamedev"
+name = "Game development working group"
+description = "Focusing on making Rust the default choice for game development"
+repo = "https://github.com/rust-gamedev"
+
+[[lists]]
+address = "***REMOVED***"

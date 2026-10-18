@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "this-week-in-rust"
+description = "Data for this-week-in-rust.org"
+homepage = "https://this-week-in-rust.org/"
+bots = []
+
+[access.teams]
+twir-reviewers = "write"
+twir = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0

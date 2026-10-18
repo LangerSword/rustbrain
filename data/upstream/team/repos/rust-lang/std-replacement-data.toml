@@ -1,0 +1,16 @@
+org = "rust-lang"
+name = "std-replacement-data"
+description = "Curated dataset of standard-library replacements for crates, surfaced on crates.io"
+bots = ["renovate"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+crates-io = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+
+[environments.github-pages]

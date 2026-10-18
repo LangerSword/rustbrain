@@ -1,0 +1,18 @@
+org = "rust-lang"
+name = "rustwide"
+description = "Execute your code on the Rust ecosystem."
+bots = []
+
+[access.teams]
+infra = "write"
+docs-rs = "write"
+
+[environments.publish]
+# Matches the `on:` rule of `release.yml`
+tags = ["*"]
+
+[[crates-io]]
+crates = ["rustwide"]
+publish-workflow = "release.yml"
+publish-environment = "publish"
+teams = ["infra", "docs-rs"]

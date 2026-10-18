@@ -1,0 +1,26 @@
+name = "wg-llvm"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = ["nikic"]
+members = [
+    "nagisa",
+    "nikic",
+    "cuviper",
+    "dianqk",
+    "ZuseZ4",
+]
+alumni = []
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "LLVM working area"
+description = "Working with LLVM upstream to represent Rust in its development"
+repo = "https://forge.rust-lang.org/compiler/working-areas.html"
+zulip-stream = "t-compiler/llvm"
+
+[[zulip-groups]]
+name = "WG-llvm"

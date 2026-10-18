@@ -1,0 +1,59 @@
+name = "community"
+subteam-of = "launching-pad"
+
+[people]
+leads = []
+members = [
+    "Manishearth",
+    "sebasmagri",
+    "badboy",
+    "technetos",
+    "JohnTitor",
+    "nellshamrell",
+]
+alumni = [
+    "booyaa",
+    "edunham",
+    "erickt",
+    "brson",
+    "manyinsects",
+    "ashleygwilliams",
+    "skade",
+    "bstrie",
+    "carols10cents",
+    "sophiajt",
+    "steveklabnik",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+include-team-members = false
+extra-people = [
+    "carols10cents",
+    "aidanhs",
+]
+extra-emails = [
+    "***REMOVED***",
+]
+
+[[lists]]
+address = "***REMOVED***"
+include-team-members = false
+extra-people = [
+    "manyinsects",
+    "arshiamufti",
+]
+
+[website]
+name = "Community team"
+description = "Engagement with the Rust community"
+repo = "https://github.com/rust-community/team"

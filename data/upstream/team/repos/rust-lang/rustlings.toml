@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "rustlings"
+description = ":crab: Small exercises to get you used to reading and writing Rust code!"
+homepage = "https://rustlings.rust-lang.org"
+bots = []
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+rustlings = "maintain"
+
+[environments.github-pages]
+branches = ["gh-pages", "main"]

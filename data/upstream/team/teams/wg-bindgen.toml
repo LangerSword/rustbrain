@@ -1,0 +1,24 @@
+name = "wg-bindgen"
+subteam-of = "devtools"
+kind = "working-group"
+
+[people]
+leads = ["emilio", "fitzgen"]
+members = [
+    "emilio",
+    "fitzgen",
+    "pvdrz",
+    "kulp",
+    "ojeda",
+]
+alumni = [
+    "tshepang",
+]
+
+[website]
+name = "Bindgen working group"
+description = "Developing tools for generating FFI bindings"
+repo = "https://github.com/rust-lang/rust-bindgen"
+
+[[github]]
+orgs = ["rust-lang"]

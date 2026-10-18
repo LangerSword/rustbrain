@@ -1,0 +1,48 @@
+name = "lang-advisors"
+subteam-of = "lang"
+
+[people]
+leads = []
+members = [
+    "alexcrichton",
+    "Amanieu",
+    "cramertj",
+    "Darksonn",
+    "dianne",
+    "jackh726",
+    "RalfJung",
+    "lcnr",
+    "Mark-Simulacrum",
+    "Nadrieril",
+    "wesleywiser",
+    "yoshuawuyts",
+]
+alumni = [
+    "JakobDegen",
+    "ehuss",
+]
+
+# Granting these permissions because an advisor can use these to help when
+# reviewing a proposed change.
+[permissions]
+perf = true
+crater = true
+bors.rust.try = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Language Advisors team"
+description = "Advising on the development of the Rust language"
+
+[[lists]]
+address = "***REMOVED***"
+extra-teams = ["lang"]
+
+[[zulip-groups]]
+name = "T-lang-advisors"
+
+[[zulip-streams]]
+name = "t-lang/with-advisors"
+extra-teams = ["lang"]

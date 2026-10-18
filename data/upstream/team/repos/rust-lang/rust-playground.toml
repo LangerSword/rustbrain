@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "rust-playground"
+description = "The Rust Playground"
+homepage = "https://play.rust-lang.org/"
+bots = []
+
+[access.teams]
+infra = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = []
+required-approvals = 0

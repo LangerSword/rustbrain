@@ -1,0 +1,38 @@
+name = "compiler-fcp"
+subteam-of = "compiler"
+
+[people]
+leads = []
+members = [
+    "Mark-Simulacrum",
+    "TaKO8Ki",
+    "davidtwco",
+    "estebank",
+    "jdonszelmann",
+    "jieyouxu",
+    "nnethercote",
+    "oli-obk",
+    "petrochenkov",
+    "spastorino",
+    "wesleywiser",
+]
+alumni = [
+    "Noratrieb",
+    "SparrowLii",
+    "cjgillot",
+    "compiler-errors",
+    "matthewjasper",
+    "nagisa",
+]
+
+[rfcbot]
+label = "T-compiler"
+name = "Compiler"
+ping = "rust-lang/compiler-fcp"
+
+[website]
+name = "Compiler FCP team"
+description = "Compiler team members with responsibility for signing off on major compiler changes"
+repo = "http://github.com/rust-lang/compiler-team"
+zulip-stream = "t-compiler"
+

@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "miri"
+description = "An interpreter for Rust's mid-level intermediate representation"
+bots = ["rustbot"]
+
+[access.teams]
+compiler = "write"
+miri = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["conclusion"]
+required-approvals = 0
+merge-queue = { enabled = true }

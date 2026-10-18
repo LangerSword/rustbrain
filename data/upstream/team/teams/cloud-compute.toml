@@ -1,0 +1,46 @@
+name = "cloud-compute"
+kind = "marker-team"
+
+[people]
+leads = []
+# Note: if you are a member of a Rust team that has permissions.dev-desktop set
+# to true in its team toml file, then you do not need to be added to this list.
+# For example, T-compiler and T-infra both have `dev-desktop = true`
+members = [
+    "asquared31415",
+    "nellshamrell",
+    "Sp00ph",
+    "yaahc",
+    "JulianKnodt",
+    "vincenzopalazzo",
+    "hkBst",
+    "tiif",
+    "purplesyringa",
+    "nia-e",
+    "cyrgani",
+    "jyn514",
+    "samueltardieu",
+    "davidlattimore",
+    "reddevilmidzy",
+    "ShoyuVanilla",
+    "addiesh",
+    "teor2345",
+    "Human9000-bit",
+    "aDotInTheVoid",
+    "theemathas",
+]
+
+alumni = [
+    "Dajamante",
+    "JoelMarcey",
+]
+
+[permissions]
+dev-desktop = true
+
+[[github]]
+team-name = "cloud-compute-team" # The name of the GitHub team (optional)
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "cloud-compute-users"

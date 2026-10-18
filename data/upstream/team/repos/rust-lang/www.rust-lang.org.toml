@@ -1,0 +1,23 @@
+org = "rust-lang"
+name = "www.rust-lang.org"
+description = "The home of the Rust website"
+homepage = "https://www.rust-lang.org"
+bots = ["rustbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+website = "write"
+
+[[rulesets]]
+pattern = "main"
+
+[environments.github-pages]
+branches = ["main"]
+
+[environments.new-rust-www]
+
+[environments.rust-www-staging]
+
+[environments.rust-www-try]

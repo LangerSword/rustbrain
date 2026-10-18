@@ -1,0 +1,82 @@
+name = "crates-io"
+subteam-of = "devtools"
+
+[people]
+leads = ["jtgeibel", "Turbo87"]
+members = [
+    "carols10cents",
+    "jtgeibel",
+    "Turbo87",
+    "LawnGnome",
+    "mdtro",
+    "eth3lbert",
+]
+alumni = [
+    "steveklabnik",
+    "ashleygwilliams",
+    "withoutboats",
+    "joshtriplett",
+    "ishitatsuyuki",
+    "sgrif",
+    "nellshamrell",
+    "emilyalbini",
+    "smarnach",
+    "pichfl",
+    "locks",
+    "wycats",
+    "JohnTitor",
+    "0xPoe",
+]
+
+[permissions]
+crates-io-admin = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[rfcbot]
+label = "T-crates-io"
+name = "crates.io"
+ping = "rust-lang/crates-io"
+
+[website]
+name = "crates.io team"
+description = "Managing operations, development, and official policies for crates.io"
+zulip-stream = "t-crates-io"
+repo = "https://github.com/rust-lang/crates.io"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+include-team-members = false
+extra-emails = [
+    "***REMOVED***",
+]
+
+[[zulip-groups]]
+name = "T-crates-io"
+
+[[zulip-streams]]
+name = "t-crates-io/incident-response"
+extra-teams = [
+    "crates-io-on-call",
+    "infra",
+]
+
+[[zulip-streams]]
+name = "t-crates-io/moderation"
+extra-teams = [
+    "mods-venue",
+]
+
+[[zulip-streams]]
+name = "t-crates-io/operations"
+extra-teams = [
+    "crates-io-on-call",
+    "infra",
+]
+
+[[zulip-streams]]
+name = "t-crates-io/private"

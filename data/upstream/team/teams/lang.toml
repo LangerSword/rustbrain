@@ -1,0 +1,58 @@
+name = "lang"
+top-level = true
+
+[people]
+leads = [
+    "tmandry",
+]
+members = [
+    "joshtriplett",
+    "nikomatsakis",
+    "scottmcm",
+    "tmandry",
+    "traviscross",
+]
+alumni = [
+    "aturon",
+    "huonw",
+    "Centril",
+    "cramertj",
+    "nrc",
+    "pnkfelix",
+    "withoutboats",
+    "eddyb",
+]
+
+[permissions]
+perf = true
+crater = true
+bors.rust.review = true
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[rfcbot]
+label = "T-lang"
+name = "Language"
+ping = "rust-lang/lang"
+
+[website]
+name = "Language team"
+description = "Designing and helping to implement new language features"
+repo = "http://github.com/rust-lang/lang-team"
+zulip-stream = "t-lang"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-lang"

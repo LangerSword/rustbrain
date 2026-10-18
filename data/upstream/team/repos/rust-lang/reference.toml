@@ -1,0 +1,26 @@
+org = "rust-lang"
+name = "reference"
+description = "The Rust Reference"
+homepage = "https://doc.rust-lang.org/nightly/reference/"
+bots = ["rustbot", "rfcbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+lang = "write"
+lang-docs = "write"
+spec = "write"
+spec-contributors = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["Success gate"]
+merge-queue = { enabled = true }
+required-approvals = 0
+
+[environments.github-pages]
+
+# No longer published to crates.io
+[[crates-io]]
+crates = ["mdbook-spec"]

@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "project-group-template"
+description = "Template for creating Project Groups"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+leadership-council = "maintain"
+
+[environments.github-pages]

@@ -1,0 +1,19 @@
+name = "windows"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "albertlarsan68",
+    "arlosi",
+    "danielframpton",
+    "dpaoliello",
+    "gdr-at-ms",
+    "kennykerr",
+    "luqmana",
+    "retep998",
+    "sivadeilra",
+    "nico-abram",
+    "wesleywiser",
+    "ChrisDenton",
+]

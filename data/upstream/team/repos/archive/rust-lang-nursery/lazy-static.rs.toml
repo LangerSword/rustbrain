@@ -1,0 +1,16 @@
+org = "rust-lang-nursery"
+name = "lazy-static.rs"
+description = "A small macro for defining lazy evaluated static variables in Rust."
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+
+[environments.github-pages]
+
+[[crates-io]]
+crates = ["lazy_static"]

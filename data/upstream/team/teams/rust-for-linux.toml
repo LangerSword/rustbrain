@@ -1,0 +1,29 @@
+name = "rust-for-linux"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "BennoLossin",
+    "Darksonn",
+    "alex",
+    "bjorn3",
+    "dakr",
+    "dingxiangfei2009",
+    "fbq",
+    "maurer",
+    "metaspace",
+    "nbdd0121",
+    "ojeda",
+    "tgross35",
+    "vincenzopalazzo",
+]
+
+[permissions]
+bors.rust.try = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "rust-for-linux"

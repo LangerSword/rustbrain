@@ -1,0 +1,12 @@
+org = "rust-lang"
+name = "crabwatch"
+description = "Analyze Rust project repositories CI and best practices"
+bots = []
+
+[access.teams]
+infra = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["CI"]
+required-approvals = 0

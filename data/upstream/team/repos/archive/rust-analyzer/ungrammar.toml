@@ -1,0 +1,6 @@
+org = "rust-analyzer"
+name = "ungrammar"
+description = ""
+bots = []
+
+[access.teams]

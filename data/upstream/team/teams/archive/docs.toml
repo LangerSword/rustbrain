@@ -1,0 +1,36 @@
+name = "docs"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "QuietMisdreavus",
+    "frewsxcv",
+    "steveklabnik",
+    "GuillaumeGomez",
+    "rylev",
+    "celaus",
+    "peschkaj",
+    "sophiajt",
+]
+
+[permissions]
+bors.rust.review = true
+
+[rfcbot]
+label = "T-doc"
+name = "Documentation"
+ping = "rust-lang/docs"
+
+[website]
+page = "documentation"
+name = "Documentation team"
+description = "Improving and moderating the quality of Rust's documentation"
+
+[[lists]]
+address = "***REMOVED***"
+extra-teams = ["lang-docs"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-teams = ["lang-docs", "rust-by-example"]

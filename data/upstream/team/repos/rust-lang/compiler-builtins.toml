@@ -1,0 +1,28 @@
+org = "rust-lang"
+name = "compiler-builtins"
+description = "Rust implementations of compiler-rt and libm"
+bots = ["rustbot", "forking-renovate"]
+
+[access.teams]
+crate-maintainers = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["success"]
+required-approvals = 0
+
+[environments.rustc-pull]
+branches = ["main"]
+
+[environments.publish]
+branches = ["main"]
+
+[[crates-io]]
+crates = ["libm"]
+publish-workflow = "publish.yaml"
+publish-environment = "publish"
+teams = ["crate-maintainers"]
+
+# No longer published
+[[crates-io]]
+crates = ["compiler_builtins"]

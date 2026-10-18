@@ -1,0 +1,30 @@
+name = "clippy-contributors"
+subteam-of = "clippy"
+
+[people]
+leads = []
+members = [
+    "GuillaumeGomez",
+    "pitaj",
+    "profetia",
+    "alex-semenyuk",
+    "CommanderStorm",
+    "Gri-ffin",
+]
+alumni = [
+    # User deleted their account
+    # "PartiallyUntyped"
+    "J-ZhengLi",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Clippy-Contributors"
+description = "Regular contributors to the Clippy linter"
+zulip-stream = "clippy"
+repo = "https://github.com/rust-lang/rust-clippy"
+
+[[zulip-groups]]
+name = "T-clippy-contributors"

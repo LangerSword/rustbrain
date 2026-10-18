@@ -1,0 +1,39 @@
+org = 'rust-lang'
+name = 'rust-forge'
+description = 'Information useful to people contributing to Rust'
+homepage = "https://forge.rust-lang.org/"
+bots = [
+    "renovate",
+    "rfcbot",
+    "rustbot",
+]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+community = "maintain"
+compiler = "maintain"
+content = "maintain"
+crates-io = "maintain"
+docs-rs = "maintain"
+infra = "maintain"
+internal-sites = "maintain"
+lang = "maintain"
+lang-ops = "maintain"
+leadership-council = "maintain"
+libs = "maintain"
+mods-venue = "maintain"
+edition = "maintain"
+release = "maintain"
+rustdoc = "maintain"
+triagebot = "maintain"
+types = "maintain"
+rustc-dev-guide = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["test"]
+
+[environments.github-pages]
+branches = ["main"]

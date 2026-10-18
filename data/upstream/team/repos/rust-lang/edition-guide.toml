@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "edition-guide"
+description = "A guide to changes between various editions of Rust"
+homepage = "https://doc.rust-lang.org/nightly/edition-guide/"
+bots = ["rustbot", "rfcbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+edition = "maintain"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["Success gate"]
+required-approvals = 0
+merge-queue = { enabled = true }
+
+[environments.github-pages]

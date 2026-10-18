@@ -1,0 +1,7 @@
+org = "rust-lang"
+name = "crates.io-infra"
+description = "is ur crates.io running?"
+bots = []
+private-non-synced = true
+
+[access.teams]

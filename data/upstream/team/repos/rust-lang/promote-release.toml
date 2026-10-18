@@ -1,0 +1,20 @@
+org = "rust-lang"
+name = "promote-release"
+description = "Tooling to publish Rust releases."
+bots = []
+
+[access.teams]
+infra = "triage"
+infra-admins = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = [
+    "Local release (beta)",
+    "Local release (nightly)",
+    "Local release (stable)",
+    "Build Docker image",
+    "Test",
+]
+required-approvals = 0
+require-conversation-resolution = true

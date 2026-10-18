@@ -1,0 +1,23 @@
+name = "wg-embedded-riscv"
+subteam-of = "wg-embedded"
+kind = "working-group"
+
+[people]
+leads = []
+members = [
+    "almindor",
+    "dkhayes117",
+    "romancardenas",
+    "MabezDev",
+    "jessebraham",
+    "rmsyn",
+]
+alumni = []
+
+[website]
+name = "Embedded RISC-V team"
+description = "Develops and maintains the core of the embedded RISC-V crate ecosystem"
+
+[[github]]
+orgs = ["rust-embedded"]
+team-name = "risc-v"

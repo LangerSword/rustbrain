@@ -1,0 +1,34 @@
+name = "rustfmt"
+subteam-of = "devtools"
+
+[people]
+leads = ["ytmimi"]
+members = [
+    "calebcartwright",
+    "ytmimi",
+    "jieyouxu",
+]
+alumni = [
+    "nrc",
+    "scampi",
+    "topecongiro",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[permissions]
+# Primarily for subtree syncs and other rustfmt-related review.
+bors.rust.review = true
+
+[website]
+name = "Rustfmt team"
+description = "Designing and implementing rustfmt, a formatting tool for Rust code"
+repo = "https://github.com/rust-lang/rustfmt"
+
+[[zulip-groups]]
+name = "T-rustfmt"
+
+[[zulip-streams]]
+name = "t-rustfmt/private"
+extra-teams = ["rustfmt-contributors"]

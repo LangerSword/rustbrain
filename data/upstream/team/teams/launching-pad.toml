@@ -1,0 +1,14 @@
+name = "launching-pad"
+top-level = true
+
+[people]
+# This is an "umbrella" team, and thus does not have any members.
+leads = []
+members = []
+alumni = []
+
+[website]
+page = "launching-pad"
+name = "Launching pad"
+description = "An interim home for teams"
+zulip-stream = "t-launching-pad"

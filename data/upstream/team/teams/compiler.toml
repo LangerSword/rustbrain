@@ -1,0 +1,162 @@
+name = "compiler"
+top-level = true
+
+[people]
+leads = ["davidtwco", "BoxyUwU"]
+members = [
+    "Amanieu",
+    "adwinwhite",
+    "alexcrichton",
+    "antoyo",
+    "apiraino",
+    "b-naber",
+    "beetrees",
+    "bjorn3",
+    { github = "BoxyUwU", roles = ["compiler-maintainer"] },
+    "camelid",
+    { github = "chenyukang", roles = ["compiler-maintainer"] },
+    "ChrisDenton",
+    { github = "cjgillot",  roles = ["compiler-maintainer"] },
+    "cuviper",
+    { github = "davidtwco", roles = ["compiler-maintainer"] },
+    "dianne",
+    "dianqk",
+    "dingxiangfei2009",
+    "durin42",
+    "Enselic",
+    "eholk",
+    "est31",
+    { github = "estebank", roles = ["compiler-maintainer"] },
+    { github = "fee1-dead", roles = ["compiler-maintainer"] },
+    "flodiebold",
+    "fmease", 
+    "GuillaumeGomez",
+    "folkertdev",
+    "hanna-kruppe",
+    { github = "jackh726", roles = ["compiler-maintainer"] },
+    "jdonszelmann",
+    { github = "jieyouxu", roles = ["compiler-maintainer"] },
+    "JohnTitor",
+    "JonathanBrouwer",
+    "joshtriplett",
+    "jswrenn",
+    "khyperia",
+    "Kivooeo",
+    "Kobzol",
+    { github = "lcnr", roles = ["compiler-maintainer"] },
+    { github = "lqd", roles = ["compiler-maintainer"] },
+    "m-ou-se",
+    "madsmtm",
+    "mati865",
+    { github = "Mark-Simulacrum", roles = ["compiler-maintainer"] },
+    { github = "matthewjasper", roles = ["compiler-maintainer"] },
+    "mejrs",
+    "mu001999",
+    { github = "Nadrieril", roles = ["compiler-maintainer"] },
+    { github = "nagisa", roles = ["compiler-maintainer"] },
+    "nikic",
+    "nikomatsakis",
+    "Noratrieb",
+    { github = "nnethercote", roles = ["compiler-maintainer"] },
+    { github = "oli-obk", roles = ["compiler-maintainer"] },
+    { github = "petrochenkov", roles = ["compiler-maintainer"] },
+    "RalfJung",
+    "rcvalle",
+    { github = "saethlin", roles = ["compiler-maintainer"] },
+    "scottmcm",
+    "ShoyuVanilla",
+    { github = "SparrowLii", roles = ["compiler-maintainer"] },
+    { github = "spastorino", roles = ["compiler-maintainer"] },
+    { github = "TaKO8Ki", roles = ["compiler-maintainer"] },
+    "tgross35",
+    "the8472",
+    "tiif",
+    "tmandry",
+    "tmiasko",
+    "Urgau",
+    "WaffleLapkin",
+    "Walnut356",
+    { github = "wesleywiser", roles = ["compiler-maintainer"] },
+    "workingjubilee",
+    "yaahc",
+    "Zalathar",
+    "ZuseZ4",
+]
+alumni = [
+    { github = "Aaron1011", roles = ["compiler-maintainer"] },
+    { github = "Aatch", roles = ["compiler-maintainer"] },
+    { github = "arielb1", roles = ["compiler-maintainer"] },
+    { github = "bkoropoff", roles = ["compiler-maintainer"] },
+    "Centril",
+    { github = "compiler-errors", roles = ["compiler-maintainer"] },
+    { github = "cramertj", roles = ["compiler-maintainer"] },
+    { github = "dotdash", roles = ["compiler-maintainer"] },
+    "ecstatic-morse",
+    { github = "eddyb", roles = ["compiler-maintainer"] },
+    { github = "jseyfried", roles = ["compiler-maintainer"] },
+    "LeSeulArtichaut",
+    "matklad",
+    { github = "michaelwoerister", roles = ["compiler-maintainer"] },
+    { github = "nrc", roles = ["compiler-maintainer"] },
+    { github = "pnkfelix", roles = ["compiler-maintainer"] },
+    "scalexm",
+    { github = "varkor", roles = ["compiler-maintainer"] },
+    "Xanewok",
+    "zackmdavis",
+    { github = "Zoxc", roles = ["compiler-maintainer"] },
+    "lukas-code",
+]
+
+[[roles]]
+id = "compiler-maintainer"
+description = "Maintainer"
+
+[permissions]
+perf = true
+crater = true
+dev-desktop = true
+bors.rust.review = true
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[website]
+name = "Compiler team"
+repo = "http://github.com/rust-lang/compiler-team"
+description = "Developing and managing compiler internals and optimizations"
+zulip-stream = "t-compiler"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+include-subteam-members = true
+
+[[zulip-groups]]
+name = "T-compiler"
+
+[[zulip-groups]]
+name = "T-compiler/meeting"
+include-team-members = false
+extra-people = [
+    "davidtwco",
+    "wesleywiser",
+    "apiraino",
+    "bjorn3",
+    "SparrowLii",
+    "estebank",
+    "BoxyUwU",
+    "jieyouxu",
+    "jswrenn",
+    "tmiasko"
+]
+
+[[zulip-streams]]
+name = "t-compiler/contrib-private"

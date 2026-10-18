@@ -1,0 +1,10 @@
+org = "rust-lang"
+name = "homu"
+description = "A bot that integrates with GitHub and your favorite continuous integration service"
+bots = []
+
+[access.teams]
+
+[[rulesets]]
+pattern = "master"
+ci-checks = []

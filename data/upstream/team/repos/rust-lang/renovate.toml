@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "renovate"
+description = "Renovate Presets for the Rust Project"
+bots = ["renovate"]
+
+[access.teams]
+infra = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["Conclusion"]
+required-approvals = 0
+merge-queue = { enabled = true }

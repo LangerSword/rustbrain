@@ -1,0 +1,36 @@
+name = "survey"
+subteam-of = "launching-pad"
+
+[people]
+leads = [
+    "Kobzol",
+    "apiraino"
+]
+members = [
+    "Kobzol",
+    "apiraino",
+    "hashcatHitman",
+]
+alumni = [
+    "Manishearth",
+    "nikomatsakis",
+    "nrc",
+    "sophiajt",
+    "yaahc",
+    "rylev",
+    "graciegregory",
+]
+
+[website]
+name = "Survey team"
+description = "Running, analysing, and presenting various Rust surveys"
+repo = "https://github.com/rust-lang/surveys"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"

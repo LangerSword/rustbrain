@@ -1,0 +1,15 @@
+org = "rust-lang"
+name = "crates-io-auth-action"
+description = "Get a crates.io temporary access token"
+bots = ["renovate"]
+
+[access.teams]
+crates-io-infra-admins = "write"
+infra-admins = "write"
+infra = "triage"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["Conclusion"]
+required-approvals = 0
+merge-queue = { enabled = true }

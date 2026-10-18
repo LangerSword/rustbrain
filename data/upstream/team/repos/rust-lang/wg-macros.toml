@@ -1,0 +1,16 @@
+org = "rust-lang"
+name = "wg-macros"
+description = "Home of the Rust Macros Working Gruop"
+bots = ["rustbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+wg-macros = "maintain"
+
+[[rulesets]]
+pattern = "main"
+
+[environments.github-pages]
+branches = ["main"]

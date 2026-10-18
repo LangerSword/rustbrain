@@ -1,0 +1,55 @@
+name = "docs-rs"
+subteam-of = "devtools"
+
+[people]
+leads = ["syphar"]
+members = [
+    "GuillaumeGomez",
+    "syphar",
+]
+alumni = [
+    "Nemo157",
+    "Byron",
+    "Kixiron",
+    "onur",
+    "emilyalbini",
+    "jyn514",
+    "QuietMisdreavus",
+    "jsha",
+]
+
+[permissions]
+dev-desktop = true
+
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[rfcbot]
+label = "T-docs-rs"
+name = "Docs.rs"
+ping = "rust-lang/docs-rs"
+
+[website]
+name = "Docs.rs team"
+description = "Docs.rs, the documentation hosting service for crates"
+zulip-stream = "t-docs-rs"
+repo = "https://github.com/rust-lang/docs.rs"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-docs-rs"
+
+[[zulip-streams]]
+name = "t-docs-rs/private"
+extra-teams = [
+    "infra",
+]
+extra-people = [
+    "walterhpearce",
+]

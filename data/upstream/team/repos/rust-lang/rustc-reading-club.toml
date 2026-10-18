@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "rustc-reading-club"
+description = "Rust Code Reading Clubs"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+
+[environments.github-pages]

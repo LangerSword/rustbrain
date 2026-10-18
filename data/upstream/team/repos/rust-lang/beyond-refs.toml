@@ -1,0 +1,31 @@
+org = "rust-lang"
+name = "beyond-refs"
+description = "Wiki for design work going beyond Rust's current reference types"
+homepage = "https://rust-lang.github.io/beyond-refs/"
+bots = []
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+beyond-refs-editors = "maintain"
+goal-owners = "maintain"
+lang = "maintain"
+lang-advisors = "maintain"
+lang-docs = "maintain"
+lang-ops = "maintain"
+opsem = "maintain"
+project-const-generics = "maintain"
+project-const-traits = "maintain"
+project-impl-trait = "maintain"
+types = "maintain"
+wg-async = "maintain"
+wg-safe-transmute = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["build"]
+required-approvals = 0
+
+[environments.github-pages]
+branches = ["main"]

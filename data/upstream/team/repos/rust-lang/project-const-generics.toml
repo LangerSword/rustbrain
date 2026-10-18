@@ -1,0 +1,15 @@
+org = "rust-lang"
+name = "project-const-generics"
+description = ""
+homepage = "https://rust-lang.github.io/project-const-generics/"
+bots = ["rustbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+project-const-generics = "maintain"
+project-const-generics-triage = "write"
+all = "write"
+
+[environments.github-pages]

@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "effects-initiative"
+description = "Public repository for the Rust effects initiative"
+homepage = "https://rust-lang.github.io/effects-initiative/"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+
+[environments.github-pages]

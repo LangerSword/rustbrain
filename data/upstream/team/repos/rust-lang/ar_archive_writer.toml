@@ -1,0 +1,17 @@
+org = "rust-lang"
+name = "ar_archive_writer"
+description = "A writer for object file ar archives"
+bots = []
+
+[access.teams]
+compiler = "write"
+
+[environments.publish]
+branches = ["master"]
+tags = ["*"]
+
+[[crates-io]]
+crates = ["ar_archive_writer"]
+publish-workflow = "publish.yml"
+publish-environment = "publish"
+teams = ["compiler"]

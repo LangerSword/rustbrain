@@ -1,0 +1,25 @@
+name = "wg-polonius"
+subteam-of = "types"
+kind = "working-group"
+
+[people]
+leads = ["lqd", "nikomatsakis"]
+members = [
+    "lqd",
+    "nikomatsakis",
+    "amandasystems",
+    "matthewjasper",
+    "jackh726",
+]
+alumni = [
+    "ecstatic-morse",
+]
+
+[website]
+name = "Polonius working area"
+description = "Working on an experimental new borrow-checker implementation"
+repo = "https://forge.rust-lang.org/compiler/working-areas.html"
+zulip-stream = "t-types/polonius"
+
+[[github]]
+orgs = ["rust-lang"]

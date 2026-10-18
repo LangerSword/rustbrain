@@ -1,0 +1,14 @@
+name = "arm"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "Stammark",
+    "joaopaulocarreiro",
+    "raw-bin",
+    "hug-dev",
+]
+included-teams = [
+    "arm-maintainers",
+]

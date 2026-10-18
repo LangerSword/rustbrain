@@ -1,0 +1,55 @@
+name = "wg-async"
+subteam-of = "lang"
+kind = "working-group"
+
+[people]
+leads = ["nikomatsakis", "tmandry"]
+members = [
+    "eholk",
+    "estebank",
+    "guswynn",
+    "nikomatsakis",
+    "nrc",
+    "taiki-e",
+    "tmandry",
+    "traviscross",
+    "vincenzopalazzo",
+    "yoshuawuyts",
+]
+alumni = [
+    "Aaron1011",
+    "LucioFranco",
+    "MajorBreakfast",
+    "bIgBV",
+    "betamos",
+    "cramertj",
+    "compiler-errors",
+    "csmoe",
+    "doc-jones",
+    "eminence",
+    "emmanuelantony2000",
+    "gilescope",
+    "lbernick",
+    "michaelwoerister",
+    "nellshamrell",
+    "pnkfelix",
+    "rylev",
+    "spastorino",
+    "withoutboats",
+    "zeenix",
+]
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[website]
+name = "Async working group"
+description = "Pursuing core language and library support for async-await"
+repo = "https://github.com/rust-lang/wg-async"
+zulip-stream = "wg-async"
+
+[[zulip-groups]]
+name = "WG-async"
+
+[[zulip-groups]]
+name = "WG-async-sprint-planning"

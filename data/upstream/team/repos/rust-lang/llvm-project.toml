@@ -1,0 +1,16 @@
+org = "rust-lang"
+name = "llvm-project"
+description = "Rust-specific fork of LLVM."
+bots = []
+
+[access.teams]
+wg-llvm = "maintain"
+
+[[rulesets]]
+pattern = "rustc/*"
+pr-required = false
+prevent-creation = false
+
+[[rulesets]]
+pattern = "master"
+pr-required = false

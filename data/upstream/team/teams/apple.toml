@@ -1,0 +1,18 @@
+# macOS/iOS/tvOS/watchOS/visionOS
+name = "apple"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "hkratz",
+    "inflation",
+    "shepmaster",
+    "thomcc",
+    "nvzqz",
+    "madsmtm",
+    "BlackHoleFox"
+]
+
+[[zulip-groups]]
+name = "apple"

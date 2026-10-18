@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "nomicon"
+description = "The Dark Arts of Advanced and Unsafe Rust Programming"
+homepage = "https://doc.rust-lang.org/nomicon/"
+bots = []
+
+[access.teams]
+lang = "write"
+lang-docs = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["Success gate"]
+merge-queue = { enabled = true }

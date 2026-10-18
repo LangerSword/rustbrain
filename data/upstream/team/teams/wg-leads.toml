@@ -1,0 +1,12 @@
+name = "wg-leads"
+kind = "marker-team"
+
+[people]
+leads = []
+members = []
+included-teams = ["project-group-leads"]
+include-wg-leads = true
+
+[[lists]]
+address = "***REMOVED***"
+extra-teams = ["leadership-council"]

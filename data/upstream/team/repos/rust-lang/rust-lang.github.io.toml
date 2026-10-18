@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "rust-lang.github.io"
+description = "GitHub Pages redirects"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "master"
+path = "/"
+
+[access.teams]
+infra = "write"
+
+[environments.github-pages]

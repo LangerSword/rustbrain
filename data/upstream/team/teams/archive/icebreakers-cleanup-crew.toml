@@ -1,0 +1,45 @@
+name = "icebreakers-cleanup-crew"
+kind = "marker-team"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "AminArria",
+    "HallerPatrick",
+    "JamesPatrickGill",
+    "KarlK90",
+    "Noah-Kennedy",
+    "PeytonT",
+    "Redblueflame",
+    "RobbieClarken",
+    "RobertoSnap",
+    "SarthakSingh31",
+    "Stupremee",
+    "albertlarsan68",
+    "ayazhafiz",
+    "camelid",
+    "chrissimpkins",
+    "contrun",
+    "elshize",
+    "h-michael",
+    "hdhoang",
+    "hellow554",
+    "henryboisdequin",
+    "imtsuki",
+    "ispringle",
+    "kanru",
+    "matheus-consoli",
+    "mental32",
+    "nmccarty",
+    "pierreN",
+    "robjtede",
+    "shekohex",
+    "sinato",
+    "smmalis37",
+    "steffahn",
+    "tamuhey",
+    "turboladen",
+    "woshilapin",
+    "yerke",
+]

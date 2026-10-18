@@ -1,0 +1,45 @@
+# Library API has been incorporated into Library with RFC#3984
+name = "libs-api"
+subteam-of = "libs"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "alexcrichton",
+    "Amanieu",
+    "aturon",
+    "brson",
+    "BurntSushi",
+    "dtolnay",
+    "Gankra",
+    "huonw",
+    "joshtriplett",
+    "Kimundi",
+    "KodrAus",
+    "LukasKalbertodt",
+    "m-ou-se",
+    "sfackler",
+    "SimonSapin",
+    "the8472",
+    "withoutboats",
+    "yaahc",
+]
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[rfcbot]
+label = "T-libs-api"
+name = "Library API"
+ping = "rust-lang/libs-api"
+
+[website]
+name = "Library API team"
+description = "Designing and maintaining the standard library API and guarding its stability"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-libs-api"

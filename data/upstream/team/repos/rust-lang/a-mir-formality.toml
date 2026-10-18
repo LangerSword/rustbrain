@@ -1,0 +1,22 @@
+org = "rust-lang"
+name = "a-mir-formality"
+description = "a model of MIR and the Rust type/trait system"
+bots = ["rustbot", "rfcbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+lang = "maintain"
+lang-ops = "maintain"
+lang-docs = "maintain"
+types = "maintain"
+formality = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["conclusion"]
+merge-queue = { enabled = true }
+
+[environments.github-pages]
+branches = ["main"]

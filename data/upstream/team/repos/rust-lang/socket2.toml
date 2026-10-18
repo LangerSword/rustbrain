@@ -1,0 +1,29 @@
+org = 'rust-lang'
+name = 'socket2'
+description = 'Advanced configuration options for sockets.'
+homepage = "https://docs.rs/socket2"
+bots = []
+
+[access.teams]
+crate-maintainers = 'maintain'
+
+[access.individuals]
+chansuke = 'triage'
+sfackler = 'maintain'
+Thomasdezeeuw = 'maintain'
+carllerche = 'maintain'
+Darksonn = 'maintain'
+
+[[rulesets]]
+pattern = 'master'
+ci-checks = [
+    'Rustfmt',
+    'Test (beta)',
+    'Test (macos)',
+    'Test (nightly)',
+    'Test (stable)',
+    'Test (windows)',
+]
+
+[environments.github-pages]
+

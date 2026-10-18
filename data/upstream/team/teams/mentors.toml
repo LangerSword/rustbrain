@@ -1,0 +1,55 @@
+name = "mentors"
+kind = "marker-team"
+subteam-of = "mentorship"
+
+[people]
+leads = []
+members = [
+    # GSoC
+    "Kobzol",
+    "jieyouxu",
+    "oli-obk",
+    "ZuseZ4",
+    "rami3l",
+    "tgross35",
+    "Veykril",
+    "Urgau",
+    "jhpratt",
+    "ChayimFriedman2",
+    "folkertdev",
+    "Kivooeo",
+    # Outreachy
+    "jackh726",
+    "teor2345",
+    "cramertj",
+    "thunderseethe",
+    "nikomatsakis",
+    "lqd",
+    "tiif",
+    "marcoieni",
+    "ubiratansoares",
+    "nia-e"
+]
+alumni = [
+    "Amanieu",
+    "epage",
+    "ytmimi",
+    "antoyo",
+    "tautschnig",
+    "davidlattimore",
+    "obi1kenobi",
+    "SparrowLii",
+    "celinval",
+    "cassaundra",
+    "onur-ozkan"
+]
+
+[[zulip-groups]]
+name = "gsoc-mentors"
+
+[[zulip-groups]]
+name = "mentors"
+
+[website]
+name = "Mentors team"
+description = "Mentors for the mentorship and internship programs"

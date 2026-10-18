@@ -1,0 +1,22 @@
+name = "internal-sites"
+subteam-of = "infra"
+
+[people]
+leads = ["Urgau", "jieyouxu"]
+members = [
+    "Urgau",
+    "jieyouxu",
+]
+alumni = [
+    "ehuss",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Internal sites team"
+description = "Supports the Forge and RFC internal websites"
+
+[[zulip-groups]]
+name = "T-internal-sites"

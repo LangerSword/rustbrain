@@ -1,0 +1,6 @@
+org = "rust-analyzer"
+name = "text-size"
+description = ""
+bots = []
+
+[access.teams]

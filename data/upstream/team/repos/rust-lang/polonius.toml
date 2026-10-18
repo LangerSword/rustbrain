@@ -1,0 +1,20 @@
+org = "rust-lang"
+name = "polonius"
+description = "Defines the Rust borrow checker."
+bots = []
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+wg-polonius = "write"
+
+[environments.github-pages]
+branches = ["main"]
+
+[[crates-io]]
+crates = [
+    "polonius",
+    "polonius-engine",
+    "polonius-parser",
+]

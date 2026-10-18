@@ -1,0 +1,37 @@
+org = "rust-lang"
+name = "chalk"
+description = "An implementation and definition of the Rust trait system using a PROLOG-like logic solver"
+homepage = "https://rust-lang.github.io/chalk/book/"
+bots = ["rustbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+types = "write"
+
+[environments.github-pages]
+
+[environments.publish]
+branches = ["master"]
+
+[[crates-io]]
+crates = [
+    "chalk-derive",
+    "chalk-engine",
+    "chalk-ir",
+    "chalk-recursive",
+    "chalk-solve",
+]
+publish-workflow = "publish.yml"
+publish-environment = "publish"
+teams = ["types"]
+
+# Obsolete crate
+[[crates-io]]
+crates = [
+    "chalk-macros",
+    "chalk-rust-ir",
+]

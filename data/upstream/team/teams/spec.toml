@@ -1,0 +1,37 @@
+name = "spec"
+subteam-of = "lang"
+
+[people]
+leads = ["nikomatsakis"]
+members = [
+    "JoelMarcey",
+    "traviscross",
+    "nikomatsakis",
+]
+alumni = [
+    "joshtriplett",
+    "m-ou-se",
+    "pnkfelix",
+    "ehuss",
+]
+
+[website]
+name = "Specification team"
+description = "Creating and maintaining the specification for the Rust language"
+zulip-stream = "t-spec"
+repo = "https://github.com/rust-lang/spec"
+
+[[roles]]
+id = "spec-editor"
+description = "Editor"
+
+[rfcbot]
+label = "T-spec"
+name = "Spec"
+ping = "rust-lang/spec"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "T-spec"

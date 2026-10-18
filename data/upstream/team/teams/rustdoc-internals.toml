@@ -1,0 +1,35 @@
+name = "rustdoc-internals"
+subteam-of = "rustdoc"
+
+[people]
+leads = []
+members = [
+    "GuillaumeGomez",
+    "camelid",
+    "notriddle",
+    "fmease",
+    "lolbinarycat",
+    "yotamofek",
+    "Urgau",
+    "Manishearth",
+]
+alumni = [
+]
+
+[permissions]
+bors.rust.review = true
+dev-desktop = true
+perf = true
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[website]
+name = "Rustdoc internals"
+description = "Rustdoc internals development"
+zulip-stream = "t-rustdoc"
+
+[rfcbot]
+label = "T-rustdoc-internals"
+name = "Rustdoc internals"
+ping = "rust-lang/rustdoc-internals"

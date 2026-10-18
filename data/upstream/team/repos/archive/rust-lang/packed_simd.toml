@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "packed_simd"
+description = "Portable Packed SIMD Vectors for Rust standard library"
+homepage = "https://rust-lang.github.io/packed_simd/packed_simd_2/"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+
+[environments.github-pages]
+
+[[crates-io]]
+crates = [
+    "packed_simd",
+    "packed_simd_2",
+    "simd",
+]

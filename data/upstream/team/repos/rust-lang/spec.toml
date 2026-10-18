@@ -1,0 +1,8 @@
+org = "rust-lang"
+name = "spec"
+description = "The Rust specification"
+bots = ["rustbot", "rfcbot"]
+
+[access.teams]
+spec = 'maintain'
+spec-contributors = "write"

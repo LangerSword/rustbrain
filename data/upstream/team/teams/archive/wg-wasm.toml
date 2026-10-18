@@ -1,0 +1,28 @@
+name = "wg-wasm"
+subteam-of = "launching-pad"
+kind = "working-group"
+
+[people]
+leads = []
+members = [
+]
+
+alumni = [
+    "alexcrichton",
+    "ashleygwilliams",
+    "aturon",
+    "fitzgen",
+    "yoshuawuyts",
+]
+
+[[lists]]
+address = "***REMOVED***"
+extra-people = [
+    "alexcrichton",
+    "aturon",
+]
+
+[website]
+page = "wasm"
+name = "WebAssembly (WASM) working group"
+description = "Improving on the end-to-end experience of embedding Rust code in JS libraries and apps via WebAssembly"

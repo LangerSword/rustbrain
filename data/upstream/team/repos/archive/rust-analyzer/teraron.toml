@@ -1,0 +1,9 @@
+org = "rust-analyzer"
+name = "teraron"
+description = ""
+bots = []
+
+[access.teams]
+
+[[crates-io]]
+crates = ["teraron"]

@@ -1,0 +1,27 @@
+org = "rust-lang"
+name = "calendar"
+description = "Calendars for Rust project teams"
+bots = ["rustbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+cargo = "maintain"
+compiler = "maintain"
+crates-io = "maintain"
+docs-rs = "maintain"
+infra = "maintain"
+lang = "maintain"
+lang-ops = "maintain"
+leadership-council = "maintain"
+libs = "maintain"
+release = "maintain"
+wg-async = "maintain"
+
+[[rulesets]]
+pattern = "main"
+pr-required = false
+
+[environments.github-pages]
+branches = ["main"]

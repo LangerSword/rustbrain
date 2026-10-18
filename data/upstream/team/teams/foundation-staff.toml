@@ -1,0 +1,24 @@
+name = "foundation-staff"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "walterhpearce",
+    "Turbo87",
+    "LawnGnome",
+    "marcoieni",
+    "ubiratansoares",
+    "teor2345",
+    "tinakrauss",
+    "jlizen",
+]
+alumni = [
+    "ernestkissiedu",
+]
+included-teams = [
+    "foundation-smt"
+]
+
+[[zulip-groups]]
+name = "foundation"

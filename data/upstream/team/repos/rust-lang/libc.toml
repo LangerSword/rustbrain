@@ -1,0 +1,49 @@
+org = 'rust-lang'
+name = 'libc'
+description = 'Raw bindings to platform APIs for Rust'
+homepage = "https://docs.rs/libc"
+bots = [
+    'forking-renovate',
+    'rustbot',
+]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+crate-maintainers = 'maintain'
+
+[[rulesets]]
+pattern = 'main'
+ci-checks = ['success']
+required-approvals = 0
+merge-queue = { enabled = true, method = "rebase" }
+require-linear-history = true
+
+[[rulesets]]
+pattern = 'libc-0.2'
+ci-checks = ['success']
+required-approvals = 0
+merge-queue = { enabled = true, method = "rebase" }
+require-linear-history = true
+
+[[crates-io]]
+crates = [
+    "libc",
+    "ctest",
+]
+publish-workflow = "release.yaml"
+publish-environment = "release"
+teams = ["crate-maintainers"]
+
+[environments.github-pages]
+branches = ["gh-pages", "main", "master"]
+
+[environments.release]
+branches = ["main", "libc-0.2"]
+
+# Obsolete crate
+[[crates-io]]
+crates = ["libc-test"]

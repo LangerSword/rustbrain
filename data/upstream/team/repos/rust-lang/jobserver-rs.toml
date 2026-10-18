@@ -1,0 +1,24 @@
+org = "rust-lang"
+name = "jobserver-rs"
+description = ""
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+cargo = "write"
+compiler = "write"
+
+[environments.github-pages]
+
+[environments.publish]
+tags = ["*"]
+
+[[crates-io]]
+crates = ["jobserver"]
+publish-workflow = "publish.yml"
+publish-environment = "publish"
+teams = ["cargo", "compiler"]

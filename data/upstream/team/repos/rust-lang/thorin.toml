@@ -1,0 +1,21 @@
+org = 'rust-lang'
+name = 'thorin'
+description = 'DWARF packaging utility, written in Rust, supporting GNU extension and DWARF 5 package formats.'
+bots = ["rustbot"]
+
+[access.teams]
+compiler = 'maintain'
+
+[[rulesets]]
+pattern = "main"
+require-conversation-resolution = true
+require-linear-history = true
+
+[[crates-io]]
+crates = ["thorin-dwp", "thorin-dwp-bin"]
+publish-workflow = "release-plz.yml"
+publish-environment = "publish"
+teams = ["compiler"]
+
+[environments.publish]
+branches = ["main"]

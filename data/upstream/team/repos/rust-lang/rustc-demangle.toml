@@ -1,0 +1,39 @@
+org = "rust-lang"
+name = "rustc-demangle"
+description = "Rust symbol demangling"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+compiler = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = [
+    "Test (stable)",
+    "Test (beta)",
+    "Test (nightly)",
+    "Fuzz Targets",
+    "Rustfmt",
+    "Publish Documentation"
+]
+require-up-to-date-branches = true
+
+[environments.github-pages]
+
+[environments.release]
+branches = ["main"]
+
+[[crates-io]]
+crates = [
+    "rustc-demangle",
+    "rustc-demangle-capi",
+    "rustfilt",
+]
+publish-workflow = "release.yml"
+publish-environment = "release"
+teams = ["compiler"]

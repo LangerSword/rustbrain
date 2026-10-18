@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "std-dev-guide"
+description = "Guide for standard library developers"
+homepage = "https://std-dev-guide.rust-lang.org"
+bots = ["rustbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+libs = "maintain"
+rustc-dev-guide = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["book-test"]
+require-up-to-date-branches = true
+
+[environments.github-pages]

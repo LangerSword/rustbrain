@@ -1,0 +1,52 @@
+name = "infra-admins"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "Mark-Simulacrum",
+    "emilyalbini",
+    "jdno",
+    "marcoieni",
+    "ubiratansoares"
+]
+alumni = [
+    "aidanhs",
+    "alexcrichton",
+]
+
+[[github]]
+orgs = ["rust-lang-deprecated", "rust-lang"]
+
+[permissions]
+sync-team-confirmation = true
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"

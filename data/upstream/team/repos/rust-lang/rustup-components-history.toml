@@ -1,0 +1,23 @@
+org = "rust-lang"
+name = "rustup-components-history"
+description = "Rustup package status history"
+homepage = "https://rust-lang.github.io/rustup-components-history"
+bots = []
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+infra = "write"
+rustup = "write"
+
+[environments.github-pages]
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["build"]
+required-approvals = 0
+
+[[crates-io]]
+crates = ["rustup-available-packages"]
+teams = ["infra", "rustup"]

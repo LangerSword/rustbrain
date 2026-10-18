@@ -1,0 +1,34 @@
+name = "ides"
+subteam-of = "devtools"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "LucasBullen",
+    "Xanewok",
+    "alexheretic",
+    "autozimu",
+    "jasonwilliams",
+    "matklad",
+    "nrc",
+    "vlad20012",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[rfcbot]
+label = "T-IDEs"
+name = "IDEs and editors"
+ping = "rust-lang/ides"
+
+[website]
+name = "IDEs and editors team"
+description = "Developing IDEs, editors, and other development tools such as Racer and rust-analyzer"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"

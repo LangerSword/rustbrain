@@ -1,0 +1,16 @@
+org = 'rust-lang'
+name = 'cfg-if'
+description = 'A if/elif-like macro for Rust #[cfg] statements'
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+
+[environments.github-pages]
+
+[[crates-io]]
+crates = ["cfg-if"]

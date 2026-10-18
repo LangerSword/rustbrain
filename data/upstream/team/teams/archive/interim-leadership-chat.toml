@@ -1,0 +1,39 @@
+# Temporary, for the purposes of using rfcbot to ratify one RFC
+
+name = "interim-leadership-chat"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "badboy",
+    "cuviper",
+    "joshtriplett",
+    "jtgeibel",
+    "khionu",
+    "m-ou-se",
+    "Manishearth",
+    "Mark-Simulacrum",
+    "nikomatsakis",
+    "emilyalbini",
+    "pnkfelix",
+    "rylev",
+    "sophiajt",
+    "technetos",
+    "tmandry",
+    "Turbo87",
+    "wesleywiser",
+    "yaahc",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[rfcbot]
+label = "T-interim-leadership-chat"
+name = "Interim Leadership Chat"
+ping = "rust-lang/interim-leadership-chat"
+
+[website]
+name = "Interim Leadership Chat"
+description = "A temporary governing body used to ratify RFC 3392"

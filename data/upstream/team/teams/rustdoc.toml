@@ -1,0 +1,56 @@
+name = "rustdoc"
+subteam-of = "devtools"
+
+[people]
+leads = ["GuillaumeGomez"]
+members = [
+    "GuillaumeGomez",
+    "Manishearth",
+    "camelid",
+    "notriddle",
+    "fmease",
+    "lolbinarycat",
+    "yotamofek",
+    "Urgau",
+]
+alumni = [
+    "jsha",
+    "Nemo157",
+    "jyn514",
+    "kinnison",
+    "ollie27",
+    "CraftSpider",
+    "QuietMisdreavus",
+    "onur",
+    "steveklabnik",
+    "aDotInTheVoid",
+]
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[permissions]
+crater = true
+bors.rust.review = true
+dev-desktop = true
+perf = true
+
+[rfcbot]
+label = "T-rustdoc"
+name = "Rustdoc"
+ping = "rust-lang/rustdoc"
+
+[website]
+name = "Rustdoc team"
+description = "Developing and managing the Rustdoc documentation tool"
+zulip-stream = "t-rustdoc"
+repo = "https://github.com/rust-lang/rust"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-rustdoc"
+
+[[zulip-streams]]
+name = "t-rustdoc/private"

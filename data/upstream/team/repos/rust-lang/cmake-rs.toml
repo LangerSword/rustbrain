@@ -1,0 +1,30 @@
+org = 'rust-lang'
+name = 'cmake-rs'
+description = 'Rust build dependency for running cmake'
+homepage = "https://docs.rs/cmake"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+crate-maintainers = 'maintain'
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ['success']
+require-up-to-date-branches = true
+required-approvals = 0
+
+[environments.github-pages]
+
+[environments.publish]
+branches = ["main"]
+
+[[crates-io]]
+crates = ["cmake"]
+publish-workflow = "publish.yml"
+publish-environment = "publish"
+teams = ["crate-maintainers"]

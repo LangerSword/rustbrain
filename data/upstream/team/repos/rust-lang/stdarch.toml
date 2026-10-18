@@ -1,0 +1,31 @@
+org = "rust-lang"
+name = "stdarch"
+description = "Rust's standard library vendor-specific APIs and run-time feature detection"
+homepage = "https://doc.rust-lang.org/stable/core/arch/"
+bots = ["rustbot", "rfcbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+compiler = "write"
+lang = "write"
+lang-ops = "write"
+libs = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["conclusion"]
+required-approvals = 0
+merge-queue = { enabled = true }
+
+[environments.github-pages]
+
+[[crates-io]]
+crates = [
+    "stdsimd",
+    "core_arch",
+    "std_detect"
+]

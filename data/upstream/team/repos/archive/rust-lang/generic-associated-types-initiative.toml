@@ -1,0 +1,10 @@
+org = "rust-lang"
+name = "generic-associated-types-initiative"
+description = "Generic Associated Types lang team initiative"
+homepage = "https://rust-lang.github.io/generic-associated-types-initiative/"
+bots = []
+
+[access.teams]
+
+[environments.github-pages]
+

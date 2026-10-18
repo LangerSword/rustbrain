@@ -1,0 +1,22 @@
+name = "rustlings"
+subteam-of = "lang-docs"
+
+[people]
+leads = ["mo8it"]
+members = [
+    "mo8it",
+    "senekor",
+]
+alumni = [
+    "carols10cents",
+    "manyinsects",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Rustlings team"
+description = "Maintaining the Rustlings course"
+repo = "https://github.com/rust-lang/rustlings"
+zulip-stream = "t-lang/rustlings"

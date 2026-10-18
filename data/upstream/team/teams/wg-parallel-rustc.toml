@@ -1,0 +1,34 @@
+name = "wg-parallel-rustc"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = ["cjgillot"]
+members = [
+    "cjgillot",
+    "SparrowLii",
+    "nnethercote",
+    "bjorn3",
+    "Kobzol",
+]
+alumni = [
+    "Zoxc",
+    "nikomatsakis",
+    "Mark-Simulacrum",
+    "alexcrichton",
+    "cuviper",
+    "spastorino",
+]
+
+[permissions]
+bors.rust.try = true
+perf = true
+
+[website]
+name = "Parallel rustc working area"
+description = "Making parallel compilation the default for rustc"
+repo = "https://forge.rust-lang.org/compiler/working-areas.html"
+zulip-stream = "t-compiler/parallel-rustc"
+
+[[zulip-groups]]
+name = "parallel-rustc"

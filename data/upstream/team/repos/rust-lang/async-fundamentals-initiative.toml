@@ -1,0 +1,18 @@
+org = "rust-lang"
+name = "async-fundamentals-initiative"
+description = ""
+homepage = "https://rust-lang.github.io/async-fundamentals-initiative/"
+bots = []
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+wg-async = "maintain"
+
+[[rulesets]]
+pattern = "master"
+required-approvals = 0
+
+[environments.github-pages]
+branches = ["master"]

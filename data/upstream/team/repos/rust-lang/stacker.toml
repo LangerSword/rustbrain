@@ -1,0 +1,10 @@
+org = "rust-lang"
+name = "stacker"
+description = "Manual segmented stacks for Rust"
+bots = []
+
+[access.teams]
+compiler = "write"
+
+[environments.github-pages]
+

@@ -1,0 +1,15 @@
+org = "rust-lang"
+name = "api-guidelines"
+description = "Rust API guidelines"
+homepage = "https://rust-lang.github.io/api-guidelines/"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+libs = "write"
+
+[environments.github-pages]

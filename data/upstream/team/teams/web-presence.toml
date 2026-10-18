@@ -1,0 +1,24 @@
+name = "web-presence"
+subteam-of = "launching-pad"
+
+[people]
+leads = []
+members = []
+alumni = []
+
+[[lists]]
+address = "***REMOVED***"
+extra-teams = [
+    "crates-io",
+    "docs-rs",
+]
+extra-people = [
+    "Manishearth",
+    "skade",
+    "shepmaster",
+    "pichfl",
+]
+
+[website]
+name = "Web Presence team"
+description = "Manages the Rust websites"

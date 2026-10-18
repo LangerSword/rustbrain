@@ -1,0 +1,27 @@
+name = "twir"
+subteam-of = "launching-pad"
+
+[people]
+leads = ["nellshamrell"]
+members = [
+    "nellshamrell",
+    "llogiq",
+    "extrawurst",
+    "andrewpollack",
+    "JoelMarcey",
+]
+alumni = [
+    "nasa42",
+    "cdmistman",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[website]
+name = "TWiR team"
+description = "Publishes This Week in Rust"
+repo = "https://github.com/rust-lang/this-week-in-rust"

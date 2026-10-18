@@ -1,0 +1,15 @@
+name = "hiring"
+kind = "marker-team"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "JoelMarcey",
+    "ehuss",
+    "nikomatsakis",
+    "traviscross",
+]
+
+[[lists]]
+address = "***REMOVED***"

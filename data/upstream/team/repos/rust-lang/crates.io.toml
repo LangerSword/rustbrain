@@ -1,0 +1,31 @@
+org = "rust-lang"
+name = "crates.io"
+description = "The Rust package registry"
+homepage = "https://crates.io"
+bots = ["renovate", "rustbot", "heroku-deploy-access", "datadog"]
+
+[access.teams]
+crates-io = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = [
+    "Backend / Lint",
+    "Backend / Test",
+    "Backend / dependencies",
+    "Frontend / Lint",
+    "Frontend / Test",
+]
+required-approvals = 0
+bypass-apps = ["workflows-crates-io"]
+
+[environments.crates-io]
+
+[environments.staging-crates-io]
+
+# Obsolete crates
+[[crates-io]]
+crates = [
+    "cargo-registry",
+    "cargo-registry-s3"
+]

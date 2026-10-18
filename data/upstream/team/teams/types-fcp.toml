@@ -1,0 +1,28 @@
+name = "types-fcp"
+subteam-of = "types"
+
+[people]
+leads = []
+members = [
+    "BoxyUwU",
+    "jackh726",
+    "lcnr",
+    "oli-obk",
+    "spastorino",
+]
+alumni = [
+    "aliemjay",
+    "compiler-errors",
+    "nikomatsakis",
+]
+
+[rfcbot]
+label = "T-types"
+name = "Types"
+ping = "rust-lang/types-fcp"
+
+[website]
+name = "Types FCP team"
+description = "Types team members with responsibility for signing off on major compiler changes"
+repo = "https://github.com/rust-lang/types-team"
+zulip-stream = "t-types"

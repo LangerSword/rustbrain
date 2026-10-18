@@ -1,0 +1,66 @@
+name = "infra"
+top-level = true
+
+[people]
+leads = ["shepmaster", "marcoieni"]
+members = [
+    "Mark-Simulacrum",
+    "emilyalbini",
+    "shepmaster",
+    "jdno",
+    "Kobzol",
+    "marcoieni",
+    "jieyouxu",
+    "ubiratansoares"
+]
+alumni = [
+    "alexcrichton",
+    "aturon",
+    "brson",
+    "sgrif",
+    "nellshamrell",
+    "ashleygwilliams",
+    "aidanhs",
+    "jyn514",
+    "TimNN",
+    "erickt",
+    "frewsxcv",
+    "tomprince",
+    "carols10cents",
+    "rylev",
+    "kennytm",
+]
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[permissions]
+perf = true
+crater = true
+dev-desktop = true
+bors.rust.review = true
+bors.bors-kindergarten.review = true
+
+[rfcbot]
+label = "T-infra"
+name = "Infrastructure"
+ping = "rust-lang/infra"
+
+[website]
+name = "Infrastructure team"
+description = "Managing the infrastructure supporting the Rust project itself, including CI, releases, bots, and metrics"
+email = "***REMOVED***"
+zulip-stream = "t-infra"
+repo = "https://github.com/rust-lang/infra-team"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-infra"

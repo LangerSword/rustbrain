@@ -1,0 +1,94 @@
+name = "libs"
+top-level = true
+
+[people]
+leads = [
+    "Amanieu",
+    "nia-e",
+]
+members = [
+    "aapoalas",
+    "adamgemmell",
+    "Amanieu",
+    "BurntSushi",
+    "bushrat011899",
+    "Byron",
+    "calebzulawski",
+    "ChrisDenton",
+    "clarfonthey",
+    "cramertj",
+    "cuviper",
+    "Darksonn",
+    "davidtwco",
+    "dtolnay",
+    "folkertdev",
+    "hanna-kruppe",
+    "ibraheemdev",
+    "jhpratt",
+    "joboet",
+    "JohnTitor",
+    "joshtriplett",
+    "kennytm",
+    "KodrAus",
+    "LawnGnome",
+    "Mark-Simulacrum",
+    "m-ou-se",
+    "nia-e",
+    "NobodyXu",
+    "programmerjake",
+    "sayantn",
+    "SimonSapin",
+    "sunfishcode",
+    "tgross35",
+    "the8472",
+    "thomcc",
+    "workingjubilee",
+    "yaahc",
+]
+alumni = [
+    "alexcrichton",
+    "aturon",
+    "brson",
+    "Gankra",
+    "huonw",
+    "Kimundi",
+    "LukasKalbertodt",
+    "Noratrieb",
+    "sfackler",
+    "shepmaster",
+    "withoutboats",
+]
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[permissions]
+perf = true
+crater = true
+dev-desktop = true
+bors.rust.review = true
+
+[website]
+page = "library"
+name = "Library team"
+description = "Managing and maintaining the Rust standard library and official rust-lang crates"
+zulip-stream = "t-libs"
+repo = "https://github.com/rust-lang/libs-team"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-libs"
+
+[[zulip-streams]]
+name = "t-libs/private"

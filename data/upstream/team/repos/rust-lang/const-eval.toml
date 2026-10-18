@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "const-eval"
+description = "home for proposals in and around compile-time function evaluation"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+wg-const-eval = "write"
+
+[environments.github-pages]

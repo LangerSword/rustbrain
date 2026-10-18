@@ -1,0 +1,20 @@
+name = "wg-rustfix"
+subteam-of = "devtools"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "Manishearth",
+    "estebank",
+    "killercup",
+    "oli-obk",
+    "phansch",
+    "emilyalbini",
+]
+
+[website]
+name = "Rustfix working group"
+description = "Developing cargo-fix and serving as a point of contact for other teams"
+repo = "https://github.com/rust-lang/rustfix"

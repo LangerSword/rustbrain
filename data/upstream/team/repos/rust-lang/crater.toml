@@ -1,0 +1,14 @@
+org = "rust-lang"
+name = "crater"
+description = "Run experiments across parts of the Rust ecosystem!"
+homepage = "https://crater.rust-lang.org"
+bots = ["highfive"]
+
+[access.teams]
+infra = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["conclusion"]
+required-approvals = 0
+merge-queue = { enabled = true }

@@ -1,0 +1,45 @@
+name = "rustc-dev-guide"
+subteam-of = "compiler"
+
+[people]
+leads = ["BoxyUwU", "tshepang"]
+members = [
+    "BoxyUwU",
+    "JohnTitor",
+    "camelid",
+    "jieyouxu",
+    "jyn514",
+    "tshepang",
+    "amanjeev",
+    "Kobzol",
+    "reddevilmidzy",
+    "fallible-algebra",
+]
+alumni = [
+    "LeSeulArtichaut",
+    "Nashenas88",
+    "chrissimpkins",
+    "igaray",
+    "mark-i-m",
+    "Noratrieb",
+    "pierwill",
+    "rylev",
+    "spastorino",
+    "togiberlin",
+]
+
+[leads-permissions]
+# Intended primarily for subtree syncs.
+bors.rust.review = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "rustc-dev-guide working area"
+description = "Making the compiler easier to learn by maintaining and improving the Rust Compiler Development Guide"
+repo = "https://forge.rust-lang.org/compiler/working-areas.html"
+zulip-stream = "t-compiler/rustc-dev-guide"
+
+[[zulip-groups]]
+name = "T-rustc-dev-guide"

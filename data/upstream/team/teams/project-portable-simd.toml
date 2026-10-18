@@ -1,0 +1,28 @@
+name = "project-portable-simd"
+kind = "project-group"
+subteam-of = "libs"
+
+[people]
+leads = [
+    "workingjubilee",
+    "calebzulawski",
+]
+members = [
+    "calebzulawski",
+    "miguelraz",
+    "programmerjake",
+    "thomcc",
+    "workingjubilee",
+]
+alumni = [
+    "Lokathor",
+    "hsivonen",
+]
+
+[website]
+name = "Portable SIMD Project Group"
+description = "Adding portable SIMD to the standard library"
+zulip-stream = "project-portable-simd"
+
+[[github]]
+orgs = ["rust-lang"]

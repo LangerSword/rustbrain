@@ -1,0 +1,13 @@
+org = "rust-analyzer"
+name = "expect-test"
+description = "Minimalistic snapshot testing for Rust."
+bots = []
+
+[access.teams]
+rust-analyzer = "write"
+expect-test = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["test"]
+merge-queue = { enabled = true, check-response-timeout-minutes = 30 }

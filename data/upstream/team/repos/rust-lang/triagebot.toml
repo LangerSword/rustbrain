@@ -1,0 +1,14 @@
+org = 'rust-lang'
+name = 'triagebot'
+description = 'Automation/tooling for Rust spaces'
+homepage = "https://triage.rust-lang.org"
+bots = ["rustbot"]
+
+[access.teams]
+infra = "maintain"
+triagebot = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["ci"]
+merge-queue = { enabled = true }

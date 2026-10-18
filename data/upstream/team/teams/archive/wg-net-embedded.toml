@@ -1,0 +1,15 @@
+name = "wg-net-embedded"
+subteam-of = "wg-net"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "Nemo157",
+    "levex",
+]
+
+[website]
+name = "Embedded networking working group"
+description = "Supporting IoT development with Rust"

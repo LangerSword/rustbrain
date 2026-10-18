@@ -1,0 +1,36 @@
+# Empty marker team used to configure RustConf's mailing lists.
+
+name = "rustconf-emails"
+kind = "marker-team"
+
+[people]
+leads = []
+members = []
+
+[[lists]]
+address = "***REMOVED***"
+extra-emails = ["***REMOVED***"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-emails = ["***REMOVED***"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-emails = ["***REMOVED***"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-emails = ["***REMOVED***"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-emails = ["***REMOVED***"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-emails = ["***REMOVED***"]
+
+[[lists]]
+address = "***REMOVED***"
+extra-emails = ["***REMOVED***"]

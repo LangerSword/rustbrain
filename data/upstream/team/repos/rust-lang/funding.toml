@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "funding"
+description = "Discussions about funding Rust maintainers"
+homepage = "https://rust-lang.github.io/funding/"
+bots = ["rfcbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+funding = "write"
+
+[environments.github-pages]

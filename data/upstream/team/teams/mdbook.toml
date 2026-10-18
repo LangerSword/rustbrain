@@ -1,0 +1,35 @@
+name = "mdbook"
+subteam-of = "devtools"
+
+[people]
+leads = ["GuillaumeGomez"]
+members = [
+    "camelid",
+    "notriddle",
+    "GuillaumeGomez",
+]
+
+alumni = [
+    "ehuss",
+    "Dylan-DPC",
+]
+
+[rfcbot]
+label = "T-mdbook"
+name = "mdBook"
+ping = "rust-lang/mdbook"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "mdBook team"
+description = "Maintaining mdBook"
+zulip-stream = "t-mdbook"
+repo = "https://github.com/rust-lang/mdBook"
+
+[[zulip-groups]]
+name = "T-mdbook"
+
+[[zulip-streams]]
+name = "t-mdbook/private"

@@ -1,0 +1,20 @@
+name = "infra-bors"
+subteam-of = "infra"
+
+[people]
+leads = ["Mark-Simulacrum"]
+members = [
+    "Mark-Simulacrum",
+    "emilyalbini",
+    "Kobzol",
+    "Sakib25800"
+]
+alumni = []
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Bors team"
+description = "Develops the bors merge bot"
+repo = "https://github.com/rust-lang/bors"

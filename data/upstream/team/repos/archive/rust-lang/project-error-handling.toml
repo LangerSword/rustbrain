@@ -1,0 +1,6 @@
+org = "rust-lang"
+name = "project-error-handling"
+description = "Error handling project group"
+bots = []
+
+[access.teams]

@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "pin-utils"
+description = "Utilities for pinning"
+bots = []
+
+[access.teams]
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+
+[[crates-io]]
+crates = ["pin-utils"]

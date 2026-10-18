@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "miri-test-libstd"
+description = "Testing the Rust standard library with Miri, continuously"
+bots = []
+
+[access.teams]
+miri = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["Success"]
+required-approvals = 0
+merge-queue = { enabled = true, check-response-timeout-minutes = 120 }

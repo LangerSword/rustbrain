@@ -1,0 +1,56 @@
+name = "wg-prioritization"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = [
+    # The following nickname listed here to pass validation
+    # see https://github.com/rust-lang/team/pull/992
+    "am-1t",
+    "Centril",
+    "Dylan-DPC",
+    "JohnTitor",
+    "LeSeulArtichaut",
+    "Stupremee",
+    "apiraino",
+    "bawerd",
+    "camelid",
+    "djcarpe",
+    "frxstrem",
+    "hameerabbasi",
+    "hkmatsumoto",
+    "inquisitivecrystal",
+    "jechasteen",
+    "jyn514",
+    "lcnr",
+    "mark-i-m",
+    "mstallmo",
+    "o0Ignition0o",
+    "pnkfelix",
+    "spastorino",
+    "wesleywiser",
+]
+
+[website]
+name = "Prioritization working area"
+description = "Triaging bugs, mainly deciding if there are critical (potential) release blockers"
+repo = "https://github.com/rust-lang/compiler-team-prioritization"
+zulip-stream = "t-compiler/prioritization"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "WG-prioritization"
+
+[[zulip-groups]]
+name = "WG-prioritization/alerts"
+excluded-people = [
+    "lcnr",
+    "Dylan-DPC",
+    "camelid",
+    "hkmatsumoto",
+    "inquisitivecrystal",
+]

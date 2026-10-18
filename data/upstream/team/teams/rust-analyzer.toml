@@ -1,0 +1,43 @@
+name = "rust-analyzer"
+subteam-of = "compiler"
+
+[people]
+leads = ["Veykril"]
+members = [
+    "davidbarsky",
+    "flodiebold",
+    "hkalbasi",
+    "lnicola",
+    "Veykril",
+    "ChayimFriedman2",
+    "ShoyuVanilla",
+    "A4-Tacks",
+    "bit-aloo",
+]
+alumni = [
+    "edwin0cheng",
+    "lowr",
+    "matklad",
+    "SomeoneToIgnore",
+]
+
+[website]
+name = "rust-analyzer team"
+description = "Rust IDE support and error-resilient compiler front-end"
+zulip-stream = "t-compiler/rust-analyzer"
+repo = "https://github.com/rust-lang/rust-analyzer"
+
+[permissions]
+bors.rust.review = true
+perf = true
+crater = true
+
+[[github]]
+orgs = ["rust-lang", "rust-analyzer"]
+
+[[zulip-groups]]
+name = "T-rust-analyzer"
+
+[[zulip-streams]]
+name = "t-compiler/rust-analyzer-private"
+public-history = false

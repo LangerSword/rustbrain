@@ -1,0 +1,22 @@
+name = "wg-debugging"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "Manishearth",
+    "davidtwco",
+    "michaelwoerister",
+    "pnkfelix",
+    "wesleywiser",
+]
+
+[website]
+name = "Debugging Working Group"
+description = "Providing users with a great experience when debugging Rust code"
+zulip-stream = "t-compiler/debugging"
+
+[[github]]
+orgs = ["rust-lang"]

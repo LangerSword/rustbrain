@@ -1,0 +1,51 @@
+name = "foundation-board-project-directors"
+subteam-of = "launching-pad"
+
+[people]
+leads = []
+members = [
+    "davidtwco",
+    "jackh726",
+    "jdonszelmann",
+    "nia-e",
+    "nikomatsakis",
+]
+alumni = [
+    "JakobDegen",
+    "Mark-Simulacrum",
+    "carols10cents",
+    "cuviper",
+    "rylev",
+    "scottmcm",
+    "spastorino",
+    "tmandry",
+    "yaahc",
+]
+
+[website]
+name = "Foundation Board Project Directors"
+description = "Charged with representing the project on the Board of the Rust Foundation"
+email = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-streams]]
+name = "project-directors"
+public-history = false
+
+[[zulip-streams]]
+name = "foundation/with-project-directors"
+extra-teams = [
+    "foundation-smt"
+]
+extra-people = [
+    "tinakrauss"
+]
+public-history = false
+
+[[zulip-groups]]
+name = "foundation-project-directors"

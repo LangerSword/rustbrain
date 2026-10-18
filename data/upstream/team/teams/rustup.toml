@@ -1,0 +1,33 @@
+name = "rustup"
+subteam-of = "devtools"
+
+[people]
+leads = [
+    "rami3l",
+]
+members = [
+    "djc",
+    "rami3l",
+    "ChrisDenton",
+    "FranciscoTGouveia",
+]
+alumni = [
+    "alexcrichton",
+    "nrc",
+    "kinnison",
+    "0xPoe",
+    "dwijnand",
+    "rbtcollins",
+]
+
+[website]
+name = "Rustup team"
+description = "Designing and implementing rustup"
+zulip-stream = "t-rustup"
+repo = "https://github.com/rust-lang/rustup"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "T-rustup"

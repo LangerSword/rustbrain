@@ -1,0 +1,17 @@
+org = "rust-lang"
+name = "areweasyncyet.rs"
+description = "Are we async yet?"
+homepage = "https://areweasyncyet.rs"
+bots = []
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+wg-async = "write"
+
+[access.individuals]
+upsuper = "write"
+
+[environments.github-pages]
+branches = ["master"]

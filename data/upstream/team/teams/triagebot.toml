@@ -1,0 +1,32 @@
+name = "triagebot"
+subteam-of = "infra"
+
+[people]
+leads = ["Mark-Simulacrum"]
+members = [
+    "Mark-Simulacrum",
+    "jackh726",
+    "apiraino",
+    "Kobzol",
+    "Urgau"
+]
+alumni = [
+    "spastorino",
+    "ehuss",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Triagebot team"
+description = "Maintaining and improving the rust-lang/triagebot tooling"
+email = "***REMOVED***"
+zulip-stream = "triagebot"
+repo = "https://github.com/rust-lang/triagebot"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-triagebot"

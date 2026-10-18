@@ -1,0 +1,53 @@
+name = "funding"
+subteam-of = "launching-pad"
+
+[website]
+name = "Funding team"
+description = "Helping to get Rust maintainers funded"
+email = "***REMOVED***"
+zulip-stream = "funding"
+repo = "https://github.com/rust-lang/funding/"
+
+[people]
+leads = [
+    "nikomatsakis",
+    "LoriLorusso",
+]
+members = [
+    "Kobzol",
+    "LoriLorusso",
+    "nikomatsakis",
+    "PLeVasseur",
+]
+alumni = []
+
+[[github]]
+team-name = "funding"
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "T-funding"
+
+[[zulip-streams]]
+name = "funding/private"
+
+[[zulip-streams]]
+name = "funding/with-mir"
+extra-teams = [
+    "maintainers-in-residence"
+]
+extra-people = [
+    "abibroom",
+    "becrumbul"
+]
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[rfcbot]
+label = "T-funding"
+name = "Funding"
+ping = "rust-lang/funding"

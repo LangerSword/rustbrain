@@ -1,0 +1,13 @@
+name = "production"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "aidanhs",
+    "aturon",
+    "celaus",
+]
+
+[[lists]]
+address = "***REMOVED***"

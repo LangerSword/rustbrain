@@ -1,0 +1,20 @@
+name = "rust-by-example"
+subteam-of = "lang-docs"
+
+[people]
+leads = ["marioidival"]
+members = [
+    "marioidival",
+]
+
+alumni = [
+    "steveklabnik",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Rust by Example team"
+description = "Maintaining and updating the official Rust by Example book"
+repo = "https://github.com/rust-lang/rust-by-example"

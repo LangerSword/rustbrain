@@ -1,0 +1,47 @@
+name = "project-const-generics"
+kind = "project-group"
+subteam-of = "lang"
+
+[people]
+leads = ["BoxyUwU", "khyperia"]
+members = [
+    "lcnr",
+    "nikomatsakis",
+    "oli-obk",
+    "BoxyUwU",
+    "camelid",
+    "khyperia",
+    "bit-aloo",
+]
+alumni = [
+    "compiler-errors",
+    "davidtwco",
+    "varkor",
+    "withoutboats",
+]
+
+[website]
+name = "Const Generics Project Group"
+description = "Working to advance const generics support in the Rust language"
+repo = "https://github.com/rust-lang/project-const-generics"
+zulip-stream = "project-const-generics"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "project-const-generics"
+
+[[zulip-groups]]
+name = "project-const-generics/talkies"
+include-team-members = false
+extra-people = [
+    "BoxyUwU",
+    "camelid",
+    "khyperia",
+    "zedddie",
+    "LaneAsade",
+    "reddevilmidzy",
+    "bit-aloo"
+]
+

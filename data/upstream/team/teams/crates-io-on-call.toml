@@ -1,0 +1,24 @@
+name = "crates-io-on-call"
+# Note: This team is composed of employees of the Rust Foundation.
+# Therefore, we label this as a marker team and not a subteam of crates.io
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "LawnGnome",
+    "marcoieni",
+    "Turbo87",
+    "walterhpearce",
+    "ubiratansoares",
+    "jlizen"
+]
+alumni = [
+    "JoelMarcey",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "T-crates-io-on-call"

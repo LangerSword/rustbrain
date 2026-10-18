@@ -1,0 +1,13 @@
+org = "rust-lang"
+name = "crates.io-index"
+description = "Registry index for crates.io"
+bots = []
+
+[access.teams]
+crates-io = "write"
+crates-io-on-call = "write"
+
+[[rulesets]]
+pattern = "master"
+pr-required = false
+prevent-force-push = false

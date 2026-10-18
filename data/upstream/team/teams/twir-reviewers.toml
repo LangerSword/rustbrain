@@ -1,0 +1,31 @@
+name = "twir-reviewers"
+subteam-of = "twir"
+
+[people]
+leads = ["nellshamrell"]
+members = [
+    "nellshamrell",
+    "ericseppanen",
+    "extrawurst",
+    "mariannegoldin",
+    "U007D",
+    "bdillo",
+    "opeolluwa",
+    "bnchi",
+    "KannanPalani57",
+    "tzilist"
+]
+alumni = [
+    "andrewpollack",
+    "bennyvasquez",
+    "cdmistman",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+team-name = "twir-reviewers"
+
+[website]
+name = "TWiR reviewers"
+description = "Reviewers for This Week in Rust"
+repo = "https://github.com/rust-lang/this-week-in-rust"

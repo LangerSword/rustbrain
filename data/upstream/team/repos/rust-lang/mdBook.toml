@@ -1,0 +1,40 @@
+org = "rust-lang"
+name = "mdBook"
+description = "Create book from markdown files. Like Gitbook but implemented in Rust"
+homepage = "https://rust-lang.github.io/mdBook/"
+bots = ["rustbot", "renovate", "rfcbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+mdbook = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["Success gate"]
+required-approvals = 1
+merge-queue = { enabled = true, min-entries-to-merge-wait-minutes = 1 }
+
+[[crates-io]]
+crates = [
+    "mdbook",
+    "mdbook-core",
+    "mdbook-driver",
+    "mdbook-html",
+    "mdbook-markdown",
+    "mdbook-preprocessor",
+    "mdbook-renderer",
+    "mdbook-summary",
+]
+publish-workflow = "publish-crates-io.yml"
+publish-environment = "publish"
+teams = ["mdbook"]
+
+[environments.github-pages]
+
+[environments.publish]
+branches = ["main"]
+tags = ["*"]

@@ -1,0 +1,25 @@
+name = "wg-diagnostics"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = ["estebank", "oli-obk"]
+members = [
+    "JohnTitor",
+    "TaKO8Ki",
+    "davidtwco",
+    "estebank",
+    "oli-obk",
+]
+alumni = [
+    "compiler-errors",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Diagnostics working area"
+description = "Aiming to make rustc better at telling the user why the compiler isn't smart enough to understand their code yet"
+repo = "https://forge.rust-lang.org/compiler/working-areas.html"
+zulip-stream = "t-compiler/diagnostics"

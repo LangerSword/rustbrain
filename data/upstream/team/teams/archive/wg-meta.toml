@@ -1,0 +1,14 @@
+name = "wg-meta"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = ["nikomatsakis", "davidtwco", "spastorino"]
+
+[website]
+name = "Meta working group"
+description = "Organizing and managing the Rust compiler team"
+repo = "https://rust-lang.github.io/compiler-team/working-groups/meta/"
+zulip-stream = "t-compiler/wg-meta"

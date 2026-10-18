@@ -1,0 +1,11 @@
+name = "arm-maintainers"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "adamgemmell",
+    "davidtwco",
+    "Jamesbarford",
+    "lqd",
+]

@@ -1,0 +1,35 @@
+name = "wg-cli"
+subteam-of = "launching-pad"
+kind = "working-group"
+
+[people]
+leads = ["epage"]
+members = [
+    "Dylan-DPC",
+    "codesections",
+    "epage",
+    "deg4uss3r",
+    "pksunkara",
+]
+alumni = [
+    "killercup",
+    "matthiasbeyer",
+    "spacekookie",
+    "yoshuawuyts",
+]
+
+[website]
+page = "cli"
+name = "Command-line interfaces (CLI) working group"
+description = "Focusing on the end-to-end experience of writing terminal apps, both large and small, in Rust."
+zulip-stream = "wg-cli"
+
+[[lists]]
+address = "***REMOVED***"
+
+extra-emails = [
+    "***REMOVED***",
+    "***REMOVED***",
+    "***REMOVED***",
+    "***REMOVED***",
+]

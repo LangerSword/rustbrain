@@ -1,0 +1,16 @@
+name = "team-repo-admins"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "Mark-Simulacrum",
+    "jackh726",
+    "jieyouxu",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "team-repo-admins"

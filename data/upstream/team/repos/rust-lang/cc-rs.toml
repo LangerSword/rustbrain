@@ -1,0 +1,24 @@
+org = 'rust-lang'
+name = 'cc-rs'
+description = 'Rust library for build scripts to compile C/C++ code into a Rust library'
+homepage = "https://docs.rs/cc"
+bots = []
+
+[access.teams]
+crate-maintainers = 'maintain'
+
+[[rulesets]]
+pattern = 'main'
+required-approvals = 0
+ci-checks = ['Tests pass']
+
+[[crates-io]]
+crates = ["cc", "find-msvc-tools"]
+publish-workflow = "publish.yml"
+publish-environment = "publish"
+teams = ["crate-maintainers"]
+
+[environments.github-pages]
+
+[environments.publish]
+branches = ["main"]

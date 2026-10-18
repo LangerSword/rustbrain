@@ -1,0 +1,6 @@
+org = "rust-lang"
+name = "wg-incr-comp"
+description = "Home repo for the compiler team incremental compilation working group"
+bots = []
+
+[access.teams]

@@ -1,0 +1,6 @@
+org = "rust-lang"
+name = "wg-grammar"
+description = "Where the work of WG-grammar, aiming to provide a canonical grammar for Rust, resides"
+bots = []
+
+[access.teams]

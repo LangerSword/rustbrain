@@ -1,0 +1,36 @@
+org = "rust-lang"
+name = "rustc-dev-guide"
+description = "A guide to how rustc works and how to contribute to it."
+homepage = "https://rustc-dev-guide.rust-lang.org"
+bots = ["rustbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+bootstrap = "write"
+compiler = "write"
+edition = "write"
+infra = "write"
+lang = "write"
+lang-ops = "write"
+libs = "write"
+rustdoc = "write"
+rustdoc-frontend = "write"
+rustc-dev-guide = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["ci"]
+required-approvals = 0
+
+# This branch protection exists for historical reasons
+# We had to force-push the whole commit history of rustc-dev-guide
+# This branch contains the old commit graph, to keep commit references working
+[[rulesets]]
+pattern = "master-old"
+prevent-update = true
+
+[environments.github-pages]

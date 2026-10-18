@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "compiler-team"
+description = "A home for compiler team planning documents, meeting minutes, and other such things."
+homepage = "https://rust-lang.github.io/compiler-team/"
+bots = ["rustbot", "rfcbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+compiler = "write"
+compiler-ops = "write"
+types = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+
+[environments.github-pages]

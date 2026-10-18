@@ -1,0 +1,41 @@
+name = "goals"
+subteam-of = "launching-pad"
+
+[people]
+leads = ["lcnr", "tomassedovic"]
+members = [
+    "nikomatsakis",
+    "joshtriplett",
+    "lcnr",
+    "lqd",
+    "tomassedovic",
+    "nxsaken",
+]
+alumni = [
+    "spastorino",
+    "nandsh",
+    "davidtwco",
+    "traviscross",
+]
+
+[[github]]
+team-name = "goals"
+orgs = ["rust-lang"]
+
+[rfcbot]
+label = "T-goals"
+name = "Goals"
+ping = "rust-lang/goals"
+
+[website]
+name = "Goals team"
+description = "Administering the Rust Project Goals"
+email = "***REMOVED***"
+zulip-stream = "goals"
+repo = "https://github.com/rust-lang/goals"
+
+[[zulip-groups]]
+name = "T-goals"
+
+[[lists]]
+address = "***REMOVED***"

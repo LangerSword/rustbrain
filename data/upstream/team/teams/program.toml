@@ -1,0 +1,42 @@
+# The Program team (AKA Program Management, PM) lists the staff hired
+# by the Project (via the Foundation) in support of program management
+# and those Project members who (via the delegation by the council to
+# the Edition and Goals teams) provide oversight and guidance for this
+# program.
+
+name = "program"
+kind = "marker-team"
+subteam-of = "edition" # And of goals.
+
+[people]
+leads = []
+members = [
+    "traviscross",
+    "nikomatsakis",
+]
+included-teams = [
+    "program-managers"
+]
+
+alumni = [
+    "ehuss",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[permissions]
+bors.rust.review = true
+crater = true
+dev-desktop = true
+perf = true
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-program"
+
+[website]
+name = "Program Management team"
+description = "Supporting Rust teams, making connections, coordinating discussions, and managing Project Goals"

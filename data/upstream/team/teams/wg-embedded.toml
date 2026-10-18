@@ -1,0 +1,76 @@
+name = "wg-embedded"
+subteam-of = "launching-pad"
+kind = "working-group"
+
+[people]
+leads = ["adamgreig", "therealprof"]
+members = [
+    "BartMassey",
+    "Dirbaio",
+    "Emilgardis",
+    "MabezDev",
+    "YuhanLiin",
+    "adamgreig",
+    "almindor",
+    "berkus",
+    "burrbull",
+    "cr1901",
+    "davidtwco",
+    "dkhayes117",
+    "eldruin",
+    "hargoniX",
+    "hdoordt",
+    "jamesmunns",
+    "jannic",
+    "jessebraham",
+    "jonathanpallant",
+    "nastevens",
+    "nchong-at-aws",
+    "newAM",
+    "posborne",
+    "raw-bin",
+    "reitermarkus",
+    "robamu",
+    "romancardenas",
+    "rmsyn",
+    "ryankurte",
+    "sgued",
+    "sirhcel",
+    "thalesfragoso",
+    "therealprof",
+    "zeenix",
+]
+
+alumni = [
+    "andre-richter",
+    "awygle",
+    "bradjc",
+    "danc86",
+    "Disasm",
+    "dvc94ch",
+    "dylanmckay",
+    "hannobraun",
+    "ithinuel",
+    "japaric",
+    "jcsoo",
+    "korken89",
+    "laanwj",
+    "levex",
+    "paoloteti",
+    "parched",
+    "pftbest",
+    "sekineh",
+    "thejpster",
+    "v-thakkar",
+    "wizofe",
+]
+
+[website]
+page = "embedded"
+name = "Embedded devices working group"
+description = "Focusing on improving the end-to-end experience of using Rust in resource-constrained environments and non-traditional platforms"
+repo = "https://github.com/rust-embedded/wg"
+matrix-room = "#rust-embedded:matrix.org"
+
+[[lists]]
+address = "***REMOVED***"

@@ -1,0 +1,31 @@
+name = "project-rustc-public"
+kind = "project-group"
+subteam-of = "compiler"
+
+[people]
+leads = [
+    "celinval",
+]
+members = [
+    "celinval",
+    "oli-obk",
+    "scottmcm",
+    "makai410",
+]
+alumni = [
+    "spastorino",
+    "ouz-a",
+    "pnkfelix",
+]
+
+[website]
+name = "Rustc Public Project Group"
+description = "Define compiler intermediate representation usable by external tools"
+repo = "https://github.com/rust-lang/rustc_public"
+zulip-stream = "project-rustc-public"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[permissions]
+bors.rust.review = true

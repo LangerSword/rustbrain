@@ -1,0 +1,19 @@
+org = "rust-lang"
+name = "calendar-generation"
+description = "Generate iCalendar documents from calendar specifications in TOML. See rust-lang/calendar."
+bots = ["rustbot"]
+
+[access.teams]
+compiler = "write"
+crates-io = "write"
+docs-rs = "write"
+infra = "maintain"
+lang = "write"
+lang-ops = "write"
+leadership-council = "write"
+libs = "write"
+release = "write"
+wg-async = "write"
+
+[[rulesets]]
+pattern = "main"

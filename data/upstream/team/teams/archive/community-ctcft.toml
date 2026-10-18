@@ -1,0 +1,22 @@
+name = "community-ctcft"
+subteam-of = "community"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "AngelOnFira",
+    "nikomatsakis",
+    "technetos",
+    "yaahc"
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[website]
+name = "Cross-Team Collaboration Fun Times"
+description = "Fostering cross-team collaboration in the Rust project"

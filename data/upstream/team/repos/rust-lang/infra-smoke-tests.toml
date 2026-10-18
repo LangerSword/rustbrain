@@ -1,0 +1,22 @@
+org = "rust-lang"
+name = "infra-smoke-tests"
+description = "Smoke tests for the infrastructure of the Rust project"
+bots = ["renovate"]
+
+[access.teams]
+infra = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+require-linear-history = true
+ci-checks = [
+    "Check Markdown style",
+    "Check JSON style",
+    "Check Rust style",
+    "Check YAML style",
+    "Lint Markdown files",
+    "Lint Rust code",
+    "Lint YAML files",
+    "Run tests",
+]

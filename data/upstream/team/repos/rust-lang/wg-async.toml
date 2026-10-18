@@ -1,0 +1,18 @@
+org = "rust-lang"
+name = "wg-async"
+description = "Working group dedicated to improving the foundations of Async I/O in Rust"
+homepage = "https://rust-lang.github.io/wg-async/"
+bots = ["rustbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+wg-async = "write"
+
+[[rulesets]]
+pattern = "master"
+required-approvals = 0
+
+[environments.github-pages]
+branches = ["master"]

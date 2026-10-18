@@ -1,0 +1,58 @@
+name = "triage"
+subteam-of = "launching-pad"
+
+[people]
+leads = ["Dylan-DPC"]
+members = [
+    "Alexendoo",
+    "Darksonn",
+    "Dylan-DPC",
+    "Enselic",
+    "Hayden602",
+    "JayanAXHF",
+    "JohnCSimon",
+    "JohnTitor",
+    "LFS6502",
+    "SpriteOvO",
+    "alex-semenyuk",
+    "alice-i-cecile",
+    "apiraino",
+    "bstrie",
+    "camelid",
+    "cijiugechu",
+    "crlf0710",
+    "cyrgani",
+    "gstjepan2",
+    "karolzwolak",
+    "lolbinarycat",
+    "maxdexh",
+    "nuzzles",
+    "oskgo",
+    "pitaj",
+    "probablytaylors",
+    "reddevilmidzy",
+    "teor2345",
+    "theemathas",
+    "xizheyin",
+]
+alumni = [
+    "KittyBorgX",
+    "Muirrum",
+    "anden3",
+    "edmilsonefs",
+    "jieyouxu",
+    "joelpalmer",
+    "shard77",
+    "tranquillity-codes",
+]
+
+[website]
+name = "Triage Team"
+description = "Triaging repositories under the rust-lang organisation"
+zulip-stream = "t-release/triage"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "WG-triage"

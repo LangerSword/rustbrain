@@ -1,0 +1,50 @@
+# Core has been replaced by the leadership council with RFC#3392
+name = "core"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "alexcrichton",
+    "aturon",
+    "brson",
+    "erickt",
+    "huonw",
+    "pcwalton",
+    "nrc",
+    "carols10cents",
+    "nikomatsakis",
+    "Manishearth",
+    "skade",
+    "steveklabnik",
+    "emilyalbini",
+    "ashleygwilliams",
+    "aidanhs",
+    "sophiajt",
+    "badboy",
+    "wycats",
+    "Mark-Simulacrum",
+    "rylev",
+]
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[website]
+name = "Core team"
+description = "A former governing body of Rust. It was replaced by the Leadership Council with RFC 3392."

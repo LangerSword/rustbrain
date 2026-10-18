@@ -1,0 +1,17 @@
+name = "social-media"
+subteam-of = "launching-pad"
+
+[people]
+leads = ["m-ou-se"]
+members = ["m-ou-se"]
+alumni = []
+
+[[lists]]
+address = "***REMOVED***"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Social media team"
+description = "Handles posting on social media sites"

@@ -1,0 +1,12 @@
+org = "rust-lang"
+name = "simpleinfra"
+description = "Rust Infrastructure automation"
+bots = ["forking-renovate"]
+
+[access.teams]
+infra = "write"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = ["CI"]
+required-approvals = 0

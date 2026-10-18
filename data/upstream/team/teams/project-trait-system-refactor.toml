@@ -1,0 +1,29 @@
+name = "project-trait-system-refactor"
+kind = "project-group"
+subteam-of = "types"
+
+[people]
+leads = [
+    "lcnr",
+]
+members = [
+    "BoxyUwU",
+    "lcnr",
+    "lqd",
+    "adwinwhite",
+    "ShoyuVanilla",
+    "jdonszelmann",
+]
+alumni = [
+    "compiler-errors",
+    "cjgillot",
+]
+
+[website]
+name = "Rustc Trait System Refactor Initiative"
+description = "Refactoring the trait system of rustc"
+repo = "https://github.com/rust-lang/types-team"
+
+[[github]]
+orgs = ["rust-lang"]
+team-name = "initiative-trait-system-refactor"

@@ -1,0 +1,31 @@
+name = "security-response"
+subteam-of = "launching-pad"
+
+[people]
+leads = []
+members = [
+    "cuviper",
+    "emilyalbini",
+    "Manishearth",
+]
+alumni = [
+    "alexcrichton",
+    "nikomatsakis",
+    "steveklabnik",
+]
+
+[[github]]
+team-name = "security"
+orgs = ["rust-lang"]
+
+[website]
+name = "Security Response Team"
+description = "Triaging and responding to incoming vulnerability reports"
+email = "***REMOVED***"
+repo = "https://github.com/rust-lang/wg-security-response"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "WG-security-response"

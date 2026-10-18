@@ -1,0 +1,37 @@
+org = "rust-lang"
+name = "rust-clippy"
+description = "A bunch of lints to catch common mistakes and improve your Rust code. Book: https://doc.rust-lang.org/clippy/"
+homepage = "https://clippy.rust-lang.org/"
+bots = ["rustbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+clippy = "write"
+clippy-contributors = "triage"
+
+[[rulesets]]
+pattern = "master"
+ci-checks = [
+    "conclusion",
+    "conclusion_dev",
+    "conclusion_remark",
+    "conclusion_changelog",
+]
+required-approvals = 0
+merge-queue = { enabled = true }
+
+[environments.github-pages]
+
+# Obsolete crates
+[[crates-io]]
+crates = [
+    "clippy",
+    "clippy_config",
+    "clippy_dummy",
+    "clippy_lints",
+    "clippy-mini-macro-test",
+]

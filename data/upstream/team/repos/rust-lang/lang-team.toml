@@ -1,0 +1,27 @@
+org = "rust-lang"
+name = "lang-team"
+description = "Home of the Rust lang team"
+homepage = "http://lang-team.rust-lang.org/"
+bots = ["rustbot", "rfcbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+lang = "maintain"
+lang-ops = "maintain"
+lang-docs = "maintain"
+types = "maintain"
+release = "maintain"
+
+[environments.github-pages]
+branches = ["gh-pages", "main"]
+
+[[rulesets]]
+pattern = "main"
+merge-queue = {
+  enabled = true,
+  method = "merge",
+  min-entries-to-merge-wait-minutes = 0,
+  check-response-timeout-minutes = 6
+}

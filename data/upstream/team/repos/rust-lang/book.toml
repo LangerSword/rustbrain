@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "book"
+description = "The Rust Programming Language"
+homepage = "https://doc.rust-lang.org/book/"
+bots = []
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+book = "maintain"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = []
+required-approvals = 0
+
+[environments.github-pages]
+branches = ["gh-pages"]

@@ -1,0 +1,23 @@
+name = "mods-discourse"
+subteam-of = "mods"
+
+[people]
+leads = []
+members = [
+    "steffahn",
+    "oli-obk",
+    "Manishearth",
+]
+alumni = [
+    "notriddle",
+    "mbrubeck",
+    "khionu",
+    "technetos",
+]
+
+[website]
+name = "Discourse moderators"
+description = "Moderating users.rust-lang.org and internals.rust-lang.org"
+
+[[lists]]
+address = "***REMOVED***"

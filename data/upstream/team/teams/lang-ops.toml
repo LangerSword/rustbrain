@@ -1,0 +1,20 @@
+name = "lang-ops"
+subteam-of = "lang"
+
+[people]
+leads = ["traviscross"]
+members = [
+    "traviscross",
+    "tomassedovic",
+    "nxsaken",
+]
+alumni = [
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "lang-ops team"
+description = "Operations for the lang team: preparing agenda, issue triage, scheduling and documenting meetings"
+zulip-stream = "t-lang/ops"

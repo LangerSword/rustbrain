@@ -1,0 +1,6 @@
+org = "rust-lang"
+name = "wg-binary-size"
+description = "Improving the binary size of Rust programs and libraries"
+bots = []
+
+[access.teams]

@@ -1,0 +1,87 @@
+# Auto-generated from the goals repository
+name = "goal-owners"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "aapoalas",
+    "Amanieu",
+    "BennoLossin",
+    "bjorn3",
+    "blyxyas",
+    "BoxyUwU",
+    "camelid",
+    "Darksonn",
+    "davidtwco",
+    "dawidl022",
+    "dianne",
+    "dingxiangfei2009",
+    "diondokter",
+    "epage",
+    "fee1-dead",
+    "folkertdev",
+    "frank-king",
+    "hxuhack",
+    "icmccorm",
+    "jackh726",
+    "jakos-sec",
+    "Jamesbarford",
+    "JayanAXHF",
+    "jchlanda",
+    "jlizen",
+    "JoelMarcey",
+    "JohnTitor",
+    "joshtriplett",
+    "jswrenn",
+    "kupiakos",
+    "lcnr",
+    "lqd",
+    "makai410",
+    "marcoieni",
+    "MusicalNinjaDad",
+    "Nadrieril",
+    "nnethercote",
+    "nia-e",
+    "nikomatsakis",
+    "nxsaken",
+    "obi1kenobi",
+    "ojeda",
+    "oli-obk",
+    "orhun",
+    "petrochenkov",
+    "PLeVasseur",
+    "rami3l",
+    "ranger-ross",
+    "RenjiSann",
+    "scrabsha",
+    "spastorino",
+    "Shnatsel",
+    "teor2345",
+    "tomassedovic",
+    "traviscross",
+    "WaffleLapkin",
+    "walterhpearce",
+    "yoshuawuyts",
+    "ZuseZ4",
+]
+included-teams = []
+alumni = [
+    "1c3t3a",
+    "adamgemmell",
+    "cramertj",
+    "GuillaumeGomez",
+    "SparrowLii",
+    "ssbr",
+    "thunderseethe",
+    "tmandry",
+    "veluca93",
+    "weihanglo",
+    "yaahc",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "goal-owners"

@@ -1,0 +1,42 @@
+name = "types"
+# Really should be compiler + lang, but the team repo doesn't handle that
+# right now
+subteam-of = "compiler"
+
+[people]
+leads = ["jackh726", "lcnr"]
+members = [
+    "BoxyUwU",
+    "jackh726",
+    "lcnr",
+    "lqd",
+    "nikomatsakis",
+    "oli-obk",
+    "spastorino",
+]
+alumni = [
+    "aliemjay",
+    "compiler-errors",
+]
+
+[website]
+name = "Types team"
+description = "Working to implement and formally define the semantics of the Rust language"
+repo = "https://github.com/rust-lang/types-team"
+zulip-stream = "t-types"
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]
+
+[[zulip-groups]]
+name = "T-types"
+
+[[zulip-groups]]
+name = "T-types/meetings"
+extra-people = ["eholk"]
+
+[permissions]
+bors.rust.review = true
+perf = true
+crater = true
+dev-desktop = true

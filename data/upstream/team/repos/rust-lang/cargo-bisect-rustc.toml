@@ -1,0 +1,27 @@
+org = "rust-lang"
+name = "cargo-bisect-rustc"
+description = "Bisects rustc, either nightlies or CI artifacts"
+homepage = "https://rust-lang.github.io/cargo-bisect-rustc/"
+bots = []
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+compiler = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+
+[environments.github-pages]
+branches = ["main"]
+
+[environments.publish]
+tags = ["v*"]
+
+[[crates-io]]
+crates = ["cargo-bisect-rustc"]
+publish-workflow = "publish.yml"
+publish-environment = "publish"
+teams = ["compiler"]

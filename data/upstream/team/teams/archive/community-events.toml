@@ -1,0 +1,23 @@
+name = "community-events"
+subteam-of = "community"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "mattgathu",
+    "celaus",
+    "flaki",
+    "badboy",
+    "Manishearth",
+    "JohnTitor",
+    "skade",
+]
+
+[website]
+name = "Events team"
+description = "Supporting and organizing community events"
+repo = "https://github.com/rust-community/events-team"
+
+[[github]]
+orgs = ["rust-lang"]

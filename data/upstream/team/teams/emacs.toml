@@ -1,0 +1,16 @@
+name = "emacs"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "MicahChalmer",
+    "tromey",
+    "brotzeit",
+    "jimblandy",
+    "psibi",
+    "jcs090218",
+]
+
+[[github]]
+orgs = ["rust-lang"]

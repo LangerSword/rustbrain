@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "goals"
+description = "Rust Project Goals tracker"
+homepage = "https://goals.rust-lang.org/"
+bots = ["rustbot", "rfcbot"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+goals = "maintain"
+goal-owners = "write"
+all = "write"
+
+[environments.github-pages]
+branches = ["main"]
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["build"]
+required-approvals = 0

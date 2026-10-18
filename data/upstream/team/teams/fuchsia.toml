@@ -1,0 +1,21 @@
+name = "fuchsia"
+kind = "marker-team"
+
+[people]
+leads = []
+members = [
+    "Nashenas88",
+    "PiJoules",
+    "erickt",
+    "ilovepi",
+    "petrhosek",
+]
+alumni = [
+    "ComputerDruid",
+    "djkoloski",
+    "tmandry",
+    "P1n3appl3",
+]
+
+[permissions]
+bors.rust.try = true

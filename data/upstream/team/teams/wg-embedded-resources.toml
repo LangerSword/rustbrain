@@ -1,0 +1,26 @@
+name = "wg-embedded-resources"
+subteam-of = "wg-embedded"
+kind = "working-group"
+
+[people]
+leads = []
+members = [
+    "adamgreig",
+    "BartMassey",
+    "eldruin",
+    "hargoniX",
+    "hdoordt",
+    "jamesmunns",
+    "therealprof",
+]
+alumni = [
+    "andre-richter",
+]
+
+[website]
+name = "Embedded resources working group"
+description = "Managing various resources owned by the embedded working group"
+
+[[github]]
+orgs = ["rust-embedded"]
+team-name = "resources"

@@ -1,0 +1,52 @@
+name = "all"
+kind = "marker-team"
+
+[people]
+leads = []
+members = []
+include-all-team-members = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+include-team-members = false
+extra-emails = [
+    "***REMOVED***",
+]
+
+[[lists]]
+address = "***REMOVED***"
+include-team-members = false
+extra-emails = [
+    "***REMOVED***",
+]
+
+[[zulip-groups]]
+name = "T-all"
+
+# Private channel with all team members, so that we can have an easy way of reaching them.
+# Also includes Rust Foundation staff, for any relevant non-public communication.
+[[zulip-streams]]
+name = "all/private"
+extra-teams = [
+    "foundation-staff",
+]
+
+# Secondary channel for people sharing vacation plans for better separation from all/private.
+# [Same level of privacy as all/private though.]
+[[zulip-streams]]
+name = "all/rustacean-connection"
+extra-teams = [
+    "foundation-staff",
+]
+excluded-people = [
+    "ChayimFriedman2",
+]

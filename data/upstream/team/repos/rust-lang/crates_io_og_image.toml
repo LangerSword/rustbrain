@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "crates_io_og_image"
+description = "OpenGraph image generation for crates.io packages"
+homepage = "https://crates.io/crates/crates_io_og_image"
+bots = ["rustbot", "forking-renovate"]
+
+[access.teams]
+crates-io = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+pr-required = false
+
+[environments.release]
+
+[[crates-io]]
+crates = ["crates_io_og_image"]
+publish-workflow = "release.yml"
+publish-environment = "release"
+teams = ["crates-io"]

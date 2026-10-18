@@ -1,0 +1,24 @@
+org = "rust-lang"
+name = "bors"
+description = "Rust implementation of bors used for various Rust components (e.g. the compiler)."
+homepage = "https://bors.rust-lang.org"
+bots = ["rustbot", "renovate"]
+
+[access.teams]
+infra = "write"
+infra-bors = "write"
+# For approving production deployments of bors
+infra-admins = "write"
+infra-bors-admins = "write"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["Test", "Test Docker"]
+required-approvals = 0
+merge-queue = { enabled = true }
+
+[environments.production]
+branches = ["main"]
+
+[environments.staging]
+branches = ["main"]

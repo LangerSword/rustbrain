@@ -1,0 +1,11 @@
+org = "rust-lang"
+name = "rfcbot-rs"
+description = "Coordinates asynchronous decision making on Rust repositories. Status of tracked issues and PRs can be viewed at https://rfcbot.rs."
+homepage = "https://rfcbot.rs"
+bots = []
+
+[access.teams]
+infra = "write"
+
+[environments.rfcbot-rs]
+

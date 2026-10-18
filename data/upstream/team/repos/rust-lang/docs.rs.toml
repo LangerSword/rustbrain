@@ -1,0 +1,49 @@
+org = "rust-lang"
+name = "docs.rs"
+description = "crates.io documentation generator"
+homepage = "https://docs.rs"
+bots = ["rustbot", "renovate"]
+
+[access.teams]
+docs-rs = "write"
+docs-rs-reviewers = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+require-conversation-resolution = true
+require-linear-history = true
+
+[environments.production]
+branches = ["main"]
+
+[environments.staging]
+branches = ["main"]
+
+[environments.publish]
+tags = [
+    "font-awesome-as-a-crate-v*",
+    "docs_rs_crates_io-v*"
+]
+
+[environments.github-pages]
+branches = ["main"]
+
+[pages]
+build-type = "workflow"
+
+[[crates-io]]
+crates = [
+    "font-awesome-as-a-crate",
+    "docs_rs_crates_io"
+]
+publish-workflow = "publish.yml"
+publish-environment = "publish"
+teams = ["docs-rs"]
+
+# Obsolete crate
+[[crates-io]]
+crates = [
+    "badge",
+    "docsrs-metadata"
+]

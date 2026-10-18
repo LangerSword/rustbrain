@@ -1,0 +1,69 @@
+name = "devtools"
+top-level = true
+
+[people]
+leads = ["Manishearth"]
+members = ["Manishearth", "GuillaumeGomez", "calebcartwright"]
+alumni = [
+    "alexcrichton",
+    "brson",
+    "carols10cents",
+    "dwijnand",
+    "ehuss",
+    "fitzgen",
+    "japaric",
+    "killercup",
+    "kinnison",
+    "matklad",
+    "michaelwoerister",
+    "nrc",
+    "oli-obk",
+    "sophiajt",
+    "steveklabnik",
+    "withoutboats",
+    "wycats",
+    "Xanewok",
+    "rbtcollins",
+]
+
+[rfcbot]
+label = "T-dev-tools"
+name = "Dev tools"
+ping = "rust-lang/dev-tools"
+
+[website]
+page = "dev-tools"
+name = "Dev tools team"
+email = "***REMOVED***"
+description = "Contributing to and creating the Rust development tools"
+repo = "https://github.com/rust-dev-tools/dev-tools-team"
+zulip-stream = "t-devtools"
+
+[[github]]
+orgs = ["rust-lang", "rust-dev-tools"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+extra-teams = [
+    "cargo",
+    "clippy",
+    "docs-rs",
+    "rustdoc",
+    "rustfmt",
+    "rustup",
+    "wg-bindgen",
+    "crates-io",
+]
+extra-people = ["spacekookie"]
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"

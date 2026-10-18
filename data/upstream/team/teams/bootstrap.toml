@@ -1,0 +1,43 @@
+name = "bootstrap"
+subteam-of = "infra"
+
+[people]
+leads = ["Mark-Simulacrum"]
+members = [
+    "Mark-Simulacrum",
+    "albertlarsan68",
+    "clubby789",
+    "Kobzol",
+    "jieyouxu",
+    "Zalathar",
+]
+alumni = [
+    "jyn514",
+    "onur-ozkan",
+]
+
+[permissions]
+perf = true
+dev-desktop = true
+bors.rust.review = true
+
+[rfcbot]
+label = "T-bootstrap"
+name = "Bootstrap"
+ping = "rust-lang/bootstrap"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Bootstrap team"
+description = "Maintaining and improving the build system for rust-lang/rust"
+email = "***REMOVED***"
+zulip-stream = "t-infra/bootstrap"
+repo = "https://github.com/rust-lang/rust"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-bootstrap"

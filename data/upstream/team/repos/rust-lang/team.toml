@@ -1,0 +1,24 @@
+org = "rust-lang"
+name = "team"
+description = "Rust teams structure"
+bots = ["forking-renovate"]
+
+[pages]
+build-type = "workflow"
+
+[access.teams]
+mods = "write"
+team-repo-admins = "write"
+infra = "triage"
+
+[[rulesets]]
+pattern = "main"
+ci-checks = ["CI"]
+dismiss-stale-review = true
+merge-queue = { enabled = true, max-entries-to-build = 1, max-entries-to-merge = 1 }
+
+[environments.deploy]
+branches = ["gh-readonly-queue/main/*", "main"]
+
+[environments.github-pages]
+branches = ["main"]

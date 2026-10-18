@@ -1,0 +1,37 @@
+# Note: this has effectively been replaced by the types team
+name = "wg-traits"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = [
+    "AzureMarker",
+    "basil-cow",
+    "detrumi",
+    "flodiebold",
+    "MarkMcCaskey",
+    "nathanwhit",
+    "scalexm",
+    "BenLewis-Seequent",
+    "tmandry",
+    "yaahc",
+    "zaharidichev",
+    "Aaron1011",
+    "jackh726",
+    "lcnr",
+    "matthewjasper",
+    "nikomatsakis",
+    "oli-obk",
+    "spastorino",
+]
+
+[website]
+name = "Traits working group"
+description = "Improving the trait checker and related language features"
+repo = "https://github.com/rust-lang/wg-traits"
+zulip-stream = "wg-traits"
+
+[[github]]
+orgs = ["rust-lang", "rust-lang-nursery"]

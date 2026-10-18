@@ -1,0 +1,27 @@
+name = "wg-const-eval"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = ["oli-obk", "RalfJung"]
+members = [
+    "oli-obk",
+    "RalfJung",
+    "lcnr",
+    "fee1-dead",
+]
+alumni = [
+    "ecstatic-morse",
+]
+
+[website]
+name = "Compile-time Function Evaluation working area"
+description = "Soundly expanding the capabilities of compile-time function evaluation in Rust"
+repo = "https://github.com/rust-lang/const-eval"
+zulip-stream = "t-compiler/const-eval"
+
+[[github]]
+orgs = ["rust-lang"]
+
+[[zulip-groups]]
+name = "const-eval"

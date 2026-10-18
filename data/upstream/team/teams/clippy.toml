@@ -1,0 +1,55 @@
+name = "clippy"
+subteam-of = "devtools"
+
+[people]
+leads = ["Manishearth", "flip1995"]
+members = [
+    "llogiq",
+    "Manishearth",
+    "matthiaskrgr",
+    "flip1995",
+    "Alexendoo",
+    "dswij",
+    "Jarcho",
+    "blyxyas",
+    "Centri3",
+    "y21",
+    "samueltardieu",
+    "ada4a",
+]
+alumni = [
+    "ebroto",
+    "yaahc",
+    "oli-obk",
+    "killercup",
+    "mcarton",
+    "phansch",
+    "camsteffen",
+    "birkenfeld",
+    "giraffate",
+    "xFrednet",
+]
+
+[permissions]
+perf = true
+bors.rust.review = true
+crater = true
+dev-desktop = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Clippy team"
+description = "Designing and implementing the Clippy linter"
+zulip-stream = "clippy"
+repo = "https://github.com/rust-lang/rust-clippy"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[zulip-groups]]
+name = "T-clippy"
+
+[[zulip-streams]]
+name = "t-clippy/private"

@@ -1,0 +1,51 @@
+name = "release"
+subteam-of = "infra"
+
+[people]
+leads = ["Mark-Simulacrum"]
+members = [
+    "cuviper",
+    "Dylan-DPC",
+    "Mark-Simulacrum",
+    "emilyalbini",
+    "BoxyUwU",
+    "theemathas",
+]
+alumni = [
+    "alexcrichton",
+    "BatmanAoD",
+    "Centril",
+    "sgrif",
+    "tmandry",
+    "XAMPPRocky",
+]
+
+[permissions]
+crater = true
+perf = true
+bors.rust.review = true
+
+[[github]]
+orgs = ["rust-lang"]
+
+[rfcbot]
+label = "T-release"
+name = "Release"
+ping = "rust-lang/release"
+
+[website]
+name = "Release team"
+description = "Tracking regressions and stabilizations, and producing Rust releases"
+email = "***REMOVED***"
+zulip-stream = "t-release"
+repo = "https://github.com/rust-lang/release-team"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"
+include-subteam-members = true
+
+[[zulip-groups]]
+name = "T-release"

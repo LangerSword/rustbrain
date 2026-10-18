@@ -1,0 +1,36 @@
+name = "wg-compiler-performance"
+subteam-of = "compiler"
+kind = "working-group"
+
+[people]
+leads = ["Mark-Simulacrum"]
+members = [
+    "Mark-Simulacrum",
+    "Kobzol",
+    "lqd",
+    "nnethercote",
+    "Zoxc",
+    "panstromek",
+    "Jamesbarford",
+    "JonathanBrouwer"
+]
+alumni = [
+    "michaelwoerister",
+    "pnkfelix",
+    "rylev",
+    "wesleywiser",
+    "tgnottingham",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[website]
+name = "Compiler performance working area"
+description = "Improving rustc compilation performance (build times)"
+repo = "https://github.com/rust-lang/rustc-perf"
+zulip-stream = "t-compiler/performance"
+
+[permissions]
+perf = true
+bors.rust.try = true

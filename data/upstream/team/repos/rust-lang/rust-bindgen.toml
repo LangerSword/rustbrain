@@ -1,0 +1,21 @@
+org = "rust-lang"
+name = "rust-bindgen"
+description = "Automatically generates Rust FFI bindings to C (and some C++) libraries."
+homepage = "https://rust-lang.github.io/rust-bindgen/"
+bots = ["rustbot"]
+
+[pages]
+build-type = "legacy"
+branch = "gh-pages"
+path = "/"
+
+[access.teams]
+wg-bindgen = "write"
+
+[[rulesets]]
+pattern = "main"
+required-approvals = 0
+ci-checks = ["success"]
+merge-queue = { enabled = true, method = "rebase" }
+
+[environments.github-pages]

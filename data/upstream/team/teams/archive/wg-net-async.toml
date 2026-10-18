@@ -1,0 +1,12 @@
+name = "wg-net-async"
+subteam-of = "wg-net"
+kind = "working-group"
+
+[people]
+leads = []
+members = []
+alumni = ["cramertj", "MajorBreakfast"]
+
+[website]
+name = "Async foundations working group"
+description = "Stabilizing and documenting the async features of Rust"

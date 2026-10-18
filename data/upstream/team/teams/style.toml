@@ -1,0 +1,46 @@
+name = "style"
+subteam-of = "lang"
+
+[people]
+leads = ["calebcartwright"]
+members = [
+    "calebcartwright",
+    "joshtriplett",
+    "traviscross",
+]
+alumni = [
+    "brson",
+    "compiler-errors",
+    "japaric",
+    "nrc",
+    "solson",
+    "steveklabnik",
+    "yaahc",
+]
+
+[[github]]
+orgs = ["rust-lang"]
+
+[permissions]
+# Primarily for documentation stored in rust-lang/rust
+bors.rust.review = true
+
+[rfcbot]
+label = "T-style"
+name = "Style"
+ping = "rust-lang/style"
+
+[website]
+name = "Style team"
+description = "Defining and evolving the default Rust coding style"
+zulip-stream = "t-style"
+repo = "https://github.com/rust-lang/style-team"
+
+[[zulip-groups]]
+name = "T-style"
+
+[[lists]]
+address = "***REMOVED***"
+
+[[lists]]
+address = "***REMOVED***"

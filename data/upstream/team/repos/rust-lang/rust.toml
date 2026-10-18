@@ -1,0 +1,153 @@
+org = "rust-lang"
+name = "rust"
+description = "Empowering everyone to build reliable and efficient software."
+homepage = "https://www.rust-lang.org"
+bots = ["bors", "craterbot", "forking-renovate", "glacierbot", "log-analyzer", "rustbot", "rfcbot", "rust-timer", "datadog"]
+
+[access.teams]
+bootstrap = "write"
+cargo = "write"
+clippy = "write"
+compiler = "write"
+compiler-ops = "triage"
+infra = "write"
+lang = "write"
+lang-ops = "write"
+libs = "write"
+mods-venue = "write"
+opsem = "write"
+project-exploit-mitigations = "write"
+project-rustc-public = "write"
+release = "write"
+rustdoc = "write"
+rustfmt = "write"
+rustup = "write"
+rust-analyzer = "write"
+style = "write"
+types = "write"
+triage = "write"
+
+# Only `bors` can push to `main`
+[[rulesets]]
+name = "main"
+pattern = "main"
+bypass-apps = ["bors"]
+prevent-update = true
+
+# No one can force push to main
+[[rulesets]]
+name = "main - force-push"
+pattern = "main"
+# `main` already requires users to open PRs.
+# This allows bors to push without opening a PR.
+pr-required = false
+
+# Only `bors` and `promote-release` can push to `stable`
+[[rulesets]]
+name = "stable"
+pattern = "stable"
+bypass-apps = ["bors", "promote-release"]
+prevent-update = true
+
+# Only `promote-release` can force-push to `stable`
+[[rulesets]]
+name = "stable - force-push"
+pattern = "stable"
+bypass-apps = ["promote-release"]
+# `stable` already requires users to open PRs.
+# This allows bors to push without opening a PR.
+pr-required = false
+
+# No one create or delete the stable branch.
+[[rulesets]]
+name = "stable - misc"
+pattern = "stable"
+pr-required = false
+prevent-force-push = false
+
+# Only `bors` and `promote-release` can push to `beta`
+[[rulesets]]
+name = "beta"
+pattern = "beta"
+bypass-apps = ["bors", "promote-release"]
+prevent-update = true
+
+# Only `promote-release` can force-push to `beta`
+[[rulesets]]
+name = "beta - force-push"
+pattern = "beta"
+bypass-apps = ["promote-release"]
+# `beta` already requires users to open PRs.
+# This allows bors to push without opening a PR.
+pr-required = false
+
+# no one can create or delete the beta branch.
+[[rulesets]]
+name = "beta - misc"
+pattern = "beta"
+pr-required = false
+prevent-force-push = false
+
+[[rulesets]]
+pattern = "*"
+bypass-apps = ["bors", "promote-release"]
+prevent-update = true
+
+[[rulesets]]
+pattern = "*/**/*"
+bypass-apps = ["bors", "promote-release"]
+prevent-update = true
+
+# Required for running try builds created by bors.
+# Must support force-pushes.
+[[rulesets]]
+pattern = "automation/bors/try"
+bypass-apps = ["bors"]
+prevent-update = true
+
+# Required for running try builds created by bors.
+# Must support force-pushes.
+[[rulesets]]
+pattern = "automation/bors/try-merge"
+bypass-apps = ["bors"]
+prevent-update = true
+
+# Required for running auto builds created by bors.
+# Must support force-pushes.
+[[rulesets]]
+pattern = "automation/bors/auto"
+bypass-apps = ["bors"]
+prevent-update = true
+
+# Required for running auto builds created by bors.
+# Must support force-pushes.
+[[rulesets]]
+pattern = "automation/bors/auto-merge"
+bypass-apps = ["bors"]
+prevent-update = true
+
+# Required for running unrolled perf builds created by bors.
+# Must support force-pushes.
+[[rulesets]]
+pattern = "automation/bors/try-perf"
+bypass-apps = ["bors"]
+prevent-update = true
+
+# Required for running unrolled perf builds created by bors.
+# Must support force-pushes.
+[[rulesets]]
+pattern = "automation/bors/try-perf-merge"
+bypass-apps = ["bors"]
+prevent-update = true
+
+[environments.bors]
+branches = ["automation/bors/auto", "automation/bors/try", "automation/bors/try-perf"]
+
+[[crates-io]]
+crates = [
+    "rust-lang",
+    "rustc-std-workspace-alloc",
+    "rustc-std-workspace-core",
+    "rustc-std-workspace-std",
+    "rustc_lexer",
+]
