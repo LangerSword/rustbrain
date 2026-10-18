@@ -1,0 +1,49 @@
+cmd/gaps.py output, run 2026-10-19, graph loaded from data/snapshot.json.
+
+ROUTING GAP REPORT
+==========================================================================
+Scope: all merged RFC PRs in rust-lang/rfcs at the pinned SHA
+       (see PINS.md). Labels come from RFC.team_labels, so a label with
+       no team file still appears below.
+Denominators: 761 merged RFCs, 19 distinct T-* labels in use.
+
+TIER 1: ACTIVE (14 labels, 357 distinct RFCs)
+  The label's team exists and is active. No action needed.
+  label                      rfcs   status         successor
+  lang                       263    active         -
+  compiler                   43     active         -
+  cargo                      42     active         -
+  crates-io                  14     active         -
+  rustdoc                    10     active         -
+  release                    7      active         -
+  leadership-council         6      active         -
+  libs                       5      active         -
+  types                      4      active         -
+  infra                      4      active         -
+  edition                    2      active         -
+  style                      1      active         -
+  opsem                      1      active         -
+  testing-devex              1      active         -
+  SUBTOTAL                   403      (357 of 761 RFCs carry at least one label in this tier)
+
+
+TIER 2: ARCHIVED WITH A NAMED SUCCESSOR (2 labels, 162 distinct RFCs)
+  Actionable: the route is real, it just has to follow one hop.
+  label                      rfcs   status         successor
+  libs-api                   138    archived       libs
+  core                       24     archived       leadership-council
+  SUBTOTAL                   162      (162 of 761 RFCs carry at least one label in this tier)
+
+
+TIER 3: TRUE GAP (3 labels, 25 distinct RFCs)
+  Actionable: create the team, or stop using the label.
+  label                      rfcs   status         successor
+  dev-tools                  20     NO_TEAM_FILE   -
+  doc                        6      NO_TEAM_FILE   -
+  interim-leadership-chat    1      archived       -
+  SUBTOTAL                   27       (25 of 761 RFCs carry at least one label in this tier)
+
+==========================================================================
+Per-label RFC loads overlap: one RFC can carry several labels, so the
+SUBTOTAL column sums to more than the RFC total. The distinct-RFC
+figures above are the ones to quote.

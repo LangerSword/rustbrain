@@ -12,13 +12,13 @@ gap report and the CI assertions are all deterministic, and CI runs with no netw
 
 [![ci](https://github.com/LangerSword/rustbrain/actions/workflows/ci.yml/badge.svg)](https://github.com/LangerSword/rustbrain/actions/workflows/ci.yml)
 
-Latest green run: https://github.com/LangerSword/rustbrain/actions/runs/39167042050
+Latest green run: https://github.com/LangerSword/rustbrain/actions/runs/39169607828
 
 ---
 
 ## What it does, concretely
 
-Two commands and one page:
+Commands and one page:
 
 | command | what it produces |
 |---|---|
@@ -38,33 +38,43 @@ tool that ignored the successor edge would return nothing for 138 merged decisio
 
 ## Graph data model
 
-224 teams, 675 people, 761 RFCs, 626 documents; 1,177 roster edges, 4 successor edges.
+Counts below are measured from `scripts/load_graph.py` output on the committed
+snapshot.
 
-```
-(:Team   {slug, name, status: active|archived, successor_team})
-(:Person {handle})
-(:RFC    {num, title, outcome, created, merged_at, author, author_assoc, team_labels})
-(:Document {path, rfc})
+**Nodes**
 
-(Person)-[:MEMBER]->(Team)              person points AT team
-(Person)-[:LEAD]->(Team)                person points AT team, lead role
-(Person)-[:AUTHORED]->(RFC)             person points AT rfc
-(Team)-[:GOVERNED]->(RFC)               team points AT rfc
-(Team)-[:SUCCEEDED_BY {rfc, source, quote}]->(Team)
-                                        archived team points AT its active successor
-```
+| node | key properties | count |
+|---|---|---|
+| `Team` | slug, name, status (active or archived), successor_team | 224 |
+| `Person` | handle | 675 |
+| `RFC` | num, title, outcome, created, merged_at, author, author_assoc, team_labels | 761 |
+| `Document` | path, rfc | 626 |
+
+**Edges**, with the direction the ingest writes and its count:
+
+| edge | direction | carries | count |
+|---|---|---|---|
+| `MEMBER` | `(Person)->(Team)` person points AT team | role | 1050 |
+| `LEAD` | `(Person)->(Team)` person points AT team, lead role | role | 127 |
+| `AUTHORED` | `(Person)->(RFC)` person points AT rfc | | 592 |
+| `GOVERNED` | `(Team)->(RFC)` team points AT rfc | | 395 |
+| `SUCCEEDED_BY` | `(Team)->(Team)` archived team points AT its active successor | rfc, source, quote | 4 |
 
 Every direction above is a fact about how the ingest writes the data, and every
 query in `queries/` is commented with it. The directions are also asserted in both
 forms: a flipped pattern must return **zero** rows, and `scripts/test_queries.py`
 checks that. That test exists because a Cypher pattern that matches nothing returns
 zero rows with no error, so a query written against the wrong arrow looks like a
-correct empty answer.
+correct empty answer. That mistake was made here once, and the blog evidence index
+records it.
 
 ### The query the product depends on
 
 ```cypher
-// follow up to 3 successor hops from the labelled team to the CURRENT team
+// EDGE DIRECTIONS as the ingest writes them:
+//   (Person)-[:LEAD|MEMBER]->(Team), (Person)-[:AUTHORED]->(RFC),
+//   (Team)-[:GOVERNED]->(RFC), (Team)-[:SUCCEEDED_BY]->(Team) archived to active.
+// Follow up to 3 successor hops from the labelled team to the CURRENT team:
 MATCH (labelled:Team {slug: $slug})
 MATCH (labelled)-[:SUCCEEDED_BY*0..3]->(owner:Team)
 WHERE owner.status = 'active'
@@ -82,6 +92,23 @@ ORDER BY latest DESC, authored DESC, handle
 active label, one hop for an archived one. `ORDER BY latest DESC` is deliberate:
 sorting by authored count alone routes to retired maintainers, since one maintainer
 has 42 RFCs whose most recent is from 2018.
+
+### Why the graph is load-bearing (the Rule 3 argument)
+
+The routing question is a variable-depth traversal joined to a roster. Start at the
+team the label names, follow `SUCCEEDED_BY` up to three hops to whichever team is
+active today, then join that team's current leads and members and each member's
+authored RFCs, grouped and sorted by recency. In a relational store that is a
+recursive CTE for the chain (the depth is not fixed, and the chain may be empty), a
+filter for the terminal active team, a roster join and a grouped max, and the chain
+join is the part that has to be rewritten when the data changes shape. In the graph
+it is one pattern, `SUCCEEDED_BY*0..3`.
+
+The `0` matters as much as the `3`: an active label takes zero hops through the
+same query, so there is no second code path to drift out of sync. The stake is
+measurable: 162 of 761 merged RFCs (libs-api 138, core 24, from `cmd/gaps.py`)
+resolve to an active team ONLY through this hop. Without the traversal they return
+an archived team with an empty roster, which is a routing dead end, not an answer.
 
 ---
 
@@ -127,21 +154,26 @@ Observed from the clean clone: `PASS: file intact and byte-identical rebuild`,
 Scored against the eight elements in the brief. **7 of 8, and the one that is 0 is 0
 by nature, not by omission.**
 
-| # | element | score | why |
-|---|---|---|---|
-| 1 | people | 1 | 675 handles, 416 on an active team; every roster comes from public team files |
-| 2 | teams | 1 | 224 teams with real rosters: leads, members and alumni per team |
-| 3 | projects | 1 | each team's file lists its repos and the permission level per repo |
-| 4 | documents | 1 | 626 RFC documents enumerated from the repo tree by one call |
-| 5 | decisions | 1 | 761 merged RFCs with outcomes from `disposition-*` labels, plus KEP-style status on each |
-| 6 | stays current | 1 | `refresh.py --bump` re-ingests and diffs; it caught a real roster change (`joboet` left `libs-ping`) |
-| 7 | agent does work | 1 | the routing command produces a reviewer list as an artifact; output is saved in `reports/` and in the blog evidence |
-| 8 | company-like setting | **0** | **Rust is a volunteer foundation, not a company** |
+| # | element | score | why | evidence file |
+|---|---|---|---|---|
+| 1 | people | 1 | 675 handles, 416 on an active team; every roster comes from the public team files | `out/blog_evidence/readme_numbers.txt` |
+| 2 | teams | 1 | 224 teams with real rosters: leads, members and alumni per team | `out/blog_evidence/snapshot_verifier.txt` |
+| 3 | projects | 1 | the pinned tree carries 337 repository files under `repos/` (140 in `archive/`); all 337 list the teams with access and the level per team (`write` 206, `maintain` 127, `triage` 15 entries, 107 distinct teams). Counted and quoted, not ingested into the graph | `out/blog_evidence/repo_permissions.txt` |
+| 4 | documents | 1 | 626 RFC documents joined to merged RFCs from 652 numbered files in the pinned tree | `data/rfcs_text_index.json` |
+| 5 | decisions | 1 | 761 merged RFCs; 241 carry the upstream `disposition-merge` label, read as the outcome, and the other 520 carry no disposition label and are recorded as `none` | `data/snapshot.json` |
+| 6 | stays current | 1 | `refresh.py --bump` re-ingests and diffs; it caught a real roster change (`joboet` left `libs-ping`) | `reports/refresh_20261019_022025.md` |
+| 7 | agent does work | 1 | the routing command writes a reviewer list as an artifact; saved outputs are in the blog evidence, refresh diffs land in `reports/` | `out/blog_evidence/routing_examples.md` |
+| 8 | company-like setting | **0** | **Rust is a foundation project, not a company:** the data carries the foundation's own teams and two teams described upstream as funded, but no revenue, customer, contract or reporting line anywhere in it | `out/blog_evidence/company_like_0.md` |
 
-On element 8, plainly: there is no revenue, no customer, no contract, no reporting
-line and no manager in this data. Team leads hold peer authority. The teams are not
-an org chart and this README will not call them one. A "Company Brain" built only on
-Rust models a standards body; that is the honest scope of the demo.
+On element 8, plainly: Rust is a foundation project, not a company. The data even
+includes the foundation's own structure (`foundation-staff`, `foundation-board`,
+`foundation-smt`, `funding-advisors`, `maintainers-in-residence` and others) and two
+teams the project itself describes as funded (`program-managers`, "hired by the
+Project (via the Foundation)"; `crates-io-on-call`, "composed of employees of the
+Rust Foundation"). But there is no revenue, no customer, no contract and no
+reporting line anywhere in this data. Team leads hold peer authority. The teams are
+not an org chart and this README will not call them one. A "Company Brain" built
+only on Rust models a standards foundation; that is the honest scope of the demo.
 
 Other limits, each measured rather than assumed:
 
@@ -149,8 +181,10 @@ Other limits, each measured rather than assumed:
   entries, each with a source file, a line number and a verbatim quote. The ingest
   validates every entry against the cited line and fails the build if a quote does
   not appear there. Anything without a citable source stays unmapped and is reported
-  as a true gap. Four archived teams carry no successor note at all, so the map is
-  not complete and does not claim to be.
+  as a true gap. Of the 52 archived team files, exactly 4 carry a successor note and
+  all 4 are mapped; 3 further teams are listed under `unmapped` with a reason each,
+  and the other 45 carry no successor note at all. The map covers what upstream
+  documents and does not claim to be complete.
 - **Label join coverage, scoped.** Of the 19 `T-*` labels in use across 761 merged
   RFCs, **14 resolve to an active team (73.7%)**, 17 resolve to some file including
   archived ones (89.5%), and 2 have no file anywhere. An earlier version of this
@@ -173,10 +207,14 @@ Other limits, each measured rather than assumed:
 ### Coverage numbers with their scope
 
 Every figure below is over all merged PRs in `rust-lang/rfcs` with no `not-rfc`
-label, and all files in `rust-lang/team`, at the revisions in `PINS.md`.
+label (rfcs revision `d2705ad64ba47`, retrieved 2026-10-16) and all files in
+`rust-lang/team` (team revision `a5176049c11ca0`, retrieved 2026-10-19); the full
+revisions and their committer dates are in `PINS.md`.
 
 All figures re-derived by `scripts/author_coverage.py` and
-`scripts/verify_readme_numbers.py`, which are the only sources quoted here.
+`scripts/verify_readme_numbers.py`, which are the only sources quoted here, and
+asserted figure by figure in CI: `scripts/verify_readme_numbers.py` exits nonzero if
+any of them drifts.
 
 | figure | value | numerator / denominator | definition |
 |---|---|---|---|
@@ -195,12 +233,15 @@ All figures re-derived by `scripts/author_coverage.py` and
 
 ## Rules compliance notes
 
-**Handles only (data policy).** Contributor data is public GitHub handles from
-`rust-lang/team` and public PR metadata. This repository stores handles only: no real
-names, no email addresses, no avatars, no post text, and no RFC bodies. Titles are
-truncated to 120 characters. `data/upstream/team/` is the team repo at a pinned
-revision, committed so CI needs no network; the ingest never writes a name or an
-email into the graph or the snapshot.
+**Handles only (data policy).** Everything the product stores is handles:
+`data/snapshot.json` and the graph carry no real names, no email addresses, no
+avatar URLs, no post text and no RFC bodies, and RFC titles are truncated to 120
+characters. The one place that holds more than handles is the vendored upstream tree
+at `data/upstream/team/`, which is committed verbatim so CI needs no network; it is
+public `rust-lang/team` content and includes the fields upstream itself publishes
+(its `people/*.toml` files carry contact fields). The ingest copies only handles,
+team slugs and structure out of that tree into the snapshot, and every command
+output and the UI are handles only.
 
 **AI-assistant disclosure.** An AI assistant (Hermes Agent by Nous Research) wrote
 the code in this repository at the entrant's direction, across the build window. All
@@ -258,6 +299,7 @@ data/snapshot.json  the frozen, hashed, byte-reproducible snapshot
 data/successors.yaml curated successor map, one cited source line per entry
 PINS.md           the exact upstream revisions and the data policy
 reports/          refresh diffs
+out/blog_evidence/  screenshots, transcripts and audit outputs cited by this README
 ```
 
 `data/snapshot.json` carries a `content_sha256` over its own body. `--check` verifies

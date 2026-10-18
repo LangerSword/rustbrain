@@ -1,0 +1,36 @@
+Repository permission files in the pinned rust-lang/team tree, counted 2026-10-19.
+
+Files: 337 under data/upstream/team/repos/, every one with an [access.teams] block.
+Permission level entries across all files: {'maintain': 127, 'write': 206, 'triage': 15}.
+Distinct team slugs granted access: 107.
+Organisations: {'rust-analyzer': 24, 'rust-lang': 239, 'rust-embedded': 10, 'rust-dev-tools': 12, 'rust-lang-nursery': 22, 'rust-lang-deprecated': 13}.
+Team slugs referenced but with no teams/*.toml at this revision: ['project-assumptions-on-binders'].
+
+Sample, data/upstream/team/repos/rust-lang/rust.toml (abridged):
+
+org = "rust-lang"
+name = "rust"
+description = "Empowering everyone to build reliable and efficient software."
+homepage = "https://www.rust-lang.org"
+bots = ["bors", "craterbot", "forking-renovate", "glacierbot", "log-analyzer", "rustbot", "rfcbot", "rust-timer", "datadog"]
+
+[access.teams]
+bootstrap = "write"
+cargo = "write"
+clippy = "write"
+compiler = "write"
+compiler-ops = "triage"
+infra = "write"
+lang = "write"
+lang-ops = "write"
+libs = "write"
+mods-venue = "write"
+opsem = "write"
+project-exploit-mitigations = "write"
+project-rustc-public = "write"
+release = "write"
+rustdoc = "write"
+rustfmt = "write"
+rustup = "write"
+rust-analyzer = "write"
+style = "write"

@@ -1,0 +1,16 @@
+scripts/verify_snapshot.py output, run 2026-10-19.
+Independent tomllib parse of the pinned team tree against data/snapshot.json.
+
+teams_total                tomllib=224    snapshot=224    OK  
+teams_active               tomllib=172    snapshot=172    OK  
+leads                      tomllib=127    snapshot=127    OK  
+members                    tomllib=1050   snapshot=1050   OK  
+roster total               tomllib=1177   snapshot=1177   OK  
+  compiler               tomllib L/M/A=2/77/22 snapshot=2/77/22 OK
+  libs                   tomllib L/M/A=2/37/11 snapshot=2/37/11 OK
+  leadership-council     tomllib L/M/A=0/7/12 snapshot=0/7/12 OK
+  libs-api               tomllib L/M/A=0/0/18 snapshot=0/0/18 OK
+  core                   tomllib L/M/A=0/0/20 snapshot=0/0/20 OK
+  mentees                tomllib L/M/A=0/17/25 snapshot=0/17/25 OK
+
+VERDICT: PASS, snapshot matches an independent TOML parser
