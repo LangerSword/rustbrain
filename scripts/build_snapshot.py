@@ -1,0 +1,303 @@
+#!/usr/bin/env python3
+"""Build the deterministic, metadata-only snapshot. Offline. No network in CI.
+
+Inputs (all committed, fetched once into data/ by scripts/fetch_*.py):
+  data/upstream/team/            rust-lang/team git tree at the pinned SHA
+  data/rfcs_merged.json          merged PR metadata (no bodies)
+  data/rfcs_text_index.json      text/NNNN-*.md paths (no bodies)
+
+Output:
+  data/snapshot.json             byte-identical across runs; carries content_sha256
+
+Store policy, enforced here and nowhere else:
+  handles only, no real names, no emails, no RFC bodies, titles capped at 120 chars.
+
+Usage:
+  python3 scripts/build_snapshot.py           write data/snapshot.json
+  python3 scripts/build_snapshot.py --check   rebuild and exit 1 on ANY drift
+"""
+import argparse
+import hashlib
+import json
+import os
+import re
+import sys
+
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA = os.path.join(HERE, "data")
+TEAM = os.path.join(DATA, "upstream", "team")
+
+PINS = {"team": "cb0ccabd69bc63e3f84f26d764704d939224071f",
+        "rfcs": "d2705ad64ba47e812a2b6b19d6f613fb4c14c5e0"}
+
+# falkordb/falkordb:latest, AMD64 manifest-list digest, read 2026-10-16.
+FALKORDB_IMAGE = "falkordb/falkordb"
+FALKORDB_DIGEST = "sha256:b0bdcac2cbaff989e77cb0610439b7a9289e86de033ccbbd4368b66fb680ae7a"
+
+# Order matters: first match wins.
+DISPOSITIONS = ("merge", "approve", "reject", "postpone")
+
+
+def read(path):
+    with open(path, "r", encoding="utf-8", errors="replace") as f:
+        return f.read()
+
+
+def people_block(text):
+    m = re.search(r"\[people\](.*?)(\n\[|\Z)", text, re.S)
+    return m.group(1) if m else ""
+
+
+def list_block(block, key):
+    """Return the raw text INSIDE `key = [ ... ]`, or None if the key is absent.
+
+    Bracket-matched, so it handles a one-line list (`leads = ["a", "b"]`), a
+    multi-line list, an empty list (`members = []`), and a list whose closing
+    bracket sits on a later line. A regex cannot do this safely: a non-greedy match
+    on `members = []` followed by `alumni = [...]` runs past the empty list and
+    swallows the alumni handles, and a line-based scan on a one-line `leads = [..]`
+    runs into the NEXT list. Both bugs were live here before this function.
+    """
+    m = re.search(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\[", block, re.M)
+    if not m:
+        return None
+    i, depth, in_str, quote = m.end(), 1, False, ""
+    start = i
+    while i < len(block):
+        c = block[i]
+        if in_str:
+            if c == quote:
+                in_str = False
+        elif c in "\"'":
+            in_str, quote = True, c
+        elif c == "[":
+            depth += 1
+        elif c == "]":
+            depth -= 1
+            if depth == 0:
+                return block[start:i]
+        i += 1
+    return block[start:]
+
+
+def str_list(block, key):
+    """Plain handle list: members = ["a", "b"]"""
+    seg = list_block(block, key)
+    if not seg:
+        return []
+    return [h for h in re.findall(r"[\"']([^\"']+)[\"']", seg) if h]
+
+
+def obj_list(block, key):
+    """Inline table list, as used by leadership-council, mentees, maintainers-in-residence
+       and part of compiler:
+       members = [ { github = "lqd", roles = ["council-rep-compiler"] }, ... ]
+       MEASURED 2026-10-16: 4 of 224 team files use this shape. Both are parsed."""
+    seg = list_block(block, key)
+    if not seg:
+        return []
+    out = []
+    for entry in re.findall(r"\{([^}]*)\}", seg):
+        g = re.search(r"github\s*=\s*[\"']([^\"']+)[\"']", entry)
+        if not g:
+            continue
+        rm = re.search(r"roles\s*=\s*\[([^\]]*)\]", entry)
+        roles = re.findall(r"[\"']([^\"']+)[\"']", rm.group(1)) if rm else []
+        out.append({"handle": g.group(1), "roles": sorted(set(roles))})
+    return out
+
+
+def str_list_without_objs(block, key):
+    """Plain strings in the SAME list as inline tables, which is how compiler.toml is
+       written (22 objects and 55 strings in one members list). Braces are stripped
+       first so the object keys are not read as handles."""
+    seg = list_block(block, key)
+    if not seg:
+        return []
+    seg = re.sub(r"\{[^}]*\}", "", seg)
+    return [h for h in re.findall(r"[\"']([^\"']+)[\"']", seg) if h]
+
+
+def parse_team(path, status):
+    text = read(path)
+    slug = os.path.basename(path)[:-5]
+    name = re.search(r'^name\s*=\s*["\']([^"\']+)', text, re.M)
+    sub = re.search(r'^subteam-of\s*=\s*["\']([^"\']+)', text, re.M)
+    successor_note = successor_team = successor_rfc = None
+    m = re.search(r"^#\s*(.+?)\s*$", text, re.M)
+    if m:
+        successor_note = m.group(1)
+        rm = re.search(r"RFC\s*#?(\d+)", successor_note)
+        if rm:
+            successor_rfc = int(rm.group(1))
+        inh = re.search(r"incorporated into\s+([A-Za-z0-9 _-]+?)\s+with", successor_note)
+        rep = re.search(r"replaced by the\s+([A-Za-z0-9 _-]+?)\s+with", successor_note)
+        if inh:
+            successor_team = inh.group(1).strip().lower().replace(" ", "-")
+        elif rep:
+            successor_team = rep.group(1).strip().lower().replace(" ", "-")
+    blk = people_block(text)
+    leads = str_list(blk, "leads")
+    members = [{"handle": h, "roles": []} for h in str_list_without_objs(blk, "members")] + obj_list(blk, "members")
+    # alumni can ALSO hold inline tables (compiler and mentees both do), so it takes
+    # the same two-pass treatment as members. A plain string scan would count the
+    # role names ("compiler-maintainer", "gsoc") as handles.
+    alumni = sorted(set(str_list_without_objs(blk, "alumni")) | {o["handle"] for o in obj_list(blk, "alumni")})
+    merged = {}
+    for m_ in members:
+        merged.setdefault(m_["handle"], set()).update(m_["roles"])
+    return {
+        "slug": slug,
+        "name": name.group(1) if name else slug,
+        "status": status,
+        "subteam_of": sub.group(1) if sub else None,
+        "leads": sorted(set(leads)),
+        "members": sorted((h, sorted(r)) for h, r in merged.items()),
+        "alumni": alumni,
+        "successor_note": successor_note,
+        "successor_rfc": successor_rfc,
+        "successor_team": successor_team,
+    }
+
+
+def resolve_successor(teams, slug_hint):
+    """The comment says 'incorporated into Library', but the team SLUG is 'libs'.
+       Resolve a human-readable hint to a real team slug by trying slug, then name,
+       then a light singular/plural trim, and return None rather than guessing."""
+    if not slug_hint:
+        return None
+    cands = {slug_hint, slug_hint + "s", slug_hint.rstrip("s")}
+    for s in cands:
+        if s in teams:
+            return s
+    for t in teams.values():
+        if (t["name"] or "").strip().lower() == slug_hint:
+            return t["slug"]
+    return None
+
+
+def collect_teams():
+    teams = {}
+    base = os.path.join(TEAM, "teams")
+    for fn in sorted(os.listdir(base)):
+        if fn.endswith(".toml"):
+            t = parse_team(os.path.join(base, fn), "active")
+            teams[t["slug"]] = t
+    arch = os.path.join(base, "archive")
+    for fn in sorted(os.listdir(arch)):
+        if fn.endswith(".toml"):
+            t = parse_team(os.path.join(arch, fn), "archived")
+            teams.setdefault(t["slug"], t)   # an active file always wins
+    return teams
+
+
+def build():
+    teams = collect_teams()
+    for t in teams.values():
+        t["successor_resolved"] = resolve_successor(teams, t["successor_team"])
+    people = {}
+
+    def touch(h):
+        people.setdefault(h, {"handle": h, "member_of": [], "lead_of": [], "alumni_of": []})
+
+    for slug in sorted(teams):
+        t = teams[slug]
+        for h in t["leads"]:
+            touch(h)
+            people[h]["lead_of"].append(slug)
+            people[h]["member_of"].append(slug)
+        for h, _roles in t["members"]:
+            touch(h)
+            people[h]["member_of"].append(slug)
+        for h in t["alumni"]:
+            touch(h)
+            people[h]["alumni_of"].append(slug)
+    for h in people:
+        for k in ("member_of", "lead_of", "alumni_of"):
+            people[h][k] = sorted(set(people[h][k]))
+        people[h]["on_active_team"] = any(teams[s]["status"] == "active" for s in people[h]["member_of"])
+
+    docs = {d["rfc"]: d["path"] for d in json.load(open(os.path.join(DATA, "rfcs_text_index.json")))}
+    rfcs = []
+    for r in json.load(open(os.path.join(DATA, "rfcs_merged.json"))):
+        if "not-rfc" in r["labels"]:
+            continue
+        outcome = next((o for o in DISPOSITIONS if "disposition-" + o in r["labels"]), "none")
+        rfcs.append({
+            "num": r["num"], "title": (r["title"] or "")[:120], "outcome": outcome,
+            "created": (r["created_at"] or "")[:10], "merged_at": (r["merged_at"] or "")[:10],
+            "author": r["user"], "author_assoc": r.get("assoc") or "NONE",
+            "team_labels": sorted({l[2:].lower() for l in r["labels"] if l.lower().startswith("t-")}),
+            "document": docs.get(r["num"]),
+        })
+    rfcs.sort(key=lambda x: x["num"])
+
+    snap = {
+        "schema_version": 2,
+        "pins": PINS,
+        "falkordb_image": {"name": FALKORDB_IMAGE, "digest": FALKORDB_DIGEST},
+        "counts": {
+            "teams_total": len(teams),
+            "teams_active": sum(1 for t in teams.values() if t["status"] == "active"),
+            "teams_archived": sum(1 for t in teams.values() if t["status"] == "archived"),
+            "roster_edges_lead": sum(len(t["leads"]) for t in teams.values()),
+            "roster_edges_member": sum(len(t["members"]) for t in teams.values()),
+            "roster_edges_roster": sum(len(t["leads"]) + len(t["members"]) for t in teams.values()),
+            "roster_edges_alumni": sum(len(t["alumni"]) for t in teams.values()),
+            "people": len(people),
+            "people_on_active_team": sum(1 for p in people.values() if p["on_active_team"]),
+            "rfcs": len(rfcs),
+            "documents": sum(1 for r in rfcs if r["document"]),
+        },
+        "teams": teams,
+        "people": people,
+        "rfcs": rfcs,
+    }
+    body = json.dumps(snap, sort_keys=True, indent=1, ensure_ascii=True)
+    snap["content_sha256"] = hashlib.sha256(body.encode()).hexdigest()
+    return snap
+
+
+def strip_and_hash(doc):
+    """Hash a snapshot document EXACTLY as build() does: same serialisation, with
+    the content_sha256 field removed. Used to prove the on-disk file is intact."""
+    d = {k: v for k, v in doc.items() if k != "content_sha256"}
+    body = json.dumps(d, sort_keys=True, indent=1, ensure_ascii=True)
+    return hashlib.sha256(body.encode()).hexdigest()
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--check", action="store_true")
+    args = ap.parse_args()
+    snap = build()
+    path = os.path.join(DATA, "snapshot.json")
+    if args.check:
+        if not os.path.exists(path):
+            print("FAIL: no committed snapshot")
+            return 1
+        old = json.load(open(path))
+        # Check 1: the FILE ON DISK must hash to the value recorded inside it.
+        # Without this, editing a number in the committed snapshot still passed.
+        on_disk = strip_and_hash(old)
+        if old.get("content_sha256") != on_disk:
+            print("FAIL: committed snapshot is corrupt, recorded=%s actual=%s"
+                  % (old.get("content_sha256"), on_disk))
+            return 1
+        # Check 2: rebuilding from the pinned sources must reproduce that same hash.
+        if snap["content_sha256"] != old["content_sha256"]:
+            print("FAIL: drift, committed=%s rebuilt=%s"
+                  % (old["content_sha256"], snap["content_sha256"]))
+            return 1
+        print("PASS: file intact and byte-identical rebuild, sha256=%s" % snap["content_sha256"])
+        return 0
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(json.dumps(snap, sort_keys=True, indent=1, ensure_ascii=True))
+    print("wrote %s" % path)
+    print("content_sha256=%s" % snap["content_sha256"])
+    print(json.dumps(snap["counts"], sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
