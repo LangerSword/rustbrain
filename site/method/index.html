@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>method and limits: rustbrain</title>
+<meta name="description" content="how rustbrain is built, what its numbers mean, and everything it does not claim.">
+<!-- DRAFT copy: the entrant edits every line before publishing. -->
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../">rust<span>brain</span></a>
+    <nav class="site" aria-label="site">
+      <a href="../">home</a>
+      <a href="../graph/">how the graph works</a>
+      <a href="../gaps/">gaps</a>
+      <a href="./" aria-current="page">method and limits</a>
+      <a href="../bugs/">bugs i found</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="mono-label kicker">method and limits</p>
+      <h1>rust is a foundation, not a company. that is element eight, scored zero, by nature.</h1>
+      <p class="sub">two pinned public revisions, one deterministic ingest, one graph, and every number on this site re-derivable from the committed snapshot. nothing here is a model's opinion; all of it is a function's output.</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>the pipeline</h2>
+      <ul class="tight">
+        <li><code>scripts/fetch_upstream.py</code> and <code>scripts/fetch_rfcs.py</code> pull the two trees at the pinned shas; contact fields are stripped in memory, never written;</li>
+        <li><code>scripts/build_snapshot.py</code> builds <code>data/snapshot.json</code> deterministically, with a content hash over its own body; <code>--check</code> fails on any drift, on either the file or the rebuild;</li>
+        <li><code>scripts/verify_snapshot.py</code> re-parses every vendored team file with an independent toml parser and compares roster counts;</li>
+        <li><code>scripts/load_graph.py</code> loads snapshot into the pinned falkordb module (ver 42201); <code>scripts/test_queries.py</code> asserts 41 results including direction flips;</li>
+        <li><code>scripts/export_site_data.py</code> writes the site's <code>data.json</code>; <code>scripts/assert_site_numbers.py</code> re-derives every number it carries and fails on any mismatch.</li>
+      </ul>
+      <h2>the pins</h2>
+      <table class="data">
+        <thead><tr><th>source</th><th>revision</th><th>retrieved</th><th>note</th></tr></thead>
+        <tbody>
+          <tr><td>github.com/rust-lang/team</td><td><code>a5176049c11ca0</code></td><td>2026-10-19</td><td>committer date 2026-10-18T11:10:22Z</td></tr>
+          <tr><td>github.com/rust-lang/rfcs</td><td><code>d2705ad64ba47</code></td><td>2026-10-16</td><td>committer date 2026-10-05T10:04:13Z</td></tr>
+          <tr><td>docker.io/falkordb/falkordb</td><td><code>sha256:b0bdcac2cbaff989...</code></td><td>2026-10-16</td><td>amd64 manifest-list digest; module reports ver 42201 (v4.22.1)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>coverage numbers, with scope</h2>
+      <p class="sub">every figure below is over all merged PRs in rust-lang/rfcs without a not-rfc label, and all files in rust-lang/team, at the pinned revisions above; team revision retrieved 2026-10-19, rfcs revision retrieved 2026-10-16.</p>
+      <table class="data">
+        <thead><tr><th>figure</th><th class="num">value</th><th>numerator / denominator</th></tr></thead>
+        <tbody>
+          <tr><td>labels resolving to an active team</td><td class="num">73.7%</td><td>14 / 19 labels</td></tr>
+          <tr><td>labels resolving to any team file</td><td class="num">89.5%</td><td>17 / 19 labels</td></tr>
+          <tr><td>RFCs with a label resolving to an active team</td><td class="num">46.9%</td><td>357 / 761 RFCs</td></tr>
+          <tr><td>RFCs with a label resolving to any team file</td><td class="num">63.9%</td><td>486 / 761 RFCs</td></tr>
+          <tr><td>RFCs carrying no team label at all</td><td class="num">34.2%</td><td>260 / 761 RFCs</td></tr>
+          <tr><td>numbered RFC files joining to a merged RFC</td><td class="num">96.0%</td><td>626 / 652 files</td></tr>
+          <tr><td>authors on an active team (RFC corpus)</td><td class="num">35.1%</td><td>85 / 242 distinct authors</td></tr>
+          <tr><td>authors on an active team (all merged PRs)</td><td class="num">26.3%</td><td>100 / 380 distinct authors</td></tr>
+          <tr><td>RFCs whose author was never on a team and has no alumni record</td><td class="num">22.2%</td><td>169 / 761 RFCs</td></tr>
+          <tr><td>the same, restricted to outcome merge</td><td class="num">5.4%</td><td>41 / 761 RFCs</td></tr>
+        </tbody>
+      </table>
+      <p class="note">the three orphan figures disagree on purpose and each carries its definition: 381 of 761 rfcs have an author absent from every active team's roster; 169 have no team file and no alumni record; 41 of those carried a merge label. a definition without a denominator is how this project produced its first wrong number.</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>limits, plainly</h2>
+      <ul class="tight">
+        <li><b>element 8 is zero.</b> rust is a foundation: no revenue, no customer, no contract, no reporting line anywhere in this data. the funded roles that do appear are named by upstream itself (program managers, hired via the foundation; the crates.io on-call team, "composed of employees of the Rust Foundation"), and team leads hold peer authority, not managerial authority. this is not an org chart.</li>
+        <li><b>the successor map is curated, not parsed.</b> four entries, each with a cited file and line; of the 52 archived files, exactly 4 carry a note and all 4 are mapped, 3 are listed unmapped with a reason each, 45 carry none. the map covers what upstream documents and claims nothing more.</li>
+        <li><b>volunteer teams, not an org chart;</b> subteam relations are recorded, reporting lines do not exist in the data.</li>
+        <li><b>handles only.</b> the snapshot and the graph carry no names, emails, avatars or rfc bodies; this site shows handles only. the vendored trees ship with contact fields stripped, and history was purged of the addresses that once sat in the vendored people tree (<a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/email_removal_receipt.md">receipt</a>).</li>
+        <li><b>titles are truncated to 120 characters</b> and document bodies are never stored.</li>
+        <li><b>no llm anywhere in the path.</b> an ai assistant wrote the code at the entrant's direction; every number was produced by running the commands in the repository.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>the gates this page stands on</h2>
+      <p class="sub">ci runs with no network beyond one pinned service container and asserts, per push: byte-identical ingest rebuild, snapshot self-check and independent verifier, every readme number, the corruption check refusing, 41 query assertions with direction flips, three routing tiers on real rfcs, the gap tiers, pins.md regenerated byte-identically, and this site's numbers re-derived from the snapshot.</p>
+      <p><a href="https://github.com/LangerSword/rustbrain/actions/workflows/ci.yml">the ci workflow</a>, with the run history behind it. the pinned engine digest and the exact revisions are in <a href="https://github.com/LangerSword/rustbrain/blob/main/PINS.md">PINS.md</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>built from snapshot <code>6732467a070a</code>, asserted in CI.</span>
+    <a href="https://github.com/LangerSword/rustbrain">github.com/LangerSword/rustbrain</a>
+    <span>handles only, no emails, no names. no llm.</span>
+  </div>
+</footer>
+</body>
+</html>

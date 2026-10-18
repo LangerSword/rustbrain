@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>how the graph works: rustbrain</title>
+<meta name="description" content="nodes, edges and the 0..3 hop query: how rustbrain follows an archived rust team to the successor its own file records.">
+<!-- DRAFT copy: the entrant edits every line before publishing. -->
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../">rust<span>brain</span></a>
+    <nav class="site" aria-label="site">
+      <a href="../">home</a>
+      <a href="./" aria-current="page">how the graph works</a>
+      <a href="../gaps/">gaps</a>
+      <a href="../method/">method and limits</a>
+      <a href="../bugs/">bugs i found</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="mono-label kicker">the graph, in full</p>
+      <h1>one team points at the next.</h1>
+      <p class="sub">224 teams, 675 people, 761 rfcs and 626 documents, joined by five edge types, all built from two pinned public revisions. the only edge rustbrain adds by curation is the one the data itself records: a successor note, with file and line.</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>nodes</h2>
+      <table class="data">
+        <thead><tr><th>node</th><th>key properties</th><th class="num">count</th></tr></thead>
+        <tbody>
+          <tr><td><code>Team</code></td><td>slug, name, status (active or archived), successor_team</td><td class="num">224</td></tr>
+          <tr><td><code>Person</code></td><td>handle</td><td class="num">675</td></tr>
+          <tr><td><code>RFC</code></td><td>num, title, outcome, created, merged_at, author, team_labels</td><td class="num">761</td></tr>
+          <tr><td><code>Document</code></td><td>path</td><td class="num">626</td></tr>
+        </tbody>
+      </table>
+      <h2>edges, with the direction the ingest writes</h2>
+      <table class="data">
+        <thead><tr><th>edge</th><th>direction</th><th>carries</th><th class="num">count</th></tr></thead>
+        <tbody>
+          <tr><td><code>MEMBER</code></td><td><code>(Person)-&gt;(Team)</code> person points at team</td><td>role</td><td class="num">1050</td></tr>
+          <tr><td><code>LEAD</code></td><td><code>(Person)-&gt;(Team)</code> person points at team</td><td>role</td><td class="num">127</td></tr>
+          <tr><td><code>AUTHORED</code></td><td><code>(Person)-&gt;(RFC)</code> person points at rfc</td><td></td><td class="num">592</td></tr>
+          <tr><td><code>GOVERNED</code></td><td><code>(Team)-&gt;(RFC)</code> team points at rfc</td><td></td><td class="num">395</td></tr>
+          <tr><td><code>SUCCEEDED_BY</code></td><td><code>(Team)-&gt;(Team)</code> archived team points at its active successor</td><td>rfc, source, quote</td><td class="num">4</td></tr>
+        </tbody>
+      </table>
+      <p class="note">the ingest asserts every direction by running the flipped pattern and requiring zero rows; a cypher pattern that matches nothing returns zero rows with no error, so a flipped arrow looks like a correct empty answer. that mistake was made here once; it is in <a href="../bugs/">bugs i found</a>.</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>the query the product depends on</h2>
+      <pre class="code"><span class="c">// follow up to 3 successor hops from the labelled team to the CURRENT team</span>
+MATCH (labelled:Team {slug: $slug})
+MATCH (labelled)-[:SUCCEEDED_BY*0..3]-&gt;(owner:Team)
+WHERE owner.status = 'active'
+MATCH (owner)&lt;-[r:LEAD|MEMBER]-(p:Person)
+OPTIONAL MATCH (p)-[:AUTHORED]-&gt;(authored:RFC)
+WITH owner, p, collect(DISTINCT type(r)) AS kinds,
+     count(DISTINCT authored) AS authored_count, max(authored.created) AS latest
+RETURN owner.slug AS owner, p.handle AS handle,
+       CASE WHEN 'LEAD' IN kinds THEN 'lead' ELSE 'member' END AS role,
+       authored_count AS authored, coalesce(latest, '') AS latest
+ORDER BY latest DESC, authored DESC, handle</pre>
+      <p class="sub">the <code>0</code> matters as much as the <code>3</code>: an active label takes zero hops through the same query, so there is no second code path to drift. what breaks without a graph: the relational form of this one question is a recursive CTE for a chain whose depth is not known, plus a filter for the terminal active team, plus the roster join and a grouped max. the stake: 162 of 761 merged rfcs (libs-api 138, core 24) resolve only through this hop. without it they return an archived team with an empty roster, which is a dead end, not an answer.</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>the four successor lines, quoted</h2>
+      <p class="sub">every mapping cites the archived team's own file and line; the ingest fails the build if the quote is not on the cited line.</p>
+      <table class="data">
+        <thead><tr><th>from</th><th>to</th><th>cited line</th></tr></thead>
+        <tbody>
+          <tr><td>libs-api</td><td>libs</td><td><code>teams/archive/libs-api.toml:1</code> "Library API has been incorporated into Library with RFC#3984"</td></tr>
+          <tr><td>core</td><td>leadership-council</td><td><code>teams/archive/core.toml:1</code> "Core has been replaced by the leadership council with RFC#3392"</td></tr>
+          <tr><td>libs-contributors</td><td>libs</td><td><code>teams/archive/libs-contributors.toml:1</code> "Library Contributors has been incorporated into Library with RFC#3984"</td></tr>
+          <tr><td>wg-traits</td><td>types</td><td><code>teams/archive/wg-traits.toml:1</code> "Note: this has effectively been replaced by the types team"</td></tr>
+        </tbody>
+      </table>
+      <p class="note">three archived teams are listed as unmapped with a reason each (docs, interim-leadership-chat, devtools-peers); of the 52 archived files, exactly 4 carry a successor note and all 4 are mapped. the map covers what upstream documents and claims nothing more.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>built from snapshot <code>6732467a070a</code>, asserted in CI.</span>
+    <a href="https://github.com/LangerSword/rustbrain">github.com/LangerSword/rustbrain</a>
+    <span>handles only, no emails, no names. no llm.</span>
+  </div>
+</footer>
+</body>
+</html>

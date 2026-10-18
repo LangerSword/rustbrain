@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bugs i found in my own findings: rustbrain</title>
+<meta name="description" content="five bugs rustbrain found in its own numbers and conclusions, with the receipts, because the corrections are the honest part.">
+<!-- DRAFT copy: the entrant edits every line before publishing. -->
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../">rust<span>brain</span></a>
+    <nav class="site" aria-label="site">
+      <a href="../">home</a>
+      <a href="../graph/">how the graph works</a>
+      <a href="../gaps/">gaps</a>
+      <a href="../method/">method and limits</a>
+      <a href="./" aria-current="page">bugs i found</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="mono-label kicker">the corrections are the honest part</p>
+      <h1>five bugs this project found in its own findings.</h1>
+      <p class="sub">each entry links to the receipt in the repository's evidence folder. none of them was fixed by changing the story; all of them were fixed by changing the measurement.</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <div class="gapbox amber">
+        <h3>1. the query-direction mistake</h3>
+        <p>an early version of the ingest wrote edges in one direction and the queries asked in the other. cypher returns zero rows with no error for a pattern that matches nothing, so the bug looked like a correct empty answer. i measured two correct results, drew a wrong conclusion about the engine, wrote it down, and had to retract it. the receipt reproduces both forms on a throwaway graph: outbound 1 row, inbound 0, unlabelled inbound 1 row with bindings swapped.</p>
+        <p class="note">receipt: <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/direction_receipt.txt">direction_receipt.txt</a>. what survived is a rule: every known-good query must assert a non-zero row count.</p>
+      </div>
+      <div class="gapbox amber">
+        <h3>2. 35 orphans, then 385, then 83, then three definitions</h3>
+        <p>the orphan figure moved three times: 35 of a 111-rfc sample; 385 of 761 measured while the roster silently missed the archived teams; 83 mislabelled as "no membership and no alumni" when it was the merge-labelled subset of the 385. corrected today, each with its own definition: 381 of 761 authors are absent from every active team's roster, 169 have no team file and no alumni record, 41 of those carried a merge label.</p>
+        <p class="note">receipts: <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/20_orphan_figure_correction.md">20_orphan_figure_correction.md</a>, <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/16_kill_test.md">16_kill_test.md</a>.</p>
+      </div>
+      <div class="gapbox amber">
+        <h3>3. the depth-1 walk that missed 52 archived files</h3>
+        <p>the first roster read <code>teams/*.toml</code> and never looked in <code>teams/archive/</code>, which holds 52 more files, including <code>libs-api</code> and <code>core</code>; some authors looked like orphans who were not. the same builder also let an empty members list swallow the next list (18 alumni counted as 18 members) and counted role names as handles. an independent toml parser caught two of the three; the third needed a second check that hashes the file on disk.</p>
+        <p class="note">receipt: <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/01_snapshot_bugs.md">01_snapshot_bugs.md</a>. four bugs in one builder, each with the failing case recorded.</p>
+      </div>
+      <div class="gapbox amber">
+        <h3>4. the clock drift</h3>
+        <p>hours-left arithmetic ran off the local clock, and a network check against three independent servers during the build put the same instant 2 hours 40 minutes past the stated window. one curl would have caught it earlier; the receipt keeps the three responses.</p>
+        <p class="note">receipt: <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/clock_drift_receipt.txt">clock_drift_receipt.txt</a>.</p>
+      </div>
+      <div class="gapbox amber">
+        <h3>5. the pinned sha that drifted anyway</h3>
+        <p>pins.md said one team revision; the snapshot, the committed tree and the build script said another. hashing a single team file at both revisions settled which was true, and the fix made pins.md generated, never hand-written: a ci job regenerates it and fails on any diff. the red run that proves the gate shows the exact drift line.</p>
+        <p class="note">receipt: <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/pins_drift_receipt.md">pins_drift_receipt.md</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>two rules that survived all five</h2>
+      <ul class="tight">
+        <li>a query that matches nothing returns zero rows with no error: assert a non-zero count for every known-good query, and run the flipped form expecting zero;</li>
+        <li>every number gets its definition and its denominator in the same sentence, and the sentence is generated by a script, not typed by a person.</li>
+      </ul>
+      <p class="note">the full evidence index, including what is still to capture, is <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/INDEX.md">out/blog_evidence/INDEX.md</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>built from snapshot <code>6732467a070a</code>, asserted in CI.</span>
+    <a href="https://github.com/LangerSword/rustbrain">github.com/LangerSword/rustbrain</a>
+    <span>handles only, no emails, no names. no llm.</span>
+  </div>
+</footer>
+</body>
+</html>

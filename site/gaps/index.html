@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>the gap report: rustbrain</title>
+<meta name="description" content="all 19 T-* labels in use across 761 merged rust rfcs, in three tiers, with counts and scope on every line.">
+<!-- DRAFT copy: the entrant edits every line before publishing. -->
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../">rust<span>brain</span></a>
+    <nav class="site" aria-label="site">
+      <a href="../">home</a>
+      <a href="../graph/">how the graph works</a>
+      <a href="./" aria-current="page">gaps</a>
+      <a href="../method/">method and limits</a>
+      <a href="../bugs/">bugs i found</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="mono-label kicker">scope: all merged PRs in rust-lang/rfcs without a not-rfc label, at the pinned revision</p>
+      <h1>three tiers, no hand-waving.</h1>
+      <p class="sub">19 labels are in use across 761 merged rfcs. 14 resolve straight to an active team. 2 resolve through one recorded successor hop and carry 162 rfcs between them. 3 have nowhere to go, and this page names them.</p>
+    </div>
+  </section>
+
+  <div class="band" aria-label="tier totals">
+    <div class="wrap" style="grid-template-columns: repeat(3, 1fr);">
+      <div><div class="b-num num">357</div><div class="b-lab">RFCs with an active-team label</div><div class="b-scope">46.9% of 761; 14 labels</div></div>
+      <div><div class="b-num num">162</div><div class="b-lab">RFCs through the successor hop</div><div class="b-scope">libs-api 138, core 24; 2 labels</div></div>
+      <div><div class="b-num num">25</div><div class="b-lab">RFCs in true gaps</div><div class="b-scope">dev-tools 20, doc 6, interim-leadership-chat 1; 3 labels</div></div>
+    </div>
+  </div>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>tier 1: active (14 labels, 357 distinct rfcs)</h2>
+      <table class="data">
+        <thead><tr><th>label</th><th>team</th><th class="num">rfcs</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>T-lang</td><td>lang</td><td class="num">263</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-compiler</td><td>compiler</td><td class="num">43</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-cargo</td><td>cargo</td><td class="num">42</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-crates-io</td><td>crates-io</td><td class="num">14</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-rustdoc</td><td>rustdoc</td><td class="num">10</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-release</td><td>release</td><td class="num">7</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-leadership-council</td><td>leadership-council</td><td class="num">6</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-libs</td><td>libs</td><td class="num">5</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-types</td><td>types</td><td class="num">4</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-infra</td><td>infra</td><td class="num">4</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-edition</td><td>edition</td><td class="num">2</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-style</td><td>style</td><td class="num">1</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-opsem</td><td>opsem</td><td class="num">1</td><td><span class="badge ACTIVE">active</span></td></tr>
+          <tr><td>T-testing-devex</td><td>testing-devex</td><td class="num">1</td><td><span class="badge ACTIVE">active</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>tier 2: archived with a named successor (2 labels, 162 distinct rfcs)</h2>
+      <table class="data">
+        <thead><tr><th>label</th><th>team</th><th class="num">rfcs</th><th>successor, cited</th></tr></thead>
+        <tbody>
+          <tr><td>T-libs-api</td><td>libs-api (0 members)</td><td class="num">138</td><td>libs, via RFC 3984 (<code>teams/archive/libs-api.toml:1</code>)</td></tr>
+          <tr><td>T-core</td><td>core (0 members)</td><td class="num">24</td><td>leadership-council, via RFC 3392 (<code>teams/archive/core.toml:1</code>)</td></tr>
+        </tbody>
+      </table>
+      <p class="note">no overlaps: one rfc in this tier is one decision. these two edges are the entire reason 162 merged decisions stay routable.</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <h2>tier 3: true gaps (3 labels, 25 distinct rfcs)</h2>
+      <table class="data">
+        <thead><tr><th>label</th><th>status</th><th class="num">rfcs</th></tr></thead>
+        <tbody>
+          <tr><td>T-dev-tools</td><td>no team file anywhere</td><td class="num">20</td></tr>
+          <tr><td>T-doc</td><td>no team file anywhere (docs.toml is archived and names no successor)</td><td class="num">6</td></tr>
+          <tr><td>T-interim-leadership-chat</td><td>archived, no successor record</td><td class="num">1</td></tr>
+        </tbody>
+      </table>
+      <div class="gapbox"><b class="gapflag">the actionable read:</b> a true-gap label is not a bug report about rust, it is a question for the label's owner: create the team file, re-point the label, or stop using it. rustbrain's job is to say so instead of returning an empty table.</div>
+      <p class="note">the raw report with the same numbers, straight from <code>cmd/gaps.py</code>: <a href="https://github.com/LangerSword/rustbrain/blob/main/out/blog_evidence/gap_report.txt">out/blog_evidence/gap_report.txt</a>. one rfc can carry several labels, so per-label loads sum above the distinct totals; the distinct numbers are the ones to quote.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>built from snapshot <code>6732467a070a</code>, asserted in CI.</span>
+    <a href="https://github.com/LangerSword/rustbrain">github.com/LangerSword/rustbrain</a>
+    <span>handles only, no emails, no names. no llm.</span>
+  </div>
+</footer>
+</body>
+</html>

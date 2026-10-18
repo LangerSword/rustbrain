@@ -1,0 +1,55 @@
+name: pages
+
+# Deploys site/ to GitHub Pages. The site is static JSON plus hand-written
+# HTML/CSS/JS: no server, no api key. The deploy re-runs the number checks
+# first, so a page can never ship a count the snapshot does not support.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "data/snapshot.json"
+      - "scripts/export_site_data.py"
+      - "scripts/assert_site_numbers.py"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dependencies
+        run: python3 -m pip install --quiet pyyaml
+
+      - name: Export is current and every number equals the snapshot
+        run: |
+          python3 scripts/export_site_data.py --check
+          python3 scripts/assert_site_numbers.py
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

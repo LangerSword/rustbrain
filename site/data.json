@@ -1,0 +1,602 @@
+{
+ "bugs": {
+  "active_labels": 14,
+  "archived_team_files": 52,
+  "gap_rfcs": 25,
+  "labels": 19,
+  "merge_subset_rfcs": 41,
+  "no_team_file_rfcs": 169,
+  "not_on_active_rfcs": 381,
+  "successor_rfcs": 162
+ },
+ "counts": {
+  "documents": 626,
+  "people": 675,
+  "people_on_active_team": 416,
+  "rfcs": 761,
+  "roster_edges_alumni": 870,
+  "roster_edges_lead": 127,
+  "roster_edges_member": 1050,
+  "roster_edges_roster": 1177,
+  "successor_edges": 4,
+  "teams_active": 172,
+  "teams_archived": 52,
+  "teams_total": 224
+ },
+ "coverage": [
+  [
+   "labels resolving to an active team",
+   73.7,
+   14,
+   19,
+   "slug matches an active team file"
+  ],
+  [
+   "labels resolving to any team file",
+   89.5,
+   17,
+   19,
+   "includes archived files"
+  ],
+  [
+   "RFCs with a label resolving to an active team",
+   46.9,
+   357,
+   761,
+   "routable with no successor hop"
+  ],
+  [
+   "RFCs with a label resolving to any team file",
+   63.9,
+   486,
+   761,
+   "routable after a successor hop where one exists"
+  ],
+  [
+   "RFCs carrying no team label at all",
+   34.2,
+   260,
+   761,
+   "cannot be routed by label"
+  ],
+  [
+   "numbered RFC files joining to a merged RFC",
+   96.0,
+   626,
+   652,
+   "document layer; denominator is numbered files in the pinned tree"
+  ],
+  [
+   "authors on an active team (RFC corpus)",
+   35.1,
+   85,
+   242,
+   "over the 761 merged RFCs"
+  ],
+  [
+   "authors on an active team (all merged PRs)",
+   26.3,
+   100,
+   380,
+   "widened scope, includes not-rfc PRs"
+  ],
+  [
+   "RFCs whose author was never on a team and has no alumni record",
+   22.2,
+   169,
+   761,
+   "no current membership, no alumni entry"
+  ],
+  [
+   "the same, restricted to outcome merge",
+   5.4,
+   41,
+   761,
+   "the decisions subset"
+  ]
+ ],
+ "gaps": {
+  "distinct": {
+   "ACTIVE": 357,
+   "SUCCESSOR": 162,
+   "TRUE_GAP": 25
+  },
+  "labels_total": 19,
+  "rfc_total": 761,
+  "tiers": {
+   "ACTIVE": [
+    {
+     "label": "lang",
+     "rfcs": 263,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "compiler",
+     "rfcs": 43,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "cargo",
+     "rfcs": 42,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "crates-io",
+     "rfcs": 14,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "rustdoc",
+     "rfcs": 10,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "release",
+     "rfcs": 7,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "leadership-council",
+     "rfcs": 6,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "libs",
+     "rfcs": 5,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "infra",
+     "rfcs": 4,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "types",
+     "rfcs": 4,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "edition",
+     "rfcs": 2,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "opsem",
+     "rfcs": 1,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "style",
+     "rfcs": 1,
+     "status": "active",
+     "successor": ""
+    },
+    {
+     "label": "testing-devex",
+     "rfcs": 1,
+     "status": "active",
+     "successor": ""
+    }
+   ],
+   "SUCCESSOR": [
+    {
+     "label": "libs-api",
+     "rfcs": 138,
+     "status": "archived",
+     "successor": "libs"
+    },
+    {
+     "label": "core",
+     "rfcs": 24,
+     "status": "archived",
+     "successor": "leadership-council"
+    }
+   ],
+   "TRUE_GAP": [
+    {
+     "label": "dev-tools",
+     "rfcs": 20,
+     "status": "NO_TEAM_FILE",
+     "successor": ""
+    },
+    {
+     "label": "doc",
+     "rfcs": 6,
+     "status": "NO_TEAM_FILE",
+     "successor": ""
+    },
+    {
+     "label": "interim-leadership-chat",
+     "rfcs": 1,
+     "status": "archived",
+     "successor": ""
+    }
+   ]
+  }
+ },
+ "generated_from": {
+  "content_sha256": "6732467a070a0a8c7129ff334f5a95a2227cd014783ca8415ca01bb87a353c97",
+  "pins": {
+   "falkordb": {
+    "note": "amd64 manifest-list digest, module reports ver 42201 (v4.22.1)",
+    "retrieved": "2026-10-16",
+    "revision": "sha256:b0bdcac2cbaff989e77cb0610439b7a9289e86de033ccbbd4368b66fb680ae7a",
+    "source": "docker.io/falkordb/falkordb"
+   },
+   "rfcs": {
+    "note": "committer date 2026-10-05T10:04:13Z",
+    "retrieved": "2026-10-16",
+    "source": "github.com/rust-lang/rfcs"
+   },
+   "team": {
+    "note": "committer date 2026-10-18T11:10:22Z",
+    "retrieved": "2026-10-19",
+    "source": "github.com/rust-lang/team"
+   }
+  }
+ },
+ "graph": {
+  "chain": [
+   {
+    "slug": "libs-api",
+    "status": "archived"
+   },
+   {
+    "slug": "libs",
+    "status": "active"
+   }
+  ],
+  "edge": {
+   "from": "libs-api",
+   "quote": "Library API has been incorporated into Library with RFC#3984",
+   "rfc": 3984,
+   "source": "teams/archive/libs-api.toml:1",
+   "to": "libs"
+  },
+  "gap": {
+   "label": "dev-tools",
+   "rfcs": 20
+  },
+  "roster": [
+   {
+    "authored": 1,
+    "handle": "nia-e",
+    "latest": "2026-07-15",
+    "role": "lead"
+   },
+   {
+    "authored": 1,
+    "handle": "folkertdev",
+    "latest": "2026-07-01",
+    "role": "member"
+   },
+   {
+    "authored": 16,
+    "handle": "joshtriplett",
+    "latest": "2026-02-23",
+    "role": "member"
+   },
+   {
+    "authored": 4,
+    "handle": "davidtwco",
+    "latest": "2025-10-31",
+    "role": "member"
+   },
+   {
+    "authored": 3,
+    "handle": "Darksonn",
+    "latest": "2025-08-10",
+    "role": "member"
+   },
+   {
+    "authored": 9,
+    "handle": "m-ou-se",
+    "latest": "2024-10-30",
+    "role": "member"
+   }
+  ]
+ },
+ "hero": {
+  "edge": {
+   "from": "libs-api",
+   "quote": "Library API has been incorporated into Library with RFC#3984",
+   "rfc": 3984,
+   "source": "teams/archive/libs-api.toml:1",
+   "to": "libs"
+  },
+  "label": "libs-api",
+  "reviewers": [
+   {
+    "authored": 1,
+    "handle": "nia-e",
+    "latest": "2026-07-15",
+    "role": "lead"
+   },
+   {
+    "authored": 1,
+    "handle": "folkertdev",
+    "latest": "2026-07-01",
+    "role": "member"
+   },
+   {
+    "authored": 16,
+    "handle": "joshtriplett",
+    "latest": "2026-02-23",
+    "role": "member"
+   },
+   {
+    "authored": 4,
+    "handle": "davidtwco",
+    "latest": "2025-10-31",
+    "role": "member"
+   },
+   {
+    "authored": 3,
+    "handle": "Darksonn",
+    "latest": "2025-08-10",
+    "role": "member"
+   },
+   {
+    "authored": 9,
+    "handle": "m-ou-se",
+    "latest": "2024-10-30",
+    "role": "member"
+   },
+   {
+    "authored": 13,
+    "handle": "Amanieu",
+    "latest": "2024-05-03",
+    "role": "lead"
+   },
+   {
+    "authored": 2,
+    "handle": "tgross35",
+    "latest": "2023-09-09",
+    "role": "member"
+   },
+   {
+    "authored": 4,
+    "handle": "jhpratt",
+    "latest": "2023-07-13",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "thomcc",
+    "latest": "2022-08-30",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "JohnTitor",
+    "latest": "2022-05-25",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "ibraheemdev",
+    "latest": "2021-06-03",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "sunfishcode",
+    "latest": "2021-05-25",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "Mark-Simulacrum",
+    "latest": "2020-12-17",
+    "role": "member"
+   },
+   {
+    "authored": 3,
+    "handle": "KodrAus",
+    "latest": "2020-08-28",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "yaahc",
+    "latest": "2020-07-23",
+    "role": "member"
+   },
+   {
+    "authored": 14,
+    "handle": "SimonSapin",
+    "latest": "2018-10-27",
+    "role": "member"
+   },
+   {
+    "authored": 3,
+    "handle": "kennytm",
+    "latest": "2018-07-14",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "hanna-kruppe",
+    "latest": "2017-12-29",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "cuviper",
+    "latest": "2017-09-14",
+    "role": "member"
+   },
+   {
+    "authored": 3,
+    "handle": "cramertj",
+    "latest": "2017-08-28",
+    "role": "member"
+   },
+   {
+    "authored": 1,
+    "handle": "clarfonthey",
+    "latest": "2017-05-25",
+    "role": "member"
+   },
+   {
+    "authored": 2,
+    "handle": "BurntSushi",
+    "latest": "2016-05-18",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "Byron",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "ChrisDenton",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "LawnGnome",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "NobodyXu",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "aapoalas",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "adamgemmell",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "bushrat011899",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "calebzulawski",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "dtolnay",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "joboet",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "programmerjake",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "sayantn",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "the8472",
+    "latest": "",
+    "role": "member"
+   },
+   {
+    "authored": 0,
+    "handle": "workingjubilee",
+    "latest": "",
+    "role": "member"
+   }
+  ],
+  "rfc": 1892,
+  "rfc_labels": [
+   "lang",
+   "libs-api"
+  ],
+  "rfc_title": "Deprecate uninitialized in favor of a new MaybeUninit type",
+  "tier": "SUCCESSOR"
+ },
+ "module": {
+  "redis": "8.10.2",
+  "ver": "42201"
+ },
+ "successor_map": {
+  "edges": [
+   {
+    "from": "core",
+    "quote": "Core has been replaced by the leadership council with RFC#3392",
+    "rfc": 3392,
+    "source": "teams/archive/core.toml:1",
+    "to": "leadership-council"
+   },
+   {
+    "from": "libs-api",
+    "quote": "Library API has been incorporated into Library with RFC#3984",
+    "rfc": 3984,
+    "source": "teams/archive/libs-api.toml:1",
+    "to": "libs"
+   },
+   {
+    "from": "libs-contributors",
+    "quote": "Library Contributors has been incorporated into Library with RFC#3984",
+    "rfc": 3984,
+    "source": "teams/archive/libs-contributors.toml:1",
+    "to": "libs"
+   },
+   {
+    "from": "wg-traits",
+    "quote": "Note: this has effectively been replaced by the types team",
+    "rfc": null,
+    "source": "teams/archive/wg-traits.toml:1",
+    "to": "types"
+   }
+  ],
+  "unmapped": [
+   {
+    "reason": "No successor note in teams/archive/docs.toml line 1. The T-doc label may refer to this team, but the file does not say so, so it is not mapped.",
+    "team": "docs"
+   },
+   {
+    "reason": "No successor note in teams/archive/interim-leadership-chat.toml. The name suggests it was interim by design, but no citable target exists.",
+    "team": "interim-leadership-chat"
+   },
+   {
+    "reason": "No successor note. Nearest ACTIVE name is teams/devtools.toml, which is a different team and not claimed as a successor.",
+    "team": "devtools-peers"
+   }
+  ]
+ }
+}
