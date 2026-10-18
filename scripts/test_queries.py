@@ -133,6 +133,34 @@ def main():
         print("  %-58s %s" % ("label %s present" % must, "PASS" if ok else "FAIL"))
         t.passed += ok; t.failed += (not ok)
 
+    print("\n== gap report: exact tier membership and loads ==")
+    tier_rows = conn.q(GRAPH, "MATCH (r:RFC) UNWIND r.team_labels AS l "
+                              "WITH l, count(DISTINCT r) AS n "
+                              "OPTIONAL MATCH (t:Team {slug:l}) "
+                              "OPTIONAL MATCH (t)-[:SUCCEEDED_BY]->(s:Team) "
+                              "RETURN l, n, CASE WHEN t IS NULL THEN 'TRUE_GAP' "
+                              "WHEN t.status='active' THEN 'ACTIVE' "
+                              "WHEN s IS NOT NULL THEN 'SUCCESSOR' ELSE 'TRUE_GAP' END "
+                              "ORDER BY l").rows
+    tier = {r[0]: (int(r[1]), r[2]) for r in tier_rows}
+    for label, want_n, want_tier in [
+        ("libs-api", 138, "SUCCESSOR"), ("core", 24, "SUCCESSOR"),
+        ("dev-tools", 20, "TRUE_GAP"), ("doc", 6, "TRUE_GAP"),
+        ("interim-leadership-chat", 1, "TRUE_GAP"),
+        ("lang", 263, "ACTIVE"), ("cargo", 42, "ACTIVE"),
+    ]:
+        got = tier.get(label)
+        ok = got is not None and got[0] == want_n and got[1] == want_tier
+        print("  %-58s %s %s" % ("label %s = %s RFCs, %s" % (label, want_n, want_tier),
+                                 got, "PASS" if ok else "FAIL"))
+        t.passed += ok; t.failed += (not ok)
+    counts = {}
+    for _l, _n, tr in tier_rows:
+        counts[tr] = counts.get(tr, 0) + 1
+    ok = counts == {"ACTIVE": 14, "SUCCESSOR": 2, "TRUE_GAP": 3}
+    print("  %-58s %s %s" % ("tier label counts", counts, "PASS" if ok else "FAIL"))
+    t.passed += ok; t.failed += (not ok)
+
     print("\n%d passed, %d failed" % (t.passed, t.failed))
     return 1 if t.failed else 0
 
