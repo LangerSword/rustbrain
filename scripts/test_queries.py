@@ -161,6 +161,19 @@ def main():
     print("  %-58s %s %s" % ("tier label counts", counts, "PASS" if ok else "FAIL"))
     t.passed += ok; t.failed += (not ok)
 
+    print("\n== ordering: the most recent reviewer must be FIRST ==")
+    order_q = ("MATCH (o:Team {slug:'libs'}) MATCH (o)<-[r:LEAD|MEMBER]-(p:Person) "
+               "OPTIONAL MATCH (p)-[:AUTHORED]->(a:RFC) "
+               "WITH o,p,collect(DISTINCT type(r)) AS k, count(DISTINCT a) AS n, max(a.created) AS lt "
+               "RETURN p.handle AS handle, coalesce(lt,'') AS latest "
+               "ORDER BY latest DESC, n DESC, handle")
+    rows = conn.q(GRAPH, order_q).rows
+    first, last = rows[0], rows[-1]
+    ok = first[1] != "" and last[1] == ""
+    print("  %-58s first=%s last=%s %s"
+          % ("newest first, undated last", first, last, "PASS" if ok else "FAIL"))
+    t.passed += ok; t.failed += (not ok)
+
     print("\n%d passed, %d failed" % (t.passed, t.failed))
     return 1 if t.failed else 0
 

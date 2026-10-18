@@ -31,6 +31,6 @@ WITH owner, p, collect(DISTINCT type(r)) AS kinds,
 RETURN owner.slug AS owner,
        p.handle AS handle,
        CASE WHEN 'LEAD' IN kinds THEN 'lead' ELSE 'member' END AS role,
-       authored_count,
+       authored_count AS authored,
        coalesce(latest, '') AS latest
-ORDER BY latest DESC, authored_count DESC, handle
+ORDER BY latest DESC, authored DESC, handle
