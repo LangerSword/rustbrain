@@ -23,6 +23,8 @@ import os
 import re
 import sys
 
+import yaml
+
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(HERE, "data")
 TEAM = os.path.join(DATA, "upstream", "team")
@@ -176,6 +178,49 @@ def resolve_successor(teams, slug_hint):
     return None
 
 
+def load_successors(teams):
+    """Read data/successors.yaml, a CURATED file with a cited source line per entry.
+
+    The ingest deliberately does NOT parse successor hints out of team comments at
+    runtime. A curated map with a file and line number per entry is auditable; a
+    comment scraper is not, and it silently mis-maps when a comment is reworded.
+    Every field is validated here so a typo fails the build instead of producing a
+    wrong route.
+    """
+    path = os.path.join(DATA, "successors.yaml")
+    if not os.path.exists(path):
+        raise SystemExit("FAIL: missing %s" % path)
+    doc = yaml.safe_load(read(path)) or {}
+    edges, problems = {}, []
+    for e in doc.get("successors") or []:
+        for k in ("from", "to", "source_file", "source_line", "quote"):
+            if not e.get(k):
+                problems.append("entry missing %s: %r" % (k, e))
+        if e.get("from") not in teams:
+            problems.append("from-team %r is not a known team" % e.get("from"))
+        elif teams[e["from"]]["status"] != "archived":
+            problems.append("from-team %r is not archived" % e["from"])
+        if e.get("to") not in teams:
+            problems.append("to-team %r is not a known team" % e.get("to"))
+        elif teams[e["to"]]["status"] != "active":
+            problems.append("to-team %r is not active" % e["to"])
+        # The cited source must actually contain the quote on that line.
+        sf = os.path.join(TEAM, e.get("source_file", ""))
+        if not os.path.exists(sf):
+            problems.append("source_file missing: %s" % e.get("source_file"))
+        else:
+            lines = read(sf).splitlines()
+            n = int(e.get("source_line") or 0)
+            if not (1 <= n <= len(lines)) or e["quote"] not in lines[n - 1]:
+                problems.append("quote not found at %s:%s" % (e.get("source_file"), n))
+        edges[e["from"]] = e
+    if problems:
+        for p in problems:
+            print("SUCCESSOR MAP PROBLEM: " + p)
+        raise SystemExit("FAIL: successors.yaml did not validate")
+    return edges
+
+
 def collect_teams():
     teams = {}
     base = os.path.join(TEAM, "teams")
@@ -193,8 +238,14 @@ def collect_teams():
 
 def build():
     teams = collect_teams()
+    successors = load_successors(teams)
     for t in teams.values():
-        t["successor_resolved"] = resolve_successor(teams, t["successor_team"])
+        e = successors.get(t["slug"])
+        t["successor_team"] = e["to"] if e else None
+        t["successor_source"] = ("%s:%s" % (e["source_file"], e["source_line"])) if e else None
+        t["successor_quote"] = e["quote"] if e else None
+        t["successor_rfc"] = e.get("rfc") if e else None
+        t["successor_resolved"] = e["to"] if e else None
     people = {}
 
     def touch(h):
@@ -233,9 +284,27 @@ def build():
     rfcs.sort(key=lambda x: x["num"])
 
     snap = {
-        "schema_version": 2,
+        "schema_version": 3,
         "pins": PINS,
         "falkordb_image": {"name": FALKORDB_IMAGE, "digest": FALKORDB_DIGEST},
+        "successor_map": {
+            "curated": True,
+            "file": "data/successors.yaml",
+            "note": ("Hand-checked, one cited source file and line per entry. Not parsed "
+                     "from comments at runtime."),
+            "edges": [
+                {
+                    "from": e["from"], "to": e["to"], "rfc": e.get("rfc"),
+                    "source": "%s:%s" % (e["source_file"], e["source_line"]),
+                    "quote": e["quote"],
+                }
+                for _s, e in sorted(successors.items())
+            ],
+            "unmapped": [
+                {"team": u["team"], "reason": " ".join(str(u["reason"]).split())}
+                for u in (yaml.safe_load(read(os.path.join(DATA, "successors.yaml"))) or {}).get("unmapped", [])
+            ],
+        },
         "counts": {
             "teams_total": len(teams),
             "teams_active": sum(1 for t in teams.values() if t["status"] == "active"),
@@ -244,6 +313,7 @@ def build():
             "roster_edges_member": sum(len(t["members"]) for t in teams.values()),
             "roster_edges_roster": sum(len(t["leads"]) + len(t["members"]) for t in teams.values()),
             "roster_edges_alumni": sum(len(t["alumni"]) for t in teams.values()),
+            "successor_edges": len(successors),
             "people": len(people),
             "people_on_active_team": sum(1 for p in people.values() if p["on_active_team"]),
             "rfcs": len(rfcs),

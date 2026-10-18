@@ -1,5 +1,5 @@
 {
- "content_sha256": "98f0f19552ef4026a2f7e9ce2f85f671b3a93008b2f70faf1119e679976fd84c",
+ "content_sha256": "36ad30968e768859b9806126c0e540c361a9fa469e1a25b53f4c9e39a47f542c",
  "counts": {
   "documents": 626,
   "people": 675,
@@ -9,6 +9,7 @@
   "roster_edges_lead": 127,
   "roster_edges_member": 1051,
   "roster_edges_roster": 1178,
+  "successor_edges": 4,
   "teams_active": 172,
   "teams_archived": 52,
   "teams_total": 224
@@ -17147,7 +17148,56 @@
    "title": "Change `i686-pc-windows-msvc` from Tier 1 with host tools => Tier 1 without host tools"
   }
  ],
- "schema_version": 2,
+ "schema_version": 3,
+ "successor_map": {
+  "curated": true,
+  "edges": [
+   {
+    "from": "core",
+    "quote": "Core has been replaced by the leadership council with RFC#3392",
+    "rfc": 3392,
+    "source": "teams/archive/core.toml:1",
+    "to": "leadership-council"
+   },
+   {
+    "from": "libs-api",
+    "quote": "Library API has been incorporated into Library with RFC#3984",
+    "rfc": 3984,
+    "source": "teams/archive/libs-api.toml:1",
+    "to": "libs"
+   },
+   {
+    "from": "libs-contributors",
+    "quote": "Library Contributors has been incorporated into Library with RFC#3984",
+    "rfc": 3984,
+    "source": "teams/archive/libs-contributors.toml:1",
+    "to": "libs"
+   },
+   {
+    "from": "wg-traits",
+    "quote": "Note: this has effectively been replaced by the types team",
+    "rfc": null,
+    "source": "teams/archive/wg-traits.toml:1",
+    "to": "types"
+   }
+  ],
+  "file": "data/successors.yaml",
+  "note": "Hand-checked, one cited source file and line per entry. Not parsed from comments at runtime.",
+  "unmapped": [
+   {
+    "reason": "No successor note in teams/archive/docs.toml line 1. The T-doc label may refer to this team, but the file does not say so, so it is not mapped.",
+    "team": "docs"
+   },
+   {
+    "reason": "No successor note in teams/archive/interim-leadership-chat.toml. The name suggests it was interim by design, but no citable target exists.",
+    "team": "interim-leadership-chat"
+   },
+   {
+    "reason": "No successor note. Nearest ACTIVE name is teams/devtools.toml, which is a different team and not claimed as a successor.",
+    "team": "devtools-peers"
+   }
+  ]
+ },
  "teams": {
   "all": {
    "alumni": [],
@@ -17158,8 +17208,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Private channel with all team members, so that we can have an easy way of reaching them.",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "all-hands": {
@@ -17178,8 +17230,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "alumni": {
@@ -17191,8 +17245,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "This team is automatically populated with all members listed as alumni in the",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "android": {
@@ -17221,8 +17277,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "apple": {
@@ -17263,8 +17321,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "macOS/iOS/tvOS/watchOS/visionOS",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "arewewebyet": {
@@ -17301,8 +17361,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "arm": {
@@ -17331,8 +17393,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "arm-maintainers": {
@@ -17361,8 +17425,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "assumptions-on-binders": {
@@ -17386,8 +17452,10 @@
    "status": "active",
    "subteam_of": "types",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "beyond-refs-editors": {
@@ -17424,8 +17492,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "book": {
@@ -17449,8 +17519,10 @@
    "status": "active",
    "subteam_of": "lang-docs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "bootstrap": {
@@ -17492,8 +17564,10 @@
    "status": "active",
    "subteam_of": "infra",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "cargo": {
@@ -17551,8 +17625,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "clippy": {
@@ -17627,8 +17703,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "clippy-contributors": {
@@ -17668,8 +17746,10 @@
    "status": "active",
    "subteam_of": "clippy",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "cloud-compute": {
@@ -17769,8 +17849,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Note: if you are a member of a Rust team that has permissions.dev-desktop set",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "codegen-c-maintainers": {
@@ -17791,8 +17873,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "community": {
@@ -17841,8 +17925,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "community-content": {
@@ -17860,8 +17946,10 @@
    "status": "archived",
    "subteam_of": "community",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "community-ctcft": {
@@ -17878,8 +17966,10 @@
    "status": "archived",
    "subteam_of": "community",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "community-events": {
@@ -17899,8 +17989,10 @@
    "status": "archived",
    "subteam_of": "community",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "community-localization": {
@@ -17918,8 +18010,10 @@
    "status": "archived",
    "subteam_of": "community",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "community-rustbridge": {
@@ -17939,8 +18033,10 @@
    "status": "archived",
    "subteam_of": "community",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "compiler": {
@@ -18331,8 +18427,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "compiler-fcp": {
@@ -18396,8 +18494,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "compiler-ops": {
@@ -18416,8 +18516,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "comprehensibility": {
@@ -18436,8 +18538,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "content": {
@@ -18485,8 +18589,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "cookbook": {
@@ -18505,8 +18611,10 @@
    "status": "active",
    "subteam_of": "lang-docs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "core": {
@@ -18539,8 +18647,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": "Core has been replaced by the leadership council with RFC#3392",
+   "successor_quote": "Core has been replaced by the leadership council with RFC#3392",
    "successor_resolved": "leadership-council",
    "successor_rfc": 3392,
+   "successor_source": "teams/archive/core.toml:1",
    "successor_team": "leadership-council"
   },
   "council-librarians": {
@@ -18564,8 +18674,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "crate-maintainers": {
@@ -18646,8 +18758,10 @@
    "status": "active",
    "subteam_of": "libs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "crates-io": {
@@ -18702,8 +18816,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "crates-io-admins": {
@@ -18715,8 +18831,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "This team is regularly synced to the crates.io database and defines who has",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "crates-io-infra-admins": {
@@ -18745,8 +18863,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "This team defines which members of the crates-io team have administrative access to the",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "crates-io-on-call": {
@@ -18785,8 +18905,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Note: This team is composed of employees of the Rust Foundation.",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "devtools": {
@@ -18833,8 +18955,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "devtools-peers": {
@@ -18858,8 +18982,10 @@
    "status": "archived",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "docker": {
@@ -18886,8 +19012,10 @@
    "status": "active",
    "subteam_of": "infra",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "docs": {
@@ -18908,8 +19036,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "docs-peers": {
@@ -18926,8 +19056,10 @@
    "status": "archived",
    "subteam_of": "docs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "docs-rs": {
@@ -18959,8 +19091,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "docs-rs-reviewers": {
@@ -18983,8 +19117,10 @@
    "status": "active",
    "subteam_of": "docs-rs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "ecosystem": {
@@ -19001,8 +19137,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "edition": {
@@ -19037,8 +19175,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "emacs": {
@@ -19075,8 +19215,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "emscripten": {
@@ -19101,8 +19243,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "expect-test": {
@@ -19121,8 +19265,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "fls": {
@@ -19157,8 +19303,10 @@
    "status": "active",
    "subteam_of": "spec",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "fls-contributors": {
@@ -19175,8 +19323,10 @@
    "status": "active",
    "subteam_of": "fls",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "formality": {
@@ -19207,8 +19357,10 @@
    "status": "active",
    "subteam_of": "types",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "foundation-board": {
@@ -19257,8 +19409,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "foundation-board-project-directors": {
@@ -19301,8 +19455,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "foundation-email-redirects": {
@@ -19314,8 +19470,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "In the beginning the foundation hosted their emails on the rust-lang.org",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "foundation-smt": {
@@ -19343,8 +19501,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Foundation Senior Management Team",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "foundation-staff": {
@@ -19391,8 +19551,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "fuchsia": {
@@ -19430,8 +19592,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "funding": {
@@ -19463,8 +19627,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "funding-advisors": {
@@ -19513,8 +19679,10 @@
    "status": "active",
    "subteam_of": "funding",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "goal-owners": {
@@ -19775,8 +19943,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Auto-generated from the goals repository",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "goals": {
@@ -19821,8 +19991,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "gpu-target": {
@@ -19883,8 +20055,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Intended to be a ping group on rust-lang/rust for GPU targets.",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "hiring": {
@@ -19901,8 +20075,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "icebreakers-cleanup-crew": {
@@ -19952,8 +20128,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "icebreakers-llvm": {
@@ -19985,8 +20163,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "ides": {
@@ -20007,8 +20187,10 @@
    "status": "archived",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "infra": {
@@ -20072,8 +20254,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "infra-admins": {
@@ -20109,8 +20293,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "infra-bors": {
@@ -20141,8 +20327,10 @@
    "status": "active",
    "subteam_of": "infra",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "infra-bors-admins": {
@@ -20161,8 +20349,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "initial-design-and-impl": {
@@ -20208,8 +20398,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "interim-leadership-chat": {
@@ -20240,8 +20432,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": "Temporary, for the purposes of using rfcbot to ratify one RFC",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "internal-sites": {
@@ -20267,8 +20461,10 @@
    "status": "active",
    "subteam_of": "infra",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "lang": {
@@ -20312,8 +20508,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "lang-advisors": {
@@ -20377,8 +20575,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": "Granting these permissions because an advisor can use these to help when",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "lang-docs": {
@@ -20407,8 +20607,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "lang-ops": {
@@ -20435,8 +20637,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "lang-shepherds": {
@@ -20452,8 +20656,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "launching-pad": {
@@ -20465,8 +20671,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "This is an \"umbrella\" team, and thus does not have any members.",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "leadership-council": {
@@ -20534,8 +20742,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "leads": {
@@ -20547,8 +20757,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "libs": {
@@ -20724,8 +20936,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "libs-api": {
@@ -20756,9 +20970,11 @@
    "status": "archived",
    "subteam_of": "libs",
    "successor_note": "Library API has been incorporated into Library with RFC#3984",
-   "successor_resolved": null,
+   "successor_quote": "Library API has been incorporated into Library with RFC#3984",
+   "successor_resolved": "libs",
    "successor_rfc": 3984,
-   "successor_team": "library"
+   "successor_source": "teams/archive/libs-api.toml:1",
+   "successor_team": "libs"
   },
   "libs-contributors": {
    "alumni": [
@@ -20800,9 +21016,11 @@
    "status": "archived",
    "subteam_of": "libs",
    "successor_note": "Library Contributors has been incorporated into Library with RFC#3984",
-   "successor_resolved": null,
+   "successor_quote": "Library Contributors has been incorporated into Library with RFC#3984",
+   "successor_resolved": "libs",
    "successor_rfc": 3984,
-   "successor_team": "library"
+   "successor_source": "teams/archive/libs-contributors.toml:1",
+   "successor_team": "libs"
   },
   "libs-fcp": {
    "alumni": [],
@@ -20846,8 +21064,10 @@
    "status": "active",
    "subteam_of": "libs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "libs-ping": {
@@ -20932,8 +21152,10 @@
    "status": "active",
    "subteam_of": "libs",
    "successor_note": "pings for FCPs + backports",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "llm-policy": {
@@ -20962,8 +21184,10 @@
    "status": "active",
    "subteam_of": "leadership-council",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "loongarch": {
@@ -20992,8 +21216,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "maintainers-in-residence": {
@@ -21048,8 +21274,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "mdbook": {
@@ -21079,8 +21307,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "mentees": {
@@ -21221,8 +21451,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "mentors": {
@@ -21335,8 +21567,10 @@
    "status": "active",
    "subteam_of": "mentorship",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "mentorship": {
@@ -21360,8 +21594,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "miri": {
@@ -21391,8 +21627,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "mods": {
@@ -21428,8 +21666,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "mods-discourse": {
@@ -21459,8 +21699,10 @@
    "status": "active",
    "subteam_of": "mods",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "mods-venue": {
@@ -21499,8 +21741,10 @@
    "status": "active",
    "subteam_of": "mods",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "opsem": {
@@ -21538,8 +21782,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "ospp": {
@@ -21556,8 +21802,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "perspectives-on-llms-editors": {
@@ -21586,8 +21834,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "production": {
@@ -21603,8 +21853,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "program": {
@@ -21627,8 +21879,10 @@
    "status": "active",
    "subteam_of": "edition",
    "successor_note": "The Program team (AKA Program Management, PM) lists the staff hired",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "program-managers": {
@@ -21649,8 +21903,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "This team includes the program managers hired by the Project",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-async-crashdump-debugging": {
@@ -21669,8 +21925,10 @@
    "status": "active",
    "subteam_of": "wg-async",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-const-generics": {
@@ -21719,8 +21977,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-const-generics-triage": {
@@ -21755,8 +22015,10 @@
    "status": "active",
    "subteam_of": "project-const-generics",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-const-traits": {
@@ -21785,8 +22047,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-dictionary-passing": {
@@ -21817,8 +22081,10 @@
    "status": "active",
    "subteam_of": "types",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-dyn-upcasting": {
@@ -21833,8 +22099,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-edition-2021": {
@@ -21850,8 +22118,10 @@
    "status": "archived",
    "subteam_of": "core",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-error-handling": {
@@ -21871,8 +22141,10 @@
    "status": "archived",
    "subteam_of": "libs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-exploit-mitigations": {
@@ -21903,8 +22175,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-foundation": {
@@ -21925,8 +22199,10 @@
    "status": "archived",
    "subteam_of": "core",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-generic-associated-types": {
@@ -21941,8 +22217,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-goal-reference-expansion": {
@@ -22006,8 +22284,10 @@
    "status": "active",
    "subteam_of": "lang-docs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-group-leads": {
@@ -22019,8 +22299,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-impl-trait": {
@@ -22048,8 +22330,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-keyword-generics": {
@@ -22067,8 +22351,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-library-trait-evolution": {
@@ -22099,8 +22385,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-negative-impls": {
@@ -22122,8 +22410,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-portable-simd": {
@@ -22162,8 +22452,10 @@
    "status": "active",
    "subteam_of": "libs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-rustc-public": {
@@ -22198,8 +22490,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-thir-unsafeck": {
@@ -22215,8 +22509,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-trait-system-refactor": {
@@ -22258,8 +22554,10 @@
    "status": "active",
    "subteam_of": "types",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "project-vision-doc-2025": {
@@ -22310,8 +22608,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "reference": {
@@ -22329,8 +22629,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "regex": {
@@ -22349,8 +22651,10 @@
    "status": "active",
    "subteam_of": "libs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "release": {
@@ -22396,8 +22700,10 @@
    "status": "active",
    "subteam_of": "infra",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "release-publishers": {
@@ -22418,8 +22724,10 @@
    "status": "active",
    "subteam_of": "release",
    "successor_note": "None currently, created to add this team to crates published as part of",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "relnotes-interest-group": {
@@ -22456,8 +22764,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Intended to be a ping group on rust-lang/rust for release notes for people who",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rfmf-design-committee": {
@@ -22476,8 +22786,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "risc-v": {
@@ -22506,8 +22818,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rust-analyzer": {
@@ -22563,8 +22877,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rust-analyzer-contributors": {
@@ -22599,8 +22915,10 @@
    "status": "active",
    "subteam_of": "rust-analyzer",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rust-by-example": {
@@ -22621,8 +22939,10 @@
    "status": "active",
    "subteam_of": "lang-docs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rust-for-linux": {
@@ -22687,8 +23007,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustc-dev-guide": {
@@ -22755,8 +23077,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": "Intended primarily for subtree syncs.",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustconf-emails": {
@@ -22768,8 +23092,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "Empty marker team used to configure RustConf's mailing lists.",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustdoc": {
@@ -22827,8 +23153,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustdoc-frontend": {
@@ -22859,8 +23187,10 @@
    "status": "active",
    "subteam_of": "rustdoc",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustdoc-internals": {
@@ -22905,8 +23235,10 @@
    "status": "active",
    "subteam_of": "rustdoc",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustdoc-json": {
@@ -22929,8 +23261,10 @@
    "status": "active",
    "subteam_of": "rustdoc",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustfmt": {
@@ -22961,8 +23295,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": "Primarily for subtree syncs and other rustfmt-related review.",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustfmt-contributors": {
@@ -22997,8 +23333,10 @@
    "status": "active",
    "subteam_of": "rustfmt",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustlings": {
@@ -23024,8 +23362,10 @@
    "status": "active",
    "subteam_of": "lang-docs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "rustup": {
@@ -23063,8 +23403,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "security-response": {
@@ -23093,8 +23435,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "social-media": {
@@ -23113,8 +23457,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "spec": {
@@ -23146,8 +23492,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "spec-contributors": {
@@ -23161,8 +23509,10 @@
    "status": "active",
    "subteam_of": "spec",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "style": {
@@ -23197,8 +23547,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": "Primarily for documentation stored in rust-lang/rust",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "survey": {
@@ -23234,8 +23586,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "team-repo-admins": {
@@ -23260,8 +23614,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "testing-devex": {
@@ -23296,8 +23652,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "triage": {
@@ -23441,8 +23799,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "triagebot": {
@@ -23480,8 +23840,10 @@
    "status": "active",
    "subteam_of": "infra",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "trusted-contributors": {
@@ -23506,8 +23868,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "People who are not members of Rust teams that have try/perf. permissions,",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "twir": {
@@ -23545,8 +23909,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "twir-reviewers": {
@@ -23605,8 +23971,10 @@
    "status": "active",
    "subteam_of": "twir",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "twitter": {
@@ -23622,8 +23990,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "types": {
@@ -23670,8 +24040,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": "Really should be compiler + lang, but the team repo doesn't handle that",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "types-fcp": {
@@ -23708,8 +24080,10 @@
    "status": "active",
    "subteam_of": "types",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "vim": {
@@ -23734,8 +24108,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wasi": {
@@ -23760,8 +24136,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wasm": {
@@ -23790,8 +24168,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "web-presence": {
@@ -23803,8 +24183,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "website": {
@@ -23835,8 +24217,10 @@
    "status": "active",
    "subteam_of": "web-presence",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-allocators": {
@@ -23881,8 +24265,10 @@
    "status": "active",
    "subteam_of": "libs",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-async": {
@@ -23959,8 +24345,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-binary-size": {
@@ -23982,8 +24370,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-bindgen": {
@@ -24021,8 +24411,10 @@
    "status": "active",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-build-script": {
@@ -24066,8 +24458,10 @@
    "status": "active",
    "subteam_of": "cargo",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-cli": {
@@ -24107,8 +24501,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-compiler-performance": {
@@ -24161,8 +24557,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-const-eval": {
@@ -24196,8 +24594,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-debugging": {
@@ -24215,8 +24615,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-diagnostics": {
@@ -24254,8 +24656,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded": {
@@ -24429,8 +24833,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-arm": {
@@ -24493,8 +24899,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-core": {
@@ -24515,8 +24923,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-hal": {
@@ -24549,8 +24959,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-infra": {
@@ -24571,8 +24983,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-libs": {
@@ -24605,8 +25019,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-linux": {
@@ -24643,8 +25059,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-msp430": {
@@ -24665,8 +25083,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-resources": {
@@ -24709,8 +25129,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-riscv": {
@@ -24747,8 +25169,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-tools": {
@@ -24785,8 +25209,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-embedded-triage": {
@@ -24811,8 +25237,10 @@
    "status": "active",
    "subteam_of": "wg-embedded",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-ffi-unwind": {
@@ -24836,8 +25264,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-field-projections": {
@@ -24869,8 +25299,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-gamedev": {
@@ -24934,8 +25366,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-gcc-backend": {
@@ -24958,8 +25392,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-governance": {
@@ -24974,8 +25410,10 @@
    "status": "archived",
    "subteam_of": "core",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-grammar": {
@@ -24992,8 +25430,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-incr-comp": {
@@ -25014,8 +25454,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-inline-asm": {
@@ -25036,8 +25478,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-leads": {
@@ -25049,8 +25493,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-linker": {
@@ -25079,8 +25525,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-llvm": {
@@ -25115,8 +25563,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-macros": {
@@ -25160,8 +25610,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-meta": {
@@ -25177,8 +25629,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-mir-opt": {
@@ -25219,8 +25673,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-net": {
@@ -25235,8 +25691,10 @@
    "status": "archived",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-net-async": {
@@ -25251,8 +25709,10 @@
    "status": "archived",
    "subteam_of": "wg-net",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-net-embedded": {
@@ -25267,8 +25727,10 @@
    "status": "archived",
    "subteam_of": "wg-net",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-net-web": {
@@ -25283,8 +25745,10 @@
    "status": "archived",
    "subteam_of": "wg-net",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-nll": {
@@ -25303,8 +25767,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-parallel-rustc": {
@@ -25346,8 +25812,10 @@
    "status": "active",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-pgo": {
@@ -25361,8 +25829,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-polonius": {
@@ -25400,8 +25870,10 @@
    "status": "active",
    "subteam_of": "types",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-polymorphization": {
@@ -25417,8 +25889,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-prioritization": {
@@ -25454,8 +25928,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-rfc-2229": {
@@ -25477,8 +25953,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-rustc-reading-club": {
@@ -25493,8 +25971,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-rustfix": {
@@ -25513,8 +25993,10 @@
    "status": "archived",
    "subteam_of": "devtools",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-safe-transmute": {
@@ -25536,8 +26018,10 @@
    "status": "active",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-secure-code": {
@@ -25583,8 +26067,10 @@
    "status": "active",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-self-profile": {
@@ -25599,8 +26085,10 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-traits": {
@@ -25631,9 +26119,11 @@
    "status": "archived",
    "subteam_of": "compiler",
    "successor_note": "Note: this has effectively been replaced by the types team",
-   "successor_resolved": null,
+   "successor_quote": "Note: this has effectively been replaced by the types team",
+   "successor_resolved": "types",
    "successor_rfc": null,
-   "successor_team": null
+   "successor_source": "teams/archive/wg-traits.toml:1",
+   "successor_team": "types"
   },
   "wg-unsafe-code-guidelines": {
    "alumni": [
@@ -25652,8 +26142,10 @@
    "status": "archived",
    "subteam_of": "lang",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "wg-wasm": {
@@ -25671,8 +26163,10 @@
    "status": "archived",
    "subteam_of": "launching-pad",
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "windows": {
@@ -25733,8 +26227,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": null,
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   },
   "yocto": {
@@ -25751,8 +26247,10 @@
    "status": "active",
    "subteam_of": null,
    "successor_note": "This marker team is for Rust project members that are interested in helping with issues related",
+   "successor_quote": null,
    "successor_resolved": null,
    "successor_rfc": null,
+   "successor_source": null,
    "successor_team": null
   }
  }

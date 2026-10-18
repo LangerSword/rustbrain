@@ -1,0 +1,55 @@
+# Successor map: CURATED, SOURCES CITED
+#
+# Every entry here is hand-checked against the named file and line of the pinned
+# rust-lang/team revision cb0ccabd69bc63e3f84f26d764704d939224071f, retrieved
+# 2026-10-16. Nothing is parsed from a comment at runtime: the ingest reads THIS file.
+#
+# An archived team with no entry here is reported as a TRUE GAP, not as "probably
+# renamed". Inferences that are not written down in the source are NOT included.
+#
+# Fields:
+#   from         archived team slug
+#   to           active team slug that now owns the label
+#   source_file  path inside rust-lang/team at the pinned SHA
+#   source_line  1-indexed line of the note
+#   quote        the note, verbatim
+#   rfc          RFC number if the note names one, else null
+#
+successors:
+  - from: libs-api
+    to: libs
+    source_file: teams/archive/libs-api.toml
+    source_line: 1
+    quote: "Library API has been incorporated into Library with RFC#3984"
+    rfc: 3984
+  - from: core
+    to: leadership-council
+    source_file: teams/archive/core.toml
+    source_line: 1
+    quote: "Core has been replaced by the leadership council with RFC#3392"
+    rfc: 3392
+  - from: libs-contributors
+    to: libs
+    source_file: teams/archive/libs-contributors.toml
+    source_line: 1
+    quote: "Library Contributors has been incorporated into Library with RFC#3984"
+    rfc: 3984
+  - from: wg-traits
+    to: types
+    source_file: teams/archive/wg-traits.toml
+    source_line: 1
+    quote: "Note: this has effectively been replaced by the types team"
+    rfc: null
+
+# Archived teams deliberately left OUT of the map, with the reason. Each of these is
+# reported as a true gap by the gap report, and none of them is claimed as a rename.
+unmapped:
+  - team: docs
+    reason: "No successor note in teams/archive/docs.toml line 1. The T-doc label may
+             refer to this team, but the file does not say so, so it is not mapped."
+  - team: interim-leadership-chat
+    reason: "No successor note in teams/archive/interim-leadership-chat.toml. The name
+             suggests it was interim by design, but no citable target exists."
+  - team: devtools-peers
+    reason: "No successor note. Nearest ACTIVE name is teams/devtools.toml, which is a
+             different team and not claimed as a successor."
