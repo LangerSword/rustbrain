@@ -2,3 +2,5 @@ data/upstream/
 __pycache__/
 *.pyc
 .venv/
+.falkorimg/
+data/history/snapshot_*.json
