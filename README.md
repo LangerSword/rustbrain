@@ -87,26 +87,32 @@ has 42 RFCs whose most recent is from 2018.
 
 ## Setup, tested from a clean clone
 
-The clean-clone run below was executed at 2026-10-19 02:32 IST against
-`https://github.com/LangerSword/rustbrain`, and it passed with no network.
+The run below is the literal clean-clone sequence. Cloning and the graph step need
+network; once the graph is loaded, everything runs offline.
 
 ```bash
 git clone https://github.com/LangerSword/rustbrain && cd rustbrain
-python3 -m pip install pyyaml          # the only dependency
+
+# 0. pyyaml is the only dependency. Check for it; install only if missing.
+#    (On a stock CPython, `python3 -m pip install pyyaml` also works.)
+python3 -c "import yaml" || pip install pyyaml
 
 # 1. the ingest is offline and hashes itself
 python3 scripts/build_snapshot.py      # writes data/snapshot.json
 python3 scripts/build_snapshot.py --check
 python3 scripts/verify_snapshot.py     # independent tomllib parser, must agree
 
-# 2. a graph to query. Either a local module, or Docker:
+# 2. a graph to query. Two ways to the same pinned module. Pick ONE.
+#    A. container runtime available:
 docker run -d -p 6379:6379 falkordb/falkordb@sha256:b0bdcac2cbaff989e77cb0610439b7a9289e86de033ccbbd4368b66fb680ae7a
-# (this host has no container runtime, so the module was extracted straight from
-#  the image instead: scripts/extract_module.py then scripts/start_module.sh)
+#    B. no container runtime (this host): extract the module from the same pin
+python3 scripts/extract_module.py      # downloads the pinned image layers, checks digests
+scripts/start_module.sh 6379          # starts redis-server with the extracted module
 
 export FALKORDB_PORT=6379
 python3 scripts/load_graph.py
 python3 scripts/test_queries.py        # 41 assertions
+python3 cmd/route.py 1892              # a real RFC PR routed through the successor hop
 python3 cmd/serve.py                   # then open http://127.0.0.1:8788
 ```
 
