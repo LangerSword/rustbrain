@@ -46,6 +46,10 @@ Done 2026-10-19 IST on https://github.com/LangerSword/rustbrain.
     $ python3 scripts/build_snapshot.py --check
     PASS: file intact and byte-identical rebuild, sha256=6732467a...
 
+Repo head after the follow-up docs commit: 1613b9bbd268c83a32c82acebca63ae16ce89e30.
+Clean-clone Run 3 on the rewritten history was green; it is recorded at the end of
+`clean_clone.md`.
+
 ## Commit map, old to new, for commits still reachable
 
 | old | new |

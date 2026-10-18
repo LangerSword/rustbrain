@@ -148,3 +148,36 @@ A cold clone at 301af5f runs with the README commands only, no extra steps: inge
 assertions, routing on a real RFC PR, and the UI serving HTTP 200 with correct
 tiers. The only steps that touch the network are the clone itself and the image
 layer download in the no-container path.
+
+## Run 3, fresh clone at 1613b9b, after the history rewrite
+
+The rewritten history was cloned into a fresh directory and the README was followed
+literally; port 6379 was free so the clone started its own extracted module.
+
+    $ git clone https://github.com/LangerSword/rustbrain && cd rustbrain
+    EXIT=0    (HEAD 1613b9b)
+    $ python3 -c "import yaml" || pip install pyyaml
+    EXIT=0
+    $ python3 scripts/build_snapshot.py
+    content_sha256=6732467a070a0a8c7129ff334f5a95a2227cd014783ca8415ca01bb87a353c97
+    $ python3 scripts/build_snapshot.py --check
+    PASS: file intact and byte-identical rebuild, sha256=6732467a...
+    $ python3 scripts/verify_snapshot.py
+    VERDICT: PASS, snapshot matches an independent TOML parser
+    $ python3 scripts/extract_module.py
+    ... 18 layers digest_ok=True; module=True redis=True
+    $ scripts/start_module.sh 6379
+    falkordb module ver = 42201 (expect 42201)
+    OK: graded module running on port 6379
+    $ export FALKORDB_PORT=6379; python3 scripts/load_graph.py
+    Team 224, Person 675, RFC 761, Document 626; MEMBER 1050, LEAD 127,
+    AUTHORED 592, GOVERNED 395, SUCCEEDED_BY 4
+    $ python3 scripts/test_queries.py
+    41 passed, 0 failed
+    $ python3 cmd/route.py 1892
+    T-lang (active), no successor hop needed; T-libs-api -> libs via SUCCEEDED_BY
+    $ python3 cmd/serve.py    (http://127.0.0.1:8788)
+    GET / HTTP 200; T-libs-api SUCCESSOR libs-api -> libs, 37 people; T-doc TRUE_GAP
+
+Result: the cold clone is green on the rewritten history, with the vendored tree
+carrying no contact fields and people handles only.
