@@ -14,8 +14,9 @@ deliberately, never implicitly.
 
 ## Data policy
 
-Public GitHub data only. Handles only: no real names, no email addresses, no avatar
-URLs, no RFC bodies. RFC titles truncated to 120 characters. The team repository is
-fetched file by file via the GitHub API at the pinned SHA, then committed under
-data/upstream/team; CI never touches the network and reads the committed tree plus
-data/snapshot.json.
+Public GitHub data only. The product's stores hold handles only: no real names, no
+email addresses, no avatar URLs, no RFC bodies. RFC titles are truncated to 120
+characters. The pinned team tree is committed under data/upstream/team so CI needs
+no network; it mirrors public rust-lang/team files (scripts/fetch_upstream.py
+re-fetches the teams/, people/ and repos/ TOMLs at the pinned SHA), including the
+fields upstream itself publishes. CI reads the committed tree plus data/snapshot.json.

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""One-time fetch of the two pinned upstream trees into data/upstream.
+"""Re-fetch the pinned upstream trees into data/upstream at the pins in scripts/build_snapshot.py.
 
-This is the ONLY script that touches the network. CI never runs it.
-Handles only: we read team TOMLs and PR metadata, never RFC bodies.
+Run by `cmd/refresh.py --bump`; CI never runs it. Fetches the TOML trees this
+repository vendors: teams/, people/ and repos/.
 """
 import json, os, re, subprocess, sys, time
 
@@ -38,14 +38,14 @@ def main():
     os.makedirs(os.path.join(UP, "team", "teams", "archive"), exist_ok=True)
     os.makedirs(os.path.join(UP, "team", "people"), exist_ok=True)
 
-    # --- team repo: teams/*.toml, teams/archive/*.toml, people/*.toml (for handle names) ---
+    # --- team repo: the TOML trees this repository vendors ---
     tree = gh("repos/rust-lang/team/git/trees/%s?recursive=1" % PINS["team"])["tree"]
     n = 0
     for e in tree:
         p = e["path"]
         if not p.endswith(".toml"):
             continue
-        if p.startswith("teams/") or p.startswith("people/"):
+        if p.startswith(("teams/", "people/", "repos/")):
             d = os.path.join(UP, "team", p)
             os.makedirs(os.path.dirname(d), exist_ok=True)
             curl("https://raw.githubusercontent.com/rust-lang/team/%s/%s" % (PINS["team"], p), d)
