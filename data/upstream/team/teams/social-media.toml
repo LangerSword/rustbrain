@@ -7,7 +7,6 @@ members = ["m-ou-se"]
 alumni = []
 
 [[lists]]
-address = "***REMOVED***"
 
 [[github]]
 orgs = ["rust-lang"]

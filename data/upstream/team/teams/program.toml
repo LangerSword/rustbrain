@@ -32,7 +32,6 @@ dev-desktop = true
 perf = true
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-program"

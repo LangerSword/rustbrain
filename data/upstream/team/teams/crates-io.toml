@@ -46,14 +46,9 @@ zulip-stream = "t-crates-io"
 repo = "https://github.com/rust-lang/crates.io"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 include-team-members = false
-extra-emails = [
-    "***REMOVED***",
-]
 
 [[zulip-groups]]
 name = "T-crates-io"

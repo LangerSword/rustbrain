@@ -16,7 +16,6 @@ alumni = [
 ]
 
 [[lists]]
-address = "***REMOVED***"
 extra-people = [
     "alexcrichton",
     "aturon",

@@ -233,15 +233,19 @@ any of them drifts.
 
 ## Rules compliance notes
 
-**Handles only (data policy).** Everything the product stores is handles:
-`data/snapshot.json` and the graph carry no real names, no email addresses, no
-avatar URLs, no post text and no RFC bodies, and RFC titles are truncated to 120
-characters. The one place that holds more than handles is the vendored upstream tree
-at `data/upstream/team/`, which is committed verbatim so CI needs no network; it is
-public `rust-lang/team` content and includes the fields upstream itself publishes
-(its `people/*.toml` files carry contact fields). The ingest copies only handles,
-team slugs and structure out of that tree into the snapshot, and every command
-output and the UI are handles only.
+**Handles only (data policy).** The repository carries no email addresses and no
+contact fields, and the product stores handles only: `data/snapshot.json` and the
+graph carry no real names, no email addresses, no avatar URLs, no post text and no
+RFC bodies, and RFC titles are truncated to 120 characters. The vendored tree at
+`data/upstream/team/` holds only what the product and its evidence read: the
+`teams/` and `repos/` TOMLs with contact fields (`email`, `address`, `extra-emails`)
+removed at fetch time by `scripts/sanitize_contact_fields.py`, plus
+`people_handles.txt`, a handles-only list derived at fetch time from upstream's
+people files, which are never written to disk. Upstream's own source, tests, docs
+and workflows are not vendored. The ingest copies only handles, team slugs and
+structure out of that tree into the snapshot, and every command output and the UI
+are handles only. The before and after of the removal is recorded in
+`out/blog_evidence/email_removal_receipt.md`.
 
 **AI-assistant disclosure.** An AI assistant (Hermes Agent by Nous Research) wrote
 the code in this repository at the entrant's direction, across the build window. All

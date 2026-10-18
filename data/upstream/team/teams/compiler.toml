@@ -127,16 +127,12 @@ description = "Developing and managing compiler internals and optimizations"
 zulip-stream = "t-compiler"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 include-subteam-members = true
 
 [[zulip-groups]]

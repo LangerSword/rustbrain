@@ -73,4 +73,3 @@ repo = "https://github.com/rust-embedded/wg"
 matrix-room = "#rust-embedded:matrix.org"
 
 [[lists]]
-address = "***REMOVED***"

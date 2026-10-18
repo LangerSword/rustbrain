@@ -46,7 +46,6 @@ zulip-stream = "clippy"
 repo = "https://github.com/rust-lang/rust-clippy"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-clippy"

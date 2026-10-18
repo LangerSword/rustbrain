@@ -32,12 +32,10 @@ orgs = ["rust-lang"]
 [website]
 name = "Bootstrap team"
 description = "Maintaining and improving the build system for rust-lang/rust"
-email = "***REMOVED***"
 zulip-stream = "t-infra/bootstrap"
 repo = "https://github.com/rust-lang/rust"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-bootstrap"

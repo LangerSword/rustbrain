@@ -46,7 +46,6 @@ repo = "https://github.com/rust-lang/cargo"
 zulip-stream = "t-cargo"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-cargo"

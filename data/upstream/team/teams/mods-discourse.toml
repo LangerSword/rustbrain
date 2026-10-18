@@ -20,4 +20,3 @@ name = "Discourse moderators"
 description = "Moderating users.rust-lang.org and internals.rust-lang.org"
 
 [[lists]]
-address = "***REMOVED***"

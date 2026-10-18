@@ -29,24 +29,17 @@ alumni = [
 orgs = ["rust-lang"]
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 include-team-members = false
 extra-people = [
     "carols10cents",
     "aidanhs",
 ]
-extra-emails = [
-    "***REMOVED***",
-]
 
 [[lists]]
-address = "***REMOVED***"
 include-team-members = false
 extra-people = [
     "manyinsects",

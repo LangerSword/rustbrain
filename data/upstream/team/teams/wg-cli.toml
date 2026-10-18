@@ -25,11 +25,4 @@ description = "Focusing on the end-to-end experience of writing terminal apps, b
 zulip-stream = "wg-cli"
 
 [[lists]]
-address = "***REMOVED***"
 
-extra-emails = [
-    "***REMOVED***",
-    "***REMOVED***",
-    "***REMOVED***",
-    "***REMOVED***",
-]

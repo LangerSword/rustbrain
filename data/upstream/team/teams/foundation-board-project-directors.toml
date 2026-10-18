@@ -25,10 +25,8 @@ alumni = [
 [website]
 name = "Foundation Board Project Directors"
 description = "Charged with representing the project on the Board of the Rust Foundation"
-email = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[github]]
 orgs = ["rust-lang"]

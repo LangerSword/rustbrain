@@ -47,7 +47,6 @@ zulip-stream = "t-rustdoc"
 repo = "https://github.com/rust-lang/rust"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-rustdoc"

@@ -7,7 +7,6 @@ members = []
 alumni = []
 
 [[lists]]
-address = "***REMOVED***"
 extra-teams = [
     "crates-io",
     "docs-rs",

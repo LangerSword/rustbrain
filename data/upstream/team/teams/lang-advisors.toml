@@ -37,7 +37,6 @@ name = "Language Advisors team"
 description = "Advising on the development of the Rust language"
 
 [[lists]]
-address = "***REMOVED***"
 extra-teams = ["lang"]
 
 [[zulip-groups]]

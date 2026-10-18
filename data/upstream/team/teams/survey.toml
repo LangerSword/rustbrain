@@ -30,7 +30,5 @@ repo = "https://github.com/rust-lang/surveys"
 orgs = ["rust-lang"]
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"

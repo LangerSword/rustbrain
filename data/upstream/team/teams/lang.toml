@@ -43,16 +43,12 @@ repo = "http://github.com/rust-lang/lang-team"
 zulip-stream = "t-lang"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-lang"

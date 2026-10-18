@@ -39,7 +39,6 @@ name = "Library API team"
 description = "Designing and maintaining the standard library API and guarding its stability"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-libs-api"

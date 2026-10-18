@@ -10,7 +10,6 @@ include-team-leads = true
 orgs = ["rust-lang"]
 
 [[lists]]
-address = "***REMOVED***"
 extra-teams = ["wg-leads", "leadership-council"]
 
 [[zulip-streams]]

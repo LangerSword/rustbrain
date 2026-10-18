@@ -19,7 +19,6 @@ alumni = [
 orgs = ["rust-lang"]
 
 [[lists]]
-address = "***REMOVED***"
 
 [website]
 name = "TWiR team"

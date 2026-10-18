@@ -34,7 +34,6 @@ ping = "rust-lang/dev-tools"
 [website]
 page = "dev-tools"
 name = "Dev tools team"
-email = "***REMOVED***"
 description = "Contributing to and creating the Rust development tools"
 repo = "https://github.com/rust-dev-tools/dev-tools-team"
 zulip-stream = "t-devtools"
@@ -43,10 +42,8 @@ zulip-stream = "t-devtools"
 orgs = ["rust-lang", "rust-dev-tools"]
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 extra-teams = [
     "cargo",
     "clippy",
@@ -60,10 +57,7 @@ extra-teams = [
 extra-people = ["spacekookie"]
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"

@@ -49,18 +49,14 @@ ping = "rust-lang/infra"
 [website]
 name = "Infrastructure team"
 description = "Managing the infrastructure supporting the Rust project itself, including CI, releases, bots, and metrics"
-email = "***REMOVED***"
 zulip-stream = "t-infra"
 repo = "https://github.com/rust-lang/infra-team"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "T-infra"

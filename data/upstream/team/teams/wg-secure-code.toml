@@ -31,7 +31,6 @@ repo = "https://github.com/rust-secure-code/wg"
 zulip-stream = "wg-secure-code"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[zulip-groups]]
 name = "WG-secure-code"

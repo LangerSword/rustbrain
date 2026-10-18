@@ -12,11 +12,7 @@ leads = []
 members = []
 
 [[lists]]
-address = "***REMOVED***"
-extra-emails = ["***REMOVED***"]
 include-team-members = false
 
 [[lists]]
-address = "***REMOVED***"
-extra-emails = ["***REMOVED***"]
 include-team-members = false

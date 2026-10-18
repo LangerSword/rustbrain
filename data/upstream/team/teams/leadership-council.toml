@@ -37,7 +37,6 @@ ping = "rust-lang/leadership-council"
 [website]
 name = "Leadership council"
 description = "Charged with the success of the Rust Project as whole, consisting of representatives from top-level teams"
-email = "***REMOVED***"
 zulip-stream = "council"
 weight = 1000
 repo = "https://github.com/rust-lang/leadership-council"
@@ -71,13 +70,8 @@ id = "council-rep-mods"
 description = "Moderation team"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
-extra-emails = [
-    "***REMOVED***",
-]
 
 [[zulip-groups]]
 name = "council"

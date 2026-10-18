@@ -28,9 +28,7 @@ name = "Documentation team"
 description = "Improving and moderating the quality of Rust's documentation"
 
 [[lists]]
-address = "***REMOVED***"
 extra-teams = ["lang-docs"]
 
 [[lists]]
-address = "***REMOVED***"
 extra-teams = ["lang-docs", "rust-by-example"]

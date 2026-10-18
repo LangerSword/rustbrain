@@ -19,14 +19,11 @@ alumni = [
 [website]
 name = "Foundation Project Group"
 description = "Explore, plan and create a foundation for the Rust project"
-email = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 include-team-members = false
 
 [[lists]]
-address = "***REMOVED***"
 include-team-members = false
 
 [[github]]

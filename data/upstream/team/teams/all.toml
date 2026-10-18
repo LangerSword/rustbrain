@@ -10,24 +10,14 @@ include-all-team-members = true
 orgs = ["rust-lang"]
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 
 [[lists]]
-address = "***REMOVED***"
 include-team-members = false
-extra-emails = [
-    "***REMOVED***",
-]
 
 [[lists]]
-address = "***REMOVED***"
 include-team-members = false
-extra-emails = [
-    "***REMOVED***",
-]
 
 [[zulip-groups]]
 name = "T-all"

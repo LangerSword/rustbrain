@@ -8,5 +8,4 @@ included-teams = ["project-group-leads"]
 include-wg-leads = true
 
 [[lists]]
-address = "***REMOVED***"
 extra-teams = ["leadership-council"]
