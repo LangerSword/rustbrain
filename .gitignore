@@ -1,6 +1,7 @@
-data/upstream/
+data/upstream/team/.git/
 __pycache__/
 *.pyc
 .venv/
 .falkorimg/
 data/history/snapshot_*.json
+reports/refresh_*.md
