@@ -12,7 +12,7 @@ gap report and the CI assertions are all deterministic, and CI runs with no netw
 
 [![ci](https://github.com/LangerSword/rustbrain/actions/workflows/ci.yml/badge.svg)](https://github.com/LangerSword/rustbrain/actions/workflows/ci.yml)
 
-Green run: https://github.com/LangerSword/rustbrain/actions/runs/39165501700
+Latest green run: https://github.com/LangerSword/rustbrain/actions/runs/39167042050
 
 ---
 
