@@ -13,12 +13,15 @@ Usage:
                                           one kept in data/history/
   python3 cmd/refresh.py --snapshot       keep a copy of the current snapshot in
                                           data/history/ before diffing
-  python3 cmd/refresh.py --bump           re-fetch upstream at CURRENT HEAD, rebuild,
-                                          then diff. Network. Use for a real refresh.
-  python3 cmd/refresh.py --bump --pin     same, and rewrite PINS to the new SHAs
+  python3 cmd/refresh.py --pin            regenerate PINS.md from scripts/build_snapshot.py,
+                                          the single source of truth. No network.
+  python3 cmd/refresh.py --bump           re-fetch upstream at CURRENT HEAD, rewrite the
+                                          pins in build_snapshot.py AND PINS.md, rebuild,
+                                          then diff. Network.
 """
 import argparse
 import datetime as dt
+import importlib
 import json
 import os
 import shutil
@@ -29,6 +32,15 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(HERE, "data")
 HIST = os.path.join(DATA, "history")
 REPORTS = os.path.join(HERE, "reports")
+
+
+def build_snapshot_module():
+    """Import scripts/build_snapshot.py, the one place a pinned revision lives."""
+    scripts = os.path.join(HERE, "scripts")
+    if scripts not in sys.path:
+        sys.path.insert(0, scripts)
+    import build_snapshot
+    return build_snapshot
 
 
 def read(p):
@@ -177,8 +189,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--snapshot", action="store_true", help="keep a copy of the current snapshot first")
     ap.add_argument("--bump", action="store_true", help="re-fetch upstream at current HEAD")
-    ap.add_argument("--pin", action="store_true", help="with --bump, rewrite PINS to the new SHAs")
+    ap.add_argument("--pin", action="store_true",
+                    help="regenerate PINS.md from scripts/build_snapshot.py (alone: no network)")
     args = ap.parse_args()
+
+    if args.pin and not args.bump:
+        bs = build_snapshot_module()
+        print("wrote %s (generated from scripts/build_snapshot.py)" % bs.write_pins())
+        return 0
 
     os.makedirs(HIST, exist_ok=True)
     os.makedirs(REPORTS, exist_ok=True)
@@ -201,24 +219,38 @@ def main():
 
     if args.bump:
         print("re-fetching upstream at current HEAD")
-        run([sys.executable, os.path.join(HERE, "scripts", "fetch_rfcs.py")])
-        shas = {}
+        import re
+        shas, cdates = {}, {}
         for repo, key in (("rust-lang/team", "team"), ("rust-lang/rfcs", "rfcs")):
-            sha = run(["gh", "api", "repos/%s/commits/main" % repo, "--jq", ".sha"]).strip()
-            shas[key] = sha
-            print("  %s HEAD = %s" % (repo, sha))
-        if args.pin:
-            src = read(os.path.join(HERE, "scripts", "build_snapshot.py"))
-            for key in ("team", "rfcs"):
-                import re
-                src = re.sub(r'("%s":\s*")[0-9a-f]{40}' % key, r"\g<1>" + shas[key], src)
-            with open(os.path.join(HERE, "scripts", "build_snapshot.py"), "w", encoding="utf-8") as f:
-                f.write(src)
-            print("PINS rewritten")
-        # refresh the pinned team tree too
-        run(["git", "-C", os.path.join(DATA, "upstream", "team"), "fetch", "--depth", "1",
-             "origin", shas["team"]])
-        run(["git", "-C", os.path.join(DATA, "upstream", "team"), "checkout", "-q", "FETCH_HEAD"])
+            out = run(["gh", "api", "repos/%s/commits/main" % repo, "--jq",
+                       '.sha + " " + .commit.committer.date'])
+            sha, cdate = out.split()
+            shas[key], cdates[key] = sha, cdate
+            print("  %s HEAD = %s  committer date %s" % (repo, sha, cdate))
+
+        # A bump ALWAYS rewrites the pins. Fetching a new tree while the snapshot still
+        # names the old SHA would make the snapshot lie about its own provenance, and
+        # rewriting build_snapshot.py alone is exactly how PINS.md drifted before.
+        bs_path = os.path.join(HERE, "scripts", "build_snapshot.py")
+        src = read(bs_path)
+        today = dt.date.today().isoformat()
+        for key in ("team", "rfcs"):
+            src = re.sub(r'("%s":\s*")[0-9a-f]{40}' % key,
+                         lambda m, s=shas[key]: m.group(1) + s, src)
+            src = re.sub(r'("%s":\s*\{[^}]*?"retrieved":\s*")[0-9-]+' % key,
+                         lambda m, d=today: m.group(1) + d, src, flags=re.S)
+            src = re.sub(r'("%s":\s*\{[^}]*?"note":\s*")[^"]*' % key,
+                         lambda m, c=cdates[key]: m.group(1) + "committer date " + c,
+                         src, flags=re.S)
+        with open(bs_path, "w", encoding="utf-8") as f:
+            f.write(src)
+        bs = importlib.reload(build_snapshot_module())
+        print("rewrote PINS in scripts/build_snapshot.py, regenerated %s" % bs.write_pins())
+
+        # Refetch both trees at the new pins. Each fetch script imports its pin from
+        # build_snapshot.py, so the subprocess sees the values just written.
+        run([sys.executable, os.path.join(HERE, "scripts", "fetch_upstream.py")])
+        run([sys.executable, os.path.join(HERE, "scripts", "fetch_rfcs.py")])
 
     run([sys.executable, os.path.join(HERE, "scripts", "build_snapshot.py")])
     new = load(snap_path)

@@ -1,8 +1,10 @@
 # Successor map: CURATED, SOURCES CITED
 #
 # Every entry here is hand-checked against the named file and line of the pinned
-# rust-lang/team revision cb0ccabd69bc63e3f84f26d764704d939224071f, retrieved
-# 2026-10-16. Nothing is parsed from a comment at runtime: the ingest reads THIS file.
+# rust-lang/team tree committed under data/upstream/team. The revision and its
+# retrieval date live in scripts/build_snapshot.py (PINS, PIN_META) and are rendered
+# into PINS.md; they are not repeated here. Nothing is parsed from a comment at
+# runtime: the ingest reads THIS file.
 #
 # An archived team with no entry here is reported as a TRUE GAP, not as "probably
 # renamed". Inferences that are not written down in the source are NOT included.

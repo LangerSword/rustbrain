@@ -13,8 +13,9 @@ Store policy, enforced here and nowhere else:
   handles only, no real names, no emails, no RFC bodies, titles capped at 120 chars.
 
 Usage:
-  python3 scripts/build_snapshot.py           write data/snapshot.json
-  python3 scripts/build_snapshot.py --check   rebuild and exit 1 on ANY drift
+  python3 scripts/build_snapshot.py              write data/snapshot.json
+  python3 scripts/build_snapshot.py --check      rebuild and exit 1 on ANY drift
+  python3 scripts/build_snapshot.py --write-pins regenerate PINS.md from PINS/PIN_META
 """
 import argparse
 import hashlib
@@ -29,12 +30,67 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(HERE, "data")
 TEAM = os.path.join(DATA, "upstream", "team")
 
+# --- Pinned revisions: THE single source of truth ------------------------------
+# PINS.md is GENERATED from this block. Never hand-edit it; run
+# `python3 cmd/refresh.py --pin` (or `python3 scripts/build_snapshot.py --write-pins`).
+# scripts/fetch_upstream.py and scripts/fetch_rfcs.py import their pins from here,
+# so a revision can only change in one place.
 PINS = {"team": "a5176049c11ca092994af7a07deb4f62dfe4b55c",
         "rfcs": "d2705ad64ba47e812a2b6b19d6f613fb4c14c5e0"}
 
-# falkordb/falkordb:latest, AMD64 manifest-list digest, read 2026-10-16.
 FALKORDB_IMAGE = "falkordb/falkordb"
+# falkordb/falkordb:latest, AMD64 manifest-list digest, read 2026-10-16.
 FALKORDB_DIGEST = "sha256:b0bdcac2cbaff989e77cb0610439b7a9289e86de033ccbbd4368b66fb680ae7a"
+
+# Everything PINS.md reports beyond the raw revision. `retrieved` is the date this
+# project actually pulled those bytes; `note` anchors the revision to upstream.
+PIN_META = {
+    "team": {"source": "github.com/rust-lang/team", "retrieved": "2026-10-19",
+             "note": "committer date 2026-10-18T11:10:22Z"},
+    "rfcs": {"source": "github.com/rust-lang/rfcs", "retrieved": "2026-10-16",
+             "note": "committer date 2026-10-05T10:04:13Z"},
+    "falkordb": {"source": "docker.io/falkordb/falkordb", "revision": FALKORDB_DIGEST,
+                 "retrieved": "2026-10-16",
+                 "note": "amd64 manifest-list digest, module reports ver 42201 (v4.22.1)"},
+}
+
+
+def render_pins_md():
+    """Render PINS.md from PINS, FALKORDB_DIGEST and PIN_META. No other input."""
+    rows = []
+    for key in ("team", "rfcs", "falkordb"):
+        m = PIN_META[key]
+        rev = m.get("revision") or PINS[key]
+        rows.append("| %s | %s | %s | %s |" % (m["source"], rev, m["retrieved"], m["note"]))
+    return "\n".join([
+        "# Pinned upstream revisions",
+        "",
+        "**generated, do not edit.** Source of truth: `scripts/build_snapshot.py`.",
+        "Regenerate with `python3 cmd/refresh.py --pin`.",
+        "",
+        "Every number this project reports is derived from these revisions. Change them",
+        "deliberately, never implicitly.",
+        "",
+        "| source | revision | retrieved | note |",
+        "|---|---|---|---|",
+    ] + rows + [
+        "",
+        "## Data policy",
+        "",
+        "Public GitHub data only. Handles only: no real names, no email addresses, no avatar",
+        "URLs, no RFC bodies. RFC titles truncated to 120 characters. The team repository is",
+        "fetched file by file via the GitHub API at the pinned SHA, then committed under",
+        "data/upstream/team; CI never touches the network and reads the committed tree plus",
+        "data/snapshot.json.",
+        "",
+    ])
+
+
+def write_pins(path=None):
+    path = path or os.path.join(HERE, "PINS.md")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(render_pins_md())
+    return path
 
 # Order matters: first match wins.
 DISPOSITIONS = ("merge", "approve", "reject", "postpone")
@@ -339,7 +395,12 @@ def strip_and_hash(doc):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--write-pins", action="store_true",
+                    help="regenerate PINS.md from PINS/PIN_META and exit")
     args = ap.parse_args()
+    if args.write_pins:
+        print("wrote %s" % write_pins())
+        return 0
     snap = build()
     path = os.path.join(DATA, "snapshot.json")
     if args.check:

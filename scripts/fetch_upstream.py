@@ -9,8 +9,12 @@ import json, os, re, subprocess, sys, time
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(HERE, "data")
 UP = os.path.join(DATA, "upstream")
-PINS = {"team": "cb0ccabd69bc63e3f84f26d764704d939224071f",
-        "rfcs": "d2705ad64ba47e812a2b6b19d6f613fb4c14c5e0"}
+
+# The pin lives in exactly one place: scripts/build_snapshot.py. A second copy here
+# is how PINS.md and this script drifted from the snapshot before.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_snapshot import PINS  # noqa: E402
+
 UA = "rustbrain-snapshot/1.0"
 
 

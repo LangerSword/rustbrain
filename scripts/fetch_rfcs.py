@@ -3,11 +3,16 @@
 
 Stores PR metadata and the text/ filename index. NO RFC bodies.
 """
-import json, os, re, subprocess, time
+import json, os, re, subprocess, sys, time
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(HERE, "data")
-RFCS_SHA = "d2705ad64ba47e812a2b6b19d6f613fb4c14c5e0"
+
+# Single source of truth: scripts/build_snapshot.py.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_snapshot import PINS  # noqa: E402
+
+RFCS_SHA = PINS["rfcs"]
 
 
 def gh(url, tries=4):

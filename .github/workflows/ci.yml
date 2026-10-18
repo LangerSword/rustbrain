@@ -41,6 +41,12 @@ jobs:
       - name: Dependencies
         run: python3 -m pip install --quiet pyyaml
 
+      - name: Job 0, PINS.md is generated, never hand-edited
+        run: |
+          python3 cmd/refresh.py --pin
+          git diff --exit-code -- PINS.md
+          echo "PINS.md: byte-identical regeneration from scripts/build_snapshot.py"
+
       - name: Job 1, ingest determinism
         run: |
           python3 scripts/build_snapshot.py
