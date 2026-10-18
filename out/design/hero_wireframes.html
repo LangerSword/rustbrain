@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rustbrain hero concepts, greybox wireframes</title>
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; margin: 24px; background: #fafafa; color: #222; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; margin: 32px 0 8px; }
+  .frame { border: 1px dashed #999; background: #fff; padding: 12px; max-width: 1100px; }
+  .row { display: flex; gap: 12px; }
+  .box { border: 1px dashed #aaa; background: #f0f0f0; padding: 8px; font-size: 12px; color: #555; }
+  .col { flex: 1; }
+  .tall { min-height: 220px; }
+  .band { margin-top: 12px; background: #e8e8e8; }
+  .mobile { max-width: 260px; }
+  .note { color: #666; font-size: 12.5px; max-width: 900px; }
+</style>
+</head>
+<body>
+<h1>rustbrain hero: three greybox concepts (Part 4)</h1>
+<p class="note">Greybox only: no fonts, no colours, no content beyond labels.
+Concept A is the pick (see 30_DESIGN.md for why); B and C are kept for comparison.</p>
+
+<h2>A. The fold is the route (picked)</h2>
+<div class="frame">
+  <div class="row">
+    <div class="col">
+      <div class="box">h1 (DRAFT line, display serif, 3 lines max)</div>
+      <div class="box" style="margin-top:8px;">sub line + two quiet links</div>
+      <div class="box tall" style="margin-top:8px;">REAL routing result: route line
+        (T-libs-api archived -> libs via SUCCEEDED_BY RFC 3984) + first 5 reviewer
+        rows (handle, role, authored, latest) with mono numerals</div>
+    </div>
+    <div class="col">
+      <div class="box tall">inline SVG graph: 4 team nodes, 1 successor edge
+        labelled RFC 3984, roster fan to named reviewers, 1 red TRUE_GAP node
+        (real data from the snapshot)</div>
+      <div class="box" style="margin-top:8px;">honest note: precomputed snapshot, no llm</div>
+    </div>
+  </div>
+  <div class="box band">numbers band: 761 merged rfcs / 162 route only through the hop / 138 libs-api / 24 core / 25 true-gap, each with scope</div>
+</div>
+<p class="note">390px: single column. Result block first, graph after, numbers band last; no horizontal scroll.</p>
+
+<h2>B. Document artifact</h2>
+<div class="frame">
+  <div class="box tall">the route output typeset as a document on paper, margin annotations in the outer column, caption line under</div>
+  <div class="box band">section 2 arrives later: the graph in its own section</div>
+</div>
+
+<h2>C. Graph first</h2>
+<div class="frame">
+  <div class="box">kicker claim (small)</div>
+  <div class="box tall" style="margin-top:8px;">full width SVG graph as the hero</div>
+  <div class="box band">result table below the fold</div>
+</div>
+</body>
+</html>
