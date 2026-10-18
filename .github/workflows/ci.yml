@@ -1,0 +1,91 @@
+name: ci
+
+# No network. No LLM. The ingest is a pure function of the committed snapshot and the
+# committed pinned team tree, so the pipeline runs offline inside the runner plus one
+# service container.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    # Pinned by digest, the same value as PINS.md and data/snapshot.json.
+    # A digest rather than a tag: tags move, digests do not.
+    services:
+      falkordb:
+        image: falkordb/falkordb@sha256:b0bdcac2cbaff989e77cb0610439b7a9289e86de033ccbbd4368b66fb680ae7a
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+
+    env:
+      FALKORDB_HOST: 127.0.0.1
+      FALKORDB_PORT: 6379
+      GRAPH: rustbrain
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Dependencies
+        run: python3 -m pip install --quiet pyyaml
+
+      - name: Job 1, ingest determinism
+        run: |
+          python3 scripts/build_snapshot.py
+          cp data/snapshot.json /tmp/snapshot.a.json
+          python3 scripts/build_snapshot.py
+          cmp /tmp/snapshot.a.json data/snapshot.json
+          echo "determinism: byte-identical rebuild"
+
+      - name: Job 2, snapshot self-check and independent verifier
+        run: |
+          python3 scripts/build_snapshot.py --check
+          python3 scripts/verify_snapshot.py
+
+      - name: Job 2b, the corruption check must refuse
+        run: |
+          cp data/snapshot.json /tmp/keep.json
+          python3 scripts/corrupt_snapshot.py
+          if python3 scripts/build_snapshot.py --check; then
+            echo "FAIL: --check passed on a corrupted snapshot"; exit 1
+          fi
+          echo "corruption check: correctly refused"
+          cp /tmp/keep.json data/snapshot.json
+
+      - name: Wait for FalkorDB and assert the module version
+        run: python3 scripts/wait_for_module.py
+
+      - name: Job 3, load the graph
+        run: python3 scripts/load_graph.py
+
+      - name: Job 4, query assertions plus direction flips
+        run: python3 scripts/test_queries.py
+
+      - name: Job 5, routing command on three real RFCs
+        run: |
+          python3 cmd/route.py 1892 | tee /tmp/r1892.txt
+          python3 cmd/route.py 2437 | tee /tmp/r2437.txt
+          python3 cmd/route.py 2495 | tee /tmp/r2495.txt
+          grep -q "SUCCEEDED_BY--> libs" /tmp/r1892.txt
+          grep -q "ROUTING GAP" /tmp/r2437.txt
+          grep -q "no successor hop needed" /tmp/r2495.txt
+          echo "routing: all three tiers behave"
+
+      - name: Job 6, gap report tiers
+        run: |
+          python3 cmd/gaps.py | tee /tmp/gaps.txt
+          grep -q "TIER 2: ARCHIVED WITH A NAMED SUCCESSOR (2 labels, 162 distinct RFCs)" /tmp/gaps.txt
+          grep -q "TIER 3: TRUE GAP (3 labels, 25 distinct RFCs)" /tmp/gaps.txt
+          echo "gap report: tiers match"
