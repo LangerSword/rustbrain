@@ -41,6 +41,21 @@
             <button type="button" data-target="T-cargo" aria-pressed="false">label T-cargo</button>
             <button type="button" data-target="T-dev-tools" aria-pressed="false">label T-dev-tools</button>
           </div>
+          <div class="result" id="demo" aria-live="polite">
+            <h3>RFC 1892: Deprecate uninitialized in favor of a new MaybeUninit type</h3>
+            <div class="route">RFC 1892 carries the label <b>T-libs-api</b>. The team it names, <b>libs-api</b>, is archived with 0 current members. The graph follows <span class="hop">SUCCEEDED_BY (RFC 3984, teams/archive/libs-api.toml:1)</span> to <b>libs</b>.</div>
+            <table class="reviewers">
+              <thead><tr><th>handle</th><th>role</th><th class="num">authored</th><th class="num">latest</th></tr></thead>
+              <tbody>
+                <tr><td>nia-e</td><td class="lead">lead</td><td class="num">1</td><td class="num">2026-07-15</td></tr>
+                <tr><td>folkertdev</td><td>member</td><td class="num">1</td><td class="num">2026-07-01</td></tr>
+                <tr><td>joshtriplett</td><td>member</td><td class="num">16</td><td class="num">2026-02-23</td></tr>
+                <tr><td>davidtwco</td><td>member</td><td class="num">4</td><td class="num">2025-10-31</td></tr>
+                <tr><td>Darksonn</td><td>member</td><td class="num">3</td><td class="num">2025-08-10</td></tr>
+              </tbody>
+            </table>
+            <div class="foot">showing the first 5 of 37 reviewers, sorted by latest authored RFC. Tier: <span class="hop">SUCCESSOR</span>.</div>
+          </div>
           <p class="demo-note">this demo runs from a precomputed snapshot, exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
         </div>
         <figure class="graph">
@@ -75,7 +90,7 @@
               <text x="316" y="146" class="node-sub">2025-10-31</text>
               <text x="416" y="146" class="node-sub">2025-08-10</text>
             </g>
-            <text class="node-sub" x="16" y="172">5 of 37 reviewers, sorted by latest authored RFC</text>
+            <text class="node-sub" x="16" y="172">libs roster: 5 of 37 reviewers, sorted by latest authored RFC</text>
             <rect class="node-box gapnode" x="8" y="200" width="240" height="56" rx="6"></rect>
             <text class="node-label gapnode" x="20" y="224">T-dev-tools</text>
             <text class="node-sub" x="20" y="244">no team file anywhere, 20 merged rfcs</text>
@@ -94,29 +109,7 @@
         <div><div class="b-num num">25</div><div class="b-lab">in true gaps</div><div class="b-scope">three labels with no active team: dev-tools, doc, interim-leadership-chat</div></div>
       </div>
     </div>
-  </section>
-
-  <section class="s">
-    <div class="wrap">
-      <h2>the demo, in one block.</h2>
-      <p class="sub">RFC 1892 carries the label T-libs-api. The result below is what the site ships for it, from the committed snapshot.</p>
-      <div class="result" id="demo" aria-live="polite">
-        <h3>RFC 1892: Deprecate uninitialized in favor of a new MaybeUninit type</h3>
-        <div class="route">RFC 1892 carries the label <b>T-libs-api</b>. The team it names, <b>libs-api</b>, is archived with 0 current members. The graph follows <span class="hop">SUCCEEDED_BY (RFC 3984, teams/archive/libs-api.toml:1)</span> to <b>libs</b>.</div>
-        <table class="reviewers">
-          <thead><tr><th>handle</th><th>role</th><th class="num">authored</th><th class="num">latest</th></tr></thead>
-          <tbody>
-            <tr><td>nia-e</td><td class="lead">lead</td><td class="num">1</td><td class="num">2026-07-15</td></tr>
-            <tr><td>folkertdev</td><td>member</td><td class="num">1</td><td class="num">2026-07-01</td></tr>
-            <tr><td>joshtriplett</td><td>member</td><td class="num">16</td><td class="num">2026-02-23</td></tr>
-            <tr><td>davidtwco</td><td>member</td><td class="num">4</td><td class="num">2025-10-31</td></tr>
-            <tr><td>Darksonn</td><td>member</td><td class="num">3</td><td class="num">2025-08-10</td></tr>
-          </tbody>
-        </table>
-        <div class="foot">showing the first 5 of 37 reviewers, sorted by latest authored RFC. Tier: <span class="hop">SUCCESSOR</span>.</div>
-      </div>
-      <p class="note">handles only. the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p>
-    </div>
+    <div class="wrap"><p class="note">handles only. the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p></div>
   </section>
 
   <section class="s">
