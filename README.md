@@ -179,7 +179,7 @@ All figures re-derived by `scripts/author_coverage.py` and
 | RFCs with a label resolving to an active team | 46.9% | 357 / 761 RFCs | routable today with no successor hop |
 | RFCs with a label resolving to any team file | 63.9% | 486 / 761 RFCs | routable after a successor hop where one exists |
 | RFCs carrying no team label at all | 34.2% | 260 / 761 RFCs | cannot be routed by label |
-| numbered RFC files joining to a merged RFC | 97.5% | 626 / 652 files | for the document layer; a different denominator from the RFC counts |
+| numbered RFC files joining to a merged RFC | 96.0% | 626 / 652 files | document layer; the denominator is numbered files in the pinned tree, not RFCs |
 | authors on an active team (RFC corpus) | 35.1% | 85 / 242 distinct authors | over the 761 merged RFCs |
 | authors on an active team (all merged PRs) | 26.3% | 100 / 380 distinct authors | widened scope, includes `not-rfc` PRs |
 | RFCs whose author was never on a team and has no alumni record | 22.2% | 169 / 761 RFCs | no current membership, no alumni entry |
