@@ -2,7 +2,7 @@
 
 **live site:** [langersword.github.io/rustbrain](https://langersword.github.io/rustbrain/)
 **repository:** [github.com/LangerSword/rustbrain](https://github.com/LangerSword/rustbrain)
-**latest green ci:** [actions/runs/39195941817](https://github.com/LangerSword/rustbrain/actions/runs/39195941817)
+**green ci run:** [actions/runs/39267489841](https://github.com/LangerSword/rustbrain/actions/runs/39267489841)
 
 try routing rust rfc 1892 by the book. it deprecates `mem::uninitialized` in favor of `MaybeUninit`, and it carries two team labels: `T-lang` and `T-libs-api`. if you look up `libs-api` in the rust project's own team repository (`rust-lang/team`), you find `teams/archive/libs-api.toml`. current leads: zero. current members: zero.
 
@@ -34,7 +34,7 @@ there are 52 archived team files in `rust-lang/team`. i scanned every comment ac
 
 so instead of pretending a parser is smart, i put those 4 edges in a curated file, `data/successors.yaml`, with the exact file path, line number, and verbatim quote for each one. at build time, `scripts/build_snapshot.py` opens every cited file on disk and checks that the quote is still on that exact line. if upstream edits the comment, the build fails loudly instead of guessing.
 
-**[ IMAGE 1 - rfc 1892 routed through the successor hop: upload out/blog_evidence/ui_rfc1892_successor_hop.png ]**
+![rfc 1892 routed through the successor hop](https://raw.githubusercontent.com/LangerSword/rustbrain/main/out/blog_evidence/ui_rfc1892_successor_hop.png)
 *rfc 1892 carries T-libs-api. because libs-api is archived with 0 members, the graph walks SUCCEEDED_BY (rfc 3984, teams/archive/libs-api.toml:1) to libs and returns the 37 current reviewers sorted by their latest rfc.*
 
 ## the graph and the 0..3 hop query
@@ -66,7 +66,7 @@ the `0` in `*0..3` matters just as much as the `3`. when you route `T-cargo` (42
 
 look at the `ORDER BY latest DESC, authored DESC` line at the bottom too. my first version sorted reviewers by `authored DESC` alone. that immediately put `alexcrichton` at the top of the list because he authored 42 rfcs, except his last rfc was in february 2018. sorting by total volume routes current work to retired maintainers. sorting by `latest DESC` puts `nia-e` (`2026-07-15`) and `folkertdev` (`2026-07-01`) at the top where they belong.
 
-**[ IMAGE 2 - T-cargo routed directly in 0 hops: upload out/blog_evidence/ui_active_team_cargo.png ]**
+![T-cargo routed directly in zero hops](https://raw.githubusercontent.com/LangerSword/rustbrain/main/out/blog_evidence/ui_active_team_cargo.png)
 *T-cargo takes 0 hops through the exact same query and lands on the 8 current members of cargo.*
 
 ## when the answer is "nobody"
@@ -80,7 +80,7 @@ take `T-dev-tools`. it sits on **20 merged rfcs** (out of 761, `not-rfc` exclude
 
 when you run `python3 cmd/route.py T-dev-tools`, rustbrain prints `ROUTING GAP: TRUE_GAP` and stops. a tool that guesses `devtools` when the label says `dev-tools` is hiding a governance bug.
 
-**[ IMAGE 3 - T-dev-tools flagged as a true gap: upload out/blog_evidence/ui_true_gap_dev_tools.png ]**
+![T-dev-tools flagged as a true gap](https://raw.githubusercontent.com/LangerSword/rustbrain/main/out/blog_evidence/ui_true_gap_dev_tools.png)
 *T-dev-tools sits on 20 merged rfcs with no team file anywhere. the UI flags a true gap instead of returning an empty table.*
 
 ## five times my own code lied to me
@@ -139,7 +139,7 @@ i scored rustbrain **7 out of 8**, and gave it a **0** on element 8 (`out/blog_e
 
 rust is a foundation project, not a company. thirteen of the 224 team files mention the rust foundation or funded roles (`teams/program-managers.toml` notes they are *"hired by the Project (via the Foundation)"* and `teams/crates-io-on-call.toml` says *"composed of employees of the Rust Foundation"*), and the repo tree carries 337 repository permission files under `repos/`. but there is no revenue, no customer, no salary, and no reporting line anywhere in this data. team leads hold peer authority, not management authority. calling volunteer governance an org chart just to check a hackathon box would be dishonest, so the readme and the method page state the zero upfront.
 
-**[ IMAGE 4 - ci green on the pinned falkordb digest: upload out/blog_evidence/ci_green.png ]**
+![green ci run on the pinned falkordb digest](https://raw.githubusercontent.com/LangerSword/rustbrain/main/out/blog_evidence/ci_green.png)
 *ci runs offline inside the github actions runner plus the digest-pinned falkordb container: PINS.md drift gate, byte-identical snapshot rebuild, tomllib verifier, readme and site number checks, corruption refusal test, and 41 cypher assertions.*
 
 ## run it yourself
