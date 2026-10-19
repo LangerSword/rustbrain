@@ -80,7 +80,7 @@ in ci.
 | item | next step |
 |---|---|
 | record the demo video | five beats in `docs/DEMO.md`; the spoken column is 184 words; record, then link the file here |
-| publish the blog post and record its URL | write from `out/blog_evidence/INDEX.md`; do not draft prose before the recording |
+| publish the blog post and record its URL | draft ready at `docs/HASHNODE_BLOG.md` (with image placeholders from `out/blog_evidence/`); publish on Hashnode and paste the live URL here |
 | press submit | after the video and the post URL exist |
 | track selection | the work is Track 03 ("Company Brain"); confirm the track on the submission form |
 

@@ -25,5 +25,5 @@ the submission is self-contained.
 | 13 | UI screenshots | Three states at 1280 CSS px, device scale 2: RFC 1892 through the successor hop, T-dev-tools as a true gap, T-cargo as an ordinary active route. Captions in `screenshots.md`. | CAPTURED | `ui_rfc1892_successor_hop.png`, `ui_true_gap_dev_tools.png`, `ui_active_team_cargo.png` |
 | 14 | a screenshot of CI green | The Actions run page as rendered: green check, `Status: Success`, `build-and-test` passed, 26s, for readers who will not click through. | CAPTURED | `ci_green.png` |
 | 15 | the 90-second demo recording | Follow `docs/DEMO.md`, five beats, 178 spoken words; not yet recorded. | STILL TO CAPTURE | screen recording |
-| 16 | the blog post itself | Write from this index and the files it names. | STILL TO CAPTURE | post |
+| 16 | the blog post itself | Written in `docs/HASHNODE_BLOG.md`, citing this index and its verification receipts. | CAPTURED | `docs/HASHNODE_BLOG.md` |
 | 17 | emails found in the vendored tree and removed | 542 of 683 vendored people files carried an email field, 55 team files carried 180 contact lines, and 109 upstream source/test/doc files carried example or bot addresses; after removal the email regex returns zero matches on the tracked tree. | CAPTURED | `email_removal_receipt.md` |
