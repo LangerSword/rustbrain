@@ -24,12 +24,13 @@ export function build(api, ctx, register) {
     });
   });
 
-  const tl = gsap.timeline({ defaults: { ease: E.arrive }, delay: 0.15 });
+  const tl = gsap.timeline({ defaults: { ease: E.arrive }, delay: 0.6 });
   tl.from(root.querySelector(".kicker"), { opacity: 0, y: 10, duration: 0.5, ease: E.ui }, 0)
     .from(root.querySelector(".s1-hair"), { scaleX: 0, duration: 0.9, ease: E.ui }, 0.2)
     .from(splits.flatMap((s) => s.lines), { yPercent: 112, duration: D.reveal, stagger: ST.line }, 0.35)
-    .from(root.querySelector(".rfc-card"), { opacity: 0, y: 30, duration: 0.8 }, 0.9)
-    .from(root.querySelector(".cta-row"), { opacity: 0, y: 12, duration: D.quote, ease: E.ui }, 1.05);
+    .from(root.querySelector(".rfc-card"), { opacity: 0, y: 30, duration: 0.8 }, 1.1)
+    .from(root.querySelector(".credit-line"), { opacity: 0, y: 10, duration: 0.5, ease: E.ui }, 0.95)
+    .from(root.querySelector(".cta-row"), { opacity: 0, y: 12, duration: D.quote, ease: E.ui }, 1.2);
 
   // the card drifts up slightly as the hero leaves (depth, not decoration)
   gsap.to(root.querySelector(".rfc-card"), {

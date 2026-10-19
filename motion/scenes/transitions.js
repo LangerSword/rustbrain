@@ -8,6 +8,22 @@ export function build(api, ctx, register) {
   const { gsap, ScrollTrigger } = api;
   const cleanups = [];
 
+  // the boot cover: a title card before the title card (motion-only, so a
+  // page without JS never shows a cover it cannot lift)
+  const cover = document.createElement("div");
+  cover.className = "intro-cover";
+  cover.setAttribute("aria-hidden", "true");
+  const mark = document.createElement("span");
+  mark.className = "intro-mark";
+  mark.textContent = "rustbrain";
+  cover.appendChild(mark);
+  document.body.appendChild(cover);
+  gsap.timeline()
+    .to(cover, { yPercent: -101, duration: 0.9, ease: "expo.inOut", delay: 0.55 })
+    .set(cover, { display: "none" })
+    .add(() => cover.remove());
+  cleanups.push(() => cover.remove());
+
   // top progress hairline: one scrub across the whole document
   const bar = document.createElement("div");
   bar.className = "progress-rail";

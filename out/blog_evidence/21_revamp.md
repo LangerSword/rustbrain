@@ -18,6 +18,11 @@ what the licence says. Everything here points at a receipt in the repo.
 
 - The zoom-blocking viewport meta, verbatim from santionispirits.com
   (user-scalable=no). Our meta is width=device-width, initial-scale=1.
+- Their display fonts (Charles Rosie, PP Nikkei Maru, GT Era: commercial).
+  We paired an OFL Didone instead (Bodoni Moda, self-hosted, licence beside
+  the file) and kept Inter plus Newsreader.
+- Their age-gate pattern itself. We open with a title card, not a legal
+  wall; nothing blocks reading.
 - Zero reduced-motion handling (santioni: zero references in the bundle;
   Staanzza: zero rule blocks; Extrafazant kept its marquee running under
   reduce). Ours gates everything through gsap.matchMedia; reduce gets the

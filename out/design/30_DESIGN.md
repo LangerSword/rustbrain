@@ -147,3 +147,13 @@ scrubbed lighter without a pin on mobile); total page length measured at
 file; the only new motif is the rail. Design written first in
 out/revamp/20_REVAMP.md; what shipped is verified in out/revamp/30_VERIFY.md;
 captures at three widths in out/revamp/review/.
+
+The mimic pass (later on 2026-10-19) carried the staging further toward the
+reference site's print language: a display Didone (Bodoni Moda, OFL,
+self-hosted, licence beside the file) for headlines, counters and plates;
+all-caps centered title cards; hairline ornaments with a single accent
+diamond; thin outlined controls; a vignette instead of flat darkness; and a
+boot cover that lifts like a curtain. Inter stays for UI, Newsreader for
+body copy. The reference's own display faces (Charles Rosie, PP Nikkei Maru,
+GT Era) are commercial and were neither used nor copied; Bodoni Moda is the
+closest open-licence pairing that keeps the repo's OFL-only rule.

@@ -23,6 +23,11 @@ out/revamp/30_VERIFY.md and out/blog_evidence/21_revamp.md.
   title-sequence opening, a scanning spark on the drawn edge, a camera push
   on the graph, a top progress hairline, parallax furniture; re-measured and
   re-captured.
+- The mimic pass (stage 9): the Didone display voice (Bodoni Moda, OFL,
+  self-hosted with licence), all-caps centered title cards, a boot cover
+  that lifts like a curtain, thin outlined controls, a hairline ornament
+  with a single accent diamond, a vignette; fonts added under
+  site/assets/fonts/ and checked by the assert script.
 - site/assets/fonts.css: font files now resolve (they 404ed on every page
   before this).
 - README.md, docs/DEMO.md, out/design/30_DESIGN.md: revamp sections added.

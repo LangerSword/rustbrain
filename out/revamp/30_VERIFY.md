@@ -138,3 +138,21 @@ frames over 25 ms (0.27 percent); 390 mean 16.92 ms, 2 of 750 (0.27
 percent); boot long tasks 202 / 96 / 51 ms at 1440 and 106 ms at 390;
 zero console errors both. Assert suite still PASS; captures re-shot at three
 widths in out/revamp/review/.
+
+## 6.8 the mimic pass (the owner asked for the look itself)
+
+Switched the display voice to a Didone (Bodoni Moda, OFL, self-hosted,
+licence beside the file) at weight 500 so the hairline strokes survive dark
+backgrounds; the hero is now an all-caps centered title card with a hairline
+ornament holding a single accent diamond, a credit line, outlined uppercase
+controls, and the RFC plate below as the scroll invitation. A boot cover
+lifts off the first load like a curtain; a vignette replaces flat darkness;
+nav, labels and the footer went uppercase letterspaced. The reference's
+commercial fonts were not copied; the OFL pairing is documented in
+30_DESIGN.md.
+
+Re-measured after this pass: 1440 mean rAF interval 17.28 ms with 1 of 743
+frames over 25 ms (0.13 percent); 390 mean 17.05 ms with 1 of 748 (0.13
+percent); one boot long task per run (136 ms, 76 ms); zero console errors.
+No-JS, reduced motion, keyboard, and the assert suite all unchanged and
+passing; captures re-shot at three widths.
