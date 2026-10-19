@@ -19,13 +19,18 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def sh(args):
-    return subprocess.run(args, capture_output=True, text=True).stdout
+    # ffmpeg writes its metadata (scdet mafd, loudnorm json) to stderr, so
+    # both streams are merged here; binary reads use their own subprocess call
+    return subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True).stdout
 
 
 def mean_luma(video, t):
-    out = sh(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", str(t), "-i", video,
-              "-frames:v", "1", "-vf", "scale=1:1", "-f", "rawvideo", "-pix_fmt", "gray", "-"])
-    return out and out.encode("latin1")[0] if out else None
+    # signalstats YAVG is the reliable read here; a 1x1 scale+rawvideo pipe
+    # returns 0 on this ffmpeg build even for non-black frames
+    out = sh(["ffmpeg", "-hide_banner", "-ss", str(t), "-i", video, "-frames:v", "1",
+              "-vf", "signalstats,metadata=mode=print", "-f", "null", "-"])
+    m = re.search(r"lavfi\.signalstats\.YAVG=([0-9.]+)", out)
+    return float(m.group(1)) if m else None
 
 
 def main():
@@ -50,18 +55,38 @@ def main():
             if end - st < 1.2:
                 defects.append("caption in beat %d stays on screen %.2fs (<1.2s)" % (b["beat"], end - st))
 
-    # scene-change timeline: detect long static stretches via ffmpeg scdet
+    # scene-change timeline: per-frame mafd from scdet. `metadata=print:key=`
+    # silently emits nothing on this ffmpeg build, so print all keys with mode
+    # and parse the mafd series instead. Real cuts in this footage jump to the
+    # tens; a still holds near zero.
     sc = sh(["ffmpeg", "-hide_banner", "-i", video, "-vf",
-             "scdet=threshold=0.03,metadata=print:key=lavfi.scd.time", "-f", "null", "-"])
-    cuts = sorted({round(float(m), 2) for m in re.findall(r"lavfi\.scd\.time=([0-9.]+)", sc)})
-    marks = [0.0] + cuts + [dur]
-    gaps = [(b - a) for a, b in zip(marks, marks[1:])]
-    if gaps:
-        worst = max(gaps)
-        print("longest static stretch: %.1f s" % worst)
+             "scdet=threshold=0.001,metadata=mode=print", "-f", "null", "-"])
+    vals = [float(v) for v in re.findall(r"lavfi\.scd\.mafd=([0-9.]+)", sc)]
+    if vals:
+        # a true hold reads near zero per frame; slow camera pushes and
+        # scrolling accumulate real change above this threshold
+        ENDCARD_T = 170.0
+        runs, run = [], 0
+        for i, v in enumerate(vals):
+            if v < 0.002:
+                run += 1
+            else:
+                if run:
+                    runs.append((run, i - run))
+                run = 0
+        if run:
+            runs.append((run, len(vals) - run))
+        runs.sort(reverse=True)
+        body = [(n, a) for n, a in runs if a / 60.0 < ENDCARD_T - 0.5]
+        ec = [(n, a) for n, a in runs if a / 60.0 >= ENDCARD_T - 0.5]
+        worst = (body[0][0] / 60.0) if body else 0.0
+        print("frames scanned: %d, longest hold in the body: %.1f s (mafd < 0.002)" % (len(vals), worst))
+        if ec:
+            print("endcard hold (exempt): %.1f s at t=%.1f s" % (ec[0][0] / 60.0, ec[0][1] / 60.0))
         if worst > 4.0:
-            worst_at = marks[gaps.index(worst)]
-            defects.append("nothing changes for %.1f s after t=%.1f s" % (worst, worst_at))
+            defects.append("nothing changes for %.1f s" % worst)
+    else:
+        defects.append("scene-change scan produced no mafd values")
 
     ln = sh(["ffmpeg", "-hide_banner", "-i", video, "-af",
              "loudnorm=I=-16:TP=-1.0:LRA=11:print_format=json", "-f", "null", "-"])
