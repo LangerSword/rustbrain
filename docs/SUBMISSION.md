@@ -6,8 +6,49 @@ SHAs reflect the history after the 2026-10-19 rewrite
 (`out/blog_evidence/history_rewrite.md`).
 
 Current CI: https://github.com/LangerSword/rustbrain/actions (badge in the README).
-Latest verified green run at the time of writing:
-https://github.com/LangerSword/rustbrain/actions/runs/39172342372
+Latest verified green runs at the time of writing:
+CI https://github.com/LangerSword/rustbrain/actions/runs/39195941817 (commit 9995f46),
+Pages deploy https://github.com/LangerSword/rustbrain/actions/runs/39195941823.
+
+## Submission pack, paste ready
+
+- live site: https://langersword.github.io/rustbrain/
+- repository: https://github.com/LangerSword/rustbrain
+- latest green CI run: https://github.com/LangerSword/rustbrain/actions/runs/39195941817
+- demo script: `docs/DEMO.md`, five beats, 184 spoken words (MEASURED); 73.6 seconds
+  at 150 words per minute, 84.9 seconds at 130 (rates ASSUMED, word count MEASURED)
+- the three screenshots:
+  - `out/blog_evidence/ui_rfc1892_successor_hop.png`: RFC PR 1892 routed through the
+    SUCCEEDED_BY hop, T-libs-api (archived) to libs, 37 reviewers sorted by latest activity
+  - `out/blog_evidence/ui_true_gap_dev_tools.png`: T-dev-tools as a true gap,
+    20 of the 761 merged rfcs, nobody to route to
+  - `out/blog_evidence/ui_active_team_cargo.png`: T-cargo as an ordinary active route,
+    42 merged rfcs, no successor hop needed
+
+Project description, for the entry form (135 words, lowercase-leaning, no dashes):
+
+```
+rustbrain routes a rust rfc to the reviewers its own team files name. two public
+repos, two pinned revisions, one falkordb graph: 224 teams, 675 people, 761 merged
+rfcs. when a label points at a team that was archived, the graph follows the
+successor edge that team's file records, cited by file and line, instead of
+returning nothing: 162 merged rfcs route only because of that hop. a label with no
+successor is reported as a true gap, by name. there is no llm and no api key in the
+path; the ingest is deterministic, the routing command writes a reviewer list, and
+every number on the site is asserted in ci against the committed snapshot. handles
+only, no names or emails, and the limits page states the one element this data
+cannot honestly claim.
+```
+
+Sixty-word version (62 words, measured):
+
+```
+rustbrain routes a rust rfc to the reviewers its own files name. when a label
+points at an archived team, the graph follows the successor edge its file records,
+to the team that owns the label today: 162 merged rfcs route only through that hop.
+labels with nowhere to go are reported as true gaps. no llm; every number asserted
+in ci.
+```
 
 ## In the repository
 
@@ -22,8 +63,8 @@ https://github.com/LangerSword/rustbrain/actions/runs/39172342372
 | 7 | independent parser verification of the roster | DONE | `scripts/verify_snapshot.py` |
 | 8 | README with graph model, queries, setup, limits, disclosures | DONE | `README.md` |
 | 9 | one-page UI, reachable with one command | DONE | `cmd/serve.py` |
-| 10 | CI green, engine pinned by digest, PINS.md drift-gated | DONE | `.github/workflows/ci.yml` Job 0, run link above |
-| 11 | demo script, five beats, 178 spoken words, under 90 seconds | DONE | `docs/DEMO.md` |
+| 10 | CI green, engine pinned by digest, PINS.md drift-gated | DONE | `.github/workflows/ci.yml` Job 0, run links above |
+| 11 | demo script, five beats, 184 spoken words, under 90 seconds | DONE | `docs/DEMO.md` |
 | 12 | upstream revisions and data policy, generated | DONE | `PINS.md` |
 | 13 | clean-clone transcript, runs 1 to 3 | DONE | `out/blog_evidence/clean_clone.md` |
 | 14 | successor map audit, 4 of 4 entries verified | DONE | `out/blog_evidence/successor_audit.md` |
@@ -38,9 +79,9 @@ https://github.com/LangerSword/rustbrain/actions/runs/39172342372
 
 | item | next step |
 |---|---|
-| record the 90-second demo | follow `docs/DEMO.md`; five beats; the spoken column is 178 words |
-| write the blog post | write from `out/blog_evidence/INDEX.md`; do not draft prose before the recording |
-| press submit | after the recording and the post |
+| record the demo video | five beats in `docs/DEMO.md`; the spoken column is 184 words; record, then link the file here |
+| publish the blog post and record its URL | write from `out/blog_evidence/INDEX.md`; do not draft prose before the recording |
+| press submit | after the video and the post URL exist |
 | track selection | the work is Track 03 ("Company Brain"); confirm the track on the submission form |
 
 ## Things a judge will check, and where the answer is
@@ -49,8 +90,8 @@ https://github.com/LangerSword/rustbrain/actions/runs/39172342372
 |---|---|
 | Does it run? | `README.md` "Setup, tested from a clean clone", and `out/blog_evidence/clean_clone.md` (three runs, the third on the rewritten history) |
 | Is FalkorDB load bearing? | `queries/routing.cypher` and the README's Rule 3 argument: 162 merged RFCs (libs-api 138 plus core 24) resolve only through the 0..3 hop plus roster join |
-| Does CI pass? | the run link above, badge in the README |
-| What are the numbers? | `out/blog_evidence/readme_numbers.txt`; every README figure re-derived by `scripts/verify_readme_numbers.py` and asserted in CI |
+| Does CI pass? | the run links above, badge in the README |
+| What are the numbers? | `out/blog_evidence/readme_numbers.txt`; every README figure re-derived by `scripts/verify_readme_numbers.py` and asserted in CI; the site's own counts are re-derived by `scripts/assert_site_numbers.py` |
 | What is it not? | the README's honest limits and `out/blog_evidence/company_like_0.md` (element 8 is 0) |
 | Was AI used? | the README's AI-assistant disclosure; corrections live in `out/blog_evidence/` (`20_orphan_figure_correction.md` and the index) |
 
