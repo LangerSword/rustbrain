@@ -1,0 +1,22 @@
+  gap_report rows: 19
+  label libs-api present                                     PASS
+  label core present                                         PASS
+  label dev-tools present                                    PASS
+  label doc present                                          PASS
+  label cargo present                                        PASS
+  label lang present                                         PASS
+
+== gap report: exact tier membership and loads ==
+  label libs-api = 138 RFCs, SUCCESSOR                       (138, 'SUCCESSOR') PASS
+  label core = 24 RFCs, SUCCESSOR                            (24, 'SUCCESSOR') PASS
+  label dev-tools = 20 RFCs, TRUE_GAP                        (20, 'TRUE_GAP') PASS
+  label doc = 6 RFCs, TRUE_GAP                               (6, 'TRUE_GAP') PASS
+  label interim-leadership-chat = 1 RFCs, TRUE_GAP           (1, 'TRUE_GAP') PASS
+  label lang = 263 RFCs, ACTIVE                              (263, 'ACTIVE') PASS
+  label cargo = 42 RFCs, ACTIVE                              (42, 'ACTIVE') PASS
+  tier label counts                                          {'ACTIVE': 14, 'SUCCESSOR': 2, 'TRUE_GAP': 3} PASS
+
+== ordering: the most recent reviewer must be FIRST ==
+  newest first, undated last                                 first=['nia-e', '2026-07-15'] last=['workingjubilee', ''] PASS
+
+41 passed, 0 failed

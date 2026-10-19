@@ -1,0 +1,13 @@
+{
+  "name": "rustbrain-demo-video",
+  "private": true,
+  "type": "module",
+  "description": "Remotion composition for the rustbrain demo video. Captions are generated from site/data.json and out/video/captions.json; never typed by hand.",
+  "dependencies": {
+    "@remotion/cli": "4.0.536",
+    "playwright-core": "1.64.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "remotion": "4.0.536"
+  }
+}

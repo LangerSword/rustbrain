@@ -1,0 +1,9 @@
+wrote ./reports/refresh_20261019_094644.md
+changes detected: True
+
+the report says, verbatim:
+  Previous snapshot content_sha256: `36ad30968e768859b9806126c0e540c361a9fa469e1a25b53f4c9e39a47f542c`
+  Current  snapshot content_sha256: `6732467a070a0a8c7129ff334f5a95a2227cd014783ca8415ca01bb87a353c97`
+  ## Roster changes: 1
+  - libs-ping: +0/-1 joined=[] left=['joboet'] promoted=[] stepped_down=[]
+  | roster_edges_member | 1051 | 1050 | -1 |

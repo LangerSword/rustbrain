@@ -1,0 +1,14 @@
+query: queries/routing.cypher (SUCCEEDED_BY*0..3, then the roster join)
+label: libs-api   engine: falkordb module on port 6399
+rows returned: 37
+
+handle                 role     authored  latest
+nia-e                  lead     1         2026-07-15
+folkertdev             member   1         2026-07-01
+joshtriplett           member   16        2026-02-23
+davidtwco              member   4         2025-10-31
+Darksonn               member   3         2025-08-10
+m-ou-se                member   9         2024-10-30
+Amanieu                lead     13        2024-05-03
+tgross35               member   2         2023-09-09
+... 29 more rows

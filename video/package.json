@@ -1,0 +1,9 @@
+{
+  "name": "rustbrain-video-tools",
+  "private": true,
+  "type": "module",
+  "description": "Capture and QA scripts for the rustbrain demo video. The Remotion composition lives in remotion/.",
+  "dependencies": {
+    "playwright-core": "1.64.1"
+  }
+}
