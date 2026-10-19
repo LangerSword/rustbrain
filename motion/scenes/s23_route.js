@@ -43,11 +43,16 @@ export function build(api, ctx, register) {
   // The story starts at the dead end: archived, nobody left. These start
   // states are set once; the scrubbed timeline below releases them.
   // The result box belongs to the hop beat, so it stays out of the way
-  // (opacity only, no layout change) until the edge has drawn.
+  // (opacity only, no layout change) until the edge has drawn. A small
+  // motion-only note explains the empty space while the dead end holds.
   gsap.set(fan, { opacity: 0, y: -8 });
   gsap.set(rows, { opacity: 0 });
   if (resultBox) gsap.set(resultBox, { opacity: 0 });
   if (countEl) countEl.textContent = "0";
+  const deadNote = document.createElement("p");
+  deadNote.className = "dead-note mono-label";
+  deadNote.textContent = "no reviewers to show: the archived team has none today.";
+  if (resultBox && resultBox.parentNode) resultBox.parentNode.insertBefore(deadNote, resultBox);
 
   const tl = gsap.timeline({
     defaults: { ease: E.arrive },
@@ -85,6 +90,7 @@ export function build(api, ctx, register) {
       "hop+=0.9"
     )
     .from(rows, { opacity: 0, y: 14, duration: D.rowIn, stagger: ST.row }, "hop+=1.05")
+    .to(deadNote, { opacity: 0, duration: 0.5, ease: E.ui }, "hop+=1.05")
     .to(resultBox, { opacity: 1, duration: 0.5, ease: E.ui }, "hop+=1.35")
     .to({}, { duration: 0.35 });
 
@@ -98,5 +104,6 @@ export function build(api, ctx, register) {
     if (countEl) {
       countEl.textContent = countEl.dataset.final || "37";
     }
+    if (deadNote.parentNode) deadNote.parentNode.removeChild(deadNote);
   };
 }
