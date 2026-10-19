@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import {
-  AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, staticFile,
+  AbsoluteFill, Audio, Freeze, Img, OffthreadVideo, Sequence, staticFile,
   continueRender, delayRender, interpolate, useCurrentFrame, useVideoConfig,
 } from "remotion";
 import captions from "./captions.json";
@@ -16,7 +16,7 @@ type Punch = { at: number; hold: number; scale: number; tx: number; ty: number }
 type Seg = { clip: string; span: number; still?: string; from?: number; punch?: Punch };
 
 const BEAT_SEGS: Record<number, Seg[]> = {
-  1: [{ clip: "naive", span: 12, from: 4.3,
+  1: [{ clip: "naive", span: 12, from: 1.5,
         punch: { at: 1.2, hold: 7, scale: 1.15, tx: 160, ty: 70 } }],
   2: [{ clip: "site_uhd_xvfb_hero", span: 18, from: 3.2,
         punch: { at: 2, hold: 12, scale: 1.5, tx: 0, ty: 110 } }],
@@ -115,13 +115,17 @@ const SegmentView: React.FC<{ seg: Seg; meta: Record<string, number>; beatFrames
       ) : seg.still ? (
         <Img src={staticFile("stills/" + seg.still)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${stillScale})` }} />
       ) : (
-        <OffthreadVideo
-          src={staticFile("clips/" + seg.clip + ".mp4")}
-          startFrom={startFrom}
-          playbackRate={rate}
-          muted
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
+        // fallback hold: freeze near the end of the clip instead of seeking
+        // past it (the clamp at rate 0.55 can leave frames beyond the source)
+        <Freeze frame={0}>
+          <OffthreadVideo
+            src={staticFile("clips/" + seg.clip + ".mp4")}
+            startFrom={Math.max(0, Math.round((Math.max(0.5, (meta[seg.clip] || 10)) - 1.2) * fps))}
+            playbackRate={1}
+            muted
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </Freeze>
       )}
     </AbsoluteFill>
   );

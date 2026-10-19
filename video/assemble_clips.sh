@@ -22,6 +22,18 @@ for c in naive query refresh assertions; do
   copy_as "$RAW/term/$c.mp4" "$c"
 done
 
+# normalize terminal recordings: clean CFR 60, standard timescale. The raw
+# terminal mp4s carry a 1/15360 time base that the Remotion compositor failed
+# to extract frames from mid-file ("No frame found at position"), so they are
+# re-encoded once here with exact 1/60 pts spacing.
+for c in naive query refresh assertions; do
+  [ -f "$CLIPS/$c.mp4" ] || continue
+  ffmpeg -hide_banner -loglevel error -y -i "$CLIPS/$c.mp4" \
+    -c:v libx264 -preset veryfast -crf 16 -pix_fmt yuv420p -r 60 \
+    -video_track_timescale 90000 -an -movflags +faststart "$CLIPS/$c.norm.mp4" \
+    && mv -f "$CLIPS/$c.norm.mp4" "$CLIPS/$c.mp4"
+done
+
 # real stills for holds, picked inside each clip
 still() { ffmpeg -hide_banner -loglevel error -y -ss "$2" -i "$CLIPS/$1" -frames:v 1 "$PUB/stills/$3" 2>/dev/null || echo "still failed for $1"; }
 still site_uhd_xvfb_hero.mp4 5 hero_hold.png
