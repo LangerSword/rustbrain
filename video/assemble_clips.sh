@@ -26,7 +26,7 @@ done
 still() { ffmpeg -hide_banner -loglevel error -y -ss "$2" -i "$CLIPS/$1" -frames:v 1 "$PUB/stills/$3" 2>/dev/null || echo "still failed for $1"; }
 still site_uhd_xvfb_hero.mp4 5 hero_hold.png
 still site_uhd_xvfb_successor_edge.mp4 5 edge_hold.png
-still site_uhd_xvfb_gaps.mp4 6 gaps_hold.png
+still site_uhd_xvfb_gaps.mp4 11 gaps_hold.png
 still site_uhd_xvfb_bugs.mp4 5 bugs_hold.png
 still site_uhd_xvfb_readme.mp4 8 readme_hold.png
 

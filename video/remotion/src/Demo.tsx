@@ -12,40 +12,43 @@ import { expoOut, expoIn, MOTION } from "./curves";
 // derived from the storyboard beats; playback rates are computed at render
 // time from the measured clip durations in clips_meta.json. Still frames are
 // real extracted frames used for slow holds, never re-drawn UI.
-type Punch = { at: number; hold: number; scale: number; x: number; y: number };
-type Seg = { clip: string; span: number; still?: string; punch?: Punch };
+type Punch = { at: number; hold: number; scale: number; tx: number; ty: number };
+type Seg = { clip: string; span: number; still?: string; from?: number; punch?: Punch };
 
 const BEAT_SEGS: Record<number, Seg[]> = {
-  1: [{ clip: "naive", span: 12 }],
-  2: [{ clip: "site_fhd_xvfb_hero", span: 18,
-        punch: { at: 2, hold: 12, scale: 1.45, x: -430, y: 100 } }],
+  1: [{ clip: "naive", span: 12, from: 4.3,
+        punch: { at: 1.2, hold: 7, scale: 1.15, tx: 160, ty: 70 } }],
+  2: [{ clip: "site_uhd_xvfb_hero", span: 18, from: 3.2,
+        punch: { at: 2, hold: 12, scale: 1.5, tx: 0, ty: 110 } }],
   3: [
-    { clip: "site_fhd_xvfb_successor_edge", span: 15,
-      punch: { at: 2.5, hold: 8, scale: 1.7, x: 470, y: -235 } },
-    { clip: "site_fhd_xvfb_tabs", span: 20,
-      punch: { at: 2, hold: 16, scale: 1.18, x: -60, y: 120 } },
+    { clip: "site_uhd_xvfb_successor_edge", span: 15, from: 2.2,
+      punch: { at: 2.5, hold: 8, scale: 1.6, tx: -600, ty: 350 } },
+    { clip: "site_fhd_xvfb_tabs", span: 20, from: 2.2,
+      punch: { at: 2, hold: 14, scale: 1.22, tx: -240, ty: -160 } },
   ],
   4: [
-    { clip: "site_fhd_xvfb_readme", span: 15,
-      punch: { at: 2, hold: 11, scale: 1.35, x: -40, y: 40 } },
-    { clip: "query", span: 21,
-      punch: { at: 6, hold: 12, scale: 1.6, x: 250, y: 130 } },
-    { clip: "site_fhd_xvfb_readme", span: 9, still: "readme_hold.png" },
+    { clip: "site_uhd_xvfb_readme", span: 15, from: 4.0,
+      punch: { at: 2, hold: 10, scale: 1.3, tx: 0, ty: -310 } },
+    { clip: "query", span: 21, from: 1.0,
+      punch: { at: 5, hold: 12, scale: 1.5, tx: 270, ty: 40 } },
+    { clip: "site_uhd_xvfb_readme", span: 9, still: "readme_hold.png",
+      punch: { at: 0.5, hold: 7, scale: 1.3, tx: 0, ty: -310 } },
   ],
   5: [
-    { clip: "site_fhd_xvfb_gaps", span: 14,
-      punch: { at: 2, hold: 10, scale: 1.4, x: -30, y: -60 } },
-    { clip: "site_fhd_xvfb_gaps", span: 11, still: "gaps_hold.png",
-      punch: { at: 0.5, hold: 9, scale: 1.3, x: -20, y: -80 } },
+    { clip: "site_uhd_xvfb_gaps", span: 14, from: 2.5,
+      punch: { at: 2, hold: 10, scale: 1.45, tx: 0, ty: -20 } },
+    { clip: "site_uhd_xvfb_gaps", span: 11, still: "gaps_hold.png",
+      punch: { at: 0.5, hold: 9, scale: 1.45, tx: 0, ty: -20 } },
   ],
   6: [
     { clip: "refresh", span: 13,
-      punch: { at: 3, hold: 8, scale: 1.5, x: 60, y: 20 } },
-    { clip: "site_fhd_xvfb_actions", span: 5, punch: { at: 0.5, hold: 4, scale: 1.15, x: 0, y: 30 } },
-    { clip: "assertions", span: 7, punch: { at: 1, hold: 5, scale: 1.5, x: 150, y: -40 } },
+      punch: { at: 3, hold: 8, scale: 1.3, tx: 160, ty: 70 } },
+    { clip: "site_fhd_xvfb_actions", span: 5, from: 2.0,
+      punch: { at: 0.5, hold: 4, scale: 1.15, tx: 0, ty: 110 } },
+    { clip: "assertions", span: 7, punch: { at: 1, hold: 5, scale: 1.35, tx: 200, ty: -180 } },
   ],
   7: [
-    { clip: "site_fhd_xvfb_bugs", span: 10, punch: { at: 2, hold: 6, scale: 1.3, x: -20, y: 30 } },
+    { clip: "site_uhd_xvfb_bugs", span: 10, from: 3.0, punch: { at: 2, hold: 6, scale: 1.35, tx: 0, ty: -80 } },
   ],
 };
 
@@ -66,11 +69,13 @@ function useClipMeta() {
 function useFonts() {
   const [handle] = useState(() => delayRender("fonts"));
   useEffect(() => {
-    Promise.all([
-      (document as any).fonts.load("400 64px Newsreader"),
-      (document as any).fonts.load("600 40px Inter"),
-      (document as any).fonts.load("400 32px Inter"),
-    ]).then(() => (document as any).fonts.ready).then(() => continueRender(handle));
+    const faces = [
+      new FontFace("Newsreader", `url(${staticFile("fonts/newsreader-400-normal.woff2")})`, { weight: "400" }),
+      new FontFace("Inter", `url(${staticFile("fonts/inter-100-900-normal.woff2")})`, { weight: "100 900" }),
+    ];
+    Promise.all(faces.map((f) => f.load().then((l) => { document.fonts.add(l); return l; })))
+      .then(() => continueRender(handle))
+      .catch(() => continueRender(handle));
   }, [handle]);
 }
 
@@ -81,27 +86,28 @@ const cameraFor = (seg: Seg, frameInSeg: number, segFrames: number) => {
   const leave = Math.min(segFrames - 12, (p.at + p.hold) * 60);
   const s = interpolate(frameInSeg, [enter, enter + MOTION.punchIn, leave, leave + MOTION.punchOut],
     [1, p.scale, p.scale, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: expoOut });
-  const settle = 1 - s;
-  const x = p.x * (s - 1) / (p.scale - 1 || 1);
-  const y = p.y * (s - 1) / (p.scale - 1 || 1);
-  void settle;
-  return `scale(${s}) translate(${x}px, ${y}px)`;
+  // tx, ty are the full-strength translation that brings the chosen point to
+  // the frame center; k ramps it in with the scale so the move is one motion.
+  const k = p.scale === 1 ? 0 : (s - 1) / (p.scale - 1);
+  return `scale(${s}) translate(${p.tx * k}px, ${p.ty * k}px)`;
 };
 
 const SegmentView: React.FC<{ seg: Seg; meta: Record<string, number>; beatFrames: number }> = ({ seg, meta, beatFrames }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const dur = meta[seg.clip] || 10;
+  const dur = Math.max(0.5, (meta[seg.clip] || 10) - (seg.from || 0));
   const spanFrames = Math.round(seg.span * fps);
   const rate = Math.max(0.55, Math.min(1, dur / seg.span));
   const videoFrames = Math.round((dur / rate) * fps);
   const showVideo = frame < videoFrames;
   const stillScale = 1 + 0.05 * (frame / Math.max(1, spanFrames));
+  const startFrom = Math.round((seg.from || 0) * fps);
   return (
     <AbsoluteFill style={{ transform: cameraFor(seg, frame, spanFrames), transformOrigin: "center" }}>
       {showVideo ? (
         <OffthreadVideo
           src={staticFile("clips/" + seg.clip + ".mp4")}
+          startFrom={startFrom}
           playbackRate={rate}
           muted
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -111,6 +117,7 @@ const SegmentView: React.FC<{ seg: Seg; meta: Record<string, number>; beatFrames
       ) : (
         <OffthreadVideo
           src={staticFile("clips/" + seg.clip + ".mp4")}
+          startFrom={startFrom}
           playbackRate={rate}
           muted
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -123,7 +130,6 @@ const SegmentView: React.FC<{ seg: Seg; meta: Record<string, number>; beatFrames
 const Beat: React.FC<{ beat: any; meta: Record<string, number> }> = ({ beat, meta }) => {
   const { fps } = useVideoConfig();
   const segs = BEAT_SEGS[beat.beat] || [];
-  const beatFrames = (beat.end - beat.start) * fps;
   let acc = 0;
   const views = segs.map((s, i) => {
     const from = acc;
@@ -136,25 +142,26 @@ const Beat: React.FC<{ beat: any; meta: Record<string, number> }> = ({ beat, met
     );
   });
   const caps: any[] = beat.captions || [{ t: beat.start, text: beat.caption }];
+  const capEnds = caps.map((c: any, i: number) =>
+    (((i + 1 < caps.length ? caps[i + 1].t : beat.end) - beat.start) * fps));
   return (
     <AbsoluteFill>
       {views}
-      {caps.map((c, i) => (
-        <Caption key={i} text={c.text} start={(c.t - beat.start) * fps} vo={false} />
+      {caps.map((c: any, i: number) => (
+        <Caption key={i} text={c.text} start={(c.t - beat.start) * fps} endLocal={capEnds[i]} vo={false} />
       ))}
-      {beatFrames > 0 ? null : null}
     </AbsoluteFill>
   );
 };
 
-const Caption: React.FC<{ text: string; start: number; vo: boolean }> = ({ text, start, vo }) => {
+const Caption: React.FC<{ text: string; start: number; endLocal: number; vo: boolean }> = ({ text, start, endLocal, vo }) => {
   const frame = useCurrentFrame();
   const shown = vo ? text.split(" ").slice(0, 3).join(" ") : text;
   const words = shown.split(" ");
   const visible = frame >= start - 4;
   if (!visible) return null;
   const local = frame - start;
-  const fadeOut = interpolate(local, [320, 360], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: expoIn });
+  const fadeOut = interpolate(local, [Math.max(0, endLocal - 46), Math.max(1, endLocal - 16)], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: expoIn });
   return (
     <div style={{
       position: "absolute", left: 120, right: 120, bottom: 84, display: "flex", justifyContent: "center",
@@ -249,8 +256,9 @@ export const Demo: React.FC<{ vo?: boolean; skipAudio?: boolean }> = ({ vo = fal
               <Sequence from={(ENDCARD.start - b.start) * fps} durationInFrames={(ENDCARD.end - ENDCARD.start) * fps} layout="none">
                 <EndCard />
               </Sequence>
-              {(b.captions || []).map((c: any, i: number) => (
-                <Caption key={"c" + i} text={c.text} start={(c.t - b.start) * fps} vo={vo} />
+              {(b.captions || []).map((c: any, i: number, arr: any[]) => (
+                <Caption key={"c" + i} text={c.text} start={(c.t - b.start) * fps}
+                  endLocal={((i + 1 < arr.length ? arr[i + 1].t : Math.min(b.end, ENDCARD.start)) - b.start) * fps} vo={vo} />
               ))}
             </>
           ) : (

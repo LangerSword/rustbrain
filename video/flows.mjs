@@ -57,10 +57,22 @@ async function settle(page, ms = 1500) {
   await sleep(ms);
 }
 
+async function nav(page, url, tries = 3) {
+  for (let i = 1; i <= tries; i++) {
+    try {
+      await page.goto(url, { waitUntil: "domcontentloaded", timeout: 20000 });
+      return;
+    } catch (e) {
+      if (i === tries) throw e;
+      await sleep(1000);
+    }
+  }
+}
+
 const BASE = process.env.BASE_URL || "http://rustbrain.langersword.in/";
 
 export async function flowHero(page) {
-  await page.goto(BASE, { waitUntil: "domcontentloaded" });
+  await nav(page, BASE);
   await settle(page, 2400);
   await easedMove(page, { x: 960, y: 420 }, 700);
   await easedMove(page, await center(page, "#demo"), 1100);
@@ -70,7 +82,7 @@ export async function flowHero(page) {
 }
 
 export async function flowSuccessorEdge(page) {
-  await page.goto(BASE, { waitUntil: "domcontentloaded" });
+  await nav(page, BASE);
   await settle(page, 2200);
   await easedMove(page, { x: 760, y: 860 }, 900);
   const fig = await page.locator("figure.graph svg").first().boundingBox();
@@ -86,7 +98,7 @@ export async function flowSuccessorEdge(page) {
 }
 
 export async function flowTabs(page) {
-  await page.goto(BASE, { waitUntil: "domcontentloaded" });
+  await nav(page, BASE);
   await settle(page, 2200);
   const cargo = await center(page, ".demo-tabs button[data-target='T-cargo']");
   await easedMove(page, cargo, 800);
@@ -103,17 +115,19 @@ export async function flowTabs(page) {
 }
 
 export async function flowGaps(page) {
-  await page.goto(BASE + "gaps/", { waitUntil: "domcontentloaded" });
+  await nav(page, BASE + "gaps/");
   await settle(page, 2000);
   await easedMove(page, { x: 960, y: 500 }, 700);
-  await page.evaluate(() => window.scrollTo({ top: 620, behavior: "smooth" }));
-  await sleep(1800);
-  await page.locator("h2", { hasText: "tier 3" }).first().scrollIntoViewIfNeeded().catch(() => {});
-  await sleep(2400);
+  await page.locator("h2", { hasText: "tier 3" }).first().scrollIntoViewIfNeeded().catch(async () => {
+    await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight * 0.62, behavior: "smooth" }));
+  });
+  await sleep(1600);
+  await page.evaluate(() => window.scrollBy({ top: 220, behavior: "smooth" }));
+  await sleep(2200);
 }
 
 export async function flowBugs(page) {
-  await page.goto(BASE + "bugs/", { waitUntil: "domcontentloaded" });
+  await nav(page, BASE + "bugs/");
   await settle(page, 2000);
   await page.evaluate(() => window.scrollTo({ top: window.innerHeight * 1.15, behavior: "smooth" }));
   await sleep(1700);
@@ -122,7 +136,7 @@ export async function flowBugs(page) {
 }
 
 export async function flowReadme(page) {
-  await page.goto("https://github.com/LangerSword/rustbrain", { waitUntil: "domcontentloaded" });
+  await nav(page, "https://github.com/LangerSword/rustbrain");
   await settle(page, 2600);
   await page.locator("h2", { hasText: "Graph data model" }).first()
     .scrollIntoViewIfNeeded().catch(async () => {

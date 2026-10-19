@@ -21,7 +21,9 @@ const ctx = browser.contexts()[0];
 const page = ctx.pages()[0] || (await ctx.newPage());
 await page.addInitScript({ content: CURSOR_JS });
 
+const ONLY = (process.env.CLIPS || "").split(",").filter(Boolean);
 for (const [name, fn] of FLOWS[MODE]) {
+  if (ONLY.length && !ONLY.includes(name)) continue;
   const out = path.join(RAW, name + ".mp4");
   console.log("=== recording", MODE, name, "->", out);
   const ff = spawn("ffmpeg", [
@@ -32,6 +34,7 @@ for (const [name, fn] of FLOWS[MODE]) {
   ], { stdio: "ignore" });
   await sleep(1800);
   await fn(page, RUN_URL).catch((e) => console.log("flow error:", String(e).slice(0, 120)));
+  console.log("FINAL", name, page.url().slice(0, 100));
   await sleep(900);
   ff.kill("SIGINT");
   await new Promise((r) => ff.on("close", r));
