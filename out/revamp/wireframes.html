@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>revamp wireframes, three greybox sketches</title>
+<style>
+  body { background:#14110e; color:#c9c0b2; font:14px/1.5 system-ui, sans-serif; margin:0; padding:32px; }
+  h1, h2 { font-family: Georgia, serif; color:#f2ede4; font-weight:400; }
+  h1 { font-size:28px; margin:0 0 8px; } h2 { font-size:20px; margin:40px 0 4px; }
+  p.why { margin:0 0 12px; max-width:70ch; }
+  .sketch { display:grid; gap:6px; background:#1c1814; border:1px solid rgba(242,237,228,.14); padding:12px; }
+  .row { display:grid; gap:6px; }
+  .b { border:1px dashed rgba(242,237,228,.4); padding:8px 10px; min-height:34px; display:flex; align-items:center; justify-content:center; text-align:center; color:#918877; font-size:12px; }
+  .b.solid { border-style:solid; color:#f2ede4; }
+  .a .grid { grid-template-columns:28px 1fr; }
+  .a .rail { writing-mode:vertical-rl; justify-content:flex-start; padding:8px 4px; }
+  .b2 { border-style:solid; background:#171410; }
+  .b2 .grid { grid-template-columns:200px 1fr; }
+  .c .grid { grid-template-columns:1fr 1fr; }
+  .c .sticky { position:relative; }
+  .c .sticky::after { content:""; position:absolute; right:8px; top:8px; bottom:8px; width:2px; background:rgba(242,237,228,.35); }
+  .z390 { display:grid; grid-template-columns:120px 1fr; gap:6px; margin-top:6px; }
+  .z390 .b { min-height:26px; font-size:11px; }
+  .pick { color:#f2ede4; border-left:3px solid #ff6a3d; padding-left:10px; }
+</style>
+</head>
+<body>
+<h1>Three greybox sketches, pick first, build second</h1>
+<p class="why">Each sketch shows the same six-scene flow at 1440 and its 390 behaviour. Boxes are content, dashes are motion beats. No colour, no type choices, layout only.</p>
+
+<h2>A. Report spine</h2>
+<p class="why">Reads like the printed report the concept already is; stacks to 390 with no second design; scenes 2 to 4 get full width for the graph story.</p>
+<div class="sketch a">
+  <div class="grid">
+    <div class="b rail">scene rail, 6 ticks, route state on tick 3</div>
+    <div class="row">
+      <div class="b solid">1 arrival: h1, RFC 1892 card, label badge, tier badge (masked lines reveal)</div>
+      <div class="b">2 dead end: pinned stage 1.5vh, route line types, roster rows leave, 0 lands</div>
+      <div class="b">3 the hop: pinned stage 2.5vh, edge draws along SVG path, quote + source land, 37 rows stagger in</div>
+      <div class="b">4 the gap: stub line stops, empty space holds, gap label fades</div>
+      <div class="b">5 numbers: 5 counters, 3 tier blocks with scope, bars scale</div>
+      <div class="b solid">6 close: limits lines, bugs link, repo link, snapshot hash</div>
+    </div>
+  </div>
+  <div class="z390"><div class="b">rail</div><div class="b">same stack, one column, pin only scene 3</div></div>
+</div>
+
+<h2>B. Console stage</h2>
+<p class="why">The running route state is a strong idea, but the number rail crowds the graph at 1440 and has no honest mobile form.</p>
+<div class="sketch b2">
+  <div class="grid">
+    <div class="row">
+      <div class="b">route state live: label, tier, members now, successor</div>
+      <div class="b">scene index 1..6 with counts</div>
+      <div class="b">data.json provenance lines</div>
+    </div>
+    <div class="row">
+      <div class="b solid">stage shows one scene at a time, all six share the frame</div>
+      <div class="b">graph figure large, tables right</div>
+    </div>
+  </div>
+  <div class="z390"><div class="b">rail collapses to</div><div class="b">a top strip, stage below, cramped</div></div>
+</div>
+
+<h2>C. Split ledger</h2>
+<p class="why">Beautiful at 1440, but a sticky figure column fights the story on mobile and doubles the layout code for one breakpoint.</p>
+<div class="sketch c">
+  <div class="grid">
+    <div class="row">
+      <div class="b solid">story column: 6 scenes stacked as text and beats</div>
+      <div class="b sticky">figure column: sticky graph and roster, updates per scene</div>
+    </div>
+  </div>
+  <div class="z390"><div class="b">story</div><div class="b">figure drops below each scene</div></div>
+</div>
+
+<h2 class="pick">Pick: A, with one element borrowed from B</h2>
+<p class="why">The scene rail carries the current route state (label, tier) as its tick annotation on desktop, so the running state lives in the margin the way a printed report annotates, not in a second interface. This is what stage 5 builds; wireframes here only.</p>
+</body>
+</html>
