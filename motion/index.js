@@ -13,8 +13,12 @@ import * as s23 from "./scenes/s23_route.js";
 import * as s4 from "./scenes/s4_gap.js";
 import * as s5 from "./scenes/s5_numbers.js";
 import * as s6 from "./scenes/s6_close.js";
+import * as fx from "./scenes/transitions.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin, Flip);
+
+// the title-sequence CSS gate can stand down as soon as the bundle runs
+document.documentElement.classList.add("fx-ready");
 
 const api = { gsap, ScrollTrigger, SplitText, DrawSVGPlugin, Flip };
 
@@ -50,6 +54,7 @@ mm.add(
     cleanups.push(s4.build(api, ctx, register));
     cleanups.push(s5.build(api, ctx, register));
     cleanups.push(s6.build(api, ctx, register));
+    cleanups.push(fx.build(api, ctx, register));
 
     // scene rail state
     document.querySelectorAll("main .scene").forEach((sec) => {

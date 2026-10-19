@@ -30,6 +30,7 @@
       });
       Object.keys(rb.scenes).forEach(function(name) {
         var tl = rb.scenes[name];
+        if (!tl || typeof tl.progress !== "function") return;
         var row = document.createElement("div");
         row.className = "row";
         var lab = document.createElement("span");

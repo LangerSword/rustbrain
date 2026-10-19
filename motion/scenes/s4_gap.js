@@ -16,7 +16,10 @@ export function build(api, ctx, register) {
 
   tl.from(stub, { drawSVG: "0%", duration: D.stub, ease: "none" }, 0)
     .from(root.querySelectorAll(".gap-surface"), { opacity: 0, y: 16, duration: 0.6, stagger: 0.1 }, 0.15)
-    .from(root.querySelector(".gap-label"), { opacity: 0, duration: 0.5, ease: E.ui }, 0.6);
+    .from(root.querySelector(".gap-label"), { opacity: 0, duration: 0.5, ease: E.ui }, 0.6)
+    .fromTo(root.querySelector("#stopPulse"), { opacity: 0, scaleY: 1, transformOrigin: "50% 50%" }, { opacity: 0.9, scaleY: 1.18, duration: 0.25, ease: E.ui }, 0.95)
+    .to(root.querySelector("#stopPulse"), { opacity: 0, duration: 0.6, ease: E.ui }, 1.35)
+    .to({}, { duration: 0.5 }); // the beat of stillness after the stop
 
   register("s4", tl);
   return () => {};

@@ -118,3 +118,23 @@ values, motion bundle live, the successor edge caught mid-draw (dash
 68.6471 px of the path, still animating), zero console errors. The reviewer
 row defect above was found by the post-push probe, fixed, re-verified at
 three widths and redeployed in a follow-up commit.
+
+## 6.7 the cinematic pass (santioni feel)
+
+The owner asked for the reference site's feel, not just its mechanics. What
+changed, all inside the same constraints: every scene is now a full viewport
+stage; a veil lifts off each scene as it enters (0.62 s, expo.inOut, motion
+only); the hero is a title sequence that plays on load (kicker, hairline
+draw, masked lines, card settle); the display scale went up (h1 to 102 px at
+1440, counters to 92 px); the hop gained a scanning spark along the drawn
+edge and a 1.4 s camera push on the graph; the gap got a stop pulse and a
+beat of stillness; a 2 px progress hairline runs across the top; kickers and
+figures carry light parallax. Reduced motion still gets the static final
+states, no-JS still gets the full story, and every veil is created by the
+motion bundle so it cannot hide content from a page without JavaScript.
+
+Re-measured after the pass: 1440 mean rAF interval 17.35 ms with 2 of 744
+frames over 25 ms (0.27 percent); 390 mean 16.92 ms, 2 of 750 (0.27
+percent); boot long tasks 202 / 96 / 51 ms at 1440 and 106 ms at 390;
+zero console errors both. Assert suite still PASS; captures re-shot at three
+widths in out/revamp/review/.

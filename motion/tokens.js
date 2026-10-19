@@ -18,6 +18,8 @@ export const D = {
   draw: 1.2, // the hop edge drawing itself
   stub: 0.9, // the gap stub drawing to its stop
   flip: 0.5, // result panel re-grouping
+  curtain: 0.62, // the veil lifting off a scene
+  camera: 1.4, // the graph push during the hop
 };
 
 export const ST = {

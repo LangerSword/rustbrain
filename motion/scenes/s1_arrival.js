@@ -1,6 +1,7 @@
-// Scene 1, arrival: RFC 1892 card and its label, masked line reveals.
-// Every element here is complete static HTML first; this module only adds the
-// reveal. The parent matches out/revamp/20_REVAMP.md, scene 1.
+// Scene 1, arrival: a title sequence, not a scroll reveal. On load (motion
+// allowed), the kicker fades, the hairline draws, the headline lines rise out
+// of their masks and the RFC card settles in, one family of curves. With no
+// JavaScript or reduced motion, the static page is already the final state.
 import { E, D, ST } from "../tokens.js";
 
 export function build(api, ctx, register) {
@@ -23,17 +24,19 @@ export function build(api, ctx, register) {
     });
   });
 
-  const tl = gsap.timeline({
-    defaults: { ease: E.arrive },
-    scrollTrigger: { trigger: root, start: "top 70%", toggleActions: "play none none none" },
+  const tl = gsap.timeline({ defaults: { ease: E.arrive }, delay: 0.15 });
+  tl.from(root.querySelector(".kicker"), { opacity: 0, y: 10, duration: 0.5, ease: E.ui }, 0)
+    .from(root.querySelector(".s1-hair"), { scaleX: 0, duration: 0.9, ease: E.ui }, 0.2)
+    .from(splits.flatMap((s) => s.lines), { yPercent: 112, duration: D.reveal, stagger: ST.line }, 0.35)
+    .from(root.querySelector(".rfc-card"), { opacity: 0, y: 30, duration: 0.8 }, 0.9)
+    .from(root.querySelector(".cta-row"), { opacity: 0, y: 12, duration: D.quote, ease: E.ui }, 1.05);
+
+  // the card drifts up slightly as the hero leaves (depth, not decoration)
+  gsap.to(root.querySelector(".rfc-card"), {
+    yPercent: -6,
+    ease: "none",
+    scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: true },
   });
-  tl.from(
-    splits.flatMap((s) => s.lines),
-    { yPercent: 112, duration: D.reveal, stagger: ST.line },
-    0
-  )
-    .from(root.querySelectorAll(".reveal-soft"), { opacity: 0, y: 14, duration: D.quote, stagger: ST.line, ease: E.ui }, 0.2)
-    .from(root.querySelector(".rfc-card"), { opacity: 0, y: 26, duration: 0.7 }, 0.3);
 
   register("s1", tl);
   return () => {

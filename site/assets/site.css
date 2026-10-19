@@ -235,3 +235,31 @@ figure.graph { border: 1px solid var(--line); border-radius: 8px; background: va
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   .btn:hover { transform: none; }
 }
+
+/* cinematic staging (the santioni-feel pass): one idea per screen, veils
+   between beats, a title-sequence opening, a top progress hairline. */
+html.fx:not(.fx-ready):not(.fx-timeout) .scene-arrival .reveal-line,
+html.fx:not(.fx-ready):not(.fx-timeout) .scene-arrival .kicker,
+html.fx:not(.fx-ready):not(.fx-timeout) .scene-arrival .s1-hair,
+html.fx:not(.fx-ready):not(.fx-timeout) .scene-arrival .rfc-card,
+html.fx:not(.fx-ready):not(.fx-timeout) .scene-arrival .cta-row { visibility: hidden; }
+
+.scene-arrival, .scene-gap, .scene-numbers, .scene-close {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+}
+.scene-arrival { padding: 6vh 0; }
+.scene-arrival h1 { font-size: clamp(44px, 6.4vw, 102px); letter-spacing: -0.028em; line-height: 1.05; max-width: 23ch; }
+.scene-stage .wrap { padding-top: 2.5vh; padding-bottom: 2.5vh; }
+.scene h2 { font-size: clamp(32px, 3.9vw, 66px); letter-spacing: -0.02em; }
+.rfc-title { font-size: clamp(26px, 2.9vw, 42px); }
+.band .b-num { font-size: clamp(44px, 5.4vw, 92px); }
+.s1-hair { display: block; height: 1px; background: var(--line-strong); margin: 14px 0 18px; max-width: 640px; transform-origin: 0 50%; }
+
+.curtain { position: absolute; inset: 0; background: #0c0a09; z-index: 6; }
+.curtain::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--accent); opacity: 0.55; }
+.progress-rail { position: fixed; top: 0; left: 0; right: 0; height: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: 0 50%; z-index: 40; opacity: 0.9; }
+.edge-spark { stroke: var(--accent); stroke-width: 2.4; opacity: 0;
+  filter: drop-shadow(0 0 5px rgba(255, 106, 61, 0.45)); }
+.stop-pulse { stroke: var(--gap); stroke-width: 3; opacity: 0; }

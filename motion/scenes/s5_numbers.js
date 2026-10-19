@@ -40,6 +40,8 @@ export function build(api, ctx, register) {
   });
 
   tl.from(root.querySelectorAll(".tier"), { opacity: 0, y: 18, duration: 0.6, stagger: ST.tier, ease: E.arrive }, 0.05)
+    .from(root.querySelectorAll(".band .b-num"), { opacity: 0, y: 30, duration: 0.7, stagger: ST.tier, ease: E.arrive }, 0)
+    .from(root.querySelectorAll(".band .b-lab, .band .b-scope"), { opacity: 0, y: 12, duration: 0.5, stagger: 0.04, ease: E.ui }, 0.2)
     .from(
       root.querySelectorAll(".tier-bar-fill"),
       { scaleX: 0, transformOrigin: "0 50%", duration: 0.9, stagger: ST.tier, ease: E.arrive },

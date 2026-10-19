@@ -6,6 +6,19 @@
 <title>rustbrain: route a rust rfc to the team that exists today</title>
 <meta name="description" content="rustbrain routes a rust rfc to the reviewers its own team files name, follows an archived team to its recorded successor, and reports a true gap when there is nobody to route to.">
 <!-- DRAFT copy: the entrant edits every line before publishing. -->
+<script>
+  // cinematic staging gate: hide the title-sequence pieces only while the
+  // motion bundle is loading, and never on reduced motion or without JS.
+  (function () {
+    try {
+      var d = document.documentElement;
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+        d.classList.add("fx");
+        setTimeout(function () { d.classList.add("fx-timeout"); }, 3000);
+      }
+    } catch (e) {}
+  })();
+</script>
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="assets/site.css">
@@ -39,6 +52,7 @@
   <section id="s1" class="scene scene-arrival">
     <div class="wrap">
       <p class="mono-label kicker reveal-soft">track 03, company brain. rustbrain, from two pinned public revisions.</p>
+      <span class="s1-hair" aria-hidden="true"></span>
       <h1 class="reveal-line">an rfc lands on the right desk, or the tool says why it cannot.</h1>
       <p class="sub reveal-line">rustbrain routes a rust rfc to the team its own files say owns it today, and reports a true gap when no one does. no llm, two pinned revisions, one graph.</p>
       <div class="rfc-card">
@@ -93,7 +107,6 @@
           </table>
           <div class="foot">showing the first 5 of <span class="num" id="rosterCount" data-final="37">37</span> reviewers, sorted by latest authored RFC. Tier: <span class="hop">SUCCESSOR</span>.</div>
         </div>
-        <p class="demo-note">this demo runs from the committed snapshot (data/snapshot.json), exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
       </div>
       <figure class="graph">
         <svg viewBox="0 0 520 302" role="img" aria-labelledby="graphtitle graphdesc">
@@ -108,6 +121,7 @@
           <g class="edge-group">
             <line class="edge-hit" x1="184" y1="48" x2="330" y2="48"></line>
             <line id="edgePath" class="edge" x1="184" y1="48" x2="330" y2="48"></line>
+            <line id="edgeSpark" class="edge-spark" x1="184" y1="48" x2="330" y2="48"></line>
             <polygon points="330,48 322,43 322,53" fill="#e0a458"></polygon>
             <text class="edge-label" x="190" y="40">SUCCEEDED_BY, RFC 3984</text>
             <text class="edge-hint" x="190" y="26">hover: the recorded edge, from the team's own file</text>
@@ -151,6 +165,7 @@
           <text class="node-sub" x="20" y="74">no team file anywhere</text>
           <path id="stubPath" class="edge gap-edge" d="M 214 60 L 292 60"></path>
           <line class="edge-stop" x1="296" y1="46" x2="296" y2="74"></line>
+          <line id="stopPulse" class="stop-pulse" x1="296" y1="46" x2="296" y2="74"></line>
           <text class="edge-label gap-label" x="308" y="64" fill="#f2705e">route stops here</text>
           <text class="node-sub" x="308" y="86">20 merged rfcs, nobody to route to</text>
         </svg>
@@ -207,6 +222,7 @@
         <h2 class="reveal-line">what it is not.</h2>
         <p class="sub reveal-soft">there is no model anywhere in the path, and rust is a foundation, not a company: element eight of the brief scores zero, and <a href="method/">the method page</a> says so in the first sentence.</p>
         <p class="sub reveal-soft">three pages in this site are the honest part: <a href="gaps/">the gaps</a>, <a href="method/">the limits</a>, and <a href="bugs/">the bugs i found in my own findings</a>.</p>
+        <p class="note reveal-soft">this demo runs from the committed snapshot (data/snapshot.json), exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
         <p class="note reveal-soft">handles only. the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p>
       </div>
     </div>

@@ -38,6 +38,8 @@ export function build(api, ctx, register) {
   const rows = root.querySelectorAll(".reviewers tbody tr");
   const countEl = q("#rosterCount");
   const resultBox = q("#demo");
+  const spark = q("#edgeSpark");
+  const figure = root.querySelector("figure.graph");
   const counter = { v: 0 };
 
   // The story starts at the dead end: archived, nobody left. These start
@@ -74,6 +76,10 @@ export function build(api, ctx, register) {
     .to(q(".dead-chip"), { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1, ease: E.ui }, 0.6)
     .addLabel("hop", 1.2)
     .from(edge, { drawSVG: "0%", duration: D.draw, ease: "none" }, "hop")
+    .fromTo(spark, { drawSVG: "0% 6%" }, { drawSVG: "94% 100%", duration: D.draw, ease: "none" }, "hop")
+    .to(spark, { opacity: 0.9, duration: 0.15, ease: E.ui }, "hop")
+    .to(spark, { opacity: 0, duration: 0.35, ease: E.ui }, "hop+=1.0")
+    .to(figure, { scale: 1.05, transformOrigin: "50% 30%", duration: D.camera, ease: E.ui }, "hop+=0.3")
     .to(fan, { opacity: 1, y: 0, duration: 0.5, stagger: ST.fan }, "hop+=0.25")
     .from(quote, { yPercent: 112, duration: D.quote }, "hop+=0.8")
     .to(

@@ -19,6 +19,10 @@ out/revamp/30_VERIFY.md and out/blog_evidence/21_revamp.md.
 - scripts/assert_site_numbers.py: extended to re-derive counter values, SVG
   label numbers, tier bar widths, font files and the no-JS text from the
   snapshot; CI fails on any disagreement.
+- The cinematic pass (stage 8): full viewport scenes, entering veils, the
+  title-sequence opening, a scanning spark on the drawn edge, a camera push
+  on the graph, a top progress hairline, parallax furniture; re-measured and
+  re-captured.
 - site/assets/fonts.css: font files now resolve (they 404ed on every page
   before this).
 - README.md, docs/DEMO.md, out/design/30_DESIGN.md: revamp sections added.
