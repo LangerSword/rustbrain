@@ -34,6 +34,19 @@ for c in naive query refresh assertions; do
     && mv -f "$CLIPS/$c.norm.mp4" "$CLIPS/$c.mp4"
 done
 
+# normalize every clip: clean CFR 60, standard time base, dense keyframes.
+# x11grab captures also carry the irregular 1/15360 time base that tripped the
+# compositor mid-file, so all footage gets the same treatment before the stills
+# and the hard links are made.
+for f in "$CLIPS"/*.mp4; do
+  case "$f" in *.norm.mp4) continue ;; esac
+  ffmpeg -hide_banner -loglevel error -y -i "$f" \
+    -c:v libx264 -preset fast -crf 17 -g 30 -keyint_min 30 -bf 0 -sc_threshold 0 \
+    -profile:v high -pix_fmt yuv420p -r 60 -video_track_timescale 90000 -an \
+    -movflags +faststart "${f%.mp4}.norm.mp4" \
+    && mv -f "${f%.mp4}.norm.mp4" "$f"
+done
+
 # real stills for holds, picked inside each clip
 still() { ffmpeg -hide_banner -loglevel error -y -ss "$2" -i "$CLIPS/$1" -frames:v 1 "$PUB/stills/$3" 2>/dev/null || echo "still failed for $1"; }
 still site_uhd_xvfb_hero.mp4 5 hero_hold.png
