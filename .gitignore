@@ -8,3 +8,17 @@ reports/refresh_*.md
 
 # study screenshots of third-party sites: local only, never committed, never reused, never deployed
 out/design/teardowns/shots/
+
+# revamp: study screenshots of the reference site, local only, never committed
+out/revamp/shots/
+
+# video: raw captures, renders, stems and sheets stay out of the repo; scripts are committed
+out/video/raw/
+out/video/vo/
+out/video/sheets/
+out/video/*.mp4
+out/video/*.wav
+out/video/*.cast
+
+# js tooling
+node_modules/
