@@ -44,7 +44,7 @@
   }
 
   function render(target) {
-    load().then(function (d) {
+    return load().then(function (d) {
       // innerHTML is fed only this site's own precomputed data (site/data.json,
       // exported from the committed snapshot and asserted in CI); every field is
       // passed through esc() before it reaches the string. No user input exists.
@@ -86,4 +86,9 @@
   for (var i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener("click", function (ev) { render(ev.currentTarget.getAttribute("data-target")); });
   }
+
+  // Exposed for the motion layer: when GSAP is present, motion wraps render()
+  // in a Flip transition and intercepts tab clicks; without it this file is
+  // the whole demo, exactly as before.
+  window.RB = { render: render, reduce: reduce };
 })();

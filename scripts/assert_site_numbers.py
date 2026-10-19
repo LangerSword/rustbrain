@@ -9,6 +9,7 @@ Run:  python3 scripts/assert_site_numbers.py
 """
 import json
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -111,7 +112,78 @@ check("home band names its source", "band counts: cmd/gaps.py" in home_page, Tru
 check("graph page names load_graph", "scripts/load_graph.py" in graph_page, True)
 check("graph page names successors.yaml", "data/successors.yaml" in graph_page, True)
 
-print("checked site/data.json against data/snapshot.json")
+# 8. the revamp home page: counters, SVG labels, fonts, no-JS content.
+#    Numbers can drift in three places the data checks above cannot see: a
+#    counter's data-final, its static text, and any SVG label. All three are
+#    checked here, so the motion layer can never move a number off the data.
+for m in re.finditer(r'data-final="([0-9]+(?:\.[0-9]+)?)"\s*>([^<]*)<', home_page):
+    check("data-final %s text" % m.group(1), m.group(2).strip(), m.group(1))
+
+succ_rows = {r["label"]: r for r in site["gaps"]["tiers"]["SUCCESSOR"]}
+counter_map = [
+    ("761", snap["counts"]["rfcs"]),
+    ("162", site["gaps"]["distinct"]["SUCCESSOR"]),
+    ("138", succ_rows["libs-api"]["rfcs"]),
+    ("24", succ_rows["core"]["rfcs"]),
+    ("25", site["gaps"]["distinct"]["TRUE_GAP"]),
+    ("14", len(site["gaps"]["tiers"]["ACTIVE"])),
+    ("357", site["gaps"]["distinct"]["ACTIVE"]),
+    ("2", len(site["gaps"]["tiers"]["SUCCESSOR"])),
+    ("3", len(site["gaps"]["tiers"]["TRUE_GAP"])),
+    ("37", len(site["hero"]["reviewers"])),
+]
+for shown, want in counter_map:
+    check("data-final %s exists" % shown, ('data-final="%s"' % shown) in home_page, True)
+    check("counter value %s" % shown, int(shown), int(want))
+
+# 8a. tier bars compare on one denominator: each is its share of the largest
+#     tier (ACTIVE distinct rfcs). Recomputed here, matched against the HTML.
+tier_distinct = site["gaps"]["distinct"]
+for name in ("ACTIVE", "SUCCESSOR", "TRUE_GAP"):
+    want_bar = 'style="--w:%.1f%%"' % (100.0 * tier_distinct[name] / tier_distinct["ACTIVE"])
+    check("tier bar %s" % name, want_bar in home_page, True)
+
+svg_texts = re.findall(r"<text[^>]*>(.*?)</text>", home_page, re.S)
+svg_nums = set()
+for t in svg_texts:
+    t = re.sub(r"\d{4}-\d{2}-\d{2}", " ", t)
+    for n in re.findall(r"\d+", t):
+        svg_nums.add(n)
+allowed_nums = set()
+def harvest(x):
+    if isinstance(x, dict):
+        for v in x.values():
+            harvest(v)
+    elif isinstance(x, list):
+        for v in x:
+            harvest(v)
+    elif isinstance(x, bool):
+        pass
+    elif isinstance(x, (int, float)):
+        allowed_nums.add(str(int(x)))
+harvest(snap)
+allowed_nums |= {"5", "0"}  # 5 = the "first 5" display truncation; 0 = archived roster size
+# derived values the figure shows, recomputed independently here:
+# 37 = the libs roster union (leads plus members), 20 = the dev-tools gap load
+gap_dev_tools = sum(1 for r in snap["rfcs"] if "dev-tools" in r["team_labels"])
+allowed_nums |= {str(len(union)), str(gap_dev_tools)}
+check("svg active-roster label", ("active, %d people" % len(union)) in home_page, True)
+check("svg dev-tools load label", ("%d of %d merged rfcs" % (gap_dev_tools, snap["counts"]["rfcs"])) in home_page, True)
+for n in sorted(svg_nums, key=int):
+    check("svg number %s is a data value" % n, n in allowed_nums, True)
+check("svg roster label", "5 of 37 reviewers" in home_page, True)
+check("svg gap label", "20 of 761 merged rfcs" in home_page, True)
+check("archived roster copy", "archived, 0 members" in home_page, site["graph"]["chain"][0]["status"] == "archived")
+
+fonts_css = open(os.path.join(HERE, "site", "assets", "fonts.css"), encoding="utf-8").read()
+for u in re.findall(r"url\('([^']+)'\)", fonts_css):
+    check("font file %s" % u, os.path.exists(os.path.join(HERE, "site", "assets", u)), True)
+
+for s in ["an rfc lands on the right desk", "the team that owned this rfc has nobody left",
+          "route stops here", "no llm, two pinned revisions, one graph"]:
+    check("no-js text %r" % s, s in home_page, True)
+
+print("checked site/data.json and the built home page against data/snapshot.json")
 if bad:
     for b in bad:
         print("MISMATCH:", b)

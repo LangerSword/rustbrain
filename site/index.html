@@ -7,6 +7,7 @@
 <meta name="description" content="rustbrain routes a rust rfc to the reviewers its own team files name, follows an archived team to its recorded successor, and reports a true gap when there is nobody to route to.">
 <!-- DRAFT copy: the entrant edits every line before publishing. -->
 <link rel="stylesheet" href="assets/fonts.css">
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -25,107 +26,189 @@
 </header>
 
 <main id="main">
-  <section class="hero">
+  <nav class="scene-rail" aria-label="scenes">
+    <a href="#s1" class="on">01 arrival</a>
+    <a href="#s2">02 dead end</a>
+    <a href="#s3">03 the hop</a>
+    <a href="#s4">04 the gap</a>
+    <a href="#s5">05 numbers</a>
+    <a href="#s6">06 close</a>
+  </nav>
+
+  <!-- scene 1: arrival. the rfc card and its label. -->
+  <section id="s1" class="scene scene-arrival">
     <div class="wrap">
-      <div class="lead">
-        <div>
-          <p class="mono-label kicker">track 03, company brain. rustbrain, from two pinned public revisions.</p>
-          <h1>an rfc lands on the right desk, or the tool says why it cannot.</h1>
-          <p class="sub">rustbrain routes a rust rfc to the team its own files say owns it today, and reports a true gap when no one does. no llm, two pinned revisions, one graph.</p>
-          <div class="cta-row">
-            <a class="btn" href="graph/">how the graph works</a>
-            <a class="btn ghost" href="https://github.com/LangerSword/rustbrain">the repository</a>
-          </div>
-          <div class="demo-tabs" role="group" aria-label="routing demo target">
-            <button type="button" data-target="libs-api" aria-pressed="true">RFC 1892, label T-libs-api</button>
-            <button type="button" data-target="T-cargo" aria-pressed="false">label T-cargo</button>
-            <button type="button" data-target="T-dev-tools" aria-pressed="false">label T-dev-tools</button>
-          </div>
-          <div class="result" id="demo" aria-live="polite">
-            <h3>RFC 1892: Deprecate uninitialized in favor of a new MaybeUninit type</h3>
-            <div class="route">RFC 1892 carries the label <b>T-libs-api</b>. The team it names, <b>libs-api</b>, is archived with 0 current members. The graph follows <span class="hop">SUCCEEDED_BY (RFC 3984, teams/archive/libs-api.toml:1)</span> to <b>libs</b>.</div>
-            <table class="reviewers">
-              <thead><tr><th>handle</th><th>role</th><th class="num">authored</th><th class="num">latest</th></tr></thead>
-              <tbody>
-                <tr><td>nia-e</td><td class="lead">lead</td><td class="num">1</td><td class="num">2026-07-15</td></tr>
-                <tr><td>folkertdev</td><td>member</td><td class="num">1</td><td class="num">2026-07-01</td></tr>
-                <tr><td>joshtriplett</td><td>member</td><td class="num">16</td><td class="num">2026-02-23</td></tr>
-                <tr><td>davidtwco</td><td>member</td><td class="num">4</td><td class="num">2025-10-31</td></tr>
-                <tr><td>Darksonn</td><td>member</td><td class="num">3</td><td class="num">2025-08-10</td></tr>
-              </tbody>
-            </table>
-            <div class="foot">showing the first 5 of 37 reviewers, sorted by latest authored RFC. Tier: <span class="hop">SUCCESSOR</span>.</div>
-          </div>
-          <p class="demo-note">this demo runs from the committed snapshot (data/snapshot.json), exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
+      <p class="mono-label kicker reveal-soft">track 03, company brain. rustbrain, from two pinned public revisions.</p>
+      <h1 class="reveal-line">an rfc lands on the right desk, or the tool says why it cannot.</h1>
+      <p class="sub reveal-line">rustbrain routes a rust rfc to the team its own files say owns it today, and reports a true gap when no one does. no llm, two pinned revisions, one graph.</p>
+      <div class="rfc-card">
+        <div class="rfc-card-head">
+          <span class="mono-label">the rfc that opens the story</span>
         </div>
-        <figure class="graph">
-          <svg viewBox="0 0 520 302" role="img" aria-labelledby="graphtitle graphdesc">
-            <title id="graphtitle">the successor hop for RFC 1892</title>
-            <desc id="graphdesc">libs-api is archived with zero members; a single SUCCEEDED_BY edge recorded in its own file at RFC 3984 leads to libs, which today has 37 people; five of them are named. T-dev-tools has no team file and is drawn as a true gap.</desc>
-            <rect class="node-box archived" x="8" y="18" width="176" height="60" rx="6"></rect>
-            <text class="node-label" x="20" y="42">T-libs-api</text>
-            <text class="node-sub" x="20" y="62">archived, 0 members</text>
-            <rect class="node-box" x="336" y="18" width="176" height="60" rx="6"></rect>
-            <text class="node-label" x="348" y="42">libs</text>
-            <text class="node-sub" x="348" y="62">active, 37 people</text>
-            <line class="edge" x1="184" y1="48" x2="330" y2="48"></line>
-            <polygon points="330,48 322,43 322,53" fill="#e0a458"></polygon>
-            <text class="edge-label" x="190" y="40">SUCCEEDED_BY, RFC 3984</text>
-            <g class="roster">
-              <line x1="424" y1="78" x2="424" y2="96"></line>
-              <line x1="16" y1="96" x2="424" y2="96"></line>
-              <line x1="16" y1="96" x2="16" y2="112"></line>
-              <line x1="116" y1="96" x2="116" y2="112"></line>
-              <line x1="216" y1="96" x2="216" y2="112"></line>
-              <line x1="316" y1="96" x2="316" y2="112"></line>
-              <line x1="416" y1="96" x2="416" y2="112"></line>
-              <text x="16" y="130">nia-e (lead)</text>
-              <text x="116" y="130">folkertdev</text>
-              <text x="216" y="130">joshtriplett</text>
-              <text x="316" y="130">davidtwco</text>
-              <text x="416" y="130">Darksonn</text>
-              <text x="16" y="146" class="node-sub">2026-07-15</text>
-              <text x="116" y="146" class="node-sub">2026-07-01</text>
-              <text x="216" y="146" class="node-sub">2026-02-23</text>
-              <text x="316" y="146" class="node-sub">2025-10-31</text>
-              <text x="416" y="146" class="node-sub">2025-08-10</text>
-            </g>
-            <text class="node-sub" x="16" y="172">libs roster: 5 of 37 reviewers, sorted by latest authored RFC</text>
-            <rect class="node-box gapnode" x="8" y="200" width="240" height="72" rx="6"></rect>
-            <text class="node-label gapnode" x="20" y="224">T-dev-tools</text>
-            <text class="node-sub" x="20" y="244">no team file anywhere</text>
-            <text class="node-sub" x="20" y="262">20 of 761 merged rfcs, no not-rfc</text>
-            <text class="edge-label" x="262" y="238" fill="#f2705e">true gap: nobody to route to</text>
-          </svg>
-          <figcaption>drawn from the same snapshot the demo reads (data/snapshot.json); the edge label quotes its source line, teams/archive/libs-api.toml:1.</figcaption>
-        </figure>
+        <div class="rfc-card-row">
+          <span>RFC <span class="num">1892</span></span>
+          <span>label <b>T-libs-api</b></span>
+          <span class="badge SUCCESSOR">SUCCESSOR</span>
+        </div>
+        <h2 class="rfc-title">Deprecate uninitialized in favor of a new MaybeUninit type</h2>
+        <p class="note">merged long ago; the team its label names now lives under teams/archive.</p>
+      </div>
+      <div class="cta-row reveal-soft">
+        <a class="btn" href="#s2">follow the route</a>
+        <a class="btn ghost" href="https://github.com/LangerSword/rustbrain">the repository</a>
       </div>
     </div>
-    <div class="band" aria-label="key numbers">
-      <div class="wrap">
-        <div><div class="b-num num">761</div><div class="b-lab">merged rfcs routed by label</div><div class="b-scope">all merged PRs without a not-rfc label, pinned revision</div></div>
-        <div><div class="b-num num">162</div><div class="b-lab">resolve only through the successor hop</div><div class="b-scope">labels T-libs-api and T-core, archived with a recorded successor</div></div>
-        <div><div class="b-num num">138</div><div class="b-lab">on libs-api alone</div><div class="b-scope">archived team, 0 members, successor libs</div></div>
-        <div><div class="b-num num">24</div><div class="b-lab">on core</div><div class="b-scope">archived team, 0 members, successor leadership-council</div></div>
-        <div><div class="b-num num">25</div><div class="b-lab">in true gaps</div><div class="b-scope">union across three labels: dev-tools 20, doc 6, interim-leadership-chat 1; two rfcs carry two labels. filter: 761 merged rfcs, no not-rfc</div></div>
-      </div>
-    </div>
-    <div class="wrap"><p class="note">band counts: cmd/gaps.py over the committed snapshot (data/snapshot.json), each line naming its filter. handles only: the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p></div>
+    <p class="scroll-cue mono-label" aria-hidden="true">scroll: the story of one rfc</p>
   </section>
 
-  <section class="s">
+  <!-- scenes 2 and 3: the dead end and the hop, one stage. -->
+  <section id="s2" class="scene scene-stage">
+    <div class="wrap stage-grid">
+      <div class="stage-left">
+        <p class="mono-label">scene 02, the dead end. scene 03, the hop.</p>
+        <h2 class="reveal-soft">the team that owned this rfc has nobody left.</h2>
+        <p class="route-line">RFC <span class="num">1892</span> carries the label <b>T-libs-api</b>. The team it names, <b>libs-api</b>, is archived with <b>0 current members</b>.</p>
+        <p class="dead-chip mono-label">naive lookup: 0 current members on libs-api</p>
+        <p class="route-line">The graph follows <span class="hop">SUCCEEDED_BY (RFC <span class="num">3984</span>, teams/archive/libs-api.toml:1)</span> to <b>libs</b>, the team that exists today.</p>
+        <div class="quote-mask">
+          <blockquote id="edgeQuote">Library API has been incorporated into Library with RFC#3984 <cite>teams/archive/libs-api.toml:1</cite></blockquote>
+        </div>
+        <span id="s3" aria-hidden="true"></span>
+        <div class="demo-tabs" role="group" aria-label="routing demo target">
+          <button type="button" data-target="libs-api" aria-pressed="true">RFC 1892, label T-libs-api</button>
+          <button type="button" data-target="T-cargo" aria-pressed="false">label T-cargo</button>
+          <button type="button" data-target="T-dev-tools" aria-pressed="false">label T-dev-tools</button>
+        </div>
+        <div class="result" id="demo" aria-live="polite">
+          <h3>RFC 1892: Deprecate uninitialized in favor of a new MaybeUninit type</h3>
+          <div class="route">RFC 1892 carries the label <b>T-libs-api</b>. The team it names, <b>libs-api</b>, is archived with 0 current members. The graph follows <span class="hop">SUCCEEDED_BY (RFC 3984, teams/archive/libs-api.toml:1)</span> to <b>libs</b>.</div>
+          <table class="reviewers">
+            <thead><tr><th>handle</th><th>role</th><th class="num">authored</th><th class="num">latest</th></tr></thead>
+            <tbody>
+              <tr><td>nia-e</td><td class="lead">lead</td><td class="num">1</td><td class="num">2026-07-15</td></tr>
+              <tr><td>folkertdev</td><td>member</td><td class="num">1</td><td class="num">2026-07-01</td></tr>
+              <tr><td>joshtriplett</td><td>member</td><td class="num">16</td><td class="num">2026-02-23</td></tr>
+              <tr><td>davidtwco</td><td>member</td><td class="num">4</td><td class="num">2025-10-31</td></tr>
+              <tr><td>Darksonn</td><td>member</td><td class="num">3</td><td class="num">2025-08-10</td></tr>
+            </tbody>
+          </table>
+          <div class="foot">showing the first 5 of <span class="num" id="rosterCount" data-final="37">37</span> reviewers, sorted by latest authored RFC. Tier: <span class="hop">SUCCESSOR</span>.</div>
+        </div>
+        <p class="demo-note">this demo runs from the committed snapshot (data/snapshot.json), exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
+      </div>
+      <figure class="graph">
+        <svg viewBox="0 0 520 302" role="img" aria-labelledby="graphtitle graphdesc">
+          <title id="graphtitle">the successor hop for RFC 1892</title>
+          <desc id="graphdesc">libs-api is archived with zero members; a single SUCCEEDED_BY edge recorded in its own file at RFC 3984 leads to libs, which today has 37 people; five of them are named. T-dev-tools has no team file and is drawn as a true gap.</desc>
+          <rect class="node-box archived" x="8" y="18" width="176" height="60" rx="6"></rect>
+          <text class="node-label" x="20" y="42">T-libs-api</text>
+          <text class="node-sub" x="20" y="62">archived, 0 members</text>
+          <rect class="node-box" x="336" y="18" width="176" height="60" rx="6"></rect>
+          <text class="node-label" x="348" y="42">libs</text>
+          <text class="node-sub" x="348" y="62">active, 37 people</text>
+          <g class="edge-group">
+            <line class="edge-hit" x1="184" y1="48" x2="330" y2="48"></line>
+            <line id="edgePath" class="edge" x1="184" y1="48" x2="330" y2="48"></line>
+            <polygon points="330,48 322,43 322,53" fill="#e0a458"></polygon>
+            <text class="edge-label" x="190" y="40">SUCCEEDED_BY, RFC 3984</text>
+            <text class="edge-hint" x="190" y="26">hover: the recorded edge, from the team's own file</text>
+          </g>
+          <g class="roster">
+            <line x1="424" y1="78" x2="424" y2="96"></line>
+            <line x1="16" y1="96" x2="424" y2="96"></line>
+            <g class="rnode"><line x1="16" y1="96" x2="16" y2="112"></line><text x="16" y="130">nia-e (lead)</text><text x="16" y="146" class="node-sub">2026-07-15</text></g>
+            <g class="rnode"><line x1="116" y1="96" x2="116" y2="112"></line><text x="116" y="130">folkertdev</text><text x="116" y="146" class="node-sub">2026-07-01</text></g>
+            <g class="rnode"><line x1="216" y1="96" x2="216" y2="112"></line><text x="216" y="130">joshtriplett</text><text x="216" y="146" class="node-sub">2026-02-23</text></g>
+            <g class="rnode"><line x1="316" y1="96" x2="316" y2="112"></line><text x="316" y="130">davidtwco</text><text x="316" y="146" class="node-sub">2025-10-31</text></g>
+            <g class="rnode"><line x1="416" y1="96" x2="416" y2="112"></line><text x="416" y="130">Darksonn</text><text x="416" y="146" class="node-sub">2025-08-10</text></g>
+          </g>
+          <text class="node-sub" x="16" y="172">libs roster: 5 of 37 reviewers, sorted by latest authored RFC</text>
+          <rect class="node-box gapnode" x="8" y="200" width="240" height="72" rx="6"></rect>
+          <text class="node-label gapnode" x="20" y="224">T-dev-tools</text>
+          <text class="node-sub" x="20" y="244">no team file anywhere</text>
+          <text class="node-sub" x="20" y="262">20 of 761 merged rfcs, no not-rfc</text>
+          <text class="edge-label" x="262" y="238" fill="#f2705e">true gap: nobody to route to</text>
+        </svg>
+        <figcaption>drawn from the same snapshot the demo reads (data/snapshot.json); the edge label quotes its source line, teams/archive/libs-api.toml:1.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- scene 4: the gap. -->
+  <section id="s4" class="scene scene-gap">
+    <div class="wrap">
+      <p class="mono-label gap-surface">scene 04, the gap</p>
+      <h2 class="gap-surface">some labels land on nothing, and the tool says so.</h2>
+      <div class="gapbox gap-surface">
+        <b class="gapflag">true gap.</b> no team file exists for label T-dev-tools, so there is nobody to route to.
+        <span class="num">20</span> merged rfcs carry it.
+      </div>
+      <figure class="gap-figure">
+        <svg viewBox="0 0 520 120" role="img" aria-labelledby="gaptitle gapdesc">
+          <title id="gaptitle">the route stops at a true gap</title>
+          <desc id="gapdesc">T-dev-tools has no team file anywhere, so the route line draws a short stub and stops; 20 merged rfcs carry the label.</desc>
+          <rect class="node-box gapnode" x="8" y="32" width="200" height="56" rx="6"></rect>
+          <text class="node-label gapnode" x="20" y="56">T-dev-tools</text>
+          <text class="node-sub" x="20" y="74">no team file anywhere</text>
+          <path id="stubPath" class="edge gap-edge" d="M 214 60 L 292 60"></path>
+          <line class="edge-stop" x1="296" y1="46" x2="296" y2="74"></line>
+          <text class="edge-label gap-label" x="308" y="64" fill="#f2705e">route stops here</text>
+          <text class="node-sub" x="308" y="86">20 merged rfcs, nobody to route to</text>
+        </svg>
+      </figure>
+      <p class="note gap-surface">a gap is reported by name, never drawn as an error, and never hidden behind an empty table.</p>
+    </div>
+  </section>
+
+  <!-- scene 5: the numbers. -->
+  <section id="s5" class="scene scene-numbers">
+    <div class="wrap">
+      <p class="mono-label">scene 05, the numbers</p>
+      <h2>every figure here has a denominator and a scope.</h2>
+      <div class="band" aria-label="key numbers">
+        <div><div class="b-num num count" data-final="761">761</div><div class="b-lab">merged rfcs routed by label</div><div class="b-scope">all merged PRs without a not-rfc label, pinned revision</div></div>
+        <div><div class="b-num num count" data-final="162">162</div><div class="b-lab">resolve only through the successor hop</div><div class="b-scope">labels T-libs-api and T-core, archived with a recorded successor</div></div>
+        <div><div class="b-num num count" data-final="138">138</div><div class="b-lab">on libs-api alone</div><div class="b-scope">archived team, 0 members, successor libs</div></div>
+        <div><div class="b-num num count" data-final="24">24</div><div class="b-lab">on core</div><div class="b-scope">archived team, 0 members, successor leadership-council</div></div>
+        <div><div class="b-num num count" data-final="25">25</div><div class="b-lab">in true gaps</div><div class="b-scope">union across three labels: dev-tools 20, doc 6, interim-leadership-chat 1; two rfcs carry two labels. filter: 761 merged rfcs, no not-rfc</div></div>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <div class="tier-head"><span class="badge ACTIVE">ACTIVE</span><span class="tier-scope">slug matches an active team file</span></div>
+          <div class="tier-row"><span class="num count" data-final="14">14</span> labels, <span class="num count" data-final="357">357</span> distinct rfcs</div>
+          <div class="tier-bar"><span class="tier-bar-fill ACTIVE" style="--w:100.0%"></span></div>
+        </div>
+        <div class="tier">
+          <div class="tier-head"><span class="badge SUCCESSOR">SUCCESSOR</span><span class="tier-scope">archived, with a successor recorded in its own file: libs-api, core</span></div>
+          <div class="tier-row"><span class="num count" data-final="2">2</span> labels, <span class="num count" data-final="162">162</span> distinct rfcs</div>
+          <div class="tier-bar"><span class="tier-bar-fill SUCCESSOR" style="--w:45.4%"></span></div>
+        </div>
+        <div class="tier">
+          <div class="tier-head"><span class="badge TRUE_GAP">TRUE_GAP</span><span class="tier-scope">no active team and no recorded successor: dev-tools, doc, interim-leadership-chat</span></div>
+          <div class="tier-row"><span class="num count" data-final="3">3</span> labels, <span class="num count" data-final="25">25</span> distinct rfcs</div>
+          <div class="tier-bar"><span class="tier-bar-fill TRUE_GAP" style="--w:7.0%"></span></div>
+        </div>
+      </div>
+      <p class="note">band counts: cmd/gaps.py over the committed snapshot (data/snapshot.json), each line naming its filter. tier bars are shares of the largest tier (357 distinct rfcs), so the three compare on one denominator. handles only: the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p>
+    </div>
+  </section>
+
+  <!-- scene 6: honesty and close. -->
+  <section id="s6" class="scene scene-close">
     <div class="wrap cols2">
       <div>
-        <h2>what it refuses to do.</h2>
-        <ul class="tight">
+        <h2 class="reveal-line">what it refuses to do.</h2>
+        <ul class="tight reveal-soft">
           <li>it does not guess a rename: an archived team is mapped only when its own file records a successor, quoted with file and line;</li>
           <li>it does not return an empty table: a label with no active team is reported as a true gap, by name;</li>
           <li>it does not sort reviewers by volume alone: latest activity leads, because counting alone routes to people who left years ago.</li>
         </ul>
       </div>
       <div>
-        <h2>what it is not.</h2>
-        <p class="sub">there is no model anywhere in the path, and rust is a foundation, not a company: element eight of the brief scores zero, and <a href="method/">the method page</a> says so in the first sentence. three pages in this site are the honest part: <a href="gaps/">the gaps</a>, <a href="method/">the limits</a>, and <a href="bugs/">the bugs i found in my own findings</a>.</p>
+        <h2 class="reveal-line">what it is not.</h2>
+        <p class="sub reveal-soft">there is no model anywhere in the path, and rust is a foundation, not a company: element eight of the brief scores zero, and <a href="method/">the method page</a> says so in the first sentence.</p>
+        <p class="sub reveal-soft">three pages in this site are the honest part: <a href="gaps/">the gaps</a>, <a href="method/">the limits</a>, and <a href="bugs/">the bugs i found in my own findings</a>.</p>
+        <p class="note reveal-soft">handles only. the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p>
       </div>
     </div>
   </section>
@@ -139,5 +222,6 @@
   </div>
 </footer>
 <script src="assets/site.js"></script>
+<script src="assets/motion.js"></script>
 </body>
 </html>
