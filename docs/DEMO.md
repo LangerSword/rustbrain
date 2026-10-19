@@ -39,3 +39,7 @@ Recount after any edit: copy the spoken column and run `wc -w` on it.
   element 8 is scored 0 for exactly that reason. The track is Track 03.
 
 Screenshots for the blog and their captions live in `out/blog_evidence/screenshots.md`.
+
+## The revamp
+
+The home page is now six scenes that walk one RFC's route (arrival, dead end, hop, gap, numbers, close) with motion on native scroll only. The beats above still work as a live walkthrough, and the storyboard is the site itself. Design and verification: `out/revamp/20_REVAMP.md` and `out/revamp/30_VERIFY.md`; captures at three widths in `out/revamp/review/`.

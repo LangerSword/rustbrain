@@ -129,3 +129,21 @@ scrolling, keeps the graph legible at a sane size, degrades to one column
 cleanly, and needs zero JS to carry meaning. B mimics a terminal instead of
 showing the product, and C turns the graph into decoration while the actual
 answer (who reviews this) drops below the fold.
+
+## The revamp, 2026-10-19: the scroll is the story of one RFC
+
+The home page is now six scenes with a fixed scene rail: arrival (the RFC
+1892 card, masked line reveals), the dead end (the pinned stage empties the
+roster to zero, the naive lookup line), the hop (the SUCCEEDED_BY edge draws
+itself with DrawSVG, the recorded quote lands, reviewers stagger in), the gap
+(T-dev-tools, a stub line that stops), the numbers (counters to their
+data.json values, three tiers on one bar denominator), and the close (what it
+refuses, what it is not, the hashes). Motion tokens live once in
+motion/tokens.js; scenes are separate modules with build and revert; the
+whole layer is gated by gsap.matchMedia so reduced motion gets the static
+final states. Pins: scenes 2 and 3 share one pinned stage (400% desktop,
+scrubbed lighter without a pin on mobile); total page length measured at
+7,133 px desktop, 5,339 px at 390. Palette and type are unchanged from this
+file; the only new motif is the rail. Design written first in
+out/revamp/20_REVAMP.md; what shipped is verified in out/revamp/30_VERIFY.md;
+captures at three widths in out/revamp/review/.

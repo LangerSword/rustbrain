@@ -58,6 +58,15 @@ Four design decisions carry the system:
 | ![RFC 1892](out/blog_evidence/ui_rfc1892_successor_hop.png) | ![T-dev-tools](out/blog_evidence/ui_true_gap_dev_tools.png) | ![T-cargo](out/blog_evidence/ui_active_team_cargo.png) |
 | `libs-api` (0 members) -> `libs` (37 reviewers) | 20 merged RFCs, no team file anywhere | 42 merged RFCs, 0 hops needed |
 
+## The revamp: the scroll is the story of one RFC
+
+The home page now walks one RFC's route as six scenes with a scene rail: arrival (RFC 1892, masked line reveals), the dead end (the roster empties to zero, the naive lookup line), the hop (the `SUCCEEDED_BY` edge draws itself with DrawSVG, the recorded quote lands, reviewers stagger in), the gap (`T-dev-tools`, a line that stops), the numbers (counters to the `site/data.json` values, three tiers on one bar denominator), and the close. Motion explains the product; nothing else moves.
+
+- Native scroll only: keyboard, anchors, back button, reload restore and 200 percent zoom all verified. No scroll hijacking, no zoom block.
+- Reduced motion gets the static final states (`gsap.matchMedia`); no pins, no scrub.
+- The no-JS HTML carries the full story and every final number; `scripts/assert_site_numbers.py` re-derives the counters, every SVG label and the tier bars from the snapshot in CI.
+- Measured: 0.28 percent of frames over 25 ms during a scripted scroll at 1440 (0.13 percent at 390), zero console errors, 61 KB gzip of JS total, worst long task 296 ms at boot. Receipts: `out/revamp/30_VERIFY.md` and `out/blog_evidence/21_revamp.md`; captures at three widths in `out/revamp/review/`.
+
 ## Run it (verified from a clean clone)
 
 ```bash
