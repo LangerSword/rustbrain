@@ -83,6 +83,16 @@ applied per scene. Five weakest items found:
 5. Header nav wraps to three rows at 390 px. NOT fixed: acceptable at that
    width, labels stay whole, and the mobile read shows no overflow.
 
+Post-push probe (the last check before wrap) caught a real defect the sheet
+review had hinted at: at the end of the hop the reviewer TABLE ROWS stayed
+invisible. Cause: the rows reveal was written as a from() tween whose target
+had already been pre-set to opacity 0, so it animated 0 into 0 (a no-op;
+gsap from() reads the current value as the end). Fixed by setting the start
+state (opacity 0, y 14) once and using a to() tween to (1, 0). Re-verified at
+the end of the pin at 1440, 768 and 390: rows 1,1,1,1,1, roster count 37,
+result box opacity 1, timeline 3.4 of 3.4 seconds. This defect and fix ship
+in the follow-up commit; blame the first pass, credit the probe.
+
 Before and after captures: revamp_s1/s2_dead/s3_hop/s5 (before) and
 revamp_s2_dead/revamp_s3_hop (after, in out/revamp/shots, gitignored).
 
@@ -101,5 +111,10 @@ revamp_s2_dead/revamp_s3_hop (after, in out/revamp/shots, gitignored).
 
 ## 6.6 publish
 
-Pending at the time of writing: push to origin, CI run, Pages deployment,
-live URL re-check. Results go in the stage 7 report.
+Pushed as e7bacf4. CI run 39203108492 green (30 s), Pages run 39203108605
+green (14 s). Live check on https://langersword.github.io/rustbrain/ after
+deploy: title and headline correct, 11 counters with correct data-final
+values, motion bundle live, the successor edge caught mid-draw (dash
+68.6471 px of the path, still animating), zero console errors. The reviewer
+row defect above was found by the post-push probe, fixed, re-verified at
+three widths and redeployed in a follow-up commit.

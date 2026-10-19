@@ -46,7 +46,7 @@ export function build(api, ctx, register) {
   // (opacity only, no layout change) until the edge has drawn. A small
   // motion-only note explains the empty space while the dead end holds.
   gsap.set(fan, { opacity: 0, y: -8 });
-  gsap.set(rows, { opacity: 0 });
+  gsap.set(rows, { opacity: 0, y: 14 });
   if (resultBox) gsap.set(resultBox, { opacity: 0 });
   if (countEl) countEl.textContent = "0";
   const deadNote = document.createElement("p");
@@ -89,7 +89,7 @@ export function build(api, ctx, register) {
       },
       "hop+=0.9"
     )
-    .from(rows, { opacity: 0, y: 14, duration: D.rowIn, stagger: ST.row }, "hop+=1.05")
+    .to(rows, { opacity: 1, y: 0, duration: D.rowIn, stagger: ST.row }, "hop+=1.05")
     .to(deadNote, { opacity: 0, duration: 0.5, ease: E.ui }, "hop+=1.05")
     .to(resultBox, { opacity: 1, duration: 0.5, ease: E.ui }, "hop+=1.35")
     .to({}, { duration: 0.35 });
