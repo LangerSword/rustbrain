@@ -43,6 +43,35 @@
     return null;
   }
 
+  // The static result already holds the measured five rows; this adds the
+  // "show all" expander on top, reading the same data.json. Created by JS so
+  // a no-JS page never shows a control that cannot work.
+  function enhanceAllReviewers() {
+    var box = document.getElementById("demo");
+    if (!box || box.querySelector("details.all-reviewers")) return;
+    var det = document.createElement("details");
+    det.className = "all-reviewers";
+    var sum = document.createElement("summary");
+    sum.textContent = "show all reviewers";
+    det.appendChild(sum);
+    var body = document.createElement("div");
+    body.className = "all-reviewers-body";
+    det.appendChild(body);
+    load().then(function (d) {
+      sum.textContent = "show all " + d.hero.reviewers.length + " reviewers";
+    }).catch(function () {});
+    det.addEventListener("toggle", function () {
+      if (!det.open || body.getAttribute("data-filled")) return;
+      body.setAttribute("data-filled", "1");
+      load().then(function (d) {
+        body.innerHTML = '<table class="reviewers"><thead><tr><th>handle</th><th>role</th>' +
+          '<th class="num">authored</th><th class="num">latest</th></tr></thead><tbody>' +
+          rows(d.hero.reviewers, true) + "</tbody></table>";
+      }).catch(function () {});
+    });
+    box.appendChild(det);
+  }
+
   function render(target) {
     return load().then(function (d) {
       // innerHTML is fed only this site's own precomputed data (site/data.json,
@@ -72,6 +101,7 @@
           "so there is nobody to route to. 20 merged RFCs carry it.</div>";
       }
       resultBox.innerHTML = html;
+      if (target === "libs-api") enhanceAllReviewers();
       if (!reduce) {
         resultBox.style.opacity = "0";
         resultBox.style.transition = "opacity 200ms cubic-bezier(0.2,0.7,0.3,1)";
@@ -91,4 +121,7 @@
   // in a Flip transition and intercepts tab clicks; without it this file is
   // the whole demo, exactly as before.
   window.RB = { render: render, reduce: reduce };
+
+  // the initial static result is the libs-api view: enhance it in place
+  enhanceAllReviewers();
 })();

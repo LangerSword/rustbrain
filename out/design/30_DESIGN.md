@@ -157,3 +157,11 @@ boot cover that lifts like a curtain. Inter stays for UI, Newsreader for
 body copy. The reference's own display faces (Charles Rosie, PP Nikkei Maru,
 GT Era) are commercial and were neither used nor copied; Bodoni Moda is the
 closest open-licence pairing that keeps the repo's OFL-only rule.
+
+A story and utility pass came after the mimic: each scene opens with a
+chapter line (roman numeral plus plain name), an engraved kit carries the
+illustration (shared hatch patterns, a route emblem in the hero, an RB seal
+at the close, all drawn in-house), the dead end shows the real command line,
+next-beat links join the scenes, and the header sticks with native smooth
+anchors and proper scroll margins. The result card also exposes all 37
+reviewers behind a JS-only expander reading the same data.json.

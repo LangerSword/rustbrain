@@ -16,7 +16,7 @@ export function build(api, ctx, register) {
   const stConfig = isDesktop
     ? {
         trigger: root,
-        start: "top top",
+        start: "top 64px", // the sticky header owns the top strip
         end: "+=400%",
         pin: true,
         scrub: SCRUB.hop,
@@ -72,7 +72,6 @@ export function build(api, ctx, register) {
   });
 
   tl.addLabel("dead")
-    .from(q(".dead-chip"), { opacity: 0, y: 12, duration: 0.5 }, 0.1)
     .to(q(".dead-chip"), { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1, ease: E.ui }, 0.6)
     .addLabel("hop", 1.2)
     .from(edge, { drawSVG: "0%", duration: D.draw, ease: "none" }, "hop")

@@ -156,3 +156,21 @@ frames over 25 ms (0.13 percent); 390 mean 17.05 ms with 1 of 748 (0.13
 percent); one boot long task per run (136 ms, 76 ms); zero console errors.
 No-JS, reduced motion, keyboard, and the assert suite all unchanged and
 passing; captures re-shot at three widths.
+
+## 6.9 the story and utility pass
+
+Chapter lines with roman numerals open every scene; the engraved kit is ours
+(shared hatch patterns, a route emblem above the hero, an RB seal at the
+close); the dead end now shows the real command line, in a terminal chip,
+with the exact output line the CI asserts elsewhere. Next-beat links join
+the scenes; the header is sticky with native smooth anchors and scroll
+margins; the tab controls and the expander summary are 44 px tall. The
+libs-api result adds a "show all 37 reviewers" expander that reads the same
+data.json and works only when JS does (static HTML unchanged for no-JS).
+
+Checked: expander goes from 0 to 37 rows on one click ("show all 37
+reviewers", first row nia-e), zero console errors, assert suite PASS with
+the new terminal-line check. Frame cadence after the additions: 1440 mean
+17.40 ms with 3 of 1249 frames over 25 ms (0.24 percent); 390 mean 17.05 ms
+with 2 of 1207 (0.17 percent); boot long task 314 ms at 1440 (the new display
+font), 171 ms at 390; zero errors. Captures re-shot at three widths.

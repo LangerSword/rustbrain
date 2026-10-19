@@ -28,6 +28,12 @@ out/revamp/30_VERIFY.md and out/blog_evidence/21_revamp.md.
   that lifts like a curtain, thin outlined controls, a hairline ornament
   with a single accent diamond, a vignette; fonts added under
   site/assets/fonts/ and checked by the assert script.
+- The story and utility pass (stage 10): chapter lines with roman numerals,
+  an engraved kit (hatch patterns, a route emblem, an RB seal) all drawn by
+  us, a real terminal excerpt for the naive lookup, next-beat links between
+  scenes, a sticky header with native smooth anchors and scroll margins, 44px
+  tap targets, and a JS-only "show all 37 reviewers" expander that reads the
+  same data.json.
 - site/assets/fonts.css: font files now resolve (they 404ed on every page
   before this).
 - README.md, docs/DEMO.md, out/design/30_DESIGN.md: revamp sections added.

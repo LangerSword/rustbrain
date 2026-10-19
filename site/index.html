@@ -25,6 +25,17 @@
 </head>
 <body>
 <a class="skip" href="#main">skip to content</a>
+<!-- one shared engraving kit: hatch patterns drawn once, used by the plates -->
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="0.6"></line>
+    </pattern>
+    <pattern id="hatchDense" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width="0.5"></line>
+    </pattern>
+  </defs>
+</svg>
 <header class="site">
   <div class="wrap">
     <a class="brand" href="./">rust<span>brain</span><span class="brand-track">track 03</span></a>
@@ -51,6 +62,13 @@
   <!-- scene 1: arrival. the rfc card and its label. -->
   <section id="s1" class="scene scene-arrival">
     <div class="wrap">
+      <svg class="emblem" viewBox="0 0 72 72" aria-hidden="true" focusable="false">
+        <circle cx="36" cy="36" r="33" fill="none" stroke="currentColor" stroke-width="1"></circle>
+        <circle cx="36" cy="36" r="27" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.55"></circle>
+        <path d="M9 36h13l6-9 6 18 6-9h23" fill="none" stroke="currentColor" stroke-width="1.2"></path>
+        <circle cx="9" cy="36" r="2" fill="currentColor"></circle>
+        <circle cx="63" cy="36" r="2" fill="currentColor"></circle>
+      </svg>
       <p class="mono-label kicker reveal-soft">track 03, company brain. rustbrain, from two pinned public revisions.</p>
       <span class="s1-hair" aria-hidden="true"></span>
       <h1 class="reveal-line">an rfc lands on the right desk, or the tool says why it cannot.</h1>
@@ -79,10 +97,10 @@
   <section id="s2" class="scene scene-stage">
     <div class="wrap stage-grid">
       <div class="stage-left">
-        <p class="mono-label">the dead end, then the hop.</p>
+        <p class="chapter-line"><span class="rom">II</span> the dead end <span class="chapter-sep" aria-hidden="true">/</span> <span class="rom">III</span> the hop</p>
         <h2 class="reveal-soft">the team that owned this rfc has nobody left.</h2>
         <p class="route-line">RFC <span class="num">1892</span> carries the label <b>T-libs-api</b>. The team it names, <b>libs-api</b>, is archived with <b>0 current members</b>.</p>
-        <p class="dead-chip mono-label">naive lookup: 0 current members on libs-api</p>
+        <p class="dead-chip mono-label"><span class="prompt" aria-hidden="true">$</span> python3 cmd/route.py 1892 --naive<br><span class="term-out">naive lookup: 0 current members on libs-api</span></p>
         <p class="route-line">The graph follows <span class="hop">SUCCEEDED_BY (RFC <span class="num">3984</span>, teams/archive/libs-api.toml:1)</span> to <b>libs</b>, the team that exists today.</p>
         <div class="quote-mask">
           <blockquote id="edgeQuote">Library API has been incorporated into Library with RFC#3984 <cite>teams/archive/libs-api.toml:1</cite></blockquote>
@@ -138,6 +156,7 @@
           </g>
           <text class="node-sub" x="16" y="172">libs roster: 5 of 37 reviewers, sorted by latest authored RFC</text>
           <rect class="node-box gapnode" x="8" y="200" width="240" height="72" rx="6"></rect>
+          <rect x="8" y="200" width="240" height="72" rx="6" fill="url(#hatch)" opacity="0.16" style="color:#f2705e" pointer-events="none"></rect>
           <text class="node-label gapnode" x="20" y="224">T-dev-tools</text>
           <text class="node-sub" x="20" y="244">no team file anywhere</text>
           <text class="node-sub" x="20" y="262">20 of 761 merged rfcs, no not-rfc</text>
@@ -148,10 +167,12 @@
     </div>
   </section>
 
+  <div class="wrap"><a class="next-scene" href="#s4">next: the gap <span aria-hidden="true">↓</span></a></div>
+
   <!-- scene 4: the gap. -->
   <section id="s4" class="scene scene-gap">
     <div class="wrap">
-      <p class="mono-label gap-surface">the gap</p>
+      <p class="chapter-line"><span class="rom">IV</span> the gap</p>
       <h2 class="gap-surface">some labels land on nothing, and the tool says so.</h2>
       <div class="gapbox gap-surface">
         <b class="gapflag">true gap.</b> no team file exists for label T-dev-tools, so there is nobody to route to.
@@ -172,13 +193,14 @@
         </svg>
       </figure>
       <p class="note gap-surface">a gap is reported by name, never drawn as an error, and never hidden behind an empty table.</p>
+      <a class="next-scene" href="#s5">next: the numbers <span aria-hidden="true">↓</span></a>
     </div>
   </section>
 
   <!-- scene 5: the numbers. -->
   <section id="s5" class="scene scene-numbers">
     <div class="wrap">
-      <p class="mono-label">the numbers</p>
+      <p class="chapter-line"><span class="rom">V</span> the numbers</p>
       <h2>every figure here has a denominator and a scope.</h2>
       <div class="band" aria-label="key numbers">
         <div><div class="b-num num count" data-final="761">761</div><div class="b-lab">merged rfcs routed by label</div><div class="b-scope">all merged PRs without a not-rfc label, pinned revision</div></div>
@@ -205,11 +227,13 @@
         </div>
       </div>
       <p class="note">band counts: cmd/gaps.py over the committed snapshot (data/snapshot.json), each line naming its filter. tier bars are shares of the largest tier (357 distinct rfcs), so the three compare on one denominator. handles only: the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p>
+      <a class="next-scene" href="#s6">next: the close <span aria-hidden="true">↓</span></a>
     </div>
   </section>
 
   <!-- scene 6: honesty and close. -->
   <section id="s6" class="scene scene-close">
+    <div class="wrap"><p class="chapter-line"><span class="rom">VI</span> the close</p></div>
     <div class="wrap cols2">
       <div>
         <h2 class="reveal-line">what it refuses to do.</h2>
@@ -226,6 +250,16 @@
         <p class="note reveal-soft">this demo runs from the committed snapshot (data/snapshot.json), exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
         <p class="note reveal-soft">handles only. the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p>
       </div>
+    </div>
+    <div class="wrap close-seal">
+      <svg class="seal" viewBox="0 0 96 96" aria-hidden="true" focusable="false">
+        <circle cx="48" cy="48" r="45" fill="none" stroke="currentColor" stroke-width="1"></circle>
+        <circle cx="48" cy="48" r="38" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.55"></circle>
+        <text x="48" y="55" text-anchor="middle" class="seal-text">RB</text>
+        <path d="M48 1v8M48 87v8M1 48h8M87 48h8" stroke="currentColor" stroke-width="1"></path>
+      </svg>
+      <p class="mono-label">two pinned revisions, no model, handles only</p>
+      <a class="next-scene" href="#s1">back to the arrival <span aria-hidden="true">↑</span></a>
     </div>
   </section>
 </main>

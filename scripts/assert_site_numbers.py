@@ -182,6 +182,7 @@ for u in re.findall(r"url\('([^']+)'\)", fonts_css):
 for s in ["an rfc lands on the right desk", "the team that owned this rfc has nobody left",
           "route stops here", "no llm, two pinned revisions, one graph"]:
     check("no-js text %r" % s, s in home_page, True)
+check("terminal excerpt line", "naive lookup: 0 current members on libs-api" in home_page, True)
 
 print("checked site/data.json and the built home page against data/snapshot.json")
 if bad:
