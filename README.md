@@ -278,7 +278,7 @@ entrant's; where the assistant got something wrong, the correction is recorded i
 > added a curated `SUCCEEDED_BY` edge with the source file and line cited in
 > `data/successors.yaml`, and the routing query walks up to three hops to find the
 > team that owns the label today. A label with no such record is reported as a true
-> gap, which is how `T-dev-tools` (20 RFCs, no file anywhere) shows up.
+> gap, which is how `T-dev-tools` (20 of the 761 merged rfcs, not-rfc excluded, no file anywhere) shows up.
 >
 > The queries are in `queries/` with the edge direction written above each one. The
 > main one is a three-hop traversal with two aggregations: from the labelled team,

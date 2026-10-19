@@ -37,7 +37,7 @@
     <div class="wrap" style="grid-template-columns: repeat(3, 1fr);">
       <div><div class="b-num num">357</div><div class="b-lab">RFCs with an active-team label</div><div class="b-scope">46.9% of 761; 14 labels</div></div>
       <div><div class="b-num num">162</div><div class="b-lab">RFCs through the successor hop</div><div class="b-scope">libs-api 138, core 24; 2 labels</div></div>
-      <div><div class="b-num num">25</div><div class="b-lab">RFCs in true gaps</div><div class="b-scope">dev-tools 20, doc 6, interim-leadership-chat 1; 3 labels</div></div>
+      <div><div class="b-num num">25</div><div class="b-lab">RFCs in true gaps</div><div class="b-scope">dev-tools 20, doc 6, interim-leadership-chat 1; loads sum 27, two rfcs carry two labels, union 25. filter: 761 merged rfcs, not-rfc excluded</div></div>
     </div>
   </div>
 
@@ -82,7 +82,8 @@
 
   <section class="s">
     <div class="wrap">
-      <h2>tier 3: true gaps (3 labels, 25 distinct rfcs)</h2>
+      <h2>tier 3: true gaps (3 labels, 25 distinct rfcs; union over the 761 corpus, not-rfc excluded)</h2>
+      <p class="note">filter: the 761 merged rfcs in rust-lang/rfcs without a not-rfc label, at the pinned revision. per-label loads sum to 27 because two rfcs (1946 and 1990) carry both T-dev-tools and T-doc; the union is 25. restricted to disposition-merge the subset is dev-tools 3, interim-leadership-chat 1, doc 0, union 4.</p>
       <table class="data">
         <thead><tr><th>label</th><th>status</th><th class="num">rfcs</th></tr></thead>
         <tbody>

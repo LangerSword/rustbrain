@@ -89,6 +89,24 @@ check("bug stats rfc count", site["bugs"]["successor_rfcs"], site["gaps"]["disti
 check("archived files", site["bugs"]["archived_team_files"], snap["counts"]["teams_archived"])
 check("widened authors", site["coverage"][7][3], len({r["user"] for r in raw}))
 
+# 7. gap counts, per label and as a union, plus the strings the pages show
+GAP_LABELS = ("dev-tools", "doc", "interim-leadership-chat")
+gap_rows = {row["label"]: row["rfcs"] for row in site["gaps"]["tiers"]["TRUE_GAP"]}
+for label in GAP_LABELS:
+    check("gap load %s" % label, gap_rows.get(label),
+          sum(1 for r in snap["rfcs"] if label in r["team_labels"]))
+gap_union = len({r["num"] for r in snap["rfcs"]
+                 if any(label in r["team_labels"] for label in GAP_LABELS)})
+check("gap union", site["gaps"]["distinct"]["TRUE_GAP"], gap_union)
+home_page = open(os.path.join(HERE, "site", "index.html"), encoding="utf-8").read()
+gaps_page = open(os.path.join(HERE, "site", "gaps", "index.html"), encoding="utf-8").read()
+check("home shows the union", ">25</div>" in home_page and "in true gaps" in home_page, True)
+check("home figure names the filter", "20 of 761 merged rfcs, no not-rfc" in home_page, True)
+for label, n in (("T-dev-tools", 20), ("T-doc", 6), ("T-interim-leadership-chat", 1)):
+    check("gaps page row %s = %d" % (label, n),
+          ("<td>%s</td>" % label) in gaps_page and ('<td class="num">%d</td>' % n) in gaps_page, True)
+check("gaps page union string", "25 distinct rfcs; union over the 761 corpus" in gaps_page, True)
+
 print("checked site/data.json against data/snapshot.json")
 if bad:
     for b in bad:
