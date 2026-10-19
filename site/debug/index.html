@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<title>rustbrain debug: scrub every scene timeline</title>
+<style>
+  body { margin: 0; background: #14110e; color: #f2ede4; font: 14px/1.5 ui-monospace, Menlo, monospace; }
+  header { padding: 14px 18px; border-bottom: 1px solid rgba(242,237,228,.14); }
+  h1 { font-size: 16px; margin: 0 0 4px; }
+  #status { color: #918877; font-size: 12.5px; }
+  .cols { display: grid; grid-template-columns: 380px 1fr; height: calc(100vh - 54px); }
+  #controls { overflow-y: auto; padding: 12px; border-right: 1px solid rgba(242,237,228,.14); }
+  .row { margin-bottom: 12px; }
+  .lab { display: block; color: #c9c0b2; font-size: 12px; margin-bottom: 4px; }
+  input[type="range"] { width: 100%; accent-color: #ff6a3d; }
+  iframe { width: 100%; height: 100%; border: 0; background: #14110e; }
+</style>
+</head>
+<body>
+<header>
+  <h1>scene debug: scrub every ScrollTrigger and every scene timeline</h1>
+  <div id="status">waiting for the site bundle...</div>
+</header>
+<div class="cols">
+  <div id="controls"></div>
+  <iframe id="stage" src="../index.html" title="the site under debug"></iframe>
+</div>
+<script src="motion-debug.js"></script>
+</body>
+</html>

@@ -1,13 +1,12 @@
 {
   "name": "rustbrain",
   "version": "1.0.0",
-  "description": "**Track 03: Company Brain.**",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "description": "Deterministic governance graph routing Rust RFCs across active and archived teams in FalkorDB.",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "python3 scripts/build_snapshot.py --check && python3 scripts/verify_snapshot.py && python3 scripts/verify_readme_numbers.py && python3 scripts/export_site_data.py --check && python3 scripts/assert_site_numbers.py",
+    "build:motion": "node scripts/build_motion.mjs",
+    "serve:site": "python3 -m http.server 8099 --directory site"
   },
   "repository": {
     "type": "git",
@@ -16,12 +15,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/LangerSword/rustbrain/issues"
   },
   "homepage": "https://github.com/LangerSword/rustbrain#readme",
   "dependencies": {
     "gsap": "3.15.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }
