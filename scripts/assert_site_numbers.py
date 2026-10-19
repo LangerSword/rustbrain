@@ -106,6 +106,10 @@ for label, n in (("T-dev-tools", 20), ("T-doc", 6), ("T-interim-leadership-chat"
     check("gaps page row %s = %d" % (label, n),
           ("<td>%s</td>" % label) in gaps_page and ('<td class="num">%d</td>' % n) in gaps_page, True)
 check("gaps page union string", "25 distinct rfcs; union over the 761 corpus" in gaps_page, True)
+graph_page = open(os.path.join(HERE, "site", "graph", "index.html"), encoding="utf-8").read()
+check("home band names its source", "band counts: cmd/gaps.py" in home_page, True)
+check("graph page names load_graph", "scripts/load_graph.py" in graph_page, True)
+check("graph page names successors.yaml", "data/successors.yaml" in graph_page, True)
 
 print("checked site/data.json against data/snapshot.json")
 if bad:

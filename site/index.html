@@ -56,7 +56,7 @@
             </table>
             <div class="foot">showing the first 5 of 37 reviewers, sorted by latest authored RFC. Tier: <span class="hop">SUCCESSOR</span>.</div>
           </div>
-          <p class="demo-note">this demo runs from a precomputed snapshot, exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
+          <p class="demo-note">this demo runs from the committed snapshot (data/snapshot.json), exported at build time by scripts/export_site_data.py. no server, no api key, no model.</p>
         </div>
         <figure class="graph">
           <svg viewBox="0 0 520 302" role="img" aria-labelledby="graphtitle graphdesc">
@@ -97,7 +97,7 @@
             <text class="node-sub" x="20" y="262">20 of 761 merged rfcs, no not-rfc</text>
             <text class="edge-label" x="262" y="238" fill="#f2705e">true gap: nobody to route to</text>
           </svg>
-          <figcaption>drawn from the same snapshot the demo reads; the edge label quotes its source line, teams/archive/libs-api.toml:1.</figcaption>
+          <figcaption>drawn from the same snapshot the demo reads (data/snapshot.json); the edge label quotes its source line, teams/archive/libs-api.toml:1.</figcaption>
         </figure>
       </div>
     </div>
@@ -110,7 +110,7 @@
         <div><div class="b-num num">25</div><div class="b-lab">in true gaps</div><div class="b-scope">union across three labels: dev-tools 20, doc 6, interim-leadership-chat 1; two rfcs carry two labels. filter: 761 merged rfcs, no not-rfc</div></div>
       </div>
     </div>
-    <div class="wrap"><p class="note">handles only. the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p></div>
+    <div class="wrap"><p class="note">band counts: cmd/gaps.py over the committed snapshot (data/snapshot.json), each line naming its filter. handles only: the page never shows a name, an email or a profile picture; every number on it is asserted in CI against the snapshot it was exported from.</p></div>
   </section>
 
   <section class="s">

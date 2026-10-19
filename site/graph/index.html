@@ -56,7 +56,7 @@
           <tr><td><code>SUCCEEDED_BY</code></td><td><code>(Team)-&gt;(Team)</code> archived team points at its active successor</td><td>rfc, source, quote</td><td class="num">4</td></tr>
         </tbody>
       </table>
-      <p class="note">the ingest asserts every direction by running the flipped pattern and requiring zero rows; a cypher pattern that matches nothing returns zero rows with no error, so a flipped arrow looks like a correct empty answer. that mistake was made here once; it is in <a href="../bugs/">bugs i found</a>.</p>
+      <p class="note">the counts above are measured from <code>scripts/load_graph.py</code> output on the committed snapshot; the ingest asserts every direction by running the flipped pattern and requiring zero rows; a cypher pattern that matches nothing returns zero rows with no error, so a flipped arrow looks like a correct empty answer. that mistake was made here once; it is in <a href="../bugs/">bugs i found</a>.</p>
     </div>
   </section>
 
@@ -75,7 +75,7 @@ RETURN owner.slug AS owner, p.handle AS handle,
        CASE WHEN 'LEAD' IN kinds THEN 'lead' ELSE 'member' END AS role,
        authored_count AS authored, coalesce(latest, '') AS latest
 ORDER BY latest DESC, authored DESC, handle</pre>
-      <p class="sub">the <code>0</code> matters as much as the <code>3</code>: an active label takes zero hops through the same query, so there is no second code path to drift. what breaks without a graph: the relational form of this one question is a recursive CTE for a chain whose depth is not known, plus a filter for the terminal active team, plus the roster join and a grouped max. the stake: 162 of 761 merged rfcs (libs-api 138, core 24) resolve only through this hop. without it they return an archived team with an empty roster, which is a dead end, not an answer.</p>
+      <p class="sub">the <code>0</code> matters as much as the <code>3</code>: an active label takes zero hops through the same query, so there is no second code path to drift. what breaks without a graph: the relational form of this one question is a recursive CTE for a chain whose depth is not known, plus a filter for the terminal active team, plus the roster join and a grouped max. the stake: 162 of 761 merged rfcs (libs-api 138, core 24, from <code>cmd/gaps.py</code>) resolve only through this hop. without it they return an archived team with an empty roster, which is a dead end, not an answer.</p>
     </div>
   </section>
 
@@ -92,7 +92,7 @@ ORDER BY latest DESC, authored DESC, handle</pre>
           <tr><td>wg-traits</td><td>types</td><td><code>teams/archive/wg-traits.toml:1</code> "Note: this has effectively been replaced by the types team"</td></tr>
         </tbody>
       </table>
-      <p class="note">three archived teams are listed as unmapped with a reason each (docs, interim-leadership-chat, devtools-peers); of the 52 archived files, exactly 4 carry a successor note and all 4 are mapped. the map covers what upstream documents and claims nothing more.</p>
+      <p class="note">three archived teams are listed as unmapped with a reason each in <code>data/successors.yaml</code> (docs, interim-leadership-chat, devtools-peers); of the 52 archived files, exactly 4 carry a successor note and all 4 are mapped. the map covers what upstream documents and claims nothing more.</p>
     </div>
   </section>
 </main>
